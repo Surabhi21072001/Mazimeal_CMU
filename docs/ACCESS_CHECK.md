@@ -5,3 +5,4 @@ at the end of `docs/BRANCHING.md`. Add your line, open a PR into `dev`, merge it
 
 | Developer | Confirmed |
 |---|---|
+| Zihan Liu | 2026-08-20 |
