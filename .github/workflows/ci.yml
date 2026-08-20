@@ -1,0 +1,78 @@
+name: ci
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  # Blocking. The one check that matters on day one.
+  secrets:
+    name: no credentials in the repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: reject committed .env and obvious secrets
+        run: |
+          if git ls-files | grep -qE '(^|/)\.env$'; then
+            echo "::error::.env is tracked — remove it and rotate the credentials"
+            exit 1
+          fi
+          if git grep -nIE '(PGPASSWORD|DB_PASSWORD|password)[[:space:]]*=[[:space:]]*["'"'"']?[A-Za-z0-9!@#$%^&*_-]{8,}' \
+             -- ':!*.example' ':!docs/*' ':!.github/*' > /tmp/hits 2>/dev/null; then
+            echo "::error::possible credential committed:"; cat /tmp/hits; exit 1
+          fi
+          echo "clean"
+
+  # Advisory for now. package.json pins vite ^8.0.0-beta.13 via overrides, so a
+  # build failure here is more likely a beta problem than a code problem.
+  # Flip continue-on-error to false once the frontend moves to a stable vite.
+  web:
+    name: web build (advisory)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci --prefix web
+      - run: npm run build --prefix web
+
+  # Runs only once DDL files land in schema/.
+  schema:
+    name: schema loads
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready --health-interval 10s
+          --health-timeout 5s --health-retries 5
+        ports: ['5432:5432']
+    env:
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - name: load every DDL file in order
+        run: |
+          shopt -s nullglob
+          files=(schema/[0-9][0-9]_*.sql)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "no schema files yet — nothing to check"; exit 0
+          fi
+          psql -h localhost -U postgres -c 'CREATE DATABASE mazimeal'
+          for f in "${files[@]}"; do
+            echo "--- $f"
+            psql -h localhost -U postgres -d mazimeal -v ON_ERROR_STOP=1 -f "$f"
+          done
+          if [ -f schema/99_validate.sql ]; then
+            psql -h localhost -U postgres -d mazimeal -v ON_ERROR_STOP=1 -f schema/99_validate.sql
+            n=$(psql -h localhost -U postgres -d mazimeal -tAc \
+                "SELECT count(*) FROM validate_week1() WHERE status='FAIL'")
+            [ "$n" = "0" ] || { echo "::error::$n validation failure(s)"; exit 1; }
+          fi
