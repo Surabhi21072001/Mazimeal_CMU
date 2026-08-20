@@ -106,17 +106,12 @@ PR into `dev`, one person reviews. Details in `docs/BRANCHING.md`.
 
 ## About the imported code
 
-`web/` is the `sample-main` folder we were given. Two things aren't in it:
+`web/` is the `sample-main` folder. The `.env` file isn't included — credentials
+stay in SharePoint. If you were using the Supabase key from that file, it's
+worth rotating.
 
-`.env` had live Supabase credentials and the original `.gitignore` didn't
-exclude it. That key should be rotated since the file sat in a shared drive.
-
-`VeriSnap ios app/` is a Flutter scaffold from a different project, with a
-hardcoded path to someone's home directory and nothing referencing it.
-
-Also worth knowing: `package.json` pins `vite: ^8.0.0-beta.13` through
-`overrides`, so the web build in CI is advisory until that moves to a stable
-release.
+`package.json` pins `vite: ^8.0.0-beta.13` through `overrides`, so the web build
+in CI is advisory until that moves to a stable release.
 
 ## Conventions
 
