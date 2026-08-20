@@ -37,10 +37,38 @@ git commit -m "Add recipes DDL with meal_category column"
 git push -u origin feature/schema-recipes-ddl
 ```
 
-Open the PR against `dev`. One person reviews, then squash-merge and delete the
-branch.
+Then open the PR against `dev`:
+
+```bash
+gh pr create --base dev --fill
+```
+
+Or click the "Compare & pull request" banner GitHub shows after you push. Check
+the base is `dev`, not `main`.
+
+One person reviews, then squash-merge and delete the branch on GitHub.
+
+After it merges, clean up locally:
+
+```bash
+git checkout dev
+git pull origin dev
+git branch -D feature/schema-recipes-ddl
+```
+
+`-D` rather than `-d` because squash-merging means git can't tell the branch was
+merged. The work is in `dev`.
 
 At the end of the week we merge `dev` into `main`.
+
+## If CI fails
+
+Fix it locally, commit, and push to the same branch. The PR updates itself, no
+need to open a new one.
+
+```bash
+gh run view --log-failed      # see what broke
+```
 
 ## Rebase before opening a PR
 
