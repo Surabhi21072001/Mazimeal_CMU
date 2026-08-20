@@ -55,3 +55,8 @@ Thumbs.db
 # Archives
 *.zip
 *.tar.gz
+
+# R / Jupyter session files
+.Rhistory
+.Rproj.user/
+.ipynb_checkpoints/

@@ -1,70 +1,60 @@
 # Mazimeal
 
-Personalised nutrition planning: recipes, ingredients, and the clinical rules
-that connect them to a household's needs.
+Nutrition planning: recipes, ingredients, and the rules that match them to a
+household's needs.
 
----
-
-## What is here
+## Layout
 
 ```
-web/        React + Vite client (the shared sample-main code)
-docs/       Schema workbook, branching strategy, access log
-schema/     PostgreSQL DDL — arrives during week 1
+web/        React + Vite client
+docs/       Schema workbook, branching guide, access log
+schema/     PostgreSQL DDL
 ```
 
 `docs/Synergia_Unified_DB_Schema.xlsx` is the source of truth for the database.
-Where a DDL file differs from it, the file says so in a comment.
-
----
+Where a DDL file differs from it, there's a comment in the file saying why.
 
 ## Setup
 
-### 1 · Requirements
+You'll need Node 20+ and `psql` 14+.
 
-- Node 20 or newer
-- PostgreSQL client (`psql`) 14 or newer
-- Access to the shared PostgreSQL instance — see credentials below
-
-### 2 · Clone and install
+### Clone
 
 ```bash
-git clone https://github.com/<owner>/mazimeal.git
-cd mazimeal
-git checkout dev          # dev is the default; branch from here
+git clone https://github.com/mazimeal/platform.git
+cd platform
+git checkout dev
 npm install --prefix web
 ```
 
-### 3 · Get the credentials
+Clone somewhere outside OneDrive or Dropbox. Sync clients and git both try to
+manage the folder and you end up with duplicate files inside `.git/`.
 
-**Credentials are in SharePoint. They are never in this repository.**
+### Credentials
 
-Ask Swetha for the SharePoint link if you do not have it. You need the Supabase
-URL and anon key for the frontend, and the host, port, database, username and
-password for the shared PostgreSQL instance.
-
-### 4 · Create your local `.env`
+They're in SharePoint, not in this repo. Ask Swetha for the link. You need the
+Supabase URL and anon key for the frontend, plus host, port, database, username
+and password for the shared PostgreSQL instance.
 
 ```bash
 cp .env.example .env
 ```
 
-Fill it in from the SharePoint entry. Then confirm it is ignored **before your
-first commit**:
+Fill it in, then check it's ignored before you commit anything:
 
 ```bash
-git check-ignore -v .env      # must print a .gitignore line
+git check-ignore -v .env      # should print a .gitignore line
 ```
 
-If that prints nothing, stop and fix `.gitignore` before committing anything.
+If that prints nothing, fix `.gitignore` first.
 
-### 5 · Run the client
+### Run the client
 
 ```bash
 npm run dev --prefix web
 ```
 
-### 6 · Load the schema (once DDL files land in `schema/`)
+### Load the schema
 
 ```bash
 createdb mazimeal
@@ -74,80 +64,62 @@ done
 psql -d mazimeal -f schema/99_validate.sql
 ```
 
-`ON_ERROR_STOP=1` matters — without it psql continues after a failure and you
-end up with half a schema and no error on screen.
+Keep `ON_ERROR_STOP=1`. Without it psql carries on after a failure and you get
+half a schema with no obvious error.
 
-The file numbers are the load order and they matter: `recipe_ingredients` has
-foreign keys into `recipes` and `ingredients`, so it cannot load first.
+The file numbers are the load order. `03_recipe_ingredients.sql` has foreign
+keys into `recipes` and `ingredients`, so those have to exist first.
 
-### 7 · Connect to the shared instance
+### Connect to the shared database
 
 ```bash
 psql "postgresql://$PGUSER:$PGPASSWORD@$PGHOST:$PGPORT/$PGDATABASE" \
      -c "SELECT current_database(), current_user;"
 ```
 
-If this fails, post the exact error in the group chat — a firewall or SSL-mode
-problem on one machine is usually the same on all three, and documenting
-connection issues is its own task.
+If it fails, post the error in the group chat. A firewall or SSL-mode problem on
+one machine is usually the same on all three.
 
----
+## Credentials
 
-## Credential storage
+Nothing with a password goes in the repo: not in a SQL file, not in a comment,
+not temporarily. Shared credentials live in SharePoint, your working copy lives
+in `.env`, and CI rejects any commit that adds one.
 
-1. **Never in git.** Not in a SQL file, not in a comment, not in a commit
-   message, not temporarily.
-2. **SharePoint is the store** for shared credentials, as agreed.
-3. **Your working copy lives in `.env`**, which is gitignored. CI rejects any
-   commit that adds one.
-4. **If a credential is ever committed**, say so in the group chat immediately.
-   Rotating a key the same day is routine; finding it in month-old history after
-   everyone has cloned is not.
+If something does get committed, say so in the group chat so we can rotate it.
 
-Note on the Supabase keys specifically: `VITE_`-prefixed variables are compiled
-into the browser bundle and are public by design. The anon key is not a secret —
-row level security is what protects the data. That makes the database policies
-worth reviewing before real user data goes in.
+Two notes:
 
-A note for later, not this week: a single shared database login makes an audit
-log useless, because every change looks like it came from the same person. When
-the database holds anything real, each developer should get their own role. For
-a dev database of test recipes, shared is fine.
+The Supabase `VITE_` variables are compiled into the browser bundle, so the anon
+key is public by design. Row level security is what actually protects the data,
+which makes those policies worth reviewing before real user data goes in.
 
----
+We're using one shared database login for now, which is fine for test recipes.
+Once there's real data in there, everyone should have their own role so the
+audit trail means something.
 
 ## Branching
 
-`main` is the last known-good state. `dev` is where everything integrates.
-Branch from `dev`, open a pull request into `dev`, one reviewer approves.
-Nobody pushes to `main` or `dev` directly.
+`main` is what we demo, `dev` is where work comes together. Branch from `dev`,
+PR into `dev`, one person reviews. Details in `docs/BRANCHING.md`.
 
-Full detail, including naming and the per-file ownership rules, in
-`docs/BRANCHING.md`.
+## About the imported code
 
----
+`web/` is the `sample-main` folder we were given. Two things aren't in it:
 
-## Notes on the imported code
+`.env` had live Supabase credentials and the original `.gitignore` didn't
+exclude it. That key should be rotated since the file sat in a shared drive.
 
-`web/` is the shared `sample-main` folder. Two things were left out:
+`VeriSnap ios app/` is a Flutter scaffold from a different project, with a
+hardcoded path to someone's home directory and nothing referencing it.
 
-- **`.env`** — it contained live Supabase credentials and the original
-  `.gitignore` did not exclude it. The key should be rotated, since the file has
-  been sitting in a shared drive.
-- **`VeriSnap ios app/`** — a Flutter scaffold from an unrelated project, with a
-  hardcoded path `/Users/navi/my-react-app` and nothing referencing it.
-  Confirmed with the team as out of scope for Mazimeal.
+Also worth knowing: `package.json` pins `vite: ^8.0.0-beta.13` through
+`overrides`, so the web build in CI is advisory until that moves to a stable
+release.
 
-One more, for whoever picks up the frontend: `package.json` pins
-`vite: ^8.0.0-beta.13` through `overrides`. The web build in CI is advisory
-until that moves to a stable release.
+## Conventions
 
----
-
-## Working agreements
-
-- Branch from `dev`, PR into `dev`. See `docs/BRANCHING.md`.
-- One owner per schema file. Do not edit a file you do not own — ask.
-- Run `schema/99_validate.sql` after every insert batch, not only at the end.
-- Read the CI result before approving. On our plan it cannot block a merge, so
-  it only helps if someone looks at it.
+- Branch from `dev`, PR into `dev`.
+- One owner per schema file. Ask before editing someone else's.
+- Run `schema/99_validate.sql` after each insert batch, not just at the end.
+- Check CI before approving a PR. It can't block a merge on our plan.
