@@ -32,9 +32,10 @@ manage the folder and you end up with duplicate files inside `.git/`.
 
 ### Credentials
 
-They're in SharePoint, not in this repo. Ask Swetha for the link. You need the
-Supabase URL and anon key for the frontend, plus host, port, database, username
-and password for the shared PostgreSQL instance.
+Credentials live in SharePoint, not in this repo.
+
+You'll need the Supabase URL and anon key for the frontend, and the host, port,
+database, username and password for the shared PostgreSQL instance.
 
 ```bash
 cp .env.example .env
