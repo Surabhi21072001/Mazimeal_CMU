@@ -1,17 +1,10 @@
--- ============================================================================
---  MAZIMEAL · Week 1
---  99_validate.sql — recipe data validation
---  Total record count, and duplicate detection across all three insert batches.
+-- 99_validate.sql
+-- Checks the recipe data: total count, duplicates, missing fields.
 --
---  Run after every insert batch, and once more before Friday's demo:
+--   psql -d mazimeal -f schema/99_validate.sql
+--   select * from validate_week1();
 --
---      psql -d mazimeal -f schema/99_validate.sql
---      SELECT * FROM validate_week1();
---
---  Safe to run at any point in the week: checks against tables that do not
---  exist yet report SKIP rather than failing, so this works before Swetha's
---  ingredients and Kate's recipe_ingredients have landed.
--- ============================================================================
+-- Safe to run any time. Checks against tables that don't exist yet report SKIP.
 
 CREATE OR REPLACE FUNCTION validate_week1()
 RETURNS TABLE (
@@ -47,12 +40,7 @@ BEGIN
     RETURN NEXT;
 
     ------------------------------------------------------------------
-    -- 2 · Distribution across meal slots
-    --
-    -- The original plan listed five buckets, but "Special Diets" is not a meal
-    -- slot — it is a dietary axis that overlaps the other four. Slot counts are
-    -- reported here for visibility; the special-diet coverage is checked
-    -- separately in check 3.
+    -- 2 · Count per meal type
     ------------------------------------------------------------------
     FOR r IN
         SELECT meal_category, count(*) AS c
@@ -82,11 +70,7 @@ BEGIN
     RETURN NEXT;
 
     ------------------------------------------------------------------
-    -- 4 · Exact duplicate names
-    --
-    -- The unique index on lower(recipe_name) should make this impossible. If it
-    -- ever returns rows, the index was dropped or the table was rebuilt without
-    -- it — worth knowing either way.
+    -- 4 · Exact duplicate names. The unique index should prevent these.
     ------------------------------------------------------------------
     SELECT count(*) INTO n FROM (
         SELECT lower(recipe_name)
@@ -103,12 +87,8 @@ BEGIN
     RETURN NEXT;
 
     ------------------------------------------------------------------
-    -- 5 · Near-duplicate names across batches
-    --
-    -- This is the check that actually matters. Three people inserting in
-    -- parallel produce "Masala Oats", "masala oats" and "Masala-Oats" — the
-    -- unique index catches the first two, not the third. Stripping everything
-    -- except letters and digits catches all three.
+    -- 5 · Near duplicates. The index catches "Masala Oats" vs "masala oats"
+    --     but not "Masala-Oats", so strip punctuation and compare again.
     ------------------------------------------------------------------
     FOR r IN
         SELECT lower(regexp_replace(recipe_name, '[^a-zA-Z0-9]+', '', 'g')) AS norm,
@@ -158,8 +138,7 @@ BEGIN
         status := 'INFO'; check_name := 'nutrition rules loaded'; detail := n || ' rules';
         RETURN NEXT;
 
-        -- A hard constraint can block a recipe outright. One without evidence
-        -- is an unreviewable clinical claim.
+        -- Hard rules block recipes, so they need a source.
         SELECT count(*) INTO n
         FROM   nutrition_rules
         WHERE  is_hard_constraint
@@ -183,10 +162,8 @@ BEGIN
         status := 'INFO'; check_name := 'ingredient count'; detail := n || ' ingredients';
         RETURN NEXT;
 
-        -- The one that bites hardest. If three people insert recipes in
-        -- parallel and each creates ingredients as they go, "Tomato",
-        -- "tomato" and "Tomatoes" become three rows — and every nutrition
-        -- calculation downstream splits across them.
+        -- If we each add ingredients as we go, "Tomato", "tomato" and
+        -- "Tomatoes" end up as three rows and the nutrition maths splits.
         EXECUTE $q$
             SELECT count(*) FROM (
                 SELECT lower(regexp_replace(ingredient_name, '[^a-zA-Z0-9]+', '', 'g'))
@@ -209,9 +186,7 @@ BEGIN
         status := 'SKIP'; check_name := 'recipe_ingredients'; detail := 'table not created yet';
         RETURN NEXT;
     ELSE
-        -- A recipe with no ingredient lines looks complete in the UI and
-        -- computes zero nutrition. Silent, and exactly what a rushed batch
-        -- insert produces.
+        -- A recipe with no ingredients looks fine but computes zero nutrition.
         EXECUTE $q$
             SELECT count(*) FROM recipes r
             WHERE r.deleted_at IS NULL
@@ -244,9 +219,7 @@ $$;
 COMMENT ON FUNCTION validate_week1() IS
   'Recipe data validation. PASS/FAIL/WARN/PENDING/SKIP per check. Run after every insert batch.';
 
--- ---------------------------------------------------------------------------
--- Convenience view — the one-line answer for the Friday demo
--- ---------------------------------------------------------------------------
+-- Shortcut view.
 CREATE OR REPLACE VIEW v_week1_status AS
 SELECT status, check_name, detail FROM validate_week1();
 

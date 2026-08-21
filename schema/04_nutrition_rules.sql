@@ -1,57 +1,28 @@
--- ============================================================================
---  MAZIMEAL · Week 1 Schema
---  04_nutrition_rules.sql
+-- 04_nutrition_rules.sql
+-- Clinical and food science rules. From the schema doc, sheet 03.
 --
---  Owner:  Zihan Liu
---  Source: Synergia_Unified_DB_Schema.xlsx, sheet 03_Conditions_Rules
---  Load order: 04 (no hard dependencies this week — see the FK note below)
--- ============================================================================
-
--- ---------------------------------------------------------------------------
--- Two naming points for the schema review call
--- ---------------------------------------------------------------------------
+-- Named nutrition_rules to match our task list. The doc calls it
+-- nutrient_rules, worth confirming which we keep.
+-- Table names are lowercase since Postgres lowercases them anyway.
 --
--- 1. NAME: our task list says `Nutrition_Rules`; the workbook says
---    `nutrient_rules`. Using the team's name here, because the task list is
---    what we agreed. Worth confirming out loud — the workbook is the long-term
---    reference and a rename later touches every query that reads it.
---
--- 2. CASE: PostgreSQL folds unquoted identifiers to lowercase, so writing
---    `Nutrition_Rules` in DDL creates a table actually called
---    `nutrition_rules`. Preserving the capitals would require double-quoting it
---    everywhere, forever. All three DDL files should use lowercase snake_case
---    for exactly this reason — cheap to agree now, tedious to fix later.
---
--- ---------------------------------------------------------------------------
--- Deferred foreign keys
--- ---------------------------------------------------------------------------
---  Three columns below reference tables that do not exist in week 1:
---    applies_to_category  -> categories      (sheet 04)
---    applies_to_condition -> conditions      (sheet 03)
---    document_id          -> documents       (sheet 03)
---
---  The columns are declared now so rule rows can carry the values, and the FK
---  constraints are added in week 2 as a one-line ALTER each (see the bottom of
---  this file). Declaring the columns now costs nothing; adding them later means
---  re-entering data.
--- ---------------------------------------------------------------------------
+-- applies_to_category, applies_to_condition and document_id point at tables we
+-- haven't built yet. Columns are here so the data can go in; foreign keys get
+-- added later (see bottom of file).
 
 CREATE TABLE IF NOT EXISTS nutrition_rules (
-    -- Readable string key from the workbook (R001, R085, R596, R-PRG01), not a
-    -- surrogate UUID. Rules are referenced by id in prose, in evidence
-    -- documents and by the scoring engine, so the id needs to stay legible.
+    -- Readable id from the doc (R001, R085, R596) rather than a UUID.
     rule_id              VARCHAR(30)  NOT NULL,
 
     rule_name            VARCHAR(150) NOT NULL,
     rule_description     TEXT         NOT NULL,
     rule_type            VARCHAR(50)  NOT NULL,
 
-    applies_to_category  VARCHAR(10),   -- FK -> categories  (week 2)
-    applies_to_condition VARCHAR(20),   -- FK -> conditions  (week 2)
+    applies_to_category  VARCHAR(10),   -- FK later
+    applies_to_condition VARCHAR(20),   -- FK later
 
     is_hard_constraint   BOOLEAN      NOT NULL DEFAULT FALSE,
 
-    document_id          VARCHAR(20),   -- FK -> documents   (week 2)
+    document_id          VARCHAR(20),   -- FK later
     short_description    VARCHAR(250),
     evidence_summary     TEXT,
     source               TEXT,
@@ -60,15 +31,13 @@ CREATE TABLE IF NOT EXISTS nutrition_rules (
 
     CONSTRAINT pk_nutrition_rules PRIMARY KEY (rule_id),
 
-    -- Two rules with the same name are two people entering the same rule twice.
+    -- Catches the same rule being entered twice.
     CONSTRAINT uq_nutrition_rules_name UNIQUE (rule_name),
 
     CONSTRAINT ck_nutrition_rules_type CHECK (rule_type IN
         ('nutrient_threshold', 'food_safety', 'behavioural', 'prep_method', 'allergy')),
 
-    -- A hard constraint is never overridable and can block a recipe outright
-    -- (allergen exclusion, "no honey under 12 months"). If one is wrong, someone
-    -- gets hurt — so a hard rule must cite its evidence.
+    -- Hard rules block a recipe outright, so they need a source.
     CONSTRAINT ck_nutrition_rules_hard_needs_evidence CHECK (
         NOT is_hard_constraint OR source IS NOT NULL OR document_id IS NOT NULL
     )
@@ -86,8 +55,7 @@ CREATE INDEX IF NOT EXISTS idx_nutrition_rules_category
 CREATE INDEX IF NOT EXISTS idx_nutrition_rules_type
     ON nutrition_rules (rule_type);
 
--- Hard constraints are pulled as a complete set on every scoring pass and are a
--- small fraction of the table, so a partial index keeps that lookup near-free.
+-- Hard rules get pulled as a set, and there aren't many of them.
 CREATE INDEX IF NOT EXISTS idx_nutrition_rules_hard
     ON nutrition_rules (rule_id)
     WHERE is_hard_constraint;
@@ -95,17 +63,11 @@ CREATE INDEX IF NOT EXISTS idx_nutrition_rules_hard
 -- ---------------------------------------------------------------------------
 -- Documentation
 -- ---------------------------------------------------------------------------
-COMMENT ON TABLE  nutrition_rules                      IS 'Clinical and food-science rules. Workbook calls this nutrient_rules; renamed per the week-1 task list. ~2K rows at full scope.';
-COMMENT ON COLUMN nutrition_rules.rule_id              IS 'Workbook format: R001, R085, R596, R-PRG01.';
-COMMENT ON COLUMN nutrition_rules.rule_type            IS 'nutrient_threshold | food_safety | behavioural | prep_method | allergy';
-COMMENT ON COLUMN nutrition_rules.applies_to_category  IS 'Age/sex category code. NULL = applies to everyone. FK deferred to week 2.';
-COMMENT ON COLUMN nutrition_rules.applies_to_condition IS 'Condition code. NULL = not condition-specific. FK deferred to week 2.';
-COMMENT ON COLUMN nutrition_rules.is_hard_constraint   IS 'TRUE = always enforced, never overridable. Requires cited evidence.';
-COMMENT ON COLUMN nutrition_rules.source               IS 'DOI or PubMed URL.';
+COMMENT ON TABLE  nutrition_rules                    IS 'Clinical and food science rules. Doc calls this nutrient_rules.';
+COMMENT ON COLUMN nutrition_rules.rule_id            IS 'R001, R085, R596 etc.';
+COMMENT ON COLUMN nutrition_rules.is_hard_constraint IS 'Always enforced, never overridable. Needs a source.';
 
--- ---------------------------------------------------------------------------
--- Week 2 — run these once categories, conditions and documents exist
--- ---------------------------------------------------------------------------
+-- Add these once categories, conditions and documents exist:
 --  ALTER TABLE nutrition_rules ADD CONSTRAINT fk_nr_category
 --      FOREIGN KEY (applies_to_category)  REFERENCES categories (category_id);
 --  ALTER TABLE nutrition_rules ADD CONSTRAINT fk_nr_condition
@@ -114,10 +76,7 @@ COMMENT ON COLUMN nutrition_rules.source               IS 'DOI or PubMed URL.';
 --      FOREIGN KEY (document_id)          REFERENCES documents (document_id);
 -- ---------------------------------------------------------------------------
 
--- ---------------------------------------------------------------------------
--- Starter rows — the five rules named in the workbook, so the table is not
--- empty at Friday's demo and the recipe batches have something to reference.
--- ---------------------------------------------------------------------------
+-- The five rules named in the doc, so the table isn't empty.
 INSERT INTO nutrition_rules
     (rule_id, rule_name, rule_description, rule_type, applies_to_category,
      applies_to_condition, is_hard_constraint, short_description, source)
