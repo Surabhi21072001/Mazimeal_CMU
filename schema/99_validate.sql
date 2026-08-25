@@ -130,17 +130,17 @@ BEGIN
     ------------------------------------------------------------------
     -- 7 · Nutrition rules
     ------------------------------------------------------------------
-    IF to_regclass('public.nutrition_rules') IS NULL THEN
-        status := 'SKIP'; check_name := 'nutrition_rules'; detail := 'table not created yet';
+    IF to_regclass('public.nutrient_rules') IS NULL THEN
+        status := 'SKIP'; check_name := 'nutrient_rules'; detail := 'table not created yet';
         RETURN NEXT;
     ELSE
-        SELECT count(*) INTO n FROM nutrition_rules;
+        SELECT count(*) INTO n FROM nutrient_rules;
         status := 'INFO'; check_name := 'nutrition rules loaded'; detail := n || ' rules';
         RETURN NEXT;
 
         -- Hard rules block recipes, so they need a source.
         SELECT count(*) INTO n
-        FROM   nutrition_rules
+        FROM   nutrient_rules
         WHERE  is_hard_constraint
           AND  source IS NULL AND document_id IS NULL;
 
