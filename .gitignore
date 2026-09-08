@@ -1,11 +1,4 @@
-# ---------------------------------------------------------------------------
-# Mazimeal — .gitignore  (Week 1, task 5)
-#
-# The original sample-main/.gitignore did not list .env while a real .env with
-# live Supabase credentials sat next to it. That is the first entry below.
-# ---------------------------------------------------------------------------
-
-# Credentials — never commit. Shared DB credentials live in SharePoint.
+# Credentials. Shared DB credentials live in SharePoint.
 .env
 .env.local
 .env.*.local
@@ -30,7 +23,13 @@ __pycache__/
 venv/
 .pytest_cache/
 
-# Database dumps — can contain real data
+# Datasets (Food.com is ~1.5 GB unzipped; keep it outside the repo)
+*.parquet
+/recipes.csv
+/reviews.csv
+/archive*/
+
+# Database dumps
 *.dump
 *.sql.bak
 *.backup

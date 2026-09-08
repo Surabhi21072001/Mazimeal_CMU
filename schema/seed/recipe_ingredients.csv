@@ -1,0 +1,126 @@
+recipe_name,ingredient_name,quantity,unit,preparation_note,is_optional,food_category
+Grilled Lemon Herb Salmon,salmon fillets,4.0,whole,,false,Uncategorized
+Grilled Lemon Herb Salmon,lemons,2.0,whole,,false,Uncategorized
+Grilled Lemon Herb Salmon,olive oil,1.0,tbsp,,false,Uncategorized
+Grilled Lemon Herb Salmon,parsley,2.0,tbsp,chopped,false,Uncategorized
+Grilled Lemon Herb Salmon,Steamed greens,1,portion,,false,Uncategorized
+Chicken Stir-Fry,Chicken breast,1,portion,,false,Uncategorized
+Chicken Stir-Fry,Broccoli florets,1,portion,,false,Uncategorized
+Chicken Stir-Fry,Bell peppers,1,portion,,false,Uncategorized
+Chicken Stir-Fry,Brown rice,1,portion,,false,Uncategorized
+Chicken Stir-Fry,Garlic ginger sauce,1,portion,,false,Uncategorized
+Veggie Quinoa Bowl,Cooked quinoa,1,portion,,false,Uncategorized
+Veggie Quinoa Bowl,Roasted zucchini,1,portion,,false,Uncategorized
+Veggie Quinoa Bowl,Spinach,1,portion,,false,Uncategorized
+Veggie Quinoa Bowl,Chickpeas,1,portion,,false,Uncategorized
+Veggie Quinoa Bowl,Lemon tahini drizzle,1,portion,,false,Uncategorized
+Turkey Avocado Wrap,Turkey slices,1,portion,,false,Uncategorized
+Turkey Avocado Wrap,Whole wheat wrap,1,portion,,false,Uncategorized
+Turkey Avocado Wrap,Avocado,1,portion,,false,Uncategorized
+Turkey Avocado Wrap,Tomato,1,portion,,false,Uncategorized
+Turkey Avocado Wrap,Baby spinach,1,portion,,false,Uncategorized
+Pasta Primavera,Pasta,1,portion,,false,Uncategorized
+Pasta Primavera,Cherry tomatoes,1,portion,,false,Uncategorized
+Pasta Primavera,Peas,1,portion,,false,Uncategorized
+Pasta Primavera,Zucchini,1,portion,,false,Uncategorized
+Pasta Primavera,Parmesan,1,portion,,false,Uncategorized
+Cucumber Mint Quinoa Salad,quinoa,1.0,cup,cooked,false,Uncategorized
+Cucumber Mint Quinoa Salad,cucumber,1.0,cup,chopped,false,Uncategorized
+Cucumber Mint Quinoa Salad,canned chickpeas,0.5,cup,,false,Uncategorized
+Cucumber Mint Quinoa Salad,mint leaves,0.25,cup,fresh,false,Uncategorized
+Cucumber Mint Quinoa Salad,cherry tomatoes,0.5,cup,,false,Uncategorized
+Berry Yogurt Parfait,Greek yogurt,1,portion,,false,Uncategorized
+Berry Yogurt Parfait,Mixed berries,1,portion,,false,Uncategorized
+Berry Yogurt Parfait,Granola,1,portion,,false,Uncategorized
+Berry Yogurt Parfait,Chia seeds,1,portion,,false,Uncategorized
+Berry Yogurt Parfait,Honey drizzle,1,portion,,false,Uncategorized
+Peanut Oat Energy Bites,Rolled oats,1,portion,,false,Uncategorized
+Peanut Oat Energy Bites,Peanut butter,1,portion,,false,Uncategorized
+Peanut Oat Energy Bites,Ground flax,1,portion,,false,Uncategorized
+Peanut Oat Energy Bites,Dates,1,portion,,false,Uncategorized
+Peanut Oat Energy Bites,Dark chocolate chips,1,portion,,false,Uncategorized
+Herbed Ratatouille Bake,Eggplant,1,portion,,false,Uncategorized
+Herbed Ratatouille Bake,Zucchini,1,portion,,false,Uncategorized
+Herbed Ratatouille Bake,Tomatoes,1,portion,,false,Uncategorized
+Herbed Ratatouille Bake,Herbed sauce,1,portion,,false,Uncategorized
+Herbed Ratatouille Bake,Olive oil,1,portion,,false,Uncategorized
+Roasted Tomato Lentil Soup,Red lentils,1,portion,,false,Uncategorized
+Roasted Tomato Lentil Soup,Roasted tomatoes,1,portion,,false,Uncategorized
+Roasted Tomato Lentil Soup,Garlic,1,portion,,false,Uncategorized
+Roasted Tomato Lentil Soup,Vegetable stock,1,portion,,false,Uncategorized
+Roasted Tomato Lentil Soup,Fresh basil,1,portion,,false,Uncategorized
+Greek Chickpea Salad,Chickpeas,1,portion,,false,Uncategorized
+Greek Chickpea Salad,Cucumber,1,portion,,false,Uncategorized
+Greek Chickpea Salad,Tomato,1,portion,,false,Uncategorized
+Greek Chickpea Salad,Olives,1,portion,,false,Uncategorized
+Greek Chickpea Salad,Feta,1,portion,,false,Uncategorized
+Citrus Kale Crunch Salad,Kale,1,portion,,false,Uncategorized
+Citrus Kale Crunch Salad,Orange,1,portion,,false,Uncategorized
+Citrus Kale Crunch Salad,Pumpkin seeds,1,portion,,false,Uncategorized
+Citrus Kale Crunch Salad,Parmesan,1,portion,,false,Uncategorized
+Citrus Kale Crunch Salad,Light vinaigrette,1,portion,,false,Uncategorized
+Southwest Chicken Salad,Chicken,1,portion,,false,Uncategorized
+Southwest Chicken Salad,Romaine,1,portion,,false,Uncategorized
+Southwest Chicken Salad,Corn,1,portion,,false,Uncategorized
+Southwest Chicken Salad,Black beans,1,portion,,false,Uncategorized
+Southwest Chicken Salad,Avocado,1,portion,,false,Uncategorized
+Caprese Pasta Salad,Cooked pasta,1,portion,,false,Uncategorized
+Caprese Pasta Salad,Cherry tomatoes,1,portion,,false,Uncategorized
+Caprese Pasta Salad,Mozzarella,1,portion,,false,Uncategorized
+Caprese Pasta Salad,Basil,1,portion,,false,Uncategorized
+Caprese Pasta Salad,Olive oil,1,portion,,false,Uncategorized
+Teriyaki Tofu Bowl,Tofu,1,portion,,false,Uncategorized
+Teriyaki Tofu Bowl,Rice,1,portion,,false,Uncategorized
+Teriyaki Tofu Bowl,Broccoli,1,portion,,false,Uncategorized
+Teriyaki Tofu Bowl,Carrots,1,portion,,false,Uncategorized
+Teriyaki Tofu Bowl,Teriyaki sauce,1,portion,,false,Uncategorized
+Sesame Salmon Rice Bowl,Salmon,1,portion,,false,Uncategorized
+Sesame Salmon Rice Bowl,Rice,1,portion,,false,Uncategorized
+Sesame Salmon Rice Bowl,Cucumber,1,portion,,false,Uncategorized
+Sesame Salmon Rice Bowl,Cabbage,1,portion,,false,Uncategorized
+Sesame Salmon Rice Bowl,Sesame dressing,1,portion,,false,Uncategorized
+Harvest Burrito Bowl,Rice,1,portion,,false,Uncategorized
+Harvest Burrito Bowl,Black beans,1,portion,,false,Uncategorized
+Harvest Burrito Bowl,Corn,1,portion,,false,Uncategorized
+Harvest Burrito Bowl,Avocado,1,portion,,false,Uncategorized
+Harvest Burrito Bowl,Salsa,1,portion,,false,Uncategorized
+Green Goddess Grain Bowl,Farro,1,portion,,false,Uncategorized
+Green Goddess Grain Bowl,Greens,1,portion,,false,Uncategorized
+Green Goddess Grain Bowl,Cucumber,1,portion,,false,Uncategorized
+Green Goddess Grain Bowl,Herb dressing,1,portion,,false,Uncategorized
+Green Goddess Grain Bowl,Edamame,1,portion,,false,Uncategorized
+Miso Veggie Soup,Miso paste,1,portion,,false,Uncategorized
+Miso Veggie Soup,Tofu,1,portion,,false,Uncategorized
+Miso Veggie Soup,Scallions,1,portion,,false,Uncategorized
+Miso Veggie Soup,Spinach,1,portion,,false,Uncategorized
+Miso Veggie Soup,Mushrooms,1,portion,,false,Uncategorized
+Chicken Noodle Soup,Chicken,1,portion,,false,Uncategorized
+Chicken Noodle Soup,Noodles,1,portion,,false,Uncategorized
+Chicken Noodle Soup,Carrots,1,portion,,false,Uncategorized
+Chicken Noodle Soup,Celery,1,portion,,false,Uncategorized
+Chicken Noodle Soup,Broth,1,portion,,false,Uncategorized
+Coconut Curry Vegetable Soup,Coconut milk,1,portion,,false,Uncategorized
+Coconut Curry Vegetable Soup,Carrots,1,portion,,false,Uncategorized
+Coconut Curry Vegetable Soup,Peppers,1,portion,,false,Uncategorized
+Coconut Curry Vegetable Soup,Broth,1,portion,,false,Uncategorized
+Coconut Curry Vegetable Soup,Curry paste,1,portion,,false,Uncategorized
+Minestrone Pasta Soup,Beans,1,portion,,false,Uncategorized
+Minestrone Pasta Soup,Small pasta,1,portion,,false,Uncategorized
+Minestrone Pasta Soup,Tomato broth,1,portion,,false,Uncategorized
+Minestrone Pasta Soup,Carrots,1,portion,,false,Uncategorized
+Minestrone Pasta Soup,Celery,1,portion,,false,Uncategorized
+Spinach Ricotta Pasta,Pasta,1,portion,,false,Uncategorized
+Spinach Ricotta Pasta,Ricotta,1,portion,,false,Uncategorized
+Spinach Ricotta Pasta,Spinach,1,portion,,false,Uncategorized
+Spinach Ricotta Pasta,Garlic,1,portion,,false,Uncategorized
+Spinach Ricotta Pasta,Parmesan,1,portion,,false,Uncategorized
+Pesto Penne with Peas,Penne,1,portion,,false,Uncategorized
+Pesto Penne with Peas,Pesto,1,portion,,false,Uncategorized
+Pesto Penne with Peas,Peas,1,portion,,false,Uncategorized
+Pesto Penne with Peas,Parmesan,1,portion,,false,Uncategorized
+Pesto Penne with Peas,Lemon zest,1,portion,,false,Uncategorized
+Sesame Noodle Toss,Noodles,1,portion,,false,Uncategorized
+Sesame Noodle Toss,Cucumber,1,portion,,false,Uncategorized
+Sesame Noodle Toss,Carrots,1,portion,,false,Uncategorized
+Sesame Noodle Toss,Sesame sauce,1,portion,,false,Uncategorized
+Sesame Noodle Toss,Scallions,1,portion,,false,Uncategorized

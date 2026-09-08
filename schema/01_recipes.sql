@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS recipes (
         ('Breakfast', 'Lunch', 'Dinner', 'Snack')),
 
     CONSTRAINT ck_recipes_data_source CHECK (data_source IN
-        ('USDA', 'Open_Food_Facts', 'Manual', 'AI_generated')),
+        ('USDA', 'Open_Food_Facts', 'Manual', 'AI_generated', 'Food.com')),
 
     CONSTRAINT ck_recipes_difficulty CHECK (difficulty_level IS NULL
         OR difficulty_level IN ('Easy', 'Medium', 'Hard')),
