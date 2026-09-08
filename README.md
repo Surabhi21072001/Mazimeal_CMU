@@ -8,7 +8,7 @@ household's needs.
 ```
 web/        React + Vite client
 docs/       Schema workbook, branching guide, access log
-schema/     PostgreSQL DDL
+schema/     PostgreSQL DDL, numbered in load order
 ```
 
 `docs/Synergia_Unified_DB_Schema.xlsx` is the source of truth for the database.
@@ -101,12 +101,13 @@ audit trail means something.
 
 ## Branching
 
-`main` is what we demo, `dev` is where work comes together. Branch from `dev`,
-PR into `dev`, one person reviews. Details in `docs/BRANCHING.md`.
+`main` is what we demo, `dev` is where day to day work goes. Pull before you
+push. Use a branch and PR for schema files so CI checks them first. Details in
+`docs/BRANCHING.md`.
 
 ## About the imported code
 
-`web/` is the `sample-main` folder. The `.env` file isn't included — credentials
+`web/` is the `sample-main` folder. The `.env` file isn't included. Credentials
 stay in SharePoint. If you were using the Supabase key from that file, it's
 worth rotating.
 
@@ -115,7 +116,7 @@ in CI is advisory until that moves to a stable release.
 
 ## Conventions
 
-- Branch from `dev`, PR into `dev`.
+- Never push to `main`. Pull before pushing to `dev`.
 - One owner per schema file. Ask before editing someone else's.
 - Run `schema/99_validate.sql` after each insert batch, not just at the end.
-- Check CI before approving a PR. It can't block a merge on our plan.
+- Check CI. It can't block anything on our plan, so it only helps if someone looks.

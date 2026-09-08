@@ -2,13 +2,20 @@
 
 ## Branches
 
-- `main` — what we demo. Only updated by merging `dev`.
-- `dev` — where work comes together. Only updated by merging feature branches.
-- `feature/*` — your work in progress.
+- `main` is what we demo. Only updated by merging `dev` at the end of the week.
+- `dev` is where day to day work goes.
+- `feature/*` for anything you want checked before it lands.
 
-Don't push straight to `main` or `dev`. Open a PR.
+Never push to `main` directly.
 
-We have `dev` so that a broken DDL file gets caught before Friday instead of on Friday.
+Pushing straight to `dev` is fine for docs and small changes. For schema files
+or anything others depend on, use a branch and a PR so CI runs on it first.
+
+Pull before you push, every time:
+
+```bash
+git pull --rebase origin dev
+```
 
 ## Branch names
 
@@ -94,15 +101,13 @@ Run this once when you get the invite:
 git clone https://github.com/mazimeal/platform.git
 cd platform
 git checkout dev
-git checkout -b test/<yourname>-access
 echo "| <yourname> | $(date +%Y-%m-%d) |" >> docs/ACCESS_CHECK.md
 git add docs/ACCESS_CHECK.md
 git commit -m "Confirm repo access for <yourname>"
-git push -u origin test/<yourname>-access
+git push origin dev
 ```
 
-If the push works, you have write access. Open a PR into `dev` and merge it so
-we've tested the review flow too.
+If the push works, you have write access.
 
 Clone somewhere outside OneDrive or Dropbox. Sync clients and git both try to
 manage the folder and you end up with duplicate files inside `.git/`.
@@ -110,5 +115,5 @@ manage the folder and you end up with duplicate files inside `.git/`.
 ## Branch protection
 
 GitHub Free doesn't support protected branches on private repos, so none of the
-above is enforced automatically — `main` and `dev` are open. CI runs on every PR
-but can't block a merge, so check it before approving.
+above is enforced automatically. CI runs on every push and PR but can't block a
+merge, so check it.
