@@ -1,0 +1,657 @@
+{
+ "date": "2026-09-08",
+ "picks": {
+  "Lunch": [
+   {
+    "name": "1-Hour Ham and Bean Soup",
+    "tags": [],
+    "calories": 402,
+    "cook_min": 45,
+    "prep_min": 10,
+    "avg_score": 30.6,
+    "min_score": 30.5,
+    "recipe_id": "01a082d0-f3ad-736d-badc-259a487f5c8d",
+    "per_member": {
+     "Jeff": 30.5,
+     "Maya": 30.7
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 31.0
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 14.2
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 74,
+       "per_serving": 401.7
+      }
+     ]
+    }
+   },
+   {
+    "name": "Bob's White Chili",
+    "tags": [
+     "kosher"
+    ],
+    "calories": 388,
+    "cook_min": 60,
+    "prep_min": 30,
+    "avg_score": 30.3,
+    "min_score": 30.2,
+    "recipe_id": "01a082d0-f3d9-72ce-a051-9d9a42d9e226",
+    "per_member": {
+     "Jeff": 30.2,
+     "Maya": 30.4
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 45.4
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 13.8
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 72,
+       "per_serving": 388.4
+      }
+     ]
+    }
+   },
+   {
+    "name": "Crock Pot Chili Chili and Beans",
+    "tags": [],
+    "calories": 375,
+    "cook_min": 480,
+    "prep_min": 30,
+    "avg_score": 30.1,
+    "min_score": 29.9,
+    "recipe_id": "01a082d0-f3c0-77e5-9a6f-1806fb697e0c",
+    "per_member": {
+     "Jeff": 29.9,
+     "Maya": 30.2
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 32.1
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 16.3
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 69,
+       "per_serving": 374.7
+      }
+     ]
+    }
+   }
+  ],
+  "Snack": [
+   {
+    "name": "Healthy Bean Soup With Kale",
+    "tags": [
+     "low_cholesterol",
+     "low_protein"
+    ],
+    "calories": 215,
+    "cook_min": 20,
+    "prep_min": 2,
+    "avg_score": 31.0,
+    "min_score": 30.8,
+    "recipe_id": "01a082d0-f399-727d-b524-fe8ff6f5806d",
+    "per_member": {
+     "Jeff": 31.2,
+     "Maya": 30.8
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 11.6
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 11.0
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 77,
+       "per_serving": 214.6
+      }
+     ]
+    }
+   },
+   {
+    "name": "Taco Soup",
+    "tags": [],
+    "calories": 220,
+    "cook_min": 60,
+    "prep_min": 15,
+    "avg_score": 30.7,
+    "min_score": 30.5,
+    "recipe_id": "01a082d0-f39b-758c-9ada-95895051900d",
+    "per_member": {
+     "Jeff": 30.9,
+     "Maya": 30.5
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 16.0
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 7.8
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 75,
+       "per_serving": 219.5
+      }
+     ]
+    }
+   },
+   {
+    "name": "Quick Homemade Tomato Soup",
+    "tags": [
+     "low_cholesterol",
+     "low_protein"
+    ],
+    "calories": 221,
+    "cook_min": 20,
+    "prep_min": 5,
+    "avg_score": 30.6,
+    "min_score": 30.4,
+    "recipe_id": "01a082d0-f3cd-785c-b4fd-edc31ef14eca",
+    "per_member": {
+     "Jeff": 30.8,
+     "Maya": 30.4
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 8.0
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 100,
+       "per_serving": 3.9
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 74,
+       "per_serving": 220.9
+      }
+     ]
+    }
+   }
+  ],
+  "Dinner": [
+   {
+    "name": "Baked Salmon with Sweet Potato",
+    "tags": [
+     "dairy_free",
+     "gluten_free"
+    ],
+    "calories": 452,
+    "cook_min": 30,
+    "prep_min": 10,
+    "avg_score": 70.3,
+    "min_score": 69.7,
+    "recipe_id": "01930000-0000-7000-8000-0000000000f4",
+    "per_member": {
+     "Jeff": 69.7,
+     "Maya": 70.9
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Vitamin_D",
+       "closes_pct": 100,
+       "per_serving": 13.8
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 27.5
+      },
+      {
+       "nutrient": "Vitamin_C",
+       "closes_pct": 100,
+       "per_serving": 78.8
+      }
+     ]
+    }
+   },
+   {
+    "name": "Tofu and Chickpea Curry with Spinach",
+    "tags": [
+     "vegan",
+     "gluten_free"
+    ],
+    "calories": 515,
+    "cook_min": 30,
+    "prep_min": 15,
+    "avg_score": 68.0,
+    "min_score": 66.8,
+    "recipe_id": "01930000-0000-7000-8000-0000000000f6",
+    "per_member": {
+     "Jeff": 66.8,
+     "Maya": 69.1
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Folate",
+       "closes_pct": 100,
+       "per_serving": 269.0
+      },
+      {
+       "nutrient": "Calcium",
+       "closes_pct": 100,
+       "per_serving": 399.5
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 31.5
+      }
+     ]
+    }
+   },
+   {
+    "name": "Grilled Chicken and Broccoli Rice Bowl",
+    "tags": [
+     "high_protein",
+     "dairy_free"
+    ],
+    "calories": 503,
+    "cook_min": 25,
+    "prep_min": 10,
+    "avg_score": 56.7,
+    "min_score": 53.0,
+    "recipe_id": "01930000-0000-7000-8000-0000000000f2",
+    "per_member": {
+     "Jeff": 60.3,
+     "Maya": 53.0
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Vitamin_C",
+       "closes_pct": 100,
+       "per_serving": 65.0
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 42.8
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 82,
+       "per_serving": 502.6
+      }
+     ]
+    }
+   }
+  ],
+  "Breakfast": [
+   {
+    "name": "Quinoa Egg Breakfast Bowl",
+    "tags": [
+     "vegetarian",
+     "gluten_free"
+    ],
+    "calories": 361,
+    "cook_min": 15,
+    "prep_min": 10,
+    "avg_score": 78.3,
+    "min_score": 78.0,
+    "recipe_id": "01930000-0000-7000-8000-0000000000f7",
+    "per_member": {
+     "Jeff": 78.6,
+     "Maya": 78.0
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Vitamin_C",
+       "closes_pct": 100,
+       "per_serving": 48.8
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 19.6
+      },
+      {
+       "nutrient": "Vitamin_B12",
+       "closes_pct": 100,
+       "per_serving": 1.1
+      }
+     ]
+    }
+   },
+   {
+    "name": "Overnight Oats with Greek Yogurt",
+    "tags": [
+     "vegetarian"
+    ],
+    "calories": 254,
+    "cook_min": 0,
+    "prep_min": 10,
+    "avg_score": 53.8,
+    "min_score": 50.9,
+    "recipe_id": "01930000-0000-7000-8000-0000000000f3",
+    "per_member": {
+     "Jeff": 56.6,
+     "Maya": 50.9
+    },
+    "top_reasons": {
+     "member": "Maya",
+     "reasons": [
+      {
+       "nutrient": "Vitamin_B12",
+       "closes_pct": 100,
+       "per_serving": 0.8
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 100,
+       "per_serving": 16.5
+      },
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 87,
+       "per_serving": 5.0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Crunchy Granola",
+    "tags": [
+     "low_cholesterol"
+    ],
+    "calories": 533,
+    "cook_min": 45,
+    "prep_min": 10,
+    "avg_score": 29.9,
+    "min_score": 28.8,
+    "recipe_id": "01a082d0-f398-7e73-9c89-ac46478358bc",
+    "per_member": {
+     "Jeff": 28.8,
+     "Maya": 30.9
+    },
+    "top_reasons": {
+     "member": "Jeff",
+     "reasons": [
+      {
+       "nutrient": "Fiber",
+       "closes_pct": 96,
+       "per_serving": 9.1
+      },
+      {
+       "nutrient": "Macro_Protein",
+       "closes_pct": 82,
+       "per_serving": 12.5
+      },
+      {
+       "nutrient": "Energy",
+       "closes_pct": 81,
+       "per_serving": 533.3
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "blocked": [
+  {
+   "name": "Fried Peanut Butter and Jelly Sandwich",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01a082d0-f3b0-7619-a086-57c299b57902"
+  },
+  {
+   "name": "No-Bake Granola Bars",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01a082d0-f39d-737c-aecb-508aef516b76"
+  },
+  {
+   "name": "Now don't go \"EEEWWW!!\" before you try this!",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01a082d0-f399-7326-a474-e24de09e328f"
+  },
+  {
+   "name": "Peanut Butter Oat Bites",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01930000-0000-7000-8000-0000000000f5"
+  },
+  {
+   "name": "Peanut Butter Popcorn",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01a082d0-f39c-7fca-a0e6-613f35a5517d"
+  },
+  {
+   "name": "Peanut Butter and Bacon Sandwich",
+   "reason": "contains Peanut butter (household allergen)",
+   "recipe_id": "01a082d0-f3d2-7d16-b70f-12210021215c"
+  }
+ ],
+ "members": [
+  {
+   "id": "01930000-0000-7000-8000-0000000000d1",
+   "gaps": [
+    {
+     "gap": 2.4,
+     "unit": "mcg",
+     "label": "Vitamin B12",
+     "target": 2.4,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_B12",
+     "pct_open": 100
+    },
+    {
+     "gap": 38.0,
+     "unit": "g",
+     "label": "Dietary Fiber",
+     "target": 38.0,
+     "consumed": 0.0,
+     "nutrient": "Fiber",
+     "pct_open": 100
+    },
+    {
+     "gap": 400.0,
+     "unit": "mcg",
+     "label": "Folate",
+     "target": 400.0,
+     "consumed": 0.0,
+     "nutrient": "Folate",
+     "pct_open": 100
+    },
+    {
+     "gap": 15.0,
+     "unit": "mcg",
+     "label": "Vitamin D",
+     "target": 15.0,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_D",
+     "pct_open": 100
+    },
+    {
+     "gap": 90.0,
+     "unit": "mg",
+     "label": "Vitamin C",
+     "target": 90.0,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_C",
+     "pct_open": 100
+    },
+    {
+     "gap": 1800.0,
+     "unit": "kcal",
+     "label": "Energy",
+     "target": 2500.0,
+     "consumed": 700.0,
+     "nutrient": "Energy",
+     "pct_open": 72
+    },
+    {
+     "gap": 700.0,
+     "unit": "mg",
+     "label": "Calcium",
+     "target": 1000.0,
+     "consumed": 300.0,
+     "nutrient": "Calcium",
+     "pct_open": 70
+    },
+    {
+     "gap": 5.0,
+     "unit": "mg",
+     "label": "Iron",
+     "target": 8.0,
+     "consumed": 3.0,
+     "nutrient": "Iron",
+     "pct_open": 63
+    },
+    {
+     "gap": 61.0,
+     "unit": "g",
+     "label": "Protein",
+     "target": 116.0,
+     "consumed": 55.0,
+     "nutrient": "Macro_Protein",
+     "pct_open": 53
+    }
+   ],
+   "name": "Jeff"
+  },
+  {
+   "id": "01930000-0000-7000-8000-0000000000d2",
+   "gaps": [
+    {
+     "gap": 15.0,
+     "unit": "mcg",
+     "label": "Vitamin D",
+     "target": 15.0,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_D",
+     "pct_open": 100
+    },
+    {
+     "gap": 2.4,
+     "unit": "mcg",
+     "label": "Vitamin B12",
+     "target": 2.4,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_B12",
+     "pct_open": 100
+    },
+    {
+     "gap": 75.0,
+     "unit": "mg",
+     "label": "Vitamin C",
+     "target": 75.0,
+     "consumed": 0.0,
+     "nutrient": "Vitamin_C",
+     "pct_open": 100
+    },
+    {
+     "gap": 1000.0,
+     "unit": "mg",
+     "label": "Calcium",
+     "target": 1000.0,
+     "consumed": 0.0,
+     "nutrient": "Calcium",
+     "pct_open": 100
+    },
+    {
+     "gap": 400.0,
+     "unit": "mcg",
+     "label": "Folate",
+     "target": 400.0,
+     "consumed": 0.0,
+     "nutrient": "Folate",
+     "pct_open": 100
+    },
+    {
+     "gap": 27.0,
+     "unit": "mg",
+     "label": "Iron",
+     "target": 27.0,
+     "consumed": 0.0,
+     "nutrient": "Iron",
+     "pct_open": 100
+    },
+    {
+     "gap": 23.0,
+     "unit": "g",
+     "label": "Dietary Fiber",
+     "target": 25.0,
+     "consumed": 2.0,
+     "nutrient": "Fiber",
+     "pct_open": 92
+    },
+    {
+     "gap": 1750.0,
+     "unit": "kcal",
+     "label": "Energy",
+     "target": 2000.0,
+     "consumed": 250.0,
+     "nutrient": "Energy",
+     "pct_open": 88
+    },
+    {
+     "gap": 40.0,
+     "unit": "g",
+     "label": "Protein",
+     "target": 48.0,
+     "consumed": 8.0,
+     "nutrient": "Macro_Protein",
+     "pct_open": 83
+    }
+   ],
+   "name": "Maya"
+  }
+ ],
+ "household": {
+  "id": "01930000-0000-7000-8000-0000000000b1",
+  "name": "Demo Household"
+ }
+}

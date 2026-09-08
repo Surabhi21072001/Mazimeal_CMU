@@ -183,6 +183,8 @@ def candidates(df, min_rating, min_reviews, exclude_desserts):
         parts = r_vector(r.recipe_ingredient_parts)
         if not parts:                                  dropped["no ingredients"] += 1; continue
         if pd.isna(r.calories) or pd.isna(r.protein_content): dropped["no nutrition"] += 1; continue
+        # no serving count means the nutrition is for the whole yield ("1 loaf")
+        if pd.isna(r.recipe_servings) or r.recipe_servings <= 0: dropped["no serving count"] += 1; continue
         if pd.isna(r.aggregated_rating) or r.aggregated_rating < min_rating: dropped["rating"] += 1; continue
         if pd.isna(r.review_count) or r.review_count < min_reviews: dropped["reviews"] += 1; continue
         kw = r_vector(r.keywords)
@@ -196,7 +198,7 @@ def candidates(df, min_rating, min_reviews, exclude_desserts):
             ext_id=int(r.recipe_id), name=clean(r.name, 300), slot=slot,
             tags=dietary_tags(r.recipe_category, kw), rating=float(r.aggregated_rating),
             reviews=int(r.review_count), prep=iso_minutes(r.prep_time), cook=iso_minutes(r.cook_time),
-            servings=int(r.recipe_servings) if not pd.isna(r.recipe_servings) and r.recipe_servings > 0 else 4,
+            servings=int(r.recipe_servings),
             description=clean(r.description), category=clean(r.recipe_category, 100),
             parts=parts, quantities=r_vector(r.recipe_ingredient_quantities),
             steps=[clean(s) for s in r_vector(r.recipe_instructions) if clean(s)],

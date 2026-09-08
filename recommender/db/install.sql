@@ -53,6 +53,7 @@ BEGIN;
 
 \echo '   recommender...'
 \ir 97_recommender.sql
+\ir 98_home.sql
 
 COMMIT;
 

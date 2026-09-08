@@ -120,9 +120,14 @@ $$;
 -- ---------------------------------------------------------------------------
 -- Single member. Returns ranked recipes with a score and the reasons.
 --
--- score: mean over target nutrients of min(delivered / gap, 1), as a
--- percentage. Nutrients already at target contribute 0 (nothing to close).
--- Pushing a nutrient past its daily upper limit subtracts.
+-- One meal is expected to cover a share of the day's remaining gap:
+-- Breakfast 25%, Lunch 30%, Dinner 35%, Snack 10% (35% when no meal given).
+--
+-- score: mean over target nutrients of min(delivered / (gap * share), 1), as a
+-- percentage. Energy is the exception: it scores highest when it matches the
+-- share and drops off in both directions, so a 1,500 kcal lunch doesn't win.
+-- Nutrients already at target contribute 0. Pushing a nutrient past its daily
+-- upper limit subtracts.
 -- ---------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION fn_recommend(
     p_member_id UUID,
@@ -138,8 +143,14 @@ RETURNS TABLE (
     warnings      JSONB
 )
 LANGUAGE sql STABLE AS $$
-    WITH gap AS (
-        SELECT * FROM fn_member_gap(p_member_id, p_date)
+    WITH share AS (
+        SELECT CASE p_meal WHEN 'Breakfast' THEN 0.25 WHEN 'Lunch' THEN 0.30
+                           WHEN 'Snack' THEN 0.10 ELSE 0.35 END AS s
+    ),
+    gap AS (
+        SELECT g.nutrient_id, g.target, g.consumed, g.upper_day,
+               g.gap * (SELECT s FROM share) AS gap
+        FROM   fn_member_gap(p_member_id, p_date) g
     ),
     n_targets AS (
         SELECT count(*) AS n FROM gap
@@ -151,7 +162,10 @@ LANGUAGE sql STABLE AS $$
                g.gap,
                g.upper_day,
                g.consumed,
-               CASE WHEN g.gap > 0 THEN least(v.per_serving / g.gap, 1) ELSE 0 END AS fill,
+               CASE WHEN g.gap <= 0 THEN 0
+                    WHEN v.nutrient_id = 'Energy'
+                         THEN greatest(1 - abs(v.per_serving - g.gap) / g.gap, 0)
+                    ELSE least(v.per_serving / g.gap, 1) END AS fill,
                CASE WHEN g.upper_day IS NOT NULL AND g.consumed + v.per_serving > g.upper_day
                     THEN 1 ELSE 0 END AS over_limit
         FROM   v_recipe_nutrients_per_serving v
@@ -187,7 +201,8 @@ $$;
 -- Whole household. Ranked by the lowest member score, so one person's
 -- needs never get averaged away. A recipe blocked for anyone is out.
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION fn_recommend_household(
+DROP FUNCTION IF EXISTS fn_recommend_household(UUID, DATE, TEXT, INT);
+CREATE FUNCTION fn_recommend_household(
     p_household_id UUID,
     p_date         DATE DEFAULT current_date,
     p_meal         TEXT DEFAULT NULL,
@@ -198,7 +213,8 @@ RETURNS TABLE (
     recipe_name     VARCHAR,
     min_score       NUMERIC,
     avg_score       NUMERIC,
-    per_member      JSONB
+    per_member      JSONB,
+    top_reasons     JSONB       -- reasons for the member who needs it most
 )
 LANGUAGE sql STABLE AS $$
     WITH members AS (
@@ -216,7 +232,9 @@ LANGUAGE sql STABLE AS $$
            e.recipe_name,
            min(e.score),
            round(avg(e.score), 1),
-           jsonb_object_agg(e.member_name, e.score)
+           jsonb_object_agg(e.member_name, e.score),
+           (SELECT jsonb_build_object('member', x.member_name, 'reasons', x.top_reasons)
+            FROM each x WHERE x.recipe_id = e.recipe_id ORDER BY x.score LIMIT 1)
     FROM   each e
     GROUP  BY e.recipe_id, e.recipe_name
     -- only recipes that passed every member's hard filter
@@ -229,12 +247,24 @@ $$;
 -- Why was a recipe blocked or scored the way it was? For the UI and for
 -- debugging.
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION fn_explain(p_member_id UUID, p_recipe_id UUID, p_date DATE DEFAULT current_date)
-RETURNS TABLE (nutrient_id VARCHAR, target DECIMAL, consumed DECIMAL, gap DECIMAL, per_serving DECIMAL, closes_pct NUMERIC)
+DROP FUNCTION IF EXISTS fn_explain(UUID, UUID, DATE);
+CREATE OR REPLACE FUNCTION fn_explain(
+    p_member_id UUID, p_recipe_id UUID, p_date DATE DEFAULT current_date, p_meal TEXT DEFAULT NULL
+)
+RETURNS TABLE (nutrient_id VARCHAR, target DECIMAL, consumed DECIMAL, meal_gap DECIMAL, per_serving DECIMAL, closes_pct NUMERIC)
 LANGUAGE sql STABLE AS $$
-    SELECT g.nutrient_id, g.target, g.consumed, g.gap,
+    WITH share AS (
+        SELECT CASE p_meal WHEN 'Breakfast' THEN 0.25 WHEN 'Lunch' THEN 0.30
+                           WHEN 'Snack' THEN 0.10 ELSE 0.35 END AS s
+    )
+    SELECT g.nutrient_id, g.target, g.consumed,
+           round(g.gap * (SELECT s FROM share), 1),
            round(coalesce(v.per_serving, 0), 2),
-           CASE WHEN g.gap > 0 THEN round(100 * least(coalesce(v.per_serving, 0) / g.gap, 1)) ELSE 0 END
+           CASE WHEN g.gap <= 0 THEN 0
+                WHEN g.nutrient_id = 'Energy'
+                     THEN round(100 * greatest(1 - abs(coalesce(v.per_serving, 0) - g.gap * (SELECT s FROM share))
+                                                   / (g.gap * (SELECT s FROM share)), 0))
+                ELSE round(100 * least(coalesce(v.per_serving, 0) / (g.gap * (SELECT s FROM share)), 1)) END
     FROM   fn_member_gap(p_member_id, p_date) g
     LEFT   JOIN v_recipe_nutrients_per_serving v
            ON v.recipe_id = p_recipe_id AND v.nutrient_id = g.nutrient_id

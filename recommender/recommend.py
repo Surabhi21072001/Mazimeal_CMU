@@ -49,8 +49,8 @@ def cmd_for(a):
                   f"%{a.explain}%")
         if not rid:
             sys.exit(f"no recipe matching {a.explain!r}")
-        print(f"{'nutrient':14} {'target':>8} {'eaten':>8} {'gap':>8} {'serving':>8} closes")
-        for n, t, c, g, ps, pct in sql("select * from fn_explain(?, ?)", mid, rid[0][0]):
+        print(f"{'nutrient':14} {'target':>8} {'eaten':>8} {'meal gap':>8} {'serving':>8} closes")
+        for n, t, c, g, ps, pct in sql("select * from fn_explain(?, ?, current_date, ?)", mid, rid[0][0], a.meal):
             print(f"{n:14} {float(t):8.1f} {float(c):8.1f} {float(g):8.1f} {float(ps):8.1f} {pct:>5}%")
         return
 
