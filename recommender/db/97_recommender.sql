@@ -127,7 +127,7 @@ $$;
 CREATE OR REPLACE FUNCTION fn_recommend(
     p_member_id UUID,
     p_date      DATE    DEFAULT current_date,
-    p_meal      TEXT    DEFAULT NULL,       -- reserved: recipes has no meal slot in the full schema yet
+    p_meal      TEXT    DEFAULT NULL,       -- Breakfast/Lunch/Dinner/Snack, NULL for any
     p_limit     INT     DEFAULT 10
 )
 RETURNS TABLE (
@@ -178,6 +178,7 @@ LANGUAGE sql STABLE AS $$
     FROM   scored s
     JOIN   recipes r ON r.recipe_id = s.recipe_id AND r.deleted_at IS NULL
     WHERE  s.recipe_id NOT IN (SELECT b.recipe_id FROM fn_blocked_recipes(p_member_id) b)
+      AND (p_meal IS NULL OR r.meal_category = p_meal)
     ORDER  BY s.score DESC, r.recipe_name
     LIMIT  p_limit
 $$;

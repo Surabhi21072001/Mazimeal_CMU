@@ -2,1761 +2,1761 @@
 BEGIN;
 
 -- ingredients
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('olive oil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic clove', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ginger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crushed red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light brown sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ketchup', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cider vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('water', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soy sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('butter', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('granulated sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('eggs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bananas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking soda', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef roast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salsa', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cream cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breast halves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('linguine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Cajun Seasoning Mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('heavy whipping cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sun-dried tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried basil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parmesan cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground beef', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('egg', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('table salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('half-and-half', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apple cider vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark brown sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomato paste', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomato sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('basil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried parsley flakes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('brown sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coarse ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('margarine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried oregano', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh parsley', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beer', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken drumsticks', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot chili pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground turkey', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sour cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoning salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cayenne pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sharp cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('paprika', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cumin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried oregano leaves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green onions', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cornstarch', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless round steak', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('broccoli florets', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('reduced sodium soy sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground ginger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('toasted sesame seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('macaroni', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken breast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('monterey jack cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken broth', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh chili peppers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onion powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('thyme', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('roasting chicken', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('potato', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('carrot', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('barbecue sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Worcestershire sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hickory smoke salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('russet baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Accent seasoning', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kale', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('swiss chard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken pieces', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('heavy cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('honey', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('long grain white rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canola oil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('minced garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh cilantro', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onions', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ginger ale', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sea salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('carrots', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Rotel tomatoes & chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken meat', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lean ground beef', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ricotta cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parsley', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen chopped spinach', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('artichoke hearts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef sirloin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark beer', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef broth', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oregano', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cayenne', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kidney beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili peppers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breast halves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('half-and-half cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh broccoli', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nutmeg', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('elbow macaroni', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cinnamon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bean sprouts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light soy sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('stewed tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ground pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soymilk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon juice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('swiss cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spaghetti', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh blueberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen blueberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon zest', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground nutmeg', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('scallions', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sesame seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ginger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('powdered sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low sodium soy sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green seedless grapes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red seedless grapes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla extract', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pecans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('asparagus', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kosher salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen hash browns', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet Italian sausage link', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Italian plum tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pasta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('poultry seasoning', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken bouillon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light olive oil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salmon fillets', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cottage cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('asiago cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pinto beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced green chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Mexican-style tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('walnuts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lentils', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick-cooking oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('American cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried parsley', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain yogurt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsalted butter', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('jalapeno chile', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground coriander', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garam masala', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('evaporated milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mushrooms', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tuna', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon pepper seasoning', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('zucchini', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('clove', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cauliflower', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh rosemary', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('penne', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parsley flakes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bacon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Miracle Whip', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime juice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet peppers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chopped tomato', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cornmeal', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red wine vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('romaine lettuce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plum tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('English cucumber', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green bell pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('feta cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kalamata olive', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetable broth', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat chicken broth', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cabbage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange, zest of', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('gingerroot', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('catsup', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken stove top stuffing mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mushroom stems and pieces', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned pumpkin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cloves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry crushed red pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hoisin sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shrimp', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon, zest of', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ziti pasta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green peppers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('long grain rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Pepperidge Farm Herb Stuffing', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('powdered ginger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken legs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh garlic', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sherry wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole chicken', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery ribs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hard-boiled eggs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Brussels sprouts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon juice concentrate', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken flavor instant bouillon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rotini pasta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('other pastas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lettuce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red kidney beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white kidney beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Tabasco sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Bulk Taco Seasoning Mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('avocados', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cilantro', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken wings', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Season-All salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('prepared mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery seed', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken thigh', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice vinegar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat buttermilk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chocolate chips', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bread flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fat-free mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('eggplant', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced tomatoes with green chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('caraway seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('raisins', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green cabbage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black olives', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground beef round', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('prepared yellow mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('escarole', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spinach', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orzo pasta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless beef chuck roast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bay leaves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ham', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('instant garlic', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chives', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turbinado sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry white wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('molasses', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plum tomato', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shallots', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pitted dates', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('extra virgin olive oil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('scallion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turmeric', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('buttermilk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('maple syrup', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tart apples', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('strawberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oatmeal', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Dijon mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh lemon juice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon slices', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cucumber', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked brown rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh lime juice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cod', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('French vanilla instant pudding', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken tenderloins', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('process American cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red bell pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken bouillon cubes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boiling water', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fettuccine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cucumbers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat sour cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yogurt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh dill', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh strawberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Gold Medal all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried rosemary', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grape tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('blueberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cold water', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick-cooking oatmeal', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('broccoli', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned salmon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh basil', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coriander', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fish sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cinnamon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Bisquick baking mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('jumbo eggs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour tortilla', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh spinach', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pork sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked ham', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('deli ham', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pre-shredded mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen hash brown potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shortening', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('1% low-fat milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned pumpkin puree', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole wheat flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wheat germ', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot water', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried sweetened cranberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cream cheese spread', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wheat flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spinach tortillas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apples', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoned croutons', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chipotle chiles in adobo', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salsa verde', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cellophane noodle', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin puree', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apple', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pine nuts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow cornmeal', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pure vanilla extract', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rolled oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark soy sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry sherry', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cannellini beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('navy beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('curry powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cardamom', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cinnamon stick', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('peanut butter', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unbleached all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cranberries', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fennel seed', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('allspice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('deli roast beef', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('10-inch flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('applesauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('old fashioned oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('golden brown sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole kernel corn', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light cream cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh mushrooms', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('part-skim mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light corn syrup', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chunky salsa', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hash browns', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hash brown', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mashed potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange zest', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wonton wrappers', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground allspice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoned flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hamburger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garbanzo beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tahini', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef brisket', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('liquid smoke', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Chinese wine', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soya sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla yogurt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('provolone cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pineapple tidbits', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('reduced-fat sour cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cherry pie filling', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange, rind of', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('icing sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cherry tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Quaker Oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rump roast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dill weed', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green olives', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark raisin', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('panko breadcrumbs', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('steel cut oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried ancho chile powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bread machine yeast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lean hamburger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Spanish onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('solid white tuna', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery rib', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lettuce leaf', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turkey breast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheese slice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('purple onion', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bacon bits', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Velveeta cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dill pickles', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fryer chickens', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground paprika', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bell pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('of fresh mint', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chickpeas', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain low-fat yogurt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kirby cucumber', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('saffron thread', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('risotto rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crushed pineapple', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flaked coconut', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tuna in water', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flat leaf parsley', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('active dry yeast', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('coarse salt', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('great northern beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bay leaf', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('phyllo pastry', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spring onions', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('leek', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('confectioners'' sugar', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless pork shoulder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boursin cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('smoked streaky bacon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pancetta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('creme fraiche', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('watercress', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('condensed beef broth', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef bouillon granules', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skinless chicken piece', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced pimentos', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('limes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon wedge', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole chickens', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('butter flavor shortening', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen corn', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('non-fat tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cracked black pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen spinach', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chive & onion cream cheese', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin pie filling', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Homemade Fresh Bacon Bits', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skinless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('anaheim chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chipotle pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('avocado', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetable shortening', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pineapple chunks', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla instant pudding mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('strawberry', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('banana', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grapes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain flour', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('English mustard', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wasabi', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pickled ginger', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ice cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cayenne pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground turmeric', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chopped tomatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('amchoor powder', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green chili pepper', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh white mushrooms', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned black beans', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skim milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsweetened applesauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk pork sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spaghetti squash', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sugar-free instant vanilla pudding mix', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground flax seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried red lentils', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Splenda sugar substitute', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin pie spice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mild green chilies', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked white rice', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetarian worcestershire sauce', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime, juice of', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('london broil beef', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fat free sour cream', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('2% low-fat milk', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fettuccine pasta', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh oregano', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken liver', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick oats', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin seeds', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mashed sweet potatoes', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn syrup', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crisp bacon', 'Uncategorized', 'Manual') ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('olive oil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic clove', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ginger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crushed red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light brown sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ketchup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cider vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('butter', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('granulated sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('eggs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bananas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking soda', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef roast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salsa', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cream cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breast halves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('linguine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Cajun Seasoning Mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('heavy whipping cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sun-dried tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried basil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parmesan cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('egg', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('table salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('half-and-half', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apple cider vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark brown sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomato paste', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomato sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('basil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried parsley flakes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('brown sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coarse ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('margarine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garlic', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ground black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried oregano', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh parsley', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beer', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken drumsticks', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot chili pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground turkey', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sour cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoning salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cayenne pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sharp cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('paprika', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cumin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried oregano leaves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green onions', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cornstarch', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless round steak', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('broccoli florets', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('reduced sodium soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground ginger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('toasted sesame seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('macaroni', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken breast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('monterey jack cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken broth', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh chili peppers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onion powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('thyme', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('roasting chicken', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('potato', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('carrot', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('barbecue sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Worcestershire sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hickory smoke salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('russet baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Accent seasoning', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kale', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('swiss chard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken pieces', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('heavy cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('honey', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('long grain white rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canola oil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('minced garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh cilantro', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('onions', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ginger ale', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sea salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('carrots', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Rotel tomatoes & chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken meat', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lean ground beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ricotta cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parsley', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen chopped spinach', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('artichoke hearts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef sirloin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark beer', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef broth', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oregano', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cayenne', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kidney beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili peppers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breast halves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('half-and-half cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh broccoli', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nutmeg', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('elbow macaroni', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cinnamon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bean sprouts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('stewed tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ground pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soymilk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon juice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('swiss cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spaghetti', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh blueberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen blueberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon zest', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground nutmeg', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('scallions', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sesame seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh ginger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('powdered sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low sodium soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green seedless grapes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red seedless grapes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla extract', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pecans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('asparagus', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kosher salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen hash browns', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet Italian sausage link', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried red pepper flakes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Italian plum tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pasta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('poultry seasoning', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken bouillon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light olive oil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salmon fillets', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cottage cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('asiago cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pinto beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced green chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Mexican-style tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('walnuts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lentils', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick-cooking oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('American cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried parsley', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsalted butter', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('jalapeno chile', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground coriander', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garam masala', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('evaporated milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mushrooms', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tuna', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon pepper seasoning', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('zucchini', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('clove', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cauliflower', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh rosemary', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('penne', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parsley flakes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bacon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Miracle Whip', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime juice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet peppers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chopped tomato', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cornmeal', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red wine vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('romaine lettuce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plum tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('English cucumber', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green bell pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('feta cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kalamata olive', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetable broth', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat chicken broth', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cabbage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange, zest of', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('gingerroot', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('catsup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken stove top stuffing mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mushroom stems and pieces', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned pumpkin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cloves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken breast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry crushed red pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hoisin sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shrimp', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon, zest of', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ziti pasta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green peppers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('long grain rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Pepperidge Farm Herb Stuffing', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('powdered ginger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken legs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh garlic', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sherry wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole chicken', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery ribs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hard-boiled eggs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Brussels sprouts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon juice concentrate', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken flavor instant bouillon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rotini pasta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('other pastas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lettuce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red kidney beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white kidney beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Tabasco sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Bulk Taco Seasoning Mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('avocados', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cilantro', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken wings', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Season-All salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('prepared mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery seed', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken thigh', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice vinegar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat buttermilk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chocolate chips', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bread flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fat-free mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('eggplant', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced tomatoes with green chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chili beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('caraway seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('raisins', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green cabbage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('black olives', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground beef round', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('prepared yellow mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('escarole', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spinach', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orzo pasta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless beef chuck roast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bay leaves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ham', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('instant garlic', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chives', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turbinado sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry white wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('molasses', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plum tomato', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shallots', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pitted dates', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('extra virgin olive oil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('scallion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turmeric', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('buttermilk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('maple syrup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tart apples', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('strawberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oatmeal', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Dijon mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh lemon juice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon slices', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cucumber', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked brown rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh lime juice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cod', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('French vanilla instant pudding', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken tenderloins', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('process American cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('red bell pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken bouillon cubes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boiling water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fettuccine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cucumbers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat sour cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh dill', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh strawberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Gold Medal all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried rosemary', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grape tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('blueberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cold water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick-cooking oatmeal', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('broccoli', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned salmon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh basil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coriander', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fish sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cinnamon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Bisquick baking mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('jumbo eggs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flour tortilla', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh spinach', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pork sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked ham', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('deli ham', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pre-shredded mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen hash brown potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shortening', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('1% low-fat milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned pumpkin puree', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole wheat flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wheat germ', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried sweetened cranberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cream cheese spread', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wheat flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spinach tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apples', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoned croutons', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chipotle chiles in adobo', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('salsa verde', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cellophane noodle', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin puree', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apple', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pine nuts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow cornmeal', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pure vanilla extract', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rolled oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry sherry', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cannellini beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('navy beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('curry powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cardamom', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cinnamon stick', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('peanut butter', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unbleached all-purpose flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cranberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fennel seed', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('allspice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('deli roast beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('10-inch flour tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('applesauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('old fashioned oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('golden brown sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole kernel corn', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light cream cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh mushrooms', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('part-skim mozzarella cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light corn syrup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chunky salsa', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hash browns', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hash brown', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mashed potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange zest', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wonton wrappers', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground allspice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoned flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hamburger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('garbanzo beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tahini', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef brisket', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('liquid smoke', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh garlic cloves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Chinese wine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('soya sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('provolone cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pineapple tidbits', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('reduced-fat sour cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cherry pie filling', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('orange, rind of', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('icing sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cherry tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Quaker Oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rump roast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dill weed', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green olives', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark raisin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('panko breadcrumbs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('steel cut oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried ancho chile powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bread machine yeast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lean hamburger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Spanish onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('solid white tuna', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery rib', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mustard powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lettuce leaf', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('turkey breast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cheese slice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('purple onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bacon bits', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Velveeta cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dill pickles', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fryer chickens', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless chicken breast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground paprika', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bell pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('of fresh mint', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chickpeas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain low-fat yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('kirby cucumber', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('saffron thread', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('risotto rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crushed pineapple', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flaked coconut', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tuna in water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flat leaf parsley', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('active dry yeast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('coarse salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('great northern beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bay leaf', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('phyllo pastry', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spring onions', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('leek', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('confectioners'' sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless pork shoulder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boursin cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('smoked streaky bacon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pancetta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('creme fraiche', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('watercress', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('condensed beef broth', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('beef bouillon granules', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skinless chicken piece', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('diced pimentos', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('limes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon wedge', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('whole chickens', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('butter flavor shortening', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen corn', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('non-fat tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cracked black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen spinach', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chive & onion cream cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin pie filling', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Homemade Fresh Bacon Bits', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('celery seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skinless chicken breasts', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('anaheim chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chipotle pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('avocado', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tortilla chips', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetable shortening', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pineapple chunks', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vanilla instant pudding mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('strawberry', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('banana', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grapes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('English mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wasabi', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pickled ginger', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ice cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground cayenne pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground turmeric', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chopped tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('amchoor powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('green chili pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh white mushrooms', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canned black beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('skim milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsweetened applesauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk pork sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('spaghetti squash', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sugar-free instant vanilla pudding mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground flax seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried red lentils', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Splenda sugar substitute', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin pie spice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mild green chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked white rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetarian worcestershire sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lime, juice of', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('london broil beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fat free sour cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('2% low-fat milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fettuccine pasta', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh oregano', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken liver', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin seeds', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('mashed sweet potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn syrup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crisp bacon', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 
 -- recipes
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('45809', 'Bourbon Chicken', 'I searched and finally found this recipe on the internet. It is a copycat of the Bourbon Chicken sold in Chinese carry-outs in my hometown. This recipe is so good that my sons gobble it up leaving me just a spoonful. Their excuse was they thought I had eaten. Editor''s Note: Named Bourbon Chicken because it was supposedly created by a Chinese cook who worked in a restaurant on Bourbon Street.', 'Dinner', ARRAY['high_protein']::text[], 15, 20, 4, 521.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('2886', 'Best Banana Bread', 'Make and share this Best Banana Bread recipe from Food.com.', 'Snack', NULL, 10, 60, 10, 272.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27208', 'To Die for Crock Pot Roast', 'Amazing flavor, and so simple! No salt needed here. In fact, you may wish to use half the ranch dressing mix to cut back on the saltiness. Found this Crock-Pot pot roast recipe on of a website called www.recipegoldmine.com. It''s all the rage there, so I thought I''d try it.', 'Dinner', NULL, 5, 540, 8, 295.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('89204', 'Crock-Pot Chicken With Black Beans & Cream Cheese', 'I love this Crock-Pot chicken recipe for two reasons: one, my family loves it and two, it is so easy to make! I got this recipe from my sister. She has two children of her own, and they love it too! It''s also the best leftovers in the world -- if there are any!', 'Dinner', NULL, 3, 240, 4, 679.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('39087', 'Creamy Cajun Chicken Pasta', 'Make and share this Creamy Cajun Chicken Pasta recipe from Food.com.', 'Dinner', NULL, 10, 15, 2, 719.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('54257', 'Yes, Virginia There is a Great Meatloaf', 'Absolutely delicious meatloaf and sauce! Those who claim they don''t believe there can be such a thing as a great meatloaf will love this. Based on a meatloaf given to me by a dear friend, Virginia Strehl, Memphis, and Leesburg, Fla. Nita Holleman, 2000', 'Dinner', NULL, 20, 60, 4, 493.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('22782', 'Jo Mama''s World Famous Spaghetti', 'My kids will give up a steak dinner for this spaghetti. It is a recipe I have been perfecting for years and it is so good (if I may humbly say) that my kids are disappointed when they eat spaghetti anywhere else but home! In fact they tell me I should open a restaurant and serve only this spaghetti and garlic bread. In response to requests, I have posted the recipe for Recipe #28559 that uses approximately 1/2 of the sauce from this recipe. Have spaghetti one night and lasagna later! Thanks to all of you who have tried my recipe and have written a review. I read and appreciate every one of them! Chef Note: After I posted this recipe I remembered a funny incident--my dear husband usually has a nice bottle of wine handy so when I make a batch of spaghetti I just help myself to a splash of it. On one occasion, there wasn''t a bottle opened, but there was a bottle sitting on the counter so I got out the corkscrew and helped myself. For some reason, the spaghetti that night was the best ever. My husband asked what wine I put in it and I showed him the bottle. He nearly fell off the chair. I had opened a rather expensive bottle he had bought to give his boss. Goes to show you--don''t use a wine for cooking you wouldn''t drink. You get the best results from a good wine!', 'Dinner', NULL, 20, 60, 4, 555.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25690', 'Pancakes', 'This is really a great recipe! It is fast, simple and you usually have the ingredients on hand. I never use a mix! I got this from my sister years ago, and I have shared it many times.', 'Breakfast', NULL, 5, 5, 4, 99.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('69173', 'Kittencal''s Italian Melt-In-Your-Mouth Meatballs', 'Cooking the meatballs in simmering pasta sauce will not only add so much extra flavor to the sauce the meatballs will be melt-in-your-mouth tender, you may of course oven-bake the meatballs for about 25 minutes, --- don''t be afraid to add in more Parmesan cheese and a little more milk, there is no need to measure exactly, this recipe is pretty much foolproof, leftover cooked meatballs make a wonderful pizza topping just slice thinly and freeze until ready to use ----- these also make wonderful juicy burgers shaped into patties-- for more of my tried and true recipes check out my food blog at www.kittencalskitchen.com', 'Dinner', ARRAY['high_protein']::text[], 20, 30, 4, 1312.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73440', 'Beer Bread', 'Per Google.com, the #1 recipe for Beer Bread in the world! There are a few recipes for beer bread out there, but none as simple (and tasty!) as this one. You can even mix it in the baking pan for easy cleanup. This is sensational when served with soups or just as a snack, but don''t expect it to be around very long when your family gets a taste of it! Be sure to use a sheet pan on the shelf below the pan to catch any excess butter that may drip during cooking.', 'Snack', NULL, 3, 60, 4, 422.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('68955', 'Japanese Mum''s Chicken', 'We have a Japanese girl, Tomoko, living with us, and tonight she and I cooked a Japanese dinner for us and her friends. She phoned her mum,Toshiko, in Japan for this, as it''s her favourite recipe, and I wanted to share it here. It''s simple and so good, and Tomoko, who is only 16, did such a good job of cooking this, then translating the recipe to English for me. *The liquid will thicken to a glaze if you are patient. It just takes a bit of time. If you feel your chicken is cooked (and going to overcook) remove it before going on to reduce the liquid. Same thing, if you must use breast meat, remove it (so it doesn''t dry out) and continue reducing the liquid . If you do it this way rather than thickening with cornstarch you will get a richer glaze and not need to add stock or broth instead of the water. It just takes patience. AND NOTE: A glaze is sticky and coats the meat, this is NOT a sauce.', 'Dinner', NULL, 5, 40, 4, 313.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('33919', 'Creamy Burrito Casserole', 'Satisfy your craving for something different tonight. It''s good and fairly easy. This is stuff I usually have on hand too.', 'Dinner', NULL, 20, 30, 4, 512.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('82102', 'Kittencal''s Moist Cheddar-Garlic Oven Fried Chicken Breast', 'This is for serious garlic lovers. The chicken bakes out so moist and tender! Grated cheese may be sprinkled on top of the breast the last 5 minutes of cooking if desired but that is optional. Double all ingredients for more than four breasts and adjust the amount of garlic to suit taste. For the coating amount you might be able to get away with 5 or maybe 6 very small chicken breasts, but I would suggest to increase the amount slightly --- to take this dish to yet another level, about 10 minutes before the cooking time is finished, drizzle the top of the chicken with a little pasta sauce, then sprinkle mozzarella cheese on top. Return to oven for about 10 minutes until the chicken is completely cooked and sauce is hot and cheese has melted. For a lemon-garlic flavor add in 3 tablespoons lemon juice to the melted butter/garlic mixture --- *NOTE* for a healthier alternative Smart Balance Butter Blend may be used in place of the melted butter --- you will love this chicken! Visit my food blog, www.kittencalskitchen.com, for more of my recipes.', 'Dinner', NULL, 20, 40, 4, 452.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25885', 'Banana Banana Bread', 'Why compromise the banana flavor? My banana bread is moist and delicious with loads of banana flavor! Ultimate comfort food, and it''s WONDERFUL TOASTED!! (Make sure to use bananas with a lot of black on them for the best flavor! The blacker the bananas, the stronger the banana flavor of the bread.)', 'Snack', NULL, 15, 60, 12, 233.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('85629', 'Scalloped Potatoes', 'Here''s a great scalloped potato recipe that''s so easy and absolutely delicious. The leftovers are just as good, maybe even better, the next day. This is one of my favorite and most prepared recipes, from my 1971 Florence Junior Welfare League cookbook.', 'Dinner', NULL, 15, 60, 6, 288.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28148', 'Oven-Fried Chicken Chimichangas', 'A fast and healthier way to serve Chimichangas than the traditional deep fried. These are very good, and you may dress them up to you own preference. I like to serve with green chile sauce sometimes instead of the picante sauce.', 'Lunch', NULL, 20, 25, 4, 353.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('99476', 'The Best Easy Beef and Broccoli Stir-Fry', 'I clipped this recipe from Taste of Home magazine several years ago and have found it to be the best-tasting easy beef and broccoli stir-fry. It is credited to Ruth Stahl. I often use charcoal chuck steak, which is very tender and lean. I also like that it doesn''t call for any unusual ingredients.', 'Dinner', ARRAY['dairy_free']::text[], 15, 10, 4, 150.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('135350', 'Fannie Farmer''s Classic Baked Macaroni & Cheese', 'To me Fannie Farmer''s recipe is the only "real" Macaroni & Cheese. It''s from my 1946 edition of "Fannie Farmer''s Boston Cooking School Cookbook". With time on it''s side - this recipe is hands down the best for traditional, homemade baked macaroni & cheese - comfort food. Please Note: If you use CHEAP CHEESE you will end up with a BLAND and FLAVORLESS DISH!', 'Dinner', NULL, 20, 20, 4, 836.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('129926', 'Simply Sour Cream Chicken Enchiladas', 'Easy to assemble, deliciously creamy and a great choice for once-a-month cooking. And there is NO canned cream soup in my enchiladas -- Hope you give them a try!', 'Dinner', NULL, 25, 20, 8, 507.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('150863', 'Panera''s Cream Cheese Potato Soup', 'This is my favorite recipe for potato soup. It''s a copycat of the one they use to serve at the St. Louis Bread Company (Panera). The recipe originally called for shredding your potatoes, but I never could get them to cook that way. I know they should cook faster, but I never could get it to work.', 'Dinner', NULL, 15, 45, 4, 349.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('33671', 'Crock Pot Whole Chicken', 'Tender, fall-off-the-bone chicken! Skip the overnight refrigeration if you are in a hurry. For variety, eliminate the onion and substitute a quartered lemon or two, stuffed into the chicken cavity. Chef Shapeweaver had a good suggestion: Use Fajita Seasoning Mix #28011 as another variation. Thanks! The standard size slow cookers are a bit too small and a whole chicken won''t fit. You''ll need a 6-quart slow cooker for this recipe.', 'Dinner', NULL, 900, 480, 4, 327.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('10744', 'Delicious Chicken Pot Pie', 'This chicken pot pie recipe takes a little time, but it is WELL WORTH IT!! This is an all-time favorite in our family. Great on a cold winter day.', 'Dinner', NULL, 60, 45, 4, 538.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63689', 'My Family''s Favorite Sloppy Joes (Pizza Joes)', 'I''ve tried many recipes, this is the best. I once ''dec-tupled'' (10x) this recipe to sell sandwiches at a craft fair at my church. People were waiting in line to buy leftovers. Freezes well, goes up to the lake or camping well and is a hit on Halloween...it''s no-fail. Easy to double, triple, etc. I''ve been making Joes this way for over 20 years. ***03-08-09, I just reinvented this recipe tonight when I went to make it for dinner and found I didn''t have an 8-oz. can of tomato sauce (shame on me). The family was upset with me when I subbed an 8-oz. can of pizza sauce and told them to suck it up and call them ''Pizza Joes'' and then served them up with shredded mozzarella cheese on the toasted buns, top and bottom. They loved it. I left out the BBQ sauce in this preparation and just used a 1/2 cup ketchup. Pizza Joes are good to go!', 'Lunch', NULL, 15, 30, 4, 325.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('107786', 'Beth''s Melt in Your Mouth Barbecue Ribs (Oven)', 'I almost didn''t want to share this ribs recipe because this is one of the dishes that I make that keep my sons coming back home! These can be done with baby back or regular pork ribs. I have also made split chickens this way. The ribs are tender, moist and just slide off of the bone. I know that your family will love them just as much as my family does. I noticed that some are unable to find hickory smoked salt. You can use smoked paprika or just brush the ribs with liquid smoke before applying the rub. The smoke flavor is nice because it helps give the ribs a cooked-on-the-grill flavor. Also, the easiest way to remove the membrane is to work a spoon, or I use the tips of my kitchen shears, into the bottom center of the membrane, work it back and forth to form a "pocket," then I slide my thumbs in and work the membrane off from the center outward to the ends.', 'Dinner', NULL, 15, 180, 6, 1229.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('5170', 'Pete''s Scratch Pancakes', 'It was the Fall of 1987 when Pete Nyhus walked into our office, just to visit. We started talking about breakfast, and he reached into a wastepaper basket and pulled out a scrap of teletype paper. He wrote out this recipe, and my family has never used pre-mix since.', 'Breakfast', NULL, 15, 5, 4, 209.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('38298', 'Olive Garden Copycat Zuppa Toscana', 'This is a clone of the Olive Garden Zuppa Toscana. Tried and true, approved by former Olive Garden chefs.', 'Dinner', NULL, 20, 40, 4, 840.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('12458', 'Crock Pot Cream Cheese Chicken', 'I got this recipe from a nurse at work. We''re always sharing easy and family-pleasing recipes. The sauce tastes like a creamy Alfredo sauce. This is great with noodles.', 'Dinner', NULL, 20, 420, 6, 547.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('65768', 'Chicken Lazone', 'This recipe comes from the restaurant "Brennan''s" located in New Orleans. No one has to know how simple and quick it is. I posted this recipe exactly as it was in the book, however, if you like a little "heat" please feel free to add some cayenne pepper to taste.', 'Dinner', ARRAY['high_protein']::text[], 5, 20, 4, 484.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('95222', 'Pork Chops Yum-Yum', 'I copied this from The Orlando Sentinel months ago and just now found it. We eat pork chops at least once a week and this is our favorite.', 'Dinner', ARRAY['high_protein']::text[], 10, 60, 4, 427.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('117892', 'Mexican Rice', 'Are you craving that great Mexican rice from your favorite taco stand? Here it is. This is just like a good Mexican restaurant rice. Many recipes taste good... but the texture just isn''t right. You know how it is... you have prepared scores of Mexican rice recipes but always have been disappointed. It may be delicious but kinda "gloopy and wet." Try this. Everything is pureed and cooked in. There are no chunks of anything... just dry fluffy rice with all the seasonings and just the tiniest hint of a tomato flavor. I will throw away all of my Mexican rice recipes- this is the one I have been looking for for years! I don''t own a rice cooker but some people have had disappointing results using one. You will also need to adjust your cooking time if you want to use brown rice. I recommend following the cooking instructions as directed. Proceed at your own peril if you stray. Enjoy.', 'Dinner', ARRAY['dairy_free','low_cholesterol','low_protein']::text[], 20, 35, 4, 280.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('131018', 'Pulled Pork (Crock Pot)', 'I found this pulled pork recipe years ago, and it''s a favorite at potlucks. Freezes well for easy quick meals.', 'Dinner', NULL, 30, 1080, 10, 335.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('87782', 'Greek Potatoes (Oven-Roasted and Delicious!)', 'These potatoes are a staple in our home. Whether accompanying roast lamb or chicken, or just on their own, we have them a couple of times a week. They are delicious and the ones that get overly-brown in the pan and stick a bit are MINE! Clean up is a little tricky with this recipe, unless you line your pans with foil, but I find that just filling the pan up with hot, sudsy water and forgetting for an hour (something I apparently have no problem doing ;-)) helps a lot.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, 79, 8, 409.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('4627', 'Chicken Tortilla Soup II', 'I''m getting tired of seeing the so-called tortilla soup recipes running around that are nothing but a glorified chicken soup with tortillas added. Here''s the real McCoy. Similar to the recipe at Houston''s restaurant (modified, of course, to suit my tastes) For a beef version check out my recipe #261711.', 'Dinner', NULL, 20, 50, 8, 322.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9351', 'Sour Cream Banana Bread', 'Make and share this Sour Cream Banana Bread recipe from Food.com.', 'Snack', NULL, 15, 60, 12, 271.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28768', 'Absolute Best Ever Lasagna', 'My family''s favorite. This is a very meaty lasagna. We prefer it with cottage cheese, but you can easily substitute ricotta.', 'Dinner', NULL, 90, 60, 12, 540.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('1209', 'Spinach Artichoke Dip', 'Make and share this Spinach Artichoke Dip recipe from Food.com.', 'Dinner', NULL, 30, NULL, 15, 150.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73166', 'The Best Chili You Will Ever Taste', 'This is the best chili recipe I have ever tried. I''m not sure where the recipe originated, but it is amazing! Sometimes, I don''t bother adding all four cans of the kidney beans and it still turns out wonderful. Once anyone tastes this chili, they will be begging for the recipe!! Enjoy!', 'Lunch', ARRAY['low_cholesterol']::text[], 30, 120, 4, 705.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('37336', 'Melt-In-Your-Mouth Chicken Breasts', 'Make and share this Melt-In-Your-Mouth Chicken Breasts recipe from Food.com.', 'Dinner', NULL, 10, 45, 4, 250.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('150384', 'Panera Broccoli Cheese Soup', 'Make and share this Panera Broccoli Cheese Soup recipe from Food.com.', 'Dinner', NULL, 30, 40, 4, 702.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('60350', 'Easy Stove-Top Macaroni & Cheese', 'Make and share this Easy Stove-Top Macaroni & Cheese recipe from Food.com.', 'Dinner', NULL, 15, 15, 6, 590.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('43509', 'Crumb Topped Banana Muffins', 'Make and share this Crumb Topped Banana Muffins recipe from Food.com.', 'Breakfast', NULL, 15, 20, 12, 220.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('38748', 'Chinese Fried Rice', 'This Chinese fried rice has the flavor those other recipes are missing. Tastes like takeout. I want to dedicate this dish to Bergy, whose recipe "AM & B''s Indonesian Mehoon" has inspired this dish. Make sure you season your rice with salt before it cooks. Add some butter to the cooking water, as well. Other seasonings should be added before you cook, as well, so it has time to get inside the rice. If you like sesame flavor, add 1 tsp. of it after you add the green onions, but do not use it as a cooking oil because it easily burns.', 'Dinner', ARRAY['low_cholesterol']::text[], 10, 18, 4, 497.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27520', 'Poverty Meal', 'When I was a child, my family used to eat this at least once a week due to the fact that it is inexpensive and a little goes a long way. We also added fresh herbs or sometimes whole kernel corn. Its even better the next day and it freezes well.', 'Dinner', ARRAY['low_cholesterol']::text[], 10, 15, 4, 578.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31750', 'The Best Ever Waffles', 'Every Sunday morning, my mom and I used to get up early and make these wonderful waffles. This recipe has been in the family for years, and I will definitly be passing it down to my children.', 'Breakfast', NULL, 15, 5, 4, 323.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('92095', 'Authentic Italian Meatballs', 'Meatball recipes are often challenged by chefs who claim, "Mine are the best!" Even though my meatballs ARE the best, I will make no such claim. Try them for yourself! This meatball recipe was given to me by my father who got it from a little old lady from Italy that he knew. It''s amazing that she gave up her recipe to him, but I sure am glad she did!', 'Dinner', NULL, 20, 180, 10, 138.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8701', 'Should Be Illegal Oven BBQ Ribs', 'After not being able to find restaurant ribs that satified my hot sweet appetite, I carefully attempted various combinations of flavors until I found one that I and my family thought was perfect. Hope you enjoy them too.', 'Dinner', NULL, 10, 60, 4, 1245.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('132263', '5 Minute Vegan Pancakes', 'A cinch to make and tastes wonderful, if you like the taste of Baking Powder. My skeptical parents couldn''t believe these were vegan. Try with white and whole wheat flour. Excellent with some maple syrup. I''m pretty sure I stumbled across this one on vegweb.com', 'Breakfast', ARRAY['egg_free','low_cholesterol','vegan']::text[], 5, 10, 2, 444.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('53914', 'MaMa''s Supper Club Tilapia Parmesan', 'Make and share this MaMa''s Supper Club Tilapia Parmesan recipe from Food.com.', 'Dinner', NULL, 15, 20, 4, 376.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('78814', 'Kittencal''s Chicken Crescent Roll Casserole', 'This will also work great with turkey; if you do not have chicken breasts, then use any leftover cooked chicken. If desired you can fill the crescents just with the filling mixture and omit the soup, just brush with butter before baking. They are wonderful just stuffed with the filling! A few members have experienced a soggy bottom, so you might want to consider just drizzling half (or even a little less) of the soup mixture on top and a little around the sides of the crescents, then save the rest of the soup mixture for another time (this will help prevent a soggy bottom). You may use the jumbo crescent rolls and stuff with more chicken mixture :)', 'Dinner', NULL, 25, 30, 8, 518.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('19135', 'Chicken Parmesan', 'Make and share this Chicken Parmesan recipe from Food.com.', 'Dinner', NULL, 8, 15, 4, 454.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50719', 'The Sweetest Blueberry Muffins', 'Make and share this The Sweetest Blueberry Muffins recipe from Food.com.', 'Snack', NULL, 15, 15, 4, 256.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('76930', 'Funky Chicken With Sesame Noodles', 'This has to be one of the most amazing chicken dishes I have ever made or eaten. It''s really scary to watch people just attack this dish and practically inhale it in one breath. Brush up on your Heimlich Maneuver, people do get a little over-enthusiastic over this. Prep time includes marinating time.', 'Dinner', ARRAY['kosher']::text[], 180, 30, 4, 900.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('90674', 'Denny''s-Style French Toast', 'I do not remember where I got this recipe, but my husband says it tastes just as good as what he had at Denny''s. I am just amazed at all of the great reviews on this recipe!! My family loves it, so I thought I would share it here and I''m so glad I did because it seems you all love it just as much!!! Thanks to all of you who have tried it!', 'Breakfast', NULL, 10, 12, 4, 264.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('44321', 'Sesame Chicken', 'This recipe really satisfies my craving for Chinese food. I serve it over rice with a side of steamed vegetables. The sauce makes just enough to glaze the chicken. I usually double or even triple the sauce recipe to have enough to pour over our rice and veggies. It is a nice low-fat alternative to the restaurant-style Sesame Chicken.', 'Dinner', NULL, 5, 20, 6, 255.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('35450', 'Best Grape Salad', 'I got this recipe from a coworker at the salon I work at. I didn''t think it would be so wonderful and addictive! It''s very creamy and sweet, and a great mix of flavors. It will be the best thing you ever use grapes for (except maybe wine!).', 'Dinner', ARRAY['low_protein']::text[], 10, NULL, 15, 298.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50847', 'Roasted Asparagus', 'I got this recipe from "Simple Vegetarian Pleasures" by Jeanne Lemlin. I LOVE asparagus and am always on the lookout for new ways to make it. This is such an easy and elegant way to serve it. The asparagus gets a slightly nutty flavor after roasting, which makes it even more yummy.', 'Dinner', ARRAY['low_cholesterol','low_protein','vegan']::text[], 10, 15, 4, 69.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('79116', 'Buffalo Chicken Dip', 'I got this Buffalo chicken dip recipe from a respiratory therapist at the hospital where I work. He brought it to a party and everyone asked for the recipe. I appreciate all the reviews that have been written about this recipe since I posted it so long ago. I see more and more that people are making it with freshly cooked chicken - great idea. I also like the idea of using rotisserie chicken. The original recipe used canned chicken for convenience, but I agree with all of you that the fresher meat tastes better. Barb P.S. Thank you to everyone who has reviewed this recipe. I love it, too, and it makes me feel so good that so many of you have enjoyed it. Thanks again.', 'Dinner', NULL, 5, 30, 4, 3343.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('15242', 'Cracker Barrel''s Hashbrowns Casserole - Copycat', 'I don''t know if this is Cracker Barrel''s actual hash browns casserole recipe, but it is close. This recipe can feed a large crowd and is good for a brunch.', 'Breakfast', NULL, 15, 45, 4, 488.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32844', 'Pasta with Sausage, Tomatoes, and Cream', 'Delicious and satisfying... I don''t remember where this recipe comes from, but it''s a pleaser! Easily doubled. Also, works well with gf pasta and sausage', 'Dinner', NULL, 10, 15, 2, 1124.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('20755', 'Chicken Noodle Soup', 'Make and share this Chicken Noodle Soup recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol']::text[], 15, 25, 6, 304.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('200296', 'Kittencal''s Easy and Delicious Ranch-Parmesan Chicken', 'There are plenty versions of this recipe, this is mine and can be on your table in less that an hour, my family loves this chicken! --- the ranch dressing is the secret it holds in all the flavor and moistness while the chicken is baking and also adds flavor, I find that Hidden Valley Ranch dressing works the best but Kraft or any other brand will do, I sometimes top the baked chicken with mozzarella cheese or cheddar, but that is optional --- although I have only made this using breasts I imagine that chicken pieces could be used although you would have to increase the breadcrumb mixture slightly, you can marinate the chicken breast in the ranch dressing for a few hours in the fridge, although you will need more than 1 cup of dressing if you are marinating .... *NOTE* to avoid a soggy bottom crust, place the chicken breasts onto a flat rack on top the baking sheet, also it is important not to bake the chicken in a small baking pan, if you do not have a rack bake on a large baking sheet so any juices in the pan will spread out and not accumulate under the chicken causing a soggy bottom --------------- FOR LOW-FAT OPTION: use low-fat Ranch dressing and omit the melted butter on top or use a healthy butter alternative such as Smart Balance 50/50 blend.', 'Dinner', NULL, 10, 30, 6, 486.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28199', 'Baked Salmon', 'Make and share this Baked Salmon recipe from Food.com.', 'Dinner', ARRAY['high_protein']::text[], 15, 45, 2, 582.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('21706', 'Crock Pot Lasagna', 'Make and share this Crock Pot Lasagna recipe from Food.com.', 'Dinner', NULL, 15, 240, 4, 1098.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('40022', 'Crock Pot Taco Soup', 'Make and share this Crock Pot Taco Soup recipe from Food.com.', 'Dinner', NULL, 10, 120, 4, 339.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('105865', 'Award Winning Chili', 'My husband and I created this recipe together. He won a chili cook-off with this recipe at work. We always use venison, but you can use ground beef or turkey.', 'Dinner', ARRAY['low_cholesterol']::text[], 15, 120, 6, 300.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9326', 'Chocolate Chip Muffins', 'Make and share this Chocolate Chip Muffins recipe from Food.com.', 'Snack', NULL, 5, 20, 4, 387.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('33921', 'Really Good Vegetarian Meatloaf (Really!)', 'High in fiber and protein, low in fat, easy and really yummy! I''ve always thought meatloaf looks and smells so delicious and savory so, as a vegetarian, I decided to make a no-meat version! This is basically our favorite meatloaf recipe but with cooked mashed lentils instead of ground meat. The result is a very tasty dinner!', 'Dinner', NULL, 10, 75, 4, 264.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25587', 'Chicken Tikka Masala', 'This recipe appeared in the Chicago Tribune on 4/17/02. The dish has turned out to be extremely popular but be advised that it''s very spicy when the recipe proportions are adhered to. Unless you want a super-hot dish, I recommend cutting back on the ground red pepper in the marinade. It may also be a good idea to remove the seeds and veins from the jalapeño chile in the sauce.', 'Dinner', NULL, 90, 30, 4, 499.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('34382', 'Mashed Red Potatoes With Garlic and Parmesan', 'Make and share this Mashed Red Potatoes With Garlic and Parmesan recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 5, 25, 6, 199.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('133821', 'Roasted Green Beans', 'A great alternative to fast-food French fries, my family and friends love these as a snack or hors d''oeuvre. No matter how many I make, it''s never enough!', 'Snack', ARRAY['dairy_free','vegan']::text[], 5, 20, 4, 100.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63071', 'The Best Belgian Waffles', 'These waffles are super crisp on the outside, light as a feather inside and so scrumptious! Avoid removing them from the waffle iron too soon; they should be a golden brown. Enjoy!', 'Breakfast', NULL, 15, 25, 4, 636.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13630', 'Tuna Casserole', 'Make and share this Tuna Casserole recipe from Food.com.', 'Dinner', NULL, 15, 30, 4, 526.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27210', 'Best Grilled Pork Chops', 'This is a simple recipe I have adapted from Company''s Coming.It is simple to throw together the marinade in the morning before going off to work and coming home to an easy dinner to prepare at night.', 'Dinner', NULL, 120, 15, 6, 597.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9836', 'Slow-Cooker Cheesy Chicken', 'Almost too easy, the chicken cooks in a creamy, cheesy sauce that is delicious over noodles. This freezes well, too', 'Dinner', NULL, 10, 480, 8, 241.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17123', 'Zucchini Bread', 'This moist bread has been in the family for as long as I can remember. I like it because it''s easily thrown together in one bowl and very moist -- perfect for a snack at work or school!', 'Snack', NULL, 10, 60, 16, 347.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('106251', 'Roasted Cauliflower & 16 Roasted Cloves of Garlic', 'I find it totally amazing, that children and men ALL LOVE THIS RECIPE! As for the Female of our species we just love this for the flavor and the health benefits it brings our families. Roasted brings out a wonderful sweetness in this dish. The Garlic is roasted to a tan color is creamy good. You can just pop them in your mouth. Or you can spread them on your florets or fresh bread. Just be sure to scoop up some of the rosemary, olive oil and black pepper that may have escaped to the bottom of the dish. For Halloween check out Recipe #396674 version of my recipe.', 'Dinner', ARRAY['low_cholesterol','low_protein','vegan']::text[], 10, 30, 6, 126.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('43023', 'Creamy Garlic Penne Pasta', 'This is a delicious, super quick side or main dish. I got it from the back of a pasta box and it is yummy!', 'Dinner', NULL, 10, 5, 4, 363.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29767', 'Loaded Baked Potato Salad', 'This is a dish my family and friends ask me to bring to potluck/cook-outs! NEVER any left to bring home! (my sister brings a bowl to take what MIGHT be left) Taste great hot out of the oven or "room temperature"', 'Dinner', NULL, 15, 15, 6, 664.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63786', 'Steak (Or Chicken) Fajitas', 'These are so quick and tasty. You can use strips of boneless chicken breast instead of the beef. Feel free to double the marinade. The flavor is so great for such a short marination time. You can can do them up ahead of time and have the meat sit longer if you wish.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, 10, 8, 137.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('83625', 'Perfectly Sweet Cornbread', 'Make and share this Perfectly Sweet Cornbread recipe from Food.com.', 'Snack', NULL, 10, 35, 12, 226.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('66596', 'Kittencal''s Famous Greek Salad', 'Be prepared for the best Greek salad on the planet! --- plan ahead the dressing needs at least 2 or more hours to blend the flavors, I sometimes add in 1/4 cup Parmesan cheese to the dressing for a more cheesy dressing, all amounts may be adjusted to taste ---- to marinade the salad allow to sit at room temperature before serving, see bottom of instructions --- you will find this and many more of my recipes posted here http://kittencalskitchen.com/2009/04/13/kittens-famous-greek-salad/ ---also see my recipe #359292', 'Dinner', ARRAY['low_protein']::text[], 10, NULL, 4, 489.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('128956', 'Ww 0 Point Weight Watchers Cabbage Soup', 'Make and share this Ww 0 Point Weight Watchers Cabbage Soup recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 7, 25, 4, 22.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('103215', 'Panda Express Orange Chicken', 'A copycat recipe from Panda Express. This chicken is tangy and flavorful. Give it a try! I''m sure you and your family will enjoy it.', 'Dinner', NULL, 15, 30, 6, 383.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('54752', 'Turkey Meatloaf', 'This recipe came from a package of ground turkey. It is by far the best turkey meatloaf I have ever tasted.', 'Dinner', NULL, 10, 55, 5, 318.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('38065', 'Easy Breakfast Casserole', 'Make and share this Easy Breakfast Casserole recipe from Food.com.', 'Breakfast', NULL, 20, 45, 6, 199.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73922', 'Best Beef Stroganoff', 'My mom made this beef stroganoff weekly when I was younger. I don''t have the same metabolism I did then, but it''s still the best $%#&* beef stroganoff I have ever had. I just want to thank everyone for all the wonderful reviews and ideas, I too now add a splash of Worcestershire sauce! Thanks again!', 'Dinner', NULL, 10, 25, 4, 582.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('71732', 'Pumpkin Spice Bread', 'Hooray for fall! We love this pumpkin bread recipe--especially when the slices are slathered with a generous spread of cream cheese. Makes two loaves, so freeze the other one, or heck--eat it. This bread goes fast.', 'Breakfast', NULL, 20, 70, 24, 260.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('95569', 'Easy and Tasty Barbecue Chicken Sandwiches in the Crock Pot', 'This is almost too easy to be called a recipe, but I had to share it anyway. I came up with it one night when I wanted a nice meal but wasn''t feeling too motivated. I love Crock-Pot cooking!', 'Lunch', NULL, 10, 480, 4, 471.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('46922', 'Awesome Baked Ham', 'I love this recipe because it is so easy and it calls for hardly any ingredients, and I always have these ingredients in my pantry. This recipe came from a good friend''s mother, who was always asked to bake the ham for get-togethers and family dinners. Now I get those requests. People who ordinarily aren''t too fond of ham rave over this one. After I carve, I spoon a little of the glaze over the meat in the platter - yummmm!', 'Dinner', ARRAY['high_protein']::text[], 20, 240, 4, 1018.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('48760', 'Szechuan Noodles With Spicy Beef Sauce', 'Tired of using ground beef the same old way? Try this spicy dish! Feel free to double the sauce if you like it really saucy! Update: the hoisin sauce is quite sweet, so you might start off with just a little and work your way up!', 'Dinner', NULL, 10, 20, 4, 617.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('107997', '4 Minute Spicy Garlic Shrimp', 'Recipe is originally from the Food Network courtesy of Rachael Ray, but I tweaked it to fit our tastes. Very quick & easy shrimp recipe that''s done on the stovetop. If your tastes desire spicy & garlic, then this recipe is just for you.', 'Dinner', NULL, 10, 7, 2, 152.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('22176', 'Classic Baked Ziti', 'Make and share this Classic Baked Ziti recipe from Food.com.', 'Dinner', NULL, 20, 30, 4, 463.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('1356', 'Ground Beef Stuffed Green Bell Peppers With Cheese', 'We had these not too long ago and we both decided that they needed a little more seasoning. We put a little hot pepper sauce on them and they were much better. I would probably include 2 teaspoons in the meat mix the next time that I make them.', 'Dinner', NULL, 15, 35, 3, 1389.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('3470', 'Crock Pot Chicken, Gravy and Stuffing', 'Make and share this Crock Pot Chicken, Gravy and Stuffing recipe from Food.com.', 'Dinner', NULL, 20, 360, 4, 594.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('40339', 'Kung Pao Chicken', 'This is a recipe that I''ve used for years. It''s so quick and easy for a week night meal and has such wonderful flavor.', 'Dinner', ARRAY['dairy_free']::text[], 10, 12, 4, 703.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('145038', 'Caramelized Baked Chicken Legs/Wings', 'Delicious! Yummy caramelized legs, kids love these! So quick and easy and no marinating required. Just prepare the sauce, pour over the chicken and pop in the oven! I actually like this with wings better ;-) VERY IMPORTANT TO LEAVE IT IN THE OVEN UNTIL IT HAS CARAMELIZED TO AVOID DISAPPOINTMENT. Thank you to everyone for their positive reviews! Try adding Sambal Oelek as Chef #27416 has suggested in his review. What a great idea ;-)', 'Lunch', NULL, 5, 90, 4, 535.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('164706', 'General Tso''s Chicken', 'Wow! This is even better than the BEST I have had in my fave Chinese restaurant. To make the meal go quickly prep everything the day or night before and store in the fridge. To make this easy to understand I have changed the terms to cornstarch slurry and sauce. The first is used to coat the chicken for frying, the second to coat the fried chicken. HTH I use a grater with small holes for the garlic or you can just zip all the sauce ingredients up in a blender or food processor. Enjoy! NOTE: I really appreciate all the reviews this recipe has received. I know that when making this it seems strange and like it just is not going to work. Trust that it will work even though the method and the way that the cornstarch slurry acts before cooking are so different. I was the same way the first time I made this. It does result in crispy pieces of chicken that are so like you find in a restaurant. The heat here is pretty much a balanced amount because some like it hot and some do not. Taste and add more heat as desired. Thanks again for trying this recipe. I hope that you have the great results that I have had time and again. Here is info, pics and heat levels of different chilies. http://www.foodsubs.com/Chilefre.html', 'Dinner', NULL, 20, 20, 8, 410.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('16531', 'Crock Pot Garlic Brown Sugar Chicken', 'Make and share this Crock Pot Garlic Brown Sugar Chicken recipe from Food.com.', 'Dinner', ARRAY['kosher']::text[], 10, 480, 6, 486.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('66648', 'Steak Marinade', 'This is a variation of a recipe I got from a book that came with my BBQ. I used strip loin steaks and it was fantastic. You don''t need any steak sauce to go with it. The taste from the marinade is delicious!', 'Dinner', NULL, 3, 30, 3, 55.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8782', 'Roast "Sticky" Chicken', 'Beautiful and delicious, this incredibly moist roasted Chicken puts Kenny Roger''s Roasters, Boston Market, and other rotisserie style chickens to shame! Please don''t let the word "overnight" mislead you; for actual hands-on preparation, this is a Quick-N-Easy way to impress Sunday dinner guests!', 'Dinner', NULL, 15, 310, 6, 238.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('47195', 'Uncle Bill''s Microwave Potato Chips', 'These potato chips are very easy to make in the microwave. Also, they are healthier for you as they are not cooked in any oils. This method has intrigued so many people that have tasted them and then made them for themselves. The younger people just love them.', 'Lunch', ARRAY['low_cholesterol','low_protein']::text[], 10, 25, 4, 284.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('108364', 'Southern Fried Chicken', 'Thanks Paula Deen (FoodTV) for the best fried chicken I have ever made! It has a nice, savory flavor and a coating that has just the right amount of crispiness. It was a good thing I had an extra cut-up chicken in the refrigerator because my family was begging for it again the next day. Although it calls for what seems like a lot of hot pepper sauce, it isn''t any spicier than Jack-In-the Box''s Spicy Crispy Chicken--you can take it!! FYI I made this using 10 pounds of wings--enough of the hot sauce/egg mixture to cover, but you will need to double flour mixture if you want to do this much. I''m not saying it tastes like KFC--only that you won''t be doing business with them anymore.', 'Dinner', NULL, 10, 30, 4, 797.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('221743', 'Kittencal''s Best Blasted Rapid-Roast Whole Chicken', 'Blasting with high heat will shrink the skin and seal in all the juices to create an extremely moist and tender chicken with lovely crispy skin - and it will be on your table in about an hour. This method will also work with a larger chicken, but cooking time will need to be increased. You may adjust all seasonings to taste. If you are not a lemon lover, then you may omit the lemon juice. You really can use whatever seasoning that you like for this. I like to use seasoned salt. Make certain to use a fork and poke holes all over in the lemon, then place it into the cavity of the chicken. Roast roast as stated. The chicken with be moist and have a faint lemon flavor. For more of my tried-and-true recipes, visit my food blog at www.kittencalskitchen.com.', 'Dinner', NULL, 20, 60, 4, 841.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('22747', 'Classic Potato Salad', 'Make and share this Classic Potato Salad recipe from Food.com.', 'Snack', NULL, 15, NULL, 8, 237.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('56103', 'Roasted Brussels Sprouts!', 'Make and share this Roasted Brussels Sprouts! recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, 40, 6, 101.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('116185', 'Sweet Cornbread', 'This recipe came from stephskitchen.com and it''s wonderful. I bake it at least once a month! It has just the right amount of sweetness and it''s easy to throw to together.', 'Snack', NULL, 10, 35, 12, 231.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27195', 'BLT Pasta Salad', 'This has been in my recipe box forever so I''m not sure where it came from. This is light so a good pick for those hot days when you just don''t feel like eating much.', 'Dinner', NULL, 15, 15, 16, 72.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('34499', 'Awesome Baked Pork Chops', 'These chops remain moist and tender, and the sauce is to die for! You probably have all the ingredients in your kitchen to make this! Serve these chops over rice!', 'Dinner', NULL, 30, 120, 6, 671.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31717', 'Olive Garden Pasta E Fagioli Soup in a Crock Pot (Copycat)', 'Make and share this Olive Garden Pasta E Fagioli Soup in a Crock Pot (Copycat) recipe from Food.com.', 'Dinner', NULL, 15, 420, 4, 377.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('4957', 'Crock Pot Chicken Taco Meat', 'I adopted this recipe from the Recipezaar account, and I''m so glad that I did. This has become a regular addition to my OAMC and I have created a public cookbook filled with recipe ideas using this recipe. This is a three-ingredient wonder that''s easy (5 minutes of your time), delicious and versatile.', 'Dinner', NULL, NULL, 360, 8, 71.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8739', 'Wholly Guacamole', 'This is a true Tex-Mex recipe concocted by a distant relative stationed at the Alamo nearly 160 years ago. According to family lore, he was out looking for some good tomatoes when Santa Ana attacked the now famous Texas landmark. Luckily, our relative kept this recipe in the lining of his coon-skin cap, and both he and his avocado dip lived to fight another day. Years later, near death from an infected Chihuahua bite, he looked deep into his son''s eyes, and with his last breath, uttered the familiar phrase "Remember... the...guacamole."', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 20, NULL, 4, 500.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('53878', 'Amazing Puff Balls', 'These are wonderful! My cousin brought them as an appetizer for Thanksgiving dinner one year, and I got the recipe. I make them for work parties, and even quick snacks at home. You can always make more or less by using more or less cream cheese and crescent rolls! Trust me, these are excellent!', 'Breakfast', NULL, 20, 11, 48, 76.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('87085', 'Southwestern Baked Spaghetti', 'This is an easy, yet very tasty spaghetti casserole, which reminds me of the spaghetti they used to serve us in elementary school. I loved their spaghetti! I normally only brought my lunch, but not on spaghetti day!', 'Dinner', NULL, 30, 30, 6, 434.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('40497', 'Oven Crisp Chicken Wings', 'This is a very tasty way to make wings. You can dip them in your favorite sauce when baked or they are yummy as-is. Recipe from CD Kitchen on the Internet.', 'Dinner', ARRAY['high_protein']::text[], 20, 45, 4, 395.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('111514', 'Baked Chicken', 'This chicken recipe is so easy, I hesitated in posting it. But I couldn''t find it posted here, and it''s so good, I thought I''d share it. It''s my favorite way to bake chicken because it''s moist and tender every time and the flavor is delicious!', 'Dinner', NULL, 5, 50, 4, 351.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29598', 'Amazing Chicken Marinade', 'This recipe came from Allrecipes (Ruth Crickmer). My whole family loved it even though it cooked too fast. The original recipe said ''high heat'' on the grill, which my husband did. It ended up cooking 8 minutes total, charred but not burnt tasting, and very juicy and flavorful. We''ll turn down the heat next time for texture, but this is a keeper in our home!', 'Dinner', NULL, 15, 20, 6, 337.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25768', 'Potato Salad', 'I make this all summer long. We have to have this anytime we grill or BBQ which is often. Never, never any left-over.', 'Dinner', NULL, 30, 40, 8, 216.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52488', 'Mean Guy''s General Tso''s Chicken', 'This is an adoptee. I have made it many many times and want to be able to help people out when they make it! One of the best I''ve ever had. Takes some time, but oh so worth it. Good eats ;-)', 'Dinner', NULL, 20, 20, 4, 414.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('19424', 'Banana-Chocolate Chip Muffins', 'WOW! Get this...a very low-fat muffin recipe that actually tastes great!! After failing at many attempts to create a really tasty, low-fat muffin, I came across this recipe, and it is really good...great for dieters!', 'Snack', NULL, 15, 20, 12, 167.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('35805', 'Easy Peezy Pizza Dough (Bread Machine Pizza Dough)', 'This is a really easy way to make a good "yeasty" pizza dough! As well as using this recipe for when I''m making pizza, I also use it for when I''m making a focaccia or a calzone. (The preparation time I have given includes the time it takes to make the dough in the machine and the time it takes for the pizza dough to proof - after removing it from the bread machine, 30 minutes.)', 'Lunch', ARRAY['low_cholesterol','vegan']::text[], 180, 15, 4, 1727.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('49387', 'Oven Fried Eggplant (Aubergine)', 'This recipe appeared in "Cooking Light" magazine. This is a non-traditional way to prepare eggplant, but it really cuts the calories.', 'Snack', NULL, 10, 25, 4, 122.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11149', 'Chili Con Carne With Beans', 'This is my father-in-laws recipe for chili. I love to make it on a cold winter night. Sometimes I serve it with Corn Chips in the bottom of the bowl, topped with the chili and then top the chili with grated cheddar cheese', 'Dinner', ARRAY['low_cholesterol']::text[], 20, 120, 4, 628.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('20616', 'Rosie''s Traditional Irish Soda Bread', 'This Irish soda bread recipe was passed on to me by a dear friend of my mother''s who was born and raised in Ireland. It''s the best Irish soda bread I have ever had. It is much higher, lighter and softer than most other recipes I have seen. It has an excellent flavor and texture, as well.', 'Snack', NULL, 20, 50, 16, 211.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('83524', 'Frizzled Cabbage', 'Raise the lowly cabbage to something extraordinary! This technique of sautéing brings out a wonderful sweetness you never knew existed in cabbage. You can add different spices to this recipe: curry, caraway seeds, or hot pepper sauce are just suggestions. But try it plain first! Adapted from The Low-Carb Cookbook by Fran McCullough', 'Dinner', ARRAY['low_protein']::text[], 5, 20, 2, 130.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('155186', 'Fantastic Taco Casserole', 'I originally found this taco casserole recipe in a Taste of Home magazine. Since then, I have made this recipe at least 50 times. I love it because the ingredients list isn''t complicated and, based on the layers, I can readily remember all ingredients when I am at the store without my recipe card. I have served this for myself and had wonderful leftovers or many times I have made it for company with a nice green salad to accompany it. I hope you enjoy it as much as I do.', 'Lunch', NULL, 20, 10, 4, 349.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('87075', 'The Blue Mill Tavern Loosemeat Sandwich', 'I''ve chosen to submit this recipe because the recipes found on this website for loosemeats, and on other websites, are not the original recipe. The loosemeat was created in 1924 at Ye Old Tavern-now Gus'' Family Restaurant on 14th and Jackson St. in Sioux City, Iowa. Nowadays you will find the original sandwich served at Bob''s Drive Inn on Hwy 75, LeMars, Iowa just a mile or so out of Sioux City, at The Tastee Inn and Out, on Gordon Drive and at Miles Inn on Leech Ave. among others. If you see a recipe for loosemeats that contains tomato juice-run! A loosemeat is a sloppy joe without the slop-so stay away from anything tomato-ey please! These little sandwiches are great for football parties, slumber parties, with a cold beer on a sunny summer day, or just anytime you want a real taste of Americana cooking that takes just a few minutes with very little cleanup. These are typical Iowa tavern fare. I loved these sandwiches so much when I was a kid and one day I ran into my Grandma''s tavern and asked for my usual "tavern". They always came served with a thin sheet of restaurant paper under them. I was so eager I ate my sandwich half way gone before I realized I was eating the paper too:-) After cooking these in the kitchen they were transferred to a portable steamer. This is the original recipe for the little dudes that were served in the Midwest. I cannot account for changes or differences in flavor for other regions of the country, east or west. I learned to make my Grandma''s version when I came to spend summers with her in Sioux City between 1958-65. She''s the reason I''ve become a diehard foodie, a "from scratch" cook. My Grandma was a fearless woman who wasn''t afraid to tread in unfamiliar waters. In so many ways food brings people together. I had no idea these little sandwiches would be so loved and bring such happiness to people. I''ve been so touched by the messages I''ve received from folks who''ve tried this recipe and then shared their memories w/me! Thanks!! And thank you Recipezaar for creating a place for us to come together and share with each other!', 'Lunch', NULL, 10, 20, 4, 313.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14061', 'Italian Wedding Soup', 'Make and share this Italian Wedding Soup recipe from Food.com.', 'Lunch', ARRAY['low_cholesterol']::text[], 5, 20, 4, 295.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('80536', 'Mahogany Beef Stew', 'You will not believe the deeply satisfying flavour of this stew. This is our favourite wintry stew dish - comfort food to the max. The cooking time is more or less accurate, but it really depends on the cut of meat used - not everyone used chuck, and then, not all chuck is the same! You really have to poke and prod and taste to get it to where you want it...but that''s what cooking is all about, isn''t it? ;-)', 'Dinner', NULL, 15, 100, 6, 656.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('5194', 'Scalloped Potatoes and Ham', 'Make and share this Scalloped Potatoes and Ham recipe from Food.com.', 'Dinner', NULL, 20, 90, 8, 378.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('2642', 'Taco Seasoning Mix', 'Make and share this Taco Seasoning Mix recipe from Food.com.', 'Dinner', NULL, 5, NULL, 4, 29.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('21761', 'Brussels Sprouts in Garlic Butter', 'This is a recipe from Joy of Cooking... totally changed my mind about Brussels Sprouts! It''s imperative that you use fresh sprouts, the texture would be way off with the frozen ones.', 'Dinner', NULL, 10, 15, 4, 229.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50144', 'Crock-Pot Potato Chowder', 'Make and share this Crock-Pot Potato Chowder recipe from Food.com.', 'Dinner', ARRAY['low_protein']::text[], 30, 480, 12, 270.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('26257', 'So It''s Bekah''s Pulled Pork Now', 'I have adopted this recipe from Mean Chef. This is one of my favorite recipes. The pork is sweet, succulent and falling apart tender. Fabulous served alone, on rolls, in tortillas.', 'Dinner', ARRAY['dairy_free']::text[], 1440, 480, 4, 121.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('15580', 'Grilled Moroccan Chicken', 'Make and share this Grilled Moroccan Chicken recipe from Food.com.', 'Dinner', ARRAY['high_protein','kosher']::text[], 35, 7, 4, 387.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('37413', 'Beef Patties in Onion Gravy', 'Good "stand-by" meat-and-potatoes meal. This goes over big with husband and kids. Easy, quick, and tasty comfort food.', 'Dinner', NULL, 10, 25, 4, 359.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('66241', 'Buttermilk Pancakes', 'Make and share this Buttermilk Pancakes recipe from Food.com.', 'Breakfast', NULL, 20, 20, 4, 628.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('110506', 'The Best Apple Pie Muffins Ever', 'I got this recipe from a friend. I make these often and take them to many potlucks, office parties, the cottage, picnics, children''s lunch and the list goes on. Recipe from the cookbook "Just The Best."', 'Breakfast', NULL, 20, 25, 18, 276.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('121490', 'Strawberries & Cream Bread (Strawberry or Blueberry)', 'A wonderful recipe using fresh strawberries from Netherhill Strawberry Farm in Australia. This recipe also yields a tried and true (and reviewed) great Blueberry & Cream Bread.', 'Breakfast', NULL, 15, 60, 10, 283.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('18410', 'Crepes', 'Make and share this Crepes recipe from Food.com.', 'Breakfast', NULL, 5, 10, 4, 124.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('43072', 'Oatmeal Cottage Cheese Pancakes', 'These are wonderful and are almost too healthy to be true. Lots of calcium, protein, fiber, etc. I usually eat them without any topping and just keep popping them in my mouth! Yum. But a good jam will do them nicely as well.', 'Breakfast', ARRAY['low_cholesterol']::text[], 5, 10, 1, 337.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('105670', 'Bacon-Wrapped Jalapeno Poppers', 'Make and share this Bacon-Wrapped Jalapeno Poppers recipe from Food.com.', 'Snack', NULL, 10, 10, 50, 130.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('108522', 'Grilled Cheese, Diner Style', 'The mayonnaise in place of the butter makes the bread toast evenly and gives a similar yet different crispiness. This is how they made it on the grill at a diner I used to frequent, the kind where the grill is behind the counter and you can watch. CAUTION: using low fat or no fat mayo or even miracle whip will change the outcome of the final product, the first 2 contain water and the second sugar that does not act in the same manor as an oil or fat sub.', 'Snack', NULL, 2, 6, 1, 180.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('129345', 'Chicken Scaloppine With Lemon Glaze (Low Fat and Delicious!)', 'This is a wonderful lower-fat restaurant-quality dish that is easy to make, I also like to add in a few tablespoons of capers and cook with the lemon glaze if you are a lover of capers then add them in as it really adds to the flavour of this dish --- this lemon sauce is not a heavy creamy sauce which is what makes this dish lower in fat, it is more like a glaze that soaks into the chicken, and I would strongly suggest to double or even triple the glaze I most always do, and please be certain to use only dry breadcrumbs as fresh will not stick to the chicken as well --- this is *very* good!', 'Breakfast', NULL, 25, 10, 4, 301.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('82486', 'Very Moist Banana Nut Bread', 'This is a very easy, "no mixer" bread to make. It is very moist and a little heavy type banana bread. The really important thing to remember is using all black bananas to get my same results. I always use 5 medium sized bananas and this recipe makes 2 loaves. Also, I''ve never used buttermilk, but sour milk instead..a little vinegar added to regular milk. I''ve used this recipe since 1972 and last year made 32 loaves to give away for Christmas! It''s truly a wonderful bread. I only bake it until the toothpick comes out almost clean, as we like it really moist. If you over bake it, or wait til the toothpick is completely clean, the bread will be a lot dryer. I realize some like it this way, so thats why I''ve given this hint. My family and friends would rather have it a little under done than over. It''s so good with coffee, butter/jelly or I like mine just plain. I bake it in tin foil pans and it freezes wonderfully. I try to always have one or two in the freezer for company, or a little gift. This recipe came from a ladies club cookbook. The kind where everyone contributes recipes, they are made into a recipe book and sold to make money for charities. All the cooks are just plain "down home" country gals that produce miracles in the kitchen. It''s my favorite cookbook and I''ve almost worn it out and it can''t be replaced. I know there are many banana bread recipes here, so thanks for trying this recipe. I hope you enjoy it!', 'Breakfast', NULL, 5, 60, 24, 226.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('44888', 'Caramelized Chicken Wings', 'Make and share this Caramelized Chicken Wings recipe from Food.com.', 'Lunch', NULL, 15, 60, 4, 1103.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13285', 'Greek-Style Turkey Burgers', 'The best turkey burgers i have ever tried .... I freeze left-overs, and heat in the microwave later ...', 'Lunch', NULL, 5, 10, 4, 290.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30081', 'Ground Beef Gyros', 'This is a great summer meal and quick and easy to put together and tastes wonderful. Refreshing served with the cucumber sauce and is even low in fat. I think this came from Quick Cooking. It''s a favorite in our house.', 'Lunch', NULL, 10, 12, 4, 436.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('55768', 'Baja Black Beans, Corn and Rice', 'A south of the border blend of textures and flavors. serve hot as a main dish or a side dish with grilled meat or chicken.', 'Lunch', ARRAY['vegan']::text[], 20, 25, 6, 396.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('486641', 'Moist & Delicious Banana Nut Bread', 'I got this recipe when I was 12 and have used it for the past 33 years and haven''t found one better! My son used it when he was 12 at the California State Fair and won a first place ribbon with it. It is just simply delicious & moist. I either make a loaf or put it into muffin cups & make muffins for my kids to grab in the morning on their way to school. Using margarine makes the muffins come out in a better form, but the butter has a better flavor, so I usually use 1/2 of each to get the best of both worlds.', 'Snack', NULL, 20, 60, 18, 177.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('57130', 'Awesome Slow Cooker Pot Roast', 'I found this on the all recipes site. This is a very easy recipe for a delicious pot roast. It makes its own gravy. It''s designed especially for the working person who does not have time to cook all day, but it tastes like you did. You''ll want the cut to be between 5 and 6 pounds.', 'Breakfast', NULL, 10, 480, 12, 50.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('26516', 'Fish Tacos', 'We got the best fish tacos in a little fishing village in Mexico. I have tried to recreate them as best as possible', 'Lunch', NULL, 15, 15, 6, 258.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('20289', 'Melt in Your Mouth Banana Bread', 'I searched and searched for a banana bread recipe with the texture that I wanted and couldn''t find one. One day I decided to modify my Recipe #14187 to see if I could make up my own recipe. My family loved it and it was exactly what I was looking for so here it is. I hope you like it as much as we do.', 'Breakfast', NULL, 5, 60, 8, 583.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('78194', 'Taco Bell Quesadillas', 'I used to love these when I was younger, I could eat two in one sitting! I haven''t had fast food in a year or two, but these taste like I remember Taco Bell''s quesadillas tasting. I hope you enjoy it as much as I do.', 'Snack', NULL, 20, 5, 4, 365.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('18914', 'Incredibly Delicious Cheese Garlic Bread Spread', 'Easy, cheesy, savory spread to transform regular bread into a taste sensation! Goes awesome with pasta dishes or beside a fresh salad.', 'Snack', ARRAY['high_protein']::text[], 20, 10, 4, 928.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8603', 'Easy Banana Muffins', 'Make and share this Easy Banana Muffins recipe from Food.com.', 'Snack', NULL, 10, 20, 12, 170.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('49737', '(Panera Bread) Black Bean Soup', 'This is my own version of Panera Bread''s black bean soup. It tastes a lot like it, and I love it! Use vegetable stock to make it vegetarian.', 'Snack', ARRAY['low_cholesterol']::text[], 5, 20, 4, 241.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32618', 'Mama Iuliucci''s Famous Meat-A-Balls (Italian Meatballs)', 'Here it is, my mom''s FAMOUS Meatball recipe! This is THEE most requested of her for anything, anywhere! Whenever there is a shower, birthday, christening, etc., someone is asking for 150 to 200 of her famous meatballs. :) Of course, she always says yes! She is not one for "exact" measurements (a little of this, a dash of that), so I tried the best I could to adapt her recipe. Of course, these are best served with My Mama Iuliucci''s "Don''t Skip a Step" Spaghetti Sauce recipe #26947, but I have used jazzed-up jarred sauce and they are still great. However, meat-a-balls like these deserve a homemade sauce, in my humble opinion!', 'Snack', NULL, 10, 20, 4, 66.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8596', 'Olive Garden Fettuccine Alfredo', 'Make and share this Olive Garden Fettuccine Alfredo recipe from Food.com.', 'Lunch', NULL, NULL, 25, 6, 880.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('51721', 'Cucumber Salad', 'This is a REFRESHING, tangy Salad--low in fat. If you want it creamy and not so low in fat, just add 2 tablespoons mayonnaise. Be sure to slice the cucumbers and onions very very thin! Serve as salad or top open faced sandwiches with it!', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 5, NULL, 4, 31.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('35393', 'Berry-Smash Muffins (Strawberry Muffins)', 'These are very easy, fun for kids, and taste great! From The Rainbow Bakery children''s cookbook by Gold Medal.', 'Snack', NULL, 5, 18, 4, 172.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('486496', 'Bacon Lattice Tomato Muffins #RSC', '"Ready, Set, Cook! Contest Entry." Bacon lattice and cheese topped flaky biscuits filled with fresh chopped tomatoes and onions in a seasoned cream cheese and mayonnaise mixture. This recipe is not only eye appealing but also adds a lot of flavor to your taste buds!', 'Breakfast', NULL, 15, 45, 4, 664.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('24041', 'Chicken Enchiladas', 'Make and share this Chicken Enchiladas recipe from Food.com.', 'Lunch', NULL, 12, 20, 4, 614.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('98724', 'Simple Tomato Sandwich', 'I am only posting such a simple recipe because I actually somehow lived 29 years of life before my husband introduced me to the Tomato Sandwich. If you''ve only used tomatoes as an accessory in your sandwiches, and not as the Featured Ingredient, you are truly missing summer as it was meant to be tasted. Note: after many years, I have solidly converted to mayo for this sandwich, with fresh ground black pepper too. (Oct 2012)', 'Lunch', ARRAY['kosher','low_cholesterol','low_protein']::text[], 5, NULL, 1, 266.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('293243', 'Quick Cinnamon Rolls - No Yeast', 'These wonderful cinnamon rolls are on the table in an hour - no waiting for hours or overnight. They are simple and quick to put together.', 'Breakfast', NULL, 30, 20, 18, 165.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('110683', 'Basic Batter Waffles', 'This hearty waffle recipe comes from an issue of Parent''s Magazine. Ive made it every week for years and it comes out great every time. I double it and freeze the leftover waffles and reheat in toaster oven.', 'Breakfast', NULL, 10, 10, 6, 345.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('153642', 'Easy Moist Banana Blueberry Muffins', 'Make and share this Easy Moist Banana Blueberry Muffins recipe from Food.com.', 'Breakfast', NULL, 10, 20, 12, 193.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('152441', '24k Carrots', 'Carrots coated with a yummy butter, brown sugar and ginger sauce. I grew up eating these in Texas. Easy, quick and yummy!-- GREAT way to get kids to enjoy this veggie! If you like a lot of sauce double the sauce ingredients. I posted this less ''saucy'' to keep the fat and calories down. The sauce is yummy and great on rice or just on a spoon! Hope you enjoy it as much as we do! I am so honored that this simple little recipe of mine has been so well received. Thank you all for your reviews!', 'Breakfast', ARRAY['low_protein']::text[], 15, NULL, 4, 124.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('118761', 'Microwave Poached Eggs', 'I have been poaching eggs in the microwave for many years. For me this is the best way to prepare poached eggs for 2. It is quick, easy and almost foolproof. Please make sure you use a toothpick to pierce the yolk before cooking or it will explode!', 'Breakfast', NULL, 5, 1, 1, 71.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('132546', 'Kittencal''s Chinese Chicken Balls With Sweet and Sour Sauce', 'Don''t bother ordering Chinese chicken balls make these at home they are just as good if not even better and the sweet and sour sauce is the same as what is served at your Chinese restaurant!-- these are a great weekend snack or can be served as appetizers, if you want some extra flavor to you chicken batter feel free to add in some garlic or onion powder or spices of choice --- this makes a large amount so you may want to reduce the chicken ball batter amount by half (using 4 chicken breasts) --- NOTE: the sauce recipe is one you may have to make a few times before you get the consistancy and sweetness to your liking, 1 cup white sugar and 1/2 cup lightly packed brown will give you a sweet sauce you may reduce the white sugar amount by a few tablespoons', 'Lunch', NULL, 25, 5, 8, 555.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30954', 'Amish Baked Oatmeal', 'Make and share this Amish Baked Oatmeal recipe from Food.com.', 'Breakfast', NULL, 5, 30, 6, 236.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31342', 'Blender Quiche - or Whatever You Have in Your Kitchen Leftover', 'The great part is you can use whatever leftovers (well...almost) you have on hand. This dish can be served hot or cold. Freezes very well! Use any cheese of your choice.', 'Lunch', NULL, 20, 45, 6, 308.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('137575', 'Southern Fried Salmon Patties', 'Salmon patties are quick and easy. I got this recipe from my son''s babysitter many years ago. My son is now 20 and we still eat these at least a few times a month. These are very moist when done.', 'Breakfast', NULL, 15, 20, 4, 220.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('99156', 'Thai-Style Grilled Chicken Thighs', 'This is my first recipe - please be kind! My kids love it and when I take it to a BBQ everyone wants the recipe. It is a variation on one I found in epicurious a while ago. It is very easy and very yummy!!', 'Breakfast', ARRAY['high_protein']::text[], 10, 15, 4, 327.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('16371', 'Streamlined Chimichangas', 'This is a great tasting recipe and so easy that even my daughter doesn''t complain when I ask her to make it.', 'Lunch', NULL, NULL, 20, 4, 373.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('74048', 'Puppy Chow or Monkey Munch', 'Make and share this Puppy Chow or Monkey Munch recipe from Food.com.', 'Lunch', NULL, 30, 2, 4, 268.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('92016', 'Cinnamon Swirl Quick Bread', 'This rich quick bread is a favorite with my family. I often give my husband a few slices to take with him on his commute to work, along with a tall travel mug of coffee.', 'Breakfast', NULL, 10, 50, 4, 2539.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('251220', 'Kittencal''s Fluffiest Scrambled Eggs', 'Once you make these eggs you will *never* go back to your old way again, this is the way the higher end restaurants prepare their eggs ----for six eggs you may increase the milk by 1 tablespoon, do not add in more than 1/4 teaspoon baking powder --- if you are not afraid of some extra calories for 4 eggs use 2 tablespoons whipping cream in place of low-fat milk :)', 'Breakfast', NULL, 5, NULL, 2, 186.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('46078', 'Sausage Balls', 'A crowd-pleaser for Holiday gatherings. This is my most requested recipe. These are best served with Versatile Mustard Dip (Recipe #150023).', 'Snack', ARRAY['high_protein']::text[], 5, 10, 40, 82.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('115110', 'Secretly Delicious Spinach Pie', 'The tortilla adds a delicious crunchy shell and it smells so good while it is cooking. I actually made up this recipe from items in my kitchen and couldn''t believe how wonderful it tasted! It is now a hit in my family and so EASY to make. Please rate and give feedback. Update: Since I first made this five years ago, we still enjoy this at least once a month. I have found that I can alternate the ingredients to use up items I have in the fridge. I have used mushrooms, sauteed onions, cherry tomatoes and even feta cheese instead of cheddar cheese. And it always comes out fantastic. I have also found that there are times I need to use more or less eggs depending on the ingredients. Also, a glass pie pan is so much better than a metal as it toasts the tortilla just right. Such an easy recipe with gourmet taste!', 'Breakfast', NULL, 5, 45, 4, 284.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('125633', 'Cream Cheese Cinnamon Crescents', 'These are so yummy. Would be perfect for breakfast or brunch or anytime! I just made a batch late this evening. A parent brought these in for a teacher''s luncheon and everyone loved them.', 'Breakfast', NULL, 10, 30, 4, 285.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14911', 'Sausage Gravy', 'This is a really easy and super deelicious recipe for sausage gravy over biscuits, you will want to make this one again and again!', 'Breakfast', NULL, 10, 15, 8, 269.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('43908', 'Yummy Baked Potato Skins', 'Make and share this Yummy Baked Potato Skins recipe from Food.com.', 'Lunch', NULL, 15, 18, 8, 263.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('51997', 'Awesome Blueberry Muffins', 'This is a awesome Blueberry muffin recipe. Double it to make large muffins. I sometimes add cinnamon to the batter.', 'Snack', NULL, 15, 25, 8, 384.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28648', 'Baked Ham and Cheese Omelet Roll', 'This is an easy way to serve omelets. In our house, it takes me forever to make breakfast on the stove top! Baking this is soooo much easier. Feel free to add or subtract to suit your tastes (bacon, sausage, onions, peppers, etc.)', 'Breakfast', NULL, 10, 20, 4, 409.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29002', 'Crazy Crust Pizza', 'Whenever you need pizza quick, this is the recipe to go for! It is not a traditional yeast dough crust...it actually starts out with a batter that turns into a crust. It is extremely easy to prepare, very good and you could probably have it done and on your table before the pizza parlor could :)', 'Lunch', NULL, 10, 25, 4, 1291.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('35775', 'Breakfast Casserole Supreme', 'Make and share this Breakfast Casserole Supreme recipe from Food.com.', 'Breakfast', NULL, 20, 45, 12, 300.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27860', 'Pumpkin Muffins', 'Make and share this Pumpkin Muffins recipe from Food.com.', 'Snack', NULL, 20, 30, 4, 218.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9327', 'Double Chocolate Banana Muffins', 'Make and share this Double Chocolate Banana Muffins recipe from Food.com.', 'Snack', NULL, NULL, NULL, 4, 403.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('187362', 'Light and Fluffy Pumpkin Pancakes', 'These little beauties are a beautiful color and will keep you full for hours after eating just one serving. I needed to use up extra canned pumpkin and thought I''d give it a try. - I got it out of the Martha Stewart Living magazine', 'Breakfast', NULL, 10, 6, 4, 273.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('115432', 'Whole Wheat Honey Banana Muffins', 'These muffins are delicious and have a great texture, and they are 100% healthy! No refined flour or sweeteners. We have a big family, so this recipe makes a lot of muffins, but it is easily halved for a smaller group. To make the muffins lower in fat, replace half of the oil with unsweetened applesauce. I also use "white whole-wheat" flour, which is softer than that made with red wheat (but has the exact same nutritional value).', 'Breakfast', ARRAY['dairy_free']::text[], 20, 15, 4, 178.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('138173', 'Kittencal''s Onion Patties/Latkes', 'I have been making these for over 20 years, I usually get about 15 patties but it depends on the size of the batter that you drop in the pan, these are better if fried to very brown and crispy, you can make a double recipe, fry them then freeze them on a tray then pop them into freezer bags, then just warm them in the oven to crisp up, they are very addicting and I can tell you I eat half before they even get to the table lol! If you plan on doubling the recipe then make two separate recipes in two bowls, I have doubled the recipe into one bowl and for some reason they just are not as good --- if desired you could add in a slightly beaten large egg and reduce the milk by 1/4 cup --- you will *love* these! also see my recipe#186700 *and* recipe#244592', 'Breakfast', NULL, 20, NULL, 4, 234.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('220', 'Chocolate Zucchini Bread', 'Make and share this Chocolate Zucchini Bread recipe from Food.com.', 'Snack', NULL, 25, 60, 10, 501.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('16213', 'Cranberry Feta Pinwheels', 'Make and share this Cranberry Feta Pinwheels recipe from Food.com.', 'Snack', NULL, 10, NULL, 4, 64.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('33105', 'Zesty Low-Fat Chicken Breasts', 'Make and share this Zesty Low-Fat Chicken Breasts recipe from Food.com.', 'Snack', NULL, 10, 30, 6, 221.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13549', 'Roasted Pumpkin Seeds', 'Next time you carve pumpkins or cook fresh pumpkins don''t throw out the pumpkin seeds. They make great snacks that are rich in fiber and kids love them. Purists will want only salt as a seasoning, but if you''re feeling adventurous, experiment and have fun with seasoning blends. (From Fabulous Foods)', 'Lunch', ARRAY['high_protein','kosher']::text[], 5, 45, 4, 1148.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('20549', 'Apple Bread', 'Make and share this Apple Bread recipe from Food.com.', 'Breakfast', NULL, 35, 60, 20, 281.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('69407', 'Chocolate Chocolate Chip Sour Cream Banana Bread', 'Do not let this banana bread''s long name fool you! Very easy to make, and WONDERFUL bread is the result.', 'Breakfast', NULL, 10, 60, 30, 216.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50767', 'Chicken Packets (Oamc)', 'Another Once a month meal that''s sure to please. My little girl likes these because they pick up easily in her hands! *I revised this recipe based on several folks pointing out that I had made a mistake on the amount of cream cheese. Thank you so much for the input!', 'Lunch', NULL, 20, 20, 8, 370.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('59224', 'Chipotle Roast for Tacos & Sandwiches', 'Crock pot recipe. Beware - this is spicy, but is an excellent shredded beef for tacos, sandwiches or enchiladas!', 'Lunch', NULL, 5, 420, 4, 364.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('145312', 'Weight Watchers 2 Point- Pumpkin Muffins', 'Make and share this Weight Watchers 2 Point- Pumpkin Muffins recipe from Food.com.', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 5, 25, 24, 97.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28377', 'Cheat n'' Eat Vietnamese Chicken Soup', 'Sometimes you just don''t have all day to make Vietnamese soup! You can have this made and in your hands in 15 minutes!', 'Snack', ARRAY['low_cholesterol']::text[], 5, 10, 4, 163.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73469', 'Harvest Pumpkin Apple Bread', 'All the flavors of Autumn combined into one scrumptious bread. This tastes great with coffee or tea! I make this using Egg Beaters and unsweetened applesauce in place of half the oil to make it healthier. Prep time includes cooling time.', 'Breakfast', NULL, 25, 65, 20, 309.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('259573', 'Kittencal''s Technique for Perfect Easy-Peel Hard-Boiled Eggs', 'The one and only method I use for perfect hard-boiled eggs and the only one you will use also, this is a no-fail method your eggs will come out perfectly cooked!--- don''t omit the vinegar it makes peeling the eggs easier and your eggs will be bright yellow and the whites a pure white! -- it doesn''t matter what amount of water or eggs that you use just make certain that you add in about 2 teaspoons of vinegar, I don''t even measure I just pour the vinegar into the water from the bottle the exact 2 teaspoons does not really matter, of course use as many eggs as you wish and the exact amount of ice is not necessary you can use more, also try to use eggs that are at least 2 weeks old fresh eggs are somewhat harder to peel.', 'Breakfast', NULL, 15, 2, 6, 71.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8650', 'Basil Pesto', 'This is a wonderful lemon-flavored pesto. This was my first taste of pesto and I''ve never gone back! Update as of 2/13/04 I''m glad that you all like this. I freeze this now and keep it on hand for my spaghetti sauce or others sauces. It freezes great!', 'Snack', NULL, 10, NULL, 4, 201.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('77316', 'Baked Potato Soup', 'Make and share this Baked Potato Soup recipe from Food.com.', 'Breakfast', NULL, 30, 60, 8, 632.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('47669', 'Whole Wheat Pancakes', 'These are SO delicious - the honey & whole wheat give them a wonderful flavor. Hope you''ll enjoy them as much as we do!', 'Breakfast', NULL, 5, 5, 4, 269.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('133513', 'Ramen Noodle Egg Foo Yung', 'I can''t believe I like this dish as much as I do. I was surprised. This is a variation of a rather bland scrambled egg mix that I found on the net but turning it onto an egg foo yung is really special. Add your own favorite things but this is a good start. If you add water chestnuts, ham, shrimp, pork, whatever- then you will have to adjust the cooking time. This is a basic recipe- make it your own. But an easy recipe to amend- as soon as the egg is set- then it is done! I really love this and it is so good for a family on a budget or a bachelor short on time. If you want a terrific egg foo yung sauce then try this one Recipe#45270 .', 'Breakfast', NULL, 10, 7, 4, 850.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('3564', 'Pumpkin Chocolate Chip Muffins', 'Everyone I have ever served these to rants about them. I have made some modifications to make them a little healthier. That recipe is Recipe #2509. Either way though, we love them. (Recipe updated to add vanilla, more cinnamon and reduce oil slightly (original calls for 1 1/2 cups oil) since we prefer them with these alterations.)', 'Snack', NULL, 10, 20, 4, 246.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('4496', 'Buttermilk Jalapeno Cornbread', 'Make and share this Buttermilk Jalapeno Cornbread recipe from Food.com.', 'Snack', NULL, NULL, 35, 4, 235.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31235', 'Crunchy Granola', 'This granola makes a GREAT, filling snack. Good dry or with milk. It is very addictive, but it''s good for you, so enjoy!', 'Breakfast', ARRAY['low_cholesterol']::text[], 10, 45, 10, 533.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('115153', 'Cauliflower Popcorn - Roasted Cauliflower', 'This is based on the recipe by Bob Blumer from the "Surreal Gourmet Bites" cookbook. This simple caramelization method transforms this much maligned veggie into a knock-your-socks-off side dish or sweet snack that you won''t be able to get enough of!', 'Snack', ARRAY['low_cholesterol','low_protein','vegan']::text[], 10, 60, 4, 156.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29210', 'General Tso''s Chicken (Tso Chung Gai)', 'Make and share this General Tso''s Chicken (Tso Chung Gai) recipe from Food.com.', 'Snack', NULL, 20, 10, 4, 235.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('55796', 'Healthy Bean Soup With Kale', 'We''ve all heard how anti-oxidants fight cancer, save eyesight, and prevent clogged arteries. Turns out lutein, a delicious 7 mg dose of which is supplied with each serving of this recipe, is even more beneficial than beta carotene. It delays lung aging and combats arthritis to boot! Who knew improving your health could be so quick and easy, and taste so good? Try it -- you''ll see! P.S. Since I felt this lacked enough elements to chew on, I''ve been adding canned, sliced carrots (fast, easy & healthy!) for quite a while, and thought I''d update the recipe. Also, sometimes I add another can of beans, for the same reason. Glad so many of you have been enjoying this. There''s a container in my frig right now - yum!', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 2, 20, 8, 214.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('24139', 'Crock Pot Chicken Vindaloo', 'For the Vegetarian version: use your favorite veggies, omit the cinnamon stick. This is my sister''s recipe (Thank you Najla! XOXO), she made it on the stove top. It''s really yummy!!', 'Lunch', ARRAY['dairy_free']::text[], 10, 300, 3, 278.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('15344', 'Easy Weeknight Sloppy Joes', 'This is found in my recipe collection under "Mrs. McCann''s Barbeque". It was handed down from a neighbor of my great-aunt''s sometime in the 1940''s. I prefer to use ground round so there isn''t so much fat. Gets better the longer it simmers.', 'Lunch', NULL, 20, 60, 4, 346.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25625', 'Now don''t go "EEEWWW!!" before you try this!', 'The only way to eat fresh tomatoes! In anticipation of the impending tomato harvest, I share with you a family secret. This is the reason we look forward to the end of summer, to the time when our gardens and our friends gardens are bursting with little red-skinned treasures. When I tell anyone about this, besides my brother and sister -- we learned it from Mom -- and my children -- now that I''ve gotten them to try it -- they think I''m weird (well...yes, I am, but this isn''t why). People looked at me oddly when I made this in the college cafeteria. At least I thought that was the reason. It never tasted right, though. I think the foodservice tomatoes were plastic. My husband seems to shudder if he sees me or the kids consuming this treat, but then, he hates warm peanut butter. Period. Won''t touch it. I haven''t managed to get any of my in-laws to give it a try; my husband''s Dad just looks at me and shakes his head. Come to think of it, I get a lot of that from him. So, what is this food that most people seem to find so repulsive that they won''t even consider it? I just call it exactly what it is: Peanut Butter and Tomatoes on Toast. If you''re intrigued, the extremely difficult and intricate recipe follows below. If you think I''m weird, get in line. Grossed out? Get over it, and try it already. I thought it was pretty gross the first time I saw my Mom eating it, too, but she made me take a bite, and I was hooked.', 'Breakfast', ARRAY['low_cholesterol','low_protein','vegan']::text[], 3, 2, 1, 116.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('125399', 'French Toast Sticks - OAMC', 'I got this basic recipe from another site but changed it a little for my family. The original recipe called for orange juice as the liquid instead of milk. I also added the vanilla as we think it gives it a nice flavor.', 'Breakfast', NULL, 10, 25, 8, 199.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('51550', 'Real Southern Cornbread', 'This is my families recipe, with a small change in the method which I learned from a book. It''s the only cornbread I will eat. Please use a 10 inch cast iron skillet -- it makes a big difference in how this bread turns out.', 'Snack', NULL, 10, 25, 8, 235.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('139499', 'Cranberry Orange Muffins', 'I love the taste of Cranberry, and these muffins are an excellent combination of cranberries and oranges!', 'Snack', NULL, 5, 15, 12, 181.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('12967', 'Pecan Pie Muffins', 'If you love Pecan Pie you will love these muffins! I make these muffins at least once every two weeks! I take them to work and to Church. Everyone loves them...you will too!', 'Snack', NULL, 5, 30, 9, 308.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('100408', 'Turkey Breakfast Sausage Patties', 'I combined different spices to achieve what tastes almost as good, if not better than regular sausage. Be sure to use regular ground turkey (not ground turkey breast, which is too lean so it doesn''t have enough moisture). UPDATE: After all the positive reviews, I decided to submit this to Taste of Home''s Light & Tasty and they published it in the Dec/Jan 2008 issue. It''s also in the Light & Tasty Annual Recipes 2008 Cookbook.', 'Breakfast', ARRAY['dairy_free','high_protein','kosher']::text[], 7, 8, 4, 175.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14106', 'Roast Beef Horseradish Spirals', 'Very attractive looking appy! and good too. Had some ladies over for a "crafty evening", making little Christmas thingies, the spirals went over big, and the ladies took the recipe, from "Women''s world".', 'Snack', NULL, 20, 50, 4, 42.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('34011', 'Cajun Style Oven Fries', 'Make and share this Cajun Style Oven Fries recipe from Food.com.', 'Lunch', ARRAY['low_cholesterol','low_protein']::text[], 10, 30, 4, 268.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52206', 'Low-Fat Banana Bread', 'When I substituted some of the butter with applesauce in a previous recipe, it actually made the bread more moist. I put one loaf in the freezer, but had to take it out within 24 hours because the first was devoured!', 'Snack', NULL, 5, 50, 4, 182.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('6653', 'Blueberry Buttermilk Muffins', 'This is my adopted recipe Feb 2005 I didn''t change the recipe ingredients because 11 members found it good the way it was. I did add 1 teaspoon vanilla as suggested by 1 reviewer. I used 1/2 cup canola oil instead of butter. 2 heaping cups frozen blueberries mixed with a little of the flour mixture to make sure they didn''t stick together. I made 6 giant muffins. Very good muffins. I had to bake mine for 35 minutes, they were so big.', 'Snack', NULL, 15, 20, 4, 483.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('19859', 'Crock Pot Creamy Italian Chicken', 'Make and share this Crock Pot Creamy Italian Chicken recipe from Food.com.', 'Lunch', NULL, 5, 240, 4, 345.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('23108', 'Vanilla-Scented Granola', 'Great snack for everyone, or the for kids lunches or even as an after school treat! Serve for breakfast with yogurt and fruit or over ice cream for dessert. Watch your time in the oven because sometimes it cooks a little quickly. This recipe came from Bon Appetit, March of 2002. A few baking tips I have learned from making this recipe often: I use a jelly roll pan so the granola will have maximum exposure while cooking. Also, if you do like your granola to clump, do not stir while baking. Allow to cool in pan for about 10 minutes or so, then run a spatula between granola and the pan to loosen. You will have so many clumps you will have to break them with your hands ; )', 'Breakfast', ARRAY['low_cholesterol']::text[], 15, 30, 8, 384.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('81029', 'Taco Soup', 'This is a delicious and quick soup (even if you are not on Weight Watchers). One cup of soup has 2 points, and recipe makes 12 cups.', 'Snack', NULL, 15, 60, 12, 219.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('86516', 'Quiche', 'This recipe is from the back of a Kraft Cheese wrapper that I have had forever. Our favorite add-ins are chopped ham, chopped broccoli and mushrooms. Prep. time is not included.', 'Breakfast', NULL, NULL, 60, 6, 336.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('12521', 'Easy 2-Ingredient Pumpkin Muffins', 'I got this recipe from a Weight Watcher''s meeting, and found these very tasty. This recipe is low in fat and calories. I also tried 1 box of cake mix with a cherry lite pie topping - very tasty. My kids loved both muffins. (for Weight Watchers: each muffin is only 2 points.)', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 15, 25, 4, 95.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9176', 'Banana Muffins', 'Make and share this Banana Muffins recipe from Food.com.', 'Snack', NULL, 10, 20, 4, 218.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('26043', 'Twice Baked Potato Casserole', 'I used all light products and skimped on the amounts on the cheese and sour cream. It was delicious. The recipe says it serves 6-8 but I think 8-10 for sure based on our family.', 'Lunch', NULL, 20, 25, 10, 623.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14684', 'Vegetarian Lasagna', 'I first had veggie lasagna when I was in hospital, and I just HAD to find a better recipe! Here it is.', 'Lunch', NULL, 10, 45, 8, 473.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14680', 'Peanut Butter Popcorn', 'Sublime! The original recipe called for 4-8 servings, but I could finish this off myself in one sitting!', 'Snack', NULL, 5, 10, 8, 228.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30165', 'Breakfast Burritos (Once a Month Cooking)', 'Great for that run in the morning breakfast. You can also take frozen burritos with you when going camping. Just place the bag of frozen burritos into the ice chest, and by the time you''re ready for breakfast the first morning, the burritos are fully thawed. Then simply reheat them in a large skillet over the campstove or fire grate.', 'Breakfast', NULL, 30, 20, 4, 212.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73033', 'Allrighty then Scrambled Eggs - Paula Deen', 'Make and share this Allrighty then Scrambled Eggs - Paula Deen recipe from Food.com.', 'Breakfast', NULL, 10, 8, 4, 262.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('132052', 'Old Widow Walker''s Ziploc Omelettes', 'Mrs. Walker was my Sunday school teacher and we used to do this in the church kitchen, occasionally. This is my first memory of cooking that I cherish to this day. She keeps her age a closely guarded secret but is rumoured to be 115+ years old and perhaps, immortal. She has out lived three husbands and four children. She is still sharp as the Bowie knife she carries in her purse. I don''t know why she carries a Bowie knife in her purse- but she always has. I asked her about it years ago and she said, "You would be surprised how often it comes in handy, Honey." I suppose it does, Mrs. Walker. God bless you. BTW- she is thrilled that I want to pass this on to another generation of schoolchildren. She was surprised that I remembered doing this with her over 35 years ago and was touched. When asked how to do it- she rattled off the instructions faster than I could write! I''ve eaten this bag-n-boil recipe for 40+ years with no toxicity what-so-ever, obviously. If it was toxic... I would be in too poor of health to type. Google the topic for yourself and make your own judgment. The danger is greatly exaggerated.', 'Breakfast', NULL, 20, 13, 5, 554.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('9054', 'Leftover Mashed Potato Pancakes', 'This recipe was recently submitted to a news group to which I belong. I think it is very good and hope you like it, too. Preparation time in the kitchen is just a few minutes. When the big meal is through, this is a tasty way to use up the leftover mashed potatoes.', 'Breakfast', NULL, 5, 30, 2, 266.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('94532', 'Old-Fashioned Blueberry Muffins', 'Perfect for lazy, weekend breakfasts. Sackville Girl made a sub and used raspberries and, well, you can see the great results in the picture! I must have really big muffin tins (or maybe they''re bigger in Europe?) cause I get a dozen over-sized muffins with this recipe.', 'Breakfast', NULL, 15, 20, 4, 229.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('42292', 'Overnight French Toast Casserole', 'Make and share this Overnight French Toast Casserole recipe from Food.com.', 'Breakfast', NULL, 20, 60, 4, 338.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('60235', 'No-Bake Granola Bars', 'Make and share this No-Bake Granola Bars recipe from Food.com.', 'Breakfast', NULL, 8, NULL, 24, 114.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('92647', 'Milk-Free, Egg-Free Pancakes', 'My oldest daughter was severely allergic to milk for three+ years, then *poof* the allergy ceased to exist in her system. While she had this allergy, we struggled with Milk-Free recipes/food. I began making nearly everything from scratch. I bought a really great book, The Milk-Free Kitchen, where this recipe is from. We still make these soft, fluffy and delicious pancakes. I will also post the recipe for Milk-Free Blueberry Pancakes.', 'Breakfast', ARRAY['dairy_free']::text[], 5, 15, 4, 155.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50022', 'The Best Banana Bread', 'This is one of the recipes I am known for. Super moist and super yummy. I have tried many over the years and always come back to this. I often give it as a gift around the holidays. Just may be the last banana bread recipe you ever try! Can also make 3 mini-loaves', 'Snack', NULL, 10, 75, 4, 528.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13320', 'Chinese Pot Stickers', 'These pot stickers are 100% better than any you can buy and well worth the extra effort. I like to make them and then freeze them so all you have to do is the final steps just before you serve them. I make them every Christmas to have as a quick appetizer. One review commented that she had trouble with them sticking together when she defrosted them - I have not had this happen however to be sure it doesn''t happen to you defrost them separated. I have also fried them directly from the freezer. They only take a few seconds more to cook.', 'Snack', NULL, 45, 15, 4, 48.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('62286', 'Best Ever Banana Muffins', 'These are the only banana muffins I make now. I add chocolate chips to my batter and triple the recipe. These freeze great. I got this recipe from an old (1980''s) Canandian cookbook called "Muffin Mania". (Prep time is a guess.)', 'Breakfast', NULL, 15, 20, 4, 249.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('100513', 'Banana-Oatmeal Bread', 'I love bananas and oatmeal, so when I saw this in the September 2004 issue of Cooking Light, I just knew I had to make it! I wasn''t at all disappointed. The oatmeal makes it hearty and somewhat chewy, while the bananas and buttermilk make it sweet and moist - yet it is not as sweet or sticky-moist as some other banana breads I''ve had. This makes a smaller loaf than some recipes. I made 2 mini-loaves instead of one large one, and they were done in 30-35 minutes. EDITED to mention- Since I posted this recipe, I''ve made it several times. It has become THE banana bread recipe for this household, and when I give it as gifts it never fails to receive compliments. It is extremely versatile also. I have made it with yogurt in place of buttermilk, walnut oil for the vegetable oil, and I have cut back the sugar and added cinnamon as a couple reviewers suggested. This last time I made an eggless version by substituting 2 Tablespoons ground flax seed + 6 Tablespoons water for the eggs. (I think next time I will try a vegan version by also replacing the buttermilk with soymilk.) Every time it has turned out perfect!', 'Breakfast', NULL, 10, 55, 12, 210.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('21597', 'Cinnamon Muffins', 'Make and share this Cinnamon Muffins recipe from Food.com.', 'Breakfast', NULL, 15, 20, 4, 190.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('12316', 'Chicken Fried Steak W/Cream Gravy', 'This is a recipe for Chicken Fried Steak, one of the staple foods of Texas. Like with fried chicken, folks in each family or restaurant tend to have their own little "secrets" to preparing Chicken Fried Steak, so you can play with the recipe a bit. But if it don''t include the cream gravy, it ain''t been prepared right and it ain''t a "secret" worth keeping.', 'Lunch', NULL, 10, 30, 4, 438.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32522', 'Grandmas Sloppy Joes', 'This was one of my favorite things that my grandma made...it is a comfort food for me. It is so easy, and so delicious!', 'Lunch', NULL, 5, 30, 4, 349.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('74301', 'Mini Tacos', 'These can be a easy appetizer or a light dinner. I received this recipe in an email from the Campbell''s site, and after we made these for a tasty dinner, I knew I had to share!', 'Snack', ARRAY['high_protein']::text[], 5, 10, 4, 79.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('208501', 'Barefoot Contessa''s Oven Roasted Bacon', 'This is the best way to cook bacon. It cooks more evenly this way and more importantly, it requires little attention. The most wonderful part is you don''t have grease spatters on your stove!', 'Breakfast', NULL, 2, 20, 4, NULL, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63756', 'Easy Banana Bread', 'This recipe appealed to me because it only uses one mixing bowl! The ingredients can be added in any order and there''s no need to get out the electric mixer. It''s just so easy!! And yummy!', 'Breakfast', NULL, 10, 60, 20, 358.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('65049', 'Ultimate Fluffy Pancakes', 'Make and share this Ultimate Fluffy Pancakes recipe from Food.com.', 'Breakfast', NULL, 5, 15, 4, 339.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('38846', 'Spiced Sweet Roasted Red Pepper & feta Hummus', 'Middle Eastern style spread for Pita bread. This recipe is very tasty and easy to make. This is a very popular dish in this region. The base is usually Chickpeas and Tahini, but the flavor added to the base vary widely from one chef to the next. Tahini is a sesame paste, you can usually find it in the Mediterranean section of your grocery store.', 'Snack', ARRAY['low_cholesterol']::text[], 20, NULL, 4, 109.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('140878', 'Kelly''s Crock Pot "smoked" Beef Roast or Brisket', 'This is awesome! If you love brisket or beef cooked in the smoker and just don''t have time to, or maybe the weather won''t permit- you have to try this. I have used EVERY cut of beef roast or brisket, it always comes out great! Enjoy!', 'Breakfast', NULL, 10, 480, 4, 289.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('169764', 'Parmesan Crusted Tilapia', 'Fast, Easy and Healthy! This recipe is for 2, but I have easily doubled it for more. This bakes so quickly that I often make a bunch of these fillets and eat them leftover for lunches.', 'Lunch', ARRAY['egg_free']::text[], 5, 20, 2, 294.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('54715', 'Sticky Pork Chops', 'Make and share this Sticky Pork Chops recipe from Food.com.', 'Snack', NULL, 5, 10, 2, 95.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('58309', 'Baked Old-Fastioned Oatmeal', 'I mix this together, cover it and refrigerate overnight, then bake it in the morning. Every time I serve this, when I have guests, they always ask for the recipe. Feel free to add whatever you would add to your regular oatmeal. I sometimes add nuts, raisins or blueberries. Add what you like and I hope you enjoy it!', 'Breakfast', NULL, 10, 45, 4, 395.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('94031', 'Philly Cheesesteak Sandwich (((Authentic)))', 'I was born and raised in Philadelphia and this was my favorite lunch at the luncheonettes (sandwich shops). Places throughout the rest of the Country that claim to make Philly Cheese Steaks just do not get them to taste the same, and one of the reasons is that they do not use extra-virgin olive oil. Anyone who says that Pat''s and Gino''s in South Philly uses Cheez Wiz, is talking about the way they make it now. The old authentic way uses Provolone Cheese. Also, using deli roast beef is the same as using top round sliced wafer thin or frozen Rib-Eye roast shaved on an electric slicer. I was born in 1942 and this is the way they were made way back then. We are talking about authentic, not the way they are made now. If you make any changes with the ingredients or the directions, it will not be the same. Make it EXACTLY as written here.', 'Lunch', NULL, 7, 13, 2, 965.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('154388', 'Pineapple-Black Bean Enchiladas', 'YOU WILL LOVE this Healthy, Low Fat, High Fiber, Vegetarian, Easy to make, And TASTE SO GOOD Recipe. IT got me into the Pillsbury Bake-Off as a Top-100 finalist!! You can also see and vote for this recipe at http://www.pillsbury.com/Bakeoff/AFR/finalist_recipes.asp?tab=6 Be assured--I got approval from Pillsbury prior to submitting and promoting this recipe!! :) Pillsbury describes the recipe as "Traditional enchiladas take a healthful vegetarian twist in a sassy dish filled with fruity flavors" ENJOY!!', 'Lunch', NULL, 30, 40, 8, 307.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28662', 'Healthy Cucumber-Tomato Salad', 'Since I don''t like salad dressing, I created this simple salad. Not only is it yummy but it is better for you since the only dressing it does have is the one it creates. After we finish eating the veggies, I like to strain the seeds out of the juice and use it as a salad dressing substitute on a green salad. Since you make it in a bowl with a sealable lid, it is great for picnics or potlucks. The prep time also includes refrigeration time.', 'Snack', ARRAY['low_cholesterol','low_protein','vegan']::text[], 70, NULL, 4, 40.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('98447', 'Cha-ching! Carrot Spice Muffins', 'You''ll think you hit the jackpot when you take a bite of these babies. Happily healthy with whole wheat flour and other nutritious goodies, put your money on these muffins for breakfast or as the perfect anytime snack. Recipe is from the La Leache League International cookbook "Whole Foods for the Whole Family" and credited to Cathy Grant (Richmond, British Columbia), Marion Bueche (Gray, Saskatchewan) and Margaret J. Donner (Kitchner, Ontario). Prep time does not include time to grate carrots.', 'Snack', NULL, 10, 15, 4, 135.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('96154', 'Chicken Salad for Sandwiches', 'Simple old-fashioned chicken salad which is perfect for sandwiches or stuffing tomatoes. Although the recipe calls for boiling uncooked chicken leftover chicken would also work fine and give wonderful flavor to the chicken salad. Recipe source: local newspaper', 'Lunch', NULL, 10, 30, 4, 613.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32973', 'Hamburgers with Brown Gravy (TOTAL Comfort Food aka "Meat Cakes" :)', 'These are sooooo great (and EZ)! I grew up eating these about once a week and they are incredible with mashed potatoes or buttered egg noodles and a veggie. While this recipe is basically my mom''s, I have changed one thing...instead of using chopped onion in the burgers, I use an envelope of onion soup mix...it gives them the PERFECT flavor! This is now one of my family''s favorite meals...try it and it will probably become one of your''s, too. P.S. These burgers also work for grilling (without the gravy :).', 'Snack', NULL, 15, 30, 10, 239.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('49172', 'Downunder Cheese Puffs', 'These are not popovers and have nothing to do with bread. These are very quick snacks that you can whip up during commercial breaks when you are watching TV and you feel like something cheesy. Vary the taste with different types of cheeses.', 'Snack', NULL, 5, 10, 18, 75.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('67405', 'Yeast Free Bread', 'Make and share this Yeast Free Bread recipe from Food.com.', 'Breakfast', NULL, 20, 40, 4, 1695.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14325', 'Fresh Orange Muffins', 'I got this recipe from one of my SILs after having them at her house. Next time I make them I think I will add miniature chocolate chips!', 'Breakfast', NULL, 15, 20, 12, 198.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30977', 'Mozzarella Sticks', 'At the request of my lovely 12 year old daughter, I am posting these, one of her favorite foods. We searched for a recipe together and ended up adapting one to suit our tastes. Enjoy!', 'Snack', NULL, 10, 5, 4, 182.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('91720', 'Jalapeño Bites', 'These are a bit reminiscent of stuffed jalapeño peppers but much easier to make. I found this in the Junior League Celebrations cookbook.', 'Lunch', ARRAY['high_protein']::text[], 15, 15, 4, 453.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('97439', 'Cherry Pie Filling Bread', 'Make and share this Cherry Pie Filling Bread recipe from Food.com.', 'Snack', NULL, 20, 60, 36, 217.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13067', 'Cranberry Scones', 'Delicious served warm with lots of butter. Please read Diana#2''s review!! She has had a wonderful idea for Christmas gifts for friends. I am so delighted that she choose my Cranberry Scones to make gift bottles. Her instructions are great and the photo is wonderful. Thanks Diana !!', 'Breakfast', NULL, 30, 20, 16, 179.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13707', 'Betty White''s Chicken Wings', 'From my celebrity recipe collection; they sound perfect for a football party! The smell while these sticky wings bake in the oven is amazing.', 'Lunch', NULL, 120, 90, 6, 808.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14681', 'Oven-Dried Tomatoes', 'You can use these in all kinds of recipes, pastas, salads, whatever floats your boats. I also like to snack on these, although the flavor is intense!', 'Lunch', ARRAY['kosher','low_cholesterol','low_protein','vegan']::text[], 10, 60, 4, 362.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32756', 'Detweiler Sloppy Joe Mix', 'Make and share this Detweiler Sloppy Joe Mix recipe from Food.com.', 'Lunch', NULL, 10, 25, 4, 330.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52999', 'Family Favorite Oatmeal Pancakes', 'This recipe was from an old church cookbook and is a favorite breakfast treat in our family-kids and dad!', 'Breakfast', NULL, 10, 2, 4, 92.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63138', 'Copycat IHOP Harvest Grain & Nut Pancakes', 'Make and share this Copycat IHOP Harvest Grain & Nut Pancakes recipe from Food.com.', 'Breakfast', NULL, 5, 5, 4, 432.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('67930', 'Spiced Pumpkin Waffles', 'These waffles are my kids new favorite waffles. They''re delicious! They have a light texture and the pumpkin flavor is not overpowering. The serving size is for Belgian waffles, but they will work fine in a regular waffle iron also.', 'Breakfast', NULL, 10, 5, 4, 227.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30484', 'Chicago Italian Beef', 'You''ll be sorry you didn''t grow up in Chicago, and eat one of those wonderful beef sandwiches from Carm''s. This tastes identical. This wonderful recipe came from my sister Linda knowing how homesick I am for Chicago food. Start cooking 18 hours before you want to eat.', 'Lunch', NULL, 10, 1080, 4, 1519.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('66409', 'Simple Sweet Scones', 'This is a simple perfectly delicious recipe my mom used to make for our family. It origioually came from a biscuits and scones recipe book, this one was always my favorite of all the recipes.', 'Breakfast', NULL, 15, 15, 4, 188.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('121897', 'Kittencal''s Milk Boiled Corn on the Cob', 'A method I have been using for over 30 years, you will never boil corn in just water again once you try this, this method produces a very tender and sweet corn on the cob, I promise! --- do not add in any salt to the water as it will make the corn tough', 'Breakfast', ARRAY['low_protein']::text[], 5, 10, 4, 284.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('50574', 'Egg Salad Sandwiches', 'Mrs. Peterson, a lady from church, made the best egg salad sandwiches and she''d never really tell you what she put in them. This was my first attempt to duplicate her recipe. Her family thought she added butter when mixing.', 'Lunch', NULL, 10, 10, 8, 298.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('73754', 'No-Bake Rice Krispies Peanut Butter Granola Bars (Lower-Fat)', 'This is a delicious lower fat bar if using reduced-fat peanut butter, these are perfect for kid''s lunch boxes, feel free to add in some chopped nuts or sunflower seeds or coconut in place of the raisins,', 'Breakfast', NULL, 15, 7, 4, 126.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31958', 'Deviled Chicken Thighs', 'A different way from "same old, same old" to prepare breaded chicken. Great flavor and crispy coating...baked, not fried!', 'Lunch', ARRAY['high_protein']::text[], 15, 30, 4, 465.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('84247', 'Garlic Panko Chicken Strips', 'I needed something quick for dinner last night, and so created this on-the-spot -- inspired by a garlic chicken recipe I read in a cookbook, which used whole chicken pieces, skin and bone. Plus I wanted to finish off my bag of panko so I could go buy a new one. I was so pleased with how this turned out that I intend to make it regularly. Panko are japanese bread crumbs and they are highly superior to any other type; please try to source them out for this dish rather than use regular dry bread crumbs. The "international" or "ethnic" aisle in your grocery store should sell panko; if not, complain to the manager!', 'Lunch', ARRAY['high_protein']::text[], 15, 20, 3, 530.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('101101', 'Steel Cut Oatmeal for the Crock Pot', 'I love the texture of steel cut oats. You can make this the night before and breakfast is ready in the morning. I like fruit additions, but my kids do not, so I''ve listed them as optional. Also, it may sound like a lot of water, but trust me, I''ve experimented..', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, 360, 4, 270.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('54677', 'Eggs with Hats on Top', 'This is just another way my grandma use to fix eggs for me when I was little. I still eat them this way today.', 'Breakfast', NULL, 5, 5, 2, 239.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29251', 'Jalapeno Popper Burgers', 'Make and share this Jalapeno Popper Burgers recipe from Food.com.', 'Lunch', ARRAY['high_protein']::text[], 10, 15, 6, 397.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('99272', 'Glazed Cinnamon Rolls - Bread Machine', 'The bread machine makes these rolls easy! I usually make them at night and refrigerate them to bake for the next day''s breakfast. Adapted from Betty Crocker''s Bread Machine Cookbook. Prep time listed includes the dough mixing time and rising time.', 'Breakfast', NULL, 150, 20, 4, 278.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8554', 'Belly Buster', 'This recipe is in about its third or fourth generation, passed down from Grandma to Mom to Me. It became my children''s favorite, and now my grandchildren love it. It was a staple in each household, with or without the hamburger. The children named it "Belly Buster" because they always ate too much when we had it. Freezes well.', 'Lunch', NULL, 30, 30, 4, 562.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11808', 'Pasta with Mushroom Garlic Sauce', 'This recipe is for garlic lovers.It is a quick easy meal when you are rushed and want some comfort food', 'Lunch', NULL, 10, 15, 4, 670.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('65266', 'Oven Fried Southern Style Cinnamon Honey Chicken', 'While watching FoodTV, I saw a piece about Amy Ruth''s restaurant in New York where the owner made fried chicken dipped in a honey cinnamon mixture. It looked so good I began searching on the web for a recipe which approximated it... and after much browsing of webpages I put together a recipe that I thought might taste something like it. I don''t fry my chicken, so here''s a baked version, tweaked to my own tastes.', 'Lunch', NULL, 10, 40, 4, 1080.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('116814', 'Kittencal''s Tuna Salad Sandwiches', 'This is a simple recipe but big on flavor and it even tastes better if left in the fridge a few hours to blend the flavors so I suggest to do that --- it''s wonderful with a slice of tomato on top of the tuna and served between two thick slices of toasted whole grain bread or in a pita bread or served on a plate on top of a bed of lettuce --- I sometimes add in some chopped small sweet gherkin pickles or yum yum pickles also --- feel free to add in some cooked macaroni pasta and serve on a plate --- please only fresh lemon juice for this bottled is just not the same, I have left the mustard powder and Tabasco as optional I most always add it in it takes this salad to another level :)', 'Lunch', NULL, 10, NULL, 2, 537.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27931', 'Mom''s Sit Sandwich (Aka Squishy Sorta Muffuletta)', 'From my Family Recipe Box, Mom loves this sandwich! "This sandwich is a ''smashing success''... in more ways than one. It''s a great traveler." You must admit, it is pretty amusing. :) From the Family Recipe Box, dated 3/1/85. The sandwich keeps well, chilled, and is good for taking along on picnics and camping trips.', 'Lunch', NULL, 120, NULL, 6, 259.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('69372', 'Spinach Pinwheel Appetizers', 'These are pretty to look at, but even better to eat! Enjoy!! I can''t remember how many pinwheels you get, but I know it makes a lot.', 'Lunch', NULL, 25, NULL, 4, 479.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('54259', 'They Could Be Sliders (If Eaten With Eyes Closed) - White Castle', 'A slightly "mock" rendition of White Castles sliders, but we think only better. Great "kid" sized burgers or even better for "adult" sized snacks! NOTE: since posting this recipe I have found out that Pepperidge Farm no longer makes the small rolls in the pans so therefore use your own disgression on which rolls are available to you but I do suggest that you use a small size like a dinner roll in order to get the full "White Castle" affect!', 'Lunch', NULL, 15, 20, 20, 422.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('74279', 'Breaded Baked Chicken', 'This is a family favorite recipe at our house that I usually make at least once per month. It''s really like an oven-fried chicken, it should come out crispy and browned. I don''t even measure the ingredients any more, I just dump the flour and spices in the bag and shake away - it''s SO easy! This is great with mashed potatoes (if you make gravy with the pan drippings) and corn (in the summer), carrots (in the winter). The original recipe is from GH Illustrated Cookbook, I''ve changed a few things.', 'Lunch', NULL, 10, 45, 8, 960.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('116173', 'Carolina Style Pulled Pork Sandwich', 'I like to call this "The Worlds Greatest Sandwich". Cooked overnight in a crock pot, the meat is tender, juicy, and messy..the way a BBQ sandwich should be. Top it with your favorite cole slaw, and you have one tasty meal. This is South Carolina style BBQ. (Thanks for everyone who clarified that for me)', 'Lunch', ARRAY['egg_free']::text[], 30, 510, 4, 453.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('60085', 'Uncle Bill''s Hamburger Patties', 'I cooked these patties for a Fund Raiser and served over 260 persons, both young and mature. They were a tremendously big hit with all.', 'Lunch', ARRAY['high_protein']::text[], 15, 12, 6, 455.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('161334', 'Reggae Wraps', 'This juicy chicken and tangy cream sauce are wonderful for lunch or supper. On the go? These are great warm or cold and make great lunch, picnic or beach fare! They are very portable when wrapped in foil. Perfect with fresh island fruit and a cold tropical drink! RSC#8 3rd place', 'Lunch', NULL, 15, NULL, 4, 278.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('101525', 'Falafel', 'Make and share this Falafel recipe from Food.com.', 'Lunch', NULL, 30, 8, 4, 464.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11181', 'Easy French Onion Soup', 'This soup is simple to make after work. My husband thinks it is as good if not better than any we''ve ever had in a restaurant.', 'Lunch', NULL, 10, 25, 4, 394.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('32295', 'Magnificent 1st Prize Risotto', 'This recipe was part of what helped me win a cooking competition at school against 7 other people. I got it out of an excellent appetizer book and continue to make it!! Excellent served with any meal. (VEGETARIANS CAN SUBSTITUTE VEGETABLE STOCK FOR CHICKEN STOCK)', 'Lunch', NULL, 5, 25, 4, 445.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('47121', 'Breaded Breast of Chicken (Chicken Cutlets)', 'Very simple chicken recipe, but one my family is quite fond of. They love when there are leftovers, so they can make sandwiches!', 'Lunch', ARRAY['high_protein']::text[], 15, 15, 4, 396.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('109488', 'Red Lobster Parrot Bay Coconut Shrimp', 'The best part is the pina colada dipping sauce. And it''s true, that sauce is so good you could eat it with a spoon. But the coconut shrimp is pretty awesome too, even on its own. Red Lobster''s secret formula includes Captain Morgan''s Parrot Bay rum, which sweetens up the batter as well as adding a great coconut flavor', 'Lunch', NULL, 45, 15, 4, 537.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28025', 'Tuna-Patty Burgers', 'Instead of plain ol'' tuna-salad-sandwiches for lunch, try this variation. Also great when you need a light, fast dinner. This recipe easily cuts in half, to serve just 1 or 2.', 'Lunch', ARRAY['high_protein','kosher']::text[], 5, 8, 4, 356.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('59462', 'Auntie Anne''s Pretzels - Copycat', 'Make and share this Auntie Anne''s Pretzels - Copycat recipe from Food.com.', 'Lunch', ARRAY['low_cholesterol']::text[], 15, 10, 4, 536.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('47924', '1-Hour Ham and Bean Soup', 'Made this one up myself, from a mix of different recipes. No need to wait for dry beans to soak. You get great homemade soup in about an hour!', 'Lunch', NULL, 10, 45, 4, 401.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('126673', 'Scallion Sesame Turkey Burger', 'I found this in some random cookbook. One of the best turkey burgers ever. Full of flavor. Make an extra for lunch the next day, reheats beautifully.', 'Lunch', ARRAY['egg_free','high_protein']::text[], 10, 20, 4, 442.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('22127', 'Chicken Stew', 'Make and share this Chicken Stew recipe from Food.com.', 'Lunch', NULL, 20, 40, 4, 310.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('36023', 'Country Fried Steak', 'Also known as chicken fried steak. Not to be confused with chicken. When they do chicken this way it is chicken fried chicken.', 'Lunch', NULL, 5, 15, 6, 272.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('84770', 'Spanakopita (Greek Spinach Pie)', 'The secret to my spanakopita is 3 kinds of onion - red onion, spring onions and leek. If you are lacking one, just add more of the others, but this is the ''secret ingredient'' to an excellent pie. Enjoy!', 'Lunch', NULL, 45, 45, 4, 263.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('1035', 'Puppy Chow Snack Mix', 'Very popular with kids, teens and adults alike. I like how I only have to buy one box of cereal for this recipe compared to the 2 types some call for.', 'Lunch', NULL, 20, NULL, 4, 701.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8673', 'Ham Chowder', 'Creamy ham chowder. Perfect for winter nights and quick dinners. This is another of my mother''s Geraldine Lefever recipes she used while we were growing up. Our children have loved it too!', 'Lunch', NULL, 15, 15, 4, 418.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('39466', 'Crock Pot Pulled Pork', 'I got me a crock pot,, nuff said.. The long and low melted most of the greasiness out of the shoulder, and the vinegar apple juice combination added a sweet moistness to the final product.', 'Lunch', NULL, 1440, 720, 4, 336.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('214740', 'Bacon Wrapped Boursin Stuffed Chicken Breasts - a Deux!', 'Delicious chicken breasts, wrapped in bacon or pancetta to ensure they remain moist, stuffed with Boursin garlic & herb cheese and then roasted with cherry tomatoes on the vine......delectable! I have posted this recipe for two - obviously it is VERY easy to increase the quantities for more people. Serve with a selection of seasonal vegetables & a jacket potato for an all year round simple & impressive supper dish. These can be frozen at the stuffed and bacon wrapped stage - I often have at least a dozen, individually wrapped in cling film in the freezer. They take about 4-5 hours to defrost, so make sure you take them out of the freezer in time! A tip: I sometimes add a dollop of creme fraiche and a little white wine to the juices, to make an unctious wine sauce - this is optional, but delicious if you fancy a creamy sauce with these stuffed chicken breasts.', 'Lunch', NULL, 15, 60, 2, 302.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('69661', 'Shredded French-Dip Sandwiches', 'This makes some of the best hot sandwiches. Delicious, deeply flavored beef with rich aujus for dipping. Put it together in the morning and come home to a great meal! We like it with a green salad and some chips on the side. I''m not sure where this came from- maybe the food network or some magazine. The left-overs(if there are any) freeze well. Thaw, thicken the aujus and add any remaining meat and serve over rice or noodles.', 'Lunch', NULL, 10, 540, 4, 580.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13467', 'Honey Pecan Chicken Cutlets', 'This gives the chicken a nice crunchy bite. You can also cut the cutlets into fingers for a great appetizer.', 'Lunch', ARRAY['kosher']::text[], 10, 15, 4, 303.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29172', 'Angel Hair Pasta In Garlic Sauce', 'A dish that can be served plain, or add sauted shrimp, or whatever else you can think of. The basic recipe is good. We enjoy it plain too.', 'Lunch', NULL, 5, 15, 6, 399.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('30914', 'Hot Feta Artichoke Dip', 'Make and share this Hot Feta Artichoke Dip recipe from Food.com.', 'Lunch', NULL, 5, 25, 4, 269.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8617', 'Weeknight Tuna Noodle Casserole', 'I have been making this recipe for over 25 years and think it came from my mother originally but can''t be sure. It has a creamy texture from the cheese added and the mayonnaise which makes it sumptuous. Can be doubled easily.', 'Lunch', NULL, 20, 30, 4, 525.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('106627', 'Caramelized Butternut Squash', 'This is a delicious butternut squash recipe from Ina Garten / The Barefoot Contessa. We really enjoy this during the holidays. It is best when the squash is cut in medium to large chunks so that the outside gets a maple-flavored crust, and the inside stays soft and delicious.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 15, 55, 6, 307.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('108775', 'Baklava Salmon (Salmon With Honey, Butter, Walnuts, and Mustard)', 'One of my friends deemed this "Baklava Salmon" and the name stuck. The salmon & mustard go well with the honey, butter, and walnuts. We usually serve this with rice and steamed carrots or broccoli.', 'Dinner', ARRAY['high_protein']::text[], 15, 15, 4, 350.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52253', 'Big Thicket Chicken and Dumplings', 'If you love good, old-fashioned, down home chicken and dumplings, this is the real thing! Note that this dumpling recipe makes "a bunch of dumplin''s" because around here, most folks want more dumplin''s than chicken. (prep time includes cooling time for cooked chicken.)', 'Dinner', ARRAY['low_cholesterol']::text[], 90, 90, 8, 839.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('42780', 'Long John Silver''s Fish Batter', 'Mom got this recipe from somewhere a long time ago and passed it on to me. Just multiply the amounts according to how much fish that you have to fry.', 'Dinner', ARRAY['low_cholesterol']::text[], 5, NULL, 4, 100.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('108231', 'Amazing Chicken Tortilla Soup!', 'This recipe has been a huge hit with everyone who has ever tried it. We make it almost weekly, and the leftovers are eaten immediately. It is also very healthy! It is a little spicy, so if you don''t have too much of a tolerance for spicy foods, you may choose to leave out the seeds of the jalapeño. If you love spicy, like we do, extra cayenne pepper adds even more zing. Enjoy!', 'Dinner', ARRAY['dairy_free','egg_free','low_cholesterol']::text[], 15, 60, 10, 163.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('35988', 'Tortellini Tomato Spinach Soup', 'Make and share this Tortellini Tomato Spinach Soup recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol']::text[], 10, 20, 4, 312.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('79944', 'Bacon Wrapped Chicken (Oamc)', 'This is another great way to make something great ahead of time to thaw as needed or eat right now with little effort!', 'Dinner', ARRAY['high_protein']::text[], 25, 45, 12, 317.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25730', 'Pumpkin Pie Dip', 'Make and share this Pumpkin Pie Dip recipe from Food.com.', 'Dinner', ARRAY['low_protein']::text[], 5, NULL, 12, 180.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('20155', 'Creamy Potato Salad', 'Have you ever posted a recipe and just love reading the reviews for it? This is my signature potato salad. Whenever there is a pot luck function at work, I am TOLD that I have to bring the potato salad. No one else is allowed to and I am never given a choice. Thank you everyone who ever tried this potato salad and for leaving such glowing reviews for it. You all have made me look so good. I personally can not stand eggs or raw onions, so I leave them out but I know most people don''t think a potato salad is complete without them. Thanks again for so many wonderful reviews. (psssst....check out my recipe #123107 as well. It shares the dressing with this recipe but tastes much much different because of the different ingredients) Please see Recipe #242966 for bacon bit tips.', 'Dinner', ARRAY['dairy_free']::text[], 45, 25, 8, 296.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('5408', 'Pork Tenderloin', 'Make and share this Pork Tenderloin recipe from Food.com.', 'Dinner', ARRAY['high_protein']::text[], 15, 300, 3, 224.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17917', 'Chicken Cordon Bleu Casserole', 'My family loved this recipe. All the flavors of the real deal, only quicker to put on the table. It would be a lovely brunch dish too.', 'Dinner', ARRAY['high_protein']::text[], 25, 30, 4, 703.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('104086', 'The Best Chicken Tortilla Soup', 'I''m in love with this soup!! A very good friend of mine made this for me recently and I fell in love. I''m very picky about my Tortilla Soup and this by far the best ever. She makes hers in the crock pot and I have to agree, that it''s easy and tastes just wonderful!! Whatever you do, DO NOT skip the garnishes! They are the icing on the cake! UPDATE April 2010: Obviously I''ve made this so many times I never even look at the recipe anymore! But I wanted to add some variations that I play around with that are great. Like many reviewers black beans and corn are great additions. Sometimes I add them to the leftovers (if there are any :-) so that is feels like something new the next day! I have also made it several times with shredded pork which turns it into a pork carnitas type of soup. If you like it on the spicy and smoke side buy a can of chipotle peppers in adobo sauce and mince up one or two and add it. And lastly, a little swizzle of half and half or heavy cream just minutes before serving makes it a creamy tortilla soup that is wonderful and it is also a good way to tone down the heat if it got away from you...', 'Dinner', ARRAY['low_cholesterol']::text[], 15, 360, 6, 398.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11424', 'Hummus', 'Make and share this Hummus recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol']::text[], 15, NULL, 12, 144.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('264191', 'Homemade Cream of Mushroom Soup', 'Make and share this Homemade Cream of Mushroom Soup recipe from Food.com.', 'Dinner', ARRAY['low_protein']::text[], 5, 15, 6, 146.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17126', 'Quick Spanish Rice', 'Great side dish for your Mexican fiesta. Try with Recipe #17130! It is as good as you''ll find in any Mexican restaurant. Update: 1 teaspoon cumin was added to original recipe. I took some of my reviewers suggestion and added 1 teaspoon of cumin to the recipe. They were right. Cumin definitely adds to the taste.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 5, 25, 8, 157.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('78579', 'Pan Release, Professional Pan Coating (Better Than Pam Spray!)', 'If you bake and cook everyday then this is a must to have in your cupboard, it''s so much cheaper than using cooking spray and works even better than Pam cooking spray, no chemical fumes and will not leave burnt on black residue on the edges of your pans like cooking spray will and will keep forever in your cupboard --- for baking recipes using chocolate you may use 1/2 cup unsweetened cocoa powder in place of white flour or 1/4 cup each cocoa powder and flour --- this may be increased or decreased sucessfully just make certain that *all* three ingredients are the same amounts or the mixture will not work as well ;-)', 'Dinner', ARRAY['low_protein']::text[], 5, NULL, 4, 1398.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('177558', 'Oven-Roasted Corn on the Cob', 'I was surprised not to see this one on Zaar! Tyler Florence said, "Once you try this, you''ll never have corn on the cob any other way." We agree wholeheartedly! The corn steams and cooks in it''s own husk without any pre-soaking or anything. The corn''s flavor is intensified right in the husk! After removal from the oven, just pull back the husk and use it for a handle. The silk comes off with the husk! Let me know if you like corn this way as much as we do!', 'Dinner', ARRAY['low_cholesterol']::text[], NULL, 30, 4, 122.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('66575', 'Fruit Salad With Pudding!', 'I get compliments on this fruit salad wherever I take it. It is super easy to make and a great dish to bring to a potluck or family party. Kids love it too. Everyone asks "what''s in the sauce"? The secret ingredient is the vanilla pudding mix.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, NULL, 15, 73.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('74730', 'Zesty Oven Baked Fries', 'Make and share this Zesty Oven Baked Fries recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 15, 35, 2, 203.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('26306', 'Copycat Green Giant Niblets Corn in Butter Sauce', 'I had to come up with this quick. Every Thanksgiving my mom serves Green Giant Niblets corn in butter sauce and I promised I would pick it up for her and bring it on Thanksgiving day. When I went to the store, they were sold out! I made this recipe and brought it already prepared to Thanksgiving dinner. Nobody was the wiser! I saved some money too, because I used store brand corn! This recipe makes a lot...you may want to half it.', 'Dinner', ARRAY['low_protein']::text[], 5, 15, 4, 164.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('216237', 'Traditional English Cheddar Cauliflower Cheese - Gratin', 'When I was growing up, we NEVER called this dish a "Gratin" - it was always Cauliflower cheese and was invariably our main meal and NOT an accompaniment! My mother had to be very clever and thrifty in what she bought & cooked, and in the absence of meat on the table, she used cheese as the protein! This dish has become very "fashionable" again is served in many guises, Cauliflower Noisette, Cauliflower Gratin, Cheese and Cauliflower Bake...but to me, it will always be just Cauliflower Cheese, and it remains one of my favourite meals! I do serve it as an accompaniment now, but you have to be very careful what you serve it with, as it is very cheesy and rich. Alternatively, just have it as a main meal and serve some homemade bread and butter with it and maybe some salad or steamed spring greens! By the way, if you make a large batch, it freezes very well - either in small plastic containers or in zip lock bags; defrost and microwave to re-heat OR reheat over a Bain Marie. Try wherever possible to use English Mustard AND a good mature Cheddar cheese in the sauce, it DOES make a huge difference to the taste, and other types of mustards & cheeses do not work as well.', 'Snack', ARRAY['egg_free']::text[], 15, 25, 4, 210.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('110071', 'Kale Chips', 'Light and crunchy "chips" that are practically guilt free. Found this recipe on radicalhealth.com. I reduced the amount of salt called for in the original recipe thanks to some of the reviews.', 'Snack', ARRAY['low_cholesterol','low_protein','vegan']::text[], 15, 30, 8, 70.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('128746', 'Fusion Avocado!', 'Had this in TEXAS a couple of years ago! My SIL Kathie turned me on to it! Sushi without the fish, Nori, and trouble of making it! OK she just had the soy but darn the pickeled ginger is so good! This is so quick and easy!!!!! It''ll satisfy that I WANT SUSHI need! I myself can eat one a day!', 'Snack', ARRAY['low_protein']::text[], 2, NULL, 2, 162.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('77666', 'Hot Baked Cinnamon Apples', 'These cinnamon apples taste like a cobbler or pie without the crust. I was looking for a recipe for Cinnamon apples and all I could find were recipes for baking the whole apple - not what I wanted. After much searching I finally came across this recipe - I unfortunately cannot remember the site. It can easily be reduced to 2 or 3 apples, just watch it as it cooks. We serve this over ice cream and it is delicious. It can also be used on pancakes, waffles, or all by itself.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, 45, 8, 224.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17471', 'Channa Masala', 'Make and share this Channa Masala recipe from Food.com.', 'Snack', ARRAY['vegan']::text[], 20, 20, 4, 242.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('79715', 'Mini Pigs-In-A-Blanket', 'Make and share this Mini Pigs-In-A-Blanket recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 10, 15, 4, NULL, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('105573', 'Fried Mushrooms', 'At my house, we don''t like those fried mushrooms that are black and slimy where the breading slides easily off. This recipe is just a very crisp breading on a fresh mushroom. They''ll ''pop'' when you cut into them they are so fresh. Panko breadcrumbs are a polished bread crumb that you can find in an Asian market or the International section of your favorite food store and they make just a wonderful crunchier coating, too.', 'Breakfast', ARRAY['low_cholesterol']::text[], 15, 10, 3, 538.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52500', 'Very Low-Fat Black Bean And Corn Salad', 'As we all know, summertime is on its way and I have been looking for some lower fat and healthy recipes. Here is a wonderful looking one that I found on a web site called all-healthy.com.', 'Snack', ARRAY['low_cholesterol']::text[], 20, NULL, 8, 105.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63501', 'Low-Fat Oatmeal Muffins', 'This recipe was originally posted by a Zaar member who is no longer active. When she left, this recipe went "up for adoption." Since I was a huge fan of Zenith and her recipes, I of COURSE leapt at the chance to adopt one of her wonderful healthy recipes. These have no added fat and will make a satisfying breakfast snack. Enjoy!', 'Breakfast', ARRAY['low_cholesterol']::text[], 70, 20, 4, 110.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('98774', 'Low Carb Breakfast Balls', 'I used to live off of these when I was low carbing. They freeze really well. I also occasionally mixed in TVP (texturized vegetable protein) and flax for some extra fiber.', 'Breakfast', ARRAY['high_protein']::text[], 20, 30, 12, 403.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('90086', 'Super Healthy Hummus', 'Taken off a website, don''t have the reference. An excellent hummus, the only one I make anymore. You really need a blender or food processor to get the consistency right. 1/4 cup = 1 point ww.', 'Snack', ARRAY['low_cholesterol']::text[], 10, NULL, 6, 123.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('151785', 'Baked Parmesan Fish', 'Healthier and tastier way to serve fish. I have used flounder, catfish, grouper, perch and tilapia with great results.If your fish is not getting crispy try broiling it for a minute or so to get it crispy. Oh and parmesan from a can is ok but treat yourself and use freshly grated. You will be oh so happy you did.', 'Snack', ARRAY['high_protein']::text[], 30, NULL, 4, 192.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('162765', 'Properly Prepared Spaghetti Squash', 'This recipe can be substituted in ANY pasta sauce or recipe, and it can be eaten hot or cold. Very versatile main or side dish - and very hard to screw up.', 'Breakfast', ARRAY['egg_free','low_cholesterol','low_protein','vegan']::text[], 15, 50, 4, 45.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('162873', 'Green Beans from a Can That Don''t Taste Like It!', 'As fast as you can heat a can of veggies you can have this special side ready to serve! I hate canned green beans yet this is one veggie my dd will eat without complaint. This forced me to find a way to make us both happy. Hope you enjoy this one!', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, NULL, 4, 46.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('21320', 'Vanilla Pudding Fruit Salad', 'Make and share this Vanilla Pudding Fruit Salad recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','low_protein','vegan']::text[], 35, NULL, 10, 118.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('77497', '2- Handed Kitchen Sink Tomato Sandwich', 'I got this recipe from an old Georgia Boy that was transplanted in Tennessee, he is 72 and says he grew up on this sandwich.', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 15, NULL, 1, 165.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('43850', 'Pumpkin Seeds', 'One of the best things about Halloween when I was a kid was the pumpkin seeds baking while we were finishing up the details on the carving. Serving size depends on the pumpkin', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 5, 30, 1, 203.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('21151', 'Chimichurri', 'This TOO easy sauce, of Argentine origin, makes your steak taste like it was just dragged through the garden! Great on rare, chargrilled, flank steak.', 'Snack', ARRAY['low_protein']::text[], 30, NULL, 6, 255.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('117194', 'Apple Bites', 'A delicious, incredibly easy way to dress up fresh apples for an quick snack. Enjoyed by both kids and adults alike.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, NULL, 1, 97.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('115929', 'Vegan Cornbread', 'I got this recipe in my email today from Cooks Illustrated. It is a blue-ribbon winner developed by 11 year old Dana Sly.', 'Breakfast', ARRAY['dairy_free','egg_free','vegan']::text[], 25, 25, 9, 198.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('632', '100% Whole Wheat Blueberry Muffins', 'Make and share this 100% Whole Wheat Blueberry Muffins recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol']::text[], 35, 35, 4, 184.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11595', 'Ww Pineapple Muffins or Cake', 'Make and share this Ww Pineapple Muffins or Cake recipe from Food.com.', 'Snack', ARRAY['low_cholesterol']::text[], 10, 30, 6, 374.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('29365', 'Fried Peanut Butter and Jelly Sandwich', 'Sounds strange, but kids love it. I made these for my kids all the time. Let it cool slightly before giving to younger children as the jelly can get hot.', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 5, 5, 1, 133.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('181385', 'Low-Fat Carrot Cake Muffins (That Don''t Taste Low-Fat!)', 'Except for the small amount of oil these muffins are low-fat, but you would never know it, they bake out high with tons of flavor and are extremely moist, you may throw in some chopped nuts also --- for greasing see my recipe#78579 --- for more low fat muffin recipes visit www.kittencalskitchen.com', 'Breakfast', ARRAY['low_cholesterol']::text[], 15, 20, 4, 164.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('71499', 'Homemade Microwave Popcorn', 'This was published in the Daily Kent Stater today, and I posted it so that I would not have to clip it. I thought others might be interested in it too!', 'Snack', ARRAY['low_protein']::text[], 2, 3, 4, 35.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('94673', 'Egyptian Red Lentil Soup', 'A yummy soup that uses my favorite lentils. Adapted from a Moosewood recipe. This is a good and healthy take-to-work lunch.', 'Snack', ARRAY['vegan']::text[], 60, 23, 4, 204.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('33104', 'Un-Boiled Chicken', 'Yes, this seems weird. But it DOES work! Try this method of cooking for use in salads or any dish that calls for cooked chicken. It makes moist, flavorful meat -- the flavor isn''t all boiled out into the broth, and it doesn''t get the sort of carmelized flavor of roasting, which I don''t care for in a chicken salad. If you do Once-A-Month Cooking, this is a great way to prepare a lot of chicken for the freezer. The 90 minute cooking time is actually 60 minutes of standing after (approximately) 30 minutes to boil the water twice.', 'Snack', ARRAY['high_protein','kosher']::text[], 5, 90, 4, 243.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('154636', 'Weight Watcher 1 Point Banana Bread--Flex Points', 'Moist and tasty! For those on WW, it''s an easy, economical homemade alternative to buying the overpriced WW baked goods in the grocery store. This recipe is courtesy of the WW website.', 'Breakfast', ARRAY['egg_free']::text[], 10, 60, 12, 87.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('16015', 'Pumpkin-Oat Bran Muffins', 'This was on one of those recipe cards that you get in the mail from time to time. We love the taste of the pumpkin and bran - even DD and she isn''t a bran eater!', 'Breakfast', ARRAY['low_cholesterol']::text[], NULL, 20, 4, 113.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('28549', 'Korean Hamburgers', 'Yes, it is one TABLESPOON of minced garlic! These are absolutely wonderful. Serve on a bun with teriyaki sauce..... -------------- If freezing in advance, you might want to lessen the garlic just a little as the flavor intensifies. Unless you''re like me and LOVE the taste!', 'Lunch', ARRAY['dairy_free','high_protein']::text[], 2, 15, 4, 328.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('38564', 'Black Bean Dip', 'Make and share this Black Bean Dip recipe from Food.com.', 'Snack', ARRAY['low_cholesterol','vegan']::text[], 5, NULL, 4, 249.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('18762', 'Greek-Style Oven Fries', 'When I first saw this recipe I though it was "Geek"-style, not Greek. Tried them anyway, and they''re very good, geeky or Greeky!', 'Snack', ARRAY['kosher','low_cholesterol','low_protein','vegan']::text[], 5, 45, 6, 75.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('78747', 'Gallo Pinto (Costa Rican Rice and Beans)', 'I found this recipe in a copy of Vegetarian Times. Gallo Pinto translates as "painted rooster", and is a dish eaten by many Costa Ricans almost every day. The addition of ginger and Worcestershire adds a quite unique flavor to this dish.', 'Snack', ARRAY['vegan']::text[], 5, 10, 6, 249.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('34233', 'Restaurant Guacamole', 'Make and share this Restaurant Guacamole recipe from Food.com.', 'Lunch', ARRAY['low_cholesterol','low_protein']::text[], 15, NULL, 4, 377.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('42272', 'Homemade Beef Jerky', 'This is excellent beef jerky and worth the wait! Less expensive than store bought and tastes better. Double the recipe next time and experiment with different spices you like!', 'Snack', ARRAY['high_protein']::text[], 540, 360, 15, 203.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('69214', 'Decked-Out Burgers', 'Make and share this Decked-Out Burgers recipe from Food.com.', 'Lunch', ARRAY['high_protein']::text[], 10, 11, 6, 371.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('57123', 'Creamy Swiss Chard Pasta', 'Make and share this Creamy Swiss Chard Pasta recipe from Food.com.', 'Lunch', ARRAY['low_cholesterol']::text[], 15, 5, 4, 314.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('188329', 'Crock Pot Shredded Chicken Breasts for Freezing - OAMC', 'Great to have on-hand for recipes. Just Place as many chicken breasts as you can fit into your crock pot as long as the lid fits on properly. I use bone-in, skin-on but I''m sure boneless, skinless would work too.', 'Lunch', ARRAY['high_protein']::text[], 5, 480, 4, 250.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('193370', 'Easy Low Fat Oven Roasted Peppered Potato Wedges', 'This is my Dad''s recipe!!! Brilliant low fat & EASY roasted potato wedges with freshly ground black pepper and olive oil. I have also added garlic, lemon wedges, fresh thyme, fresh rosemary, cumin, chilli.......the list is endless! I have posted the basic recipe and it is obviously easy to add whatever you like, depending on the mood, season & type of meal you are serving. For example, rosemary is great with lamb dishes; thyme and oregano marries wonderfully with Italian & French cuisine; garlic and lemons are GREAT with roast chicken. The basic peppered recipe is still my favourite though - I use fleur de sel (local sea salt) in mine - but any coarse salt will be fine. I have given measurements for about 4 people......it is easily adapted up or down however!', 'Snack', ARRAY['low_cholesterol','low_protein','vegan']::text[], 10, 45, 4, 204.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('10837', 'Fresh Tomato Spaghetti Sauce', 'This is a great sauce i add 1 lb hot italian sausage and 1 lb ground beef browned together as well as 2 tablespoons fressh oregano', 'Lunch', ARRAY['low_cholesterol','low_protein']::text[], 5, 125, 6, 584.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('110936', 'Stolen Garlic Chicken Livers', 'This is the ultimate Garlic Chicken Liver recipe. Simple, quick, minimal ingredients. Stolen from my local Italian restaurant after two weeks working there as a dish washer just to get the recipe. They''ve retired now so I don''t think they''ll mind me divulging their secret!', 'Lunch', ARRAY['high_protein']::text[], 5, 5, 1, 403.8, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('117412', 'Peach Oatmeal', 'I have created one delicious oatmeal! It sort of reminds me of the Quaker peaches and cream oatmeal. I still prefer this oatmeal however, which is healthier, to packaged any day.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, 5, 1, 106.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14111', 'Caramel Apple Dip', 'Take my advice, make lots of this dip. The recipe may say that it is for 4 servings, but I have seen sophisticated friends turn barbaric over a bowl of this stuff. It''s very sweet and goes great with tart apples.', 'Lunch', ARRAY['kosher']::text[], 5, NULL, 4, 402.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('94520', 'Simple Tomato and Avocado Salad', 'Make and share this Simple Tomato and Avocado Salad recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 10, NULL, 4, 129.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('123809', 'Vegan Blueberry Muffins', 'Make and share this Vegan Blueberry Muffins recipe from Food.com.', 'Breakfast', ARRAY['dairy_free','egg_free','low_cholesterol','low_protein','vegan']::text[], 15, 35, 12, 199.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('37023', 'Cinnamon Syrup', 'My sister in law made this for me a few years ago, and it is now my favorite pancake and waffle topping.', 'Breakfast', ARRAY['low_protein']::text[], 5, 5, 6, 172.9, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17724', 'Pineapple Meatballs', 'This is a family favourite; my teenage son eats at least 2 servings himself. Cooking time includes the browning of the meatballs, although you can brown them in the oven on a cookie sheet and make the sauce at the same time, saving yourself a little time.', 'Lunch', ARRAY['kosher']::text[], 25, 60, 6, 559.5, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('25632', 'I Can''t Wait for Chole', 'A nice spicy Indian chickpea recipe. I know, I know. The beans come from a can. Yeah, yeah. But I was so hungry, and I was in a hurry! Remember this little dish the next time you''re short on time, too! To serve as a vegetarian main dish, increase the quantity. Reheats well, too.', 'Lunch', ARRAY['low_cholesterol','vegan']::text[], 5, 30, 4, 300.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11492', 'Apple Butter', 'This is a very easy recipe to make and has always turned out really good for me. The apples cook up to look like applesauce and usually turn sort of dark and tastes great.', 'Breakfast', ARRAY['low_cholesterol','low_protein','vegan']::text[], 60, 1060, 4, 533.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('76073', 'Thanksgiving Sweet Potato Casserole', 'Another one of my Mama''s. This is so good, you could eat it as a dessert if you wanted to. A must for Thanksgiving.', 'Breakfast', ARRAY['low_protein']::text[], 10, 30, 4, 603.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('140213', 'Emaw''s Goulash', 'As some of you know I have been attempting to record my mother''s recipes for all eternity. This has been one of my all time comfort meals all my life. Some of the ingredients would change depending on how much $$ we had at the time. Feel free to add any seasoning you might like.', 'Lunch', ARRAY['egg_free','low_cholesterol']::text[], 15, 45, 4, 415.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('13526', 'Homemade Low Calorie Potato Chips', 'Make and share this Homemade Low Calorie Potato Chips recipe from Food.com.', 'Lunch', ARRAY['kosher','low_cholesterol','low_protein','vegan']::text[], 5, 8, 1, 304.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('48331', 'Best Seller Caramel Corn', 'When I used to regularly do Christmas craft shows, I always sold this packaged up in Christmas tins; it was a big seller for me. My SIL always hoped it wouldn''t sell well, though, so she could eat what didn''t sell! Based on a Bonnie Stern recipe.', 'Lunch', ARRAY['kosher']::text[], 10, 45, 8, 269.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31856', 'Chinese Chicken Wings', 'Really good, simple recipe! Really yummy wings. I never have any leftovers. Marinating time is added in prep time.', 'Lunch', ARRAY['high_protein']::text[], 480, 60, 4, 711.7, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('62907', 'Super Easy Pasta Salad', 'This is a delicious, summery pasta salad that''s incredibly easy to make! I often get requests for it at family gatherings. I usually use fat-free Italian dressing and light mayonnaise and it still tastes fantastic. Feel free to throw in some peppers and other veggies too!', 'Lunch', ARRAY['low_cholesterol']::text[], 5, 8, 4, 418.6, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('59796', 'Easy Black Bean Soup', 'This soup is a favorite pantry meal for my family. Easy, easy, easy to make and nutritious. I got the recipe from the back of a soup can but have improvised this soup many times. Feel free to adjust seasonings as you like.', 'Lunch', ARRAY['low_cholesterol']::text[], 10, 15, 4, 331.1, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('16432', 'Panini Sandwiches', 'When I got my George Foreman grill, I made up this recipe to be like the ones that I had bought. It has been a big hit with everyone.', 'Lunch', ARRAY['high_protein']::text[], NULL, 4, 4, 1422.3, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('52284', 'Linda''s Tuna and Olive Sandwich (Sandwiches) or Finger Rolls', 'This is one of my all time FAVORITE sandwiches. I hope you enjoy it as much as I do. Onions and olives go together well with the mayo in this recipe... YUMMO! The Finger Roll recipe is GREAT around the holidays and for baby and bridal showers, graduations, weddings, parties, and family get togethers. Just omit the lettuce if making the Finger Rolls. Each can of tuna will make 3-4 finger rolls, depending on how full you make them, and how big the rolls are. You can double or triple this recipe, according to how many Finger Rolls you need. Try some of my other delicious sandwiches: Recipe #234542 Recipe #218337 Recipe #52286', 'Lunch', ARRAY['low_cholesterol']::text[], 10, NULL, 4, 451.4, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('74475', 'Peanut Butter and Bacon Sandwich', 'Make and share this Peanut Butter and Bacon Sandwich recipe from Food.com.', 'Lunch', ARRAY['high_protein']::text[], 5, 10, 1, 319.0, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('139060', 'Your Basic Quesadilla', 'This is one of the ways I make a simple quesadilla at home. Quesadillas made like this can be found at Mexican restaurants.', 'Lunch', ARRAY['high_protein']::text[], 10, NULL, 2, 372.2, NULL, 'Food.com')
-ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;
+ON CONFLICT DO NOTHING;
 
 -- recipe_ingredients (units aren't in the dataset; quantity is the bare number)
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)

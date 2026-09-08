@@ -124,9 +124,12 @@ CREATE INDEX idx_ing_created_brin ON public.ingredients USING BRIN (created_at);
 -- 94_maintenance.sql ships fn_check_duplicate_fdc_ids() to detect it.
 \if :scale
   CREATE UNIQUE INDEX idx_ing_fdc_uq ON public.ingredients (usda_fdc_id, food_category);
+  CREATE UNIQUE INDEX idx_ing_name_uq ON public.ingredients (lower(btrim(ingredient_name)), food_category);
 \else
   CREATE UNIQUE INDEX idx_ing_fdc_uq ON public.ingredients (usda_fdc_id)
       WHERE usda_fdc_id IS NOT NULL;
+  -- Same name rule as the week-1 schema, so its seed files load here too.
+  CREATE UNIQUE INDEX idx_ing_name_uq ON public.ingredients (lower(btrim(ingredient_name)));
 \endif
 
 CREATE INDEX idx_in_ingredient ON public.ingredient_nutrition (ingredient_id);
@@ -173,10 +176,15 @@ CREATE INDEX idx_recipes_deleted  ON public.recipes (deleted_at) WHERE deleted_a
 
 \if :scale
   CREATE UNIQUE INDEX idx_recipes_external_uq ON public.recipes (external_source_id, data_source);
+  CREATE UNIQUE INDEX idx_recipes_name_uq ON public.recipes (lower(recipe_name), data_source);
 \else
   CREATE UNIQUE INDEX idx_recipes_external_uq ON public.recipes (external_source_id)
       WHERE external_source_id IS NOT NULL;
+  CREATE UNIQUE INDEX idx_recipes_name_uq ON public.recipes (lower(recipe_name))
+      WHERE deleted_at IS NULL;
 \endif
+CREATE INDEX idx_recipes_meal    ON public.recipes (meal_category);
+CREATE INDEX idx_recipes_dietary ON public.recipes USING GIN (dietary_tags);
 
 -- (recipe_id, ingredient_id) is covered by uq_ri_recipe_ingredient
 CREATE INDEX idx_ri_ingredient ON public.recipe_ingredients (ingredient_id);

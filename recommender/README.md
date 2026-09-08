@@ -14,7 +14,11 @@ createdb mazimeal_full
 psql -d mazimeal_full -f recommender/db/install.sql
 psql -d mazimeal_full -f recommender/seed/00_reference.sql
 psql -d mazimeal_full -f recommender/seed/01_demo_household.sql
+psql -d mazimeal_full -f schema/seed/foodcom_400.sql
 ```
+
+The last line is the 400 Food.com recipes. Same file the week-1 schema uses;
+both schemas accept it.
 
 Then:
 
@@ -22,8 +26,9 @@ Then:
 cd recommender
 python3 recommend.py members
 python3 recommend.py for Maya
+python3 recommend.py for Jeff --meal Dinner
 python3 recommend.py for Jeff --explain salmon
-python3 recommend.py household
+python3 recommend.py household --meal Snack
 ```
 
 ## How it scores
@@ -67,9 +72,15 @@ curry (26% of her iron gap) because salmon closes more gaps overall. Weighting
 condition-linked nutrients higher is the obvious first improvement, and the
 data to do it is already there in `nutrient_rules.applies_to_condition`.
 
-**Meal slot.** `p_meal` is accepted but ignored. The full schema has no meal
-type on recipes; the week-1 schema added `meal_category`. Once the two
-schemas merge, filter on it.
+**Micronutrients for Food.com recipes.** Food.com publishes nine nutrients
+per serving (calories, protein, fat, carbs, fiber, sugar, sodium, cholesterol,
+saturated fat). No iron, calcium or vitamins. So a Food.com recipe can only
+close the energy, protein and fiber gaps and tops out around a third of the
+possible score, while the six demo recipes, which have USDA values per
+ingredient, rank above all of them. The fix is matching Food.com ingredient
+names to `ingredients` rows that carry USDA nutrition, so the
+ingredient-derived path fills in what the published data lacks. That's the
+first thing to do once the recipes are in.
 
 **Variety.** Nothing stops it recommending salmon every night. A penalty for
 recipes eaten in the last N days needs `profile_recipe_history`, which exists

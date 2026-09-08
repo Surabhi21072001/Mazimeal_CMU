@@ -117,19 +117,19 @@ ON CONFLICT (ingredient_id, nutrient_id) DO NOTHING;
 -- Recipes, all 4 servings, gram quantities
 -- ---------------------------------------------------------------------------
 INSERT INTO recipes (recipe_id, recipe_name, recipe_description, prep_time_min, cook_time_min,
-                     difficulty_level, servings, data_source, is_ai_generated) VALUES
+                     difficulty_level, servings, meal_category, dietary_tags, data_source, is_ai_generated) VALUES
     ('01930000-0000-7000-8000-0000000000f2', 'Grilled Chicken and Broccoli Rice Bowl',
-     'Lean protein with greens over rice.', 10, 25, 'Easy', 4, 'Manual', FALSE),
+     'Lean protein with greens over rice.', 10, 25, 'Easy', 4, 'Dinner', ARRAY['high_protein', 'dairy_free'], 'Manual', FALSE),
     ('01930000-0000-7000-8000-0000000000f3', 'Overnight Oats with Greek Yogurt',
-     'Make the night before. Fiber and calcium to start the day.', 10, 0, 'Easy', 4, 'Manual', FALSE),
+     'Make the night before. Fiber and calcium to start the day.', 10, 0, 'Easy', 4, 'Breakfast', ARRAY['vegetarian'], 'Manual', FALSE),
     ('01930000-0000-7000-8000-0000000000f4', 'Baked Salmon with Sweet Potato',
-     'Vitamin D and omega-3 from the salmon, slow carbs from the potato.', 10, 30, 'Easy', 4, 'Manual', FALSE),
+     'Vitamin D and omega-3 from the salmon, slow carbs from the potato.', 10, 30, 'Easy', 4, 'Dinner', ARRAY['dairy_free', 'gluten_free'], 'Manual', FALSE),
     ('01930000-0000-7000-8000-0000000000f5', 'Peanut Butter Oat Bites',
-     'No-bake snack. Contains peanuts.', 15, 0, 'Easy', 4, 'Manual', FALSE),
+     'No-bake snack. Contains peanuts.', 15, 0, 'Easy', 4, 'Snack', ARRAY['vegan'], 'Manual', FALSE),
     ('01930000-0000-7000-8000-0000000000f6', 'Tofu and Chickpea Curry with Spinach',
-     'Plant iron from three sources, finished with lemon to help absorption.', 15, 30, 'Medium', 4, 'Manual', FALSE),
+     'Plant iron from three sources, finished with lemon to help absorption.', 15, 30, 'Medium', 4, 'Dinner', ARRAY['vegan', 'gluten_free'], 'Manual', FALSE),
     ('01930000-0000-7000-8000-0000000000f7', 'Quinoa Egg Breakfast Bowl',
-     'Complete protein from quinoa and eggs, broccoli for vitamin C.', 10, 15, 'Easy', 4, 'Manual', FALSE)
+     'Complete protein from quinoa and eggs, broccoli for vitamin C.', 10, 15, 'Easy', 4, 'Breakfast', ARRAY['vegetarian', 'gluten_free'], 'Manual', FALSE)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES

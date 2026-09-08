@@ -253,7 +253,7 @@ def emit(chosen, out):
     w("-- ingredients\n")
     for k in canon.values():
         w(f"INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ({q(k)}, 'Uncategorized', 'Manual') "
-          f"ON CONFLICT (lower(btrim(ingredient_name))) DO NOTHING;\n")
+          f"ON CONFLICT DO NOTHING;\n")
 
     w("\n-- recipes\n")
     for r in chosen:
@@ -263,7 +263,7 @@ def emit(chosen, out):
           f"VALUES ({q(r['ext_id'])}, {q(r['name'])}, {q(r['description'])}, {q(r['slot'])}, {tags}, "
           f"{r['prep'] if r['prep'] is not None else 'NULL'}, {r['cook'] if r['cook'] is not None else 'NULL'}, "
           f"{r['servings']}, {r['nutrition'].get('Energy', (None,))[0] or 'NULL'}, NULL, 'Food.com')\n"
-          f"ON CONFLICT (lower(recipe_name)) WHERE deleted_at IS NULL DO NOTHING;\n")
+          f"ON CONFLICT DO NOTHING;\n")
 
     w("\n-- recipe_ingredients (units aren't in the dataset; quantity is the bare number)\n")
     for r in chosen:

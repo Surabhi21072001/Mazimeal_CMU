@@ -108,6 +108,8 @@ CREATE TABLE IF NOT EXISTS public.recipes_manual
     PARTITION OF public.recipes FOR VALUES IN ('Manual');
 CREATE TABLE IF NOT EXISTS public.recipes_ai
     PARTITION OF public.recipes FOR VALUES IN ('AI_generated');
+CREATE TABLE IF NOT EXISTS public.recipes_foodcom
+    PARTITION OF public.recipes FOR VALUES IN ('Food.com');
 
 -- ---------------------------------------------------------------------------
 -- RANGE partitions · monthly, seeded here and extended by the scheduled job.

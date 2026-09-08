@@ -4,6 +4,7 @@ Recipe recommender CLI. Thin wrapper over the SQL functions in db/97_recommender
 
     python3 recommend.py members                      list members
     python3 recommend.py for Jeff                     recommend for one member
+    python3 recommend.py for Jeff --meal Breakfast    one meal slot only
     python3 recommend.py for Jeff --explain "Tofu"    why one recipe scores what it does
     python3 recommend.py household                    whole household, weakest member first
 
@@ -19,7 +20,7 @@ def sql(query, *params):
     """Run a query, return rows as lists. Params are interpolated as literals."""
     q = query
     for p in params:
-        q = q.replace("?", "'" + str(p).replace("'", "''") + "'", 1)
+        q = q.replace("?", "NULL" if p is None else "'" + str(p).replace("'", "''") + "'", 1)
     r = subprocess.run(["psql", "-d", DB, "-At", "-F", "\t", "-c", q],
                        capture_output=True, text=True)
     if r.returncode:
@@ -53,9 +54,10 @@ def cmd_for(a):
             print(f"{n:14} {float(t):8.1f} {float(c):8.1f} {float(g):8.1f} {float(ps):8.1f} {pct:>5}%")
         return
 
-    rows = sql("select recipe_name, score, top_reasons::text, warnings::text from fn_recommend(?, current_date, null, ?)",
-               mid, a.limit)
-    blocked = sql("select r.recipe_name, b.reason from fn_blocked_recipes(?) b join recipes r using(recipe_id)", mid)
+    rows = sql("select recipe_name, score, top_reasons::text, warnings::text from fn_recommend(?, current_date, ?, ?)",
+               mid, a.meal, a.limit)
+    blocked = sql("select r.recipe_name, b.reason from fn_blocked_recipes(?) b join recipes r using(recipe_id) "
+                  "where ? is null or r.meal_category = ?", mid, a.meal, a.meal)
     for name, score, reasons, warns in rows:
         top = ", ".join(f"{x['nutrient']} {x['closes_pct']}%" for x in json.loads(reasons)[:3])
         flag = "  !! " + "; ".join(json.loads(warns)) if warns != "[]" else ""
@@ -69,8 +71,8 @@ def cmd_household(a):
     if not rows:
         sys.exit("no household found")
     for name, mn, av, per in sql(
-        "select recipe_name, min_score, avg_score, per_member::text from fn_recommend_household(?, current_date, null, ?)",
-        rows[0][0], a.limit):
+        "select recipe_name, min_score, avg_score, per_member::text from fn_recommend_household(?, current_date, ?, ?)",
+        rows[0][0], a.meal, a.limit):
         members = "  ".join(f"{k} {v}" for k, v in json.loads(per).items())
         print(f"{float(mn):5.1f}  {name:45} {members}")
 
@@ -80,8 +82,9 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("members").set_defaults(fn=cmd_members)
     f = sub.add_parser("for"); f.add_argument("member"); f.add_argument("--explain"); f.add_argument("--limit", type=int, default=10)
-    f.set_defaults(fn=cmd_for)
-    h = sub.add_parser("household"); h.add_argument("--limit", type=int, default=10); h.set_defaults(fn=cmd_household)
+    f.add_argument("--meal", choices=["Breakfast", "Lunch", "Dinner", "Snack"]); f.set_defaults(fn=cmd_for)
+    h = sub.add_parser("household"); h.add_argument("--limit", type=int, default=10)
+    h.add_argument("--meal", choices=["Breakfast", "Lunch", "Dinner", "Snack"]); h.set_defaults(fn=cmd_household)
     a = p.parse_args(); a.fn(a)
 
 

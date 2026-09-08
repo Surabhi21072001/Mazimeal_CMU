@@ -3,7 +3,7 @@
 --  cultural_categories · recipes · recipe_ingredients · recipe_steps
 --  recipe_videos · recipe_rules_map
 --
---  SCALE: recipes -> LIST(data_source), 4 partitions
+--  SCALE: recipes -> LIST(data_source), 5 partitions
 --         (USDA | Open_Food_Facts | Manual | AI_generated)
 --
 --  NAME COLLISION: cultural_categories.category_id (UUID) and
@@ -47,6 +47,8 @@ CREATE TABLE public.recipes (
     glycemic_index_estimate DECIMAL(5,2),
     cultural_category_id    UUID,
     regional_origin         VARCHAR(100),
+    meal_category           VARCHAR(20),
+    dietary_tags            TEXT[],
     data_source             VARCHAR(80)   NOT NULL DEFAULT 'USDA',
     is_ai_generated         BOOLEAN       NOT NULL DEFAULT FALSE,
     active_rule_ids_csv     TEXT,
@@ -55,7 +57,9 @@ CREATE TABLE public.recipes (
 
     CONSTRAINT pk_recipes      PRIMARY KEY (:pk_recipes),
     CONSTRAINT ck_rec_source   CHECK (data_source IN
-        ('USDA', 'Open_Food_Facts', 'Manual', 'AI_generated')),
+        ('USDA', 'Open_Food_Facts', 'Manual', 'AI_generated', 'Food.com')),
+    CONSTRAINT ck_rec_meal     CHECK (meal_category IS NULL
+                                      OR meal_category IN ('Breakfast', 'Lunch', 'Dinner', 'Snack')),
     CONSTRAINT ck_rec_diff     CHECK (difficulty_level IS NULL
                                       OR difficulty_level IN ('Easy', 'Medium', 'Hard')),
     CONSTRAINT ck_rec_servings CHECK (servings > 0),
@@ -70,6 +74,8 @@ CREATE TABLE public.recipes (
 ) :part_recipes ;
 
 COMMENT ON COLUMN public.recipes.external_source_id      IS 'Upstream id when imported. Unique among non-NULL values.';
+COMMENT ON COLUMN public.recipes.meal_category           IS 'Breakfast | Lunch | Dinner | Snack. Same as the week-1 schema.';
+COMMENT ON COLUMN public.recipes.dietary_tags            IS 'vegan, gluten_free, etc.';
 COMMENT ON COLUMN public.recipes.glycemic_index_estimate IS 'Carb-weighted average GI. Used to filter recipes for diabetic profiles.';
 COMMENT ON COLUMN public.recipes.active_rule_ids_csv     IS 'Denormalised summary of demonstrated rules. recipe_rules_map is the normalised source of truth.';
 
