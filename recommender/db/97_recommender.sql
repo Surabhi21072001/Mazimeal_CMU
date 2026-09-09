@@ -45,9 +45,14 @@ $$;
 -- gram estimate per line is rough; the proportions are usually right but the
 -- total isn't. Anchoring to published energy fixes the total. The factor is
 -- clamped to 0.25..4 so one bad line can't blow up a recipe.
--- A view for now; materialize at thousands of recipes.
+--
+-- Materialized: the recommender reads it many times per page and computing
+-- it costs a few seconds. Refresh after loading recipes or ingredient
+-- nutrition: select fn_refresh_recipe_nutrients();  The seed files do it.
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE VIEW v_recipe_nutrients_per_serving AS
+DROP VIEW IF EXISTS v_recipe_nutrients_per_serving;
+DROP MATERIALIZED VIEW IF EXISTS mv_recipe_nutrients;
+CREATE MATERIALIZED VIEW mv_recipe_nutrients AS
 WITH derived AS (
     SELECT ri.recipe_id,
            n.nutrient_id,
@@ -81,7 +86,24 @@ SELECT d.recipe_id, d.nutrient_id, d.unit,
 FROM   derived d
 LEFT   JOIN scale s ON s.recipe_id = d.recipe_id
 WHERE  NOT EXISTS (SELECT 1 FROM recipe_nutrition p
-                   WHERE p.recipe_id = d.recipe_id AND p.nutrient_id = d.nutrient_id);
+                   WHERE p.recipe_id = d.recipe_id AND p.nutrient_id = d.nutrient_id)
+WITH NO DATA;
+
+CREATE UNIQUE INDEX mv_recipe_nutrients_pk ON mv_recipe_nutrients (recipe_id, nutrient_id);
+CREATE INDEX mv_recipe_nutrients_nutrient ON mv_recipe_nutrients (nutrient_id);
+
+-- Everything else reads through this name.
+CREATE VIEW v_recipe_nutrients_per_serving AS SELECT * FROM mv_recipe_nutrients;
+
+CREATE OR REPLACE FUNCTION fn_refresh_recipe_nutrients() RETURNS void
+LANGUAGE plpgsql AS $$
+BEGIN
+    IF EXISTS (SELECT 1 FROM pg_class WHERE relname = 'mv_recipe_nutrients' AND relispopulated) THEN
+        REFRESH MATERIALIZED VIEW CONCURRENTLY mv_recipe_nutrients;
+    ELSE
+        REFRESH MATERIALIZED VIEW mv_recipe_nutrients;
+    END IF;
+END $$;
 
 -- ---------------------------------------------------------------------------
 -- What this member still needs today: target minus what's been logged.
@@ -191,19 +213,20 @@ LANGUAGE sql STABLE AS $$
         FROM   v_recipe_nutrients_per_serving v
         JOIN   gap g ON g.nutrient_id = v.nutrient_id
     ),
+    ranked AS (
+        SELECT c.*, row_number() OVER (PARTITION BY c.recipe_id ORDER BY c.fill DESC) AS rn
+        FROM   contrib c
+    ),
     scored AS (
         SELECT c.recipe_id,
                round(100.0 * sum(c.fill) / (SELECT n FROM n_targets) - 25.0 * sum(c.over_limit), 1) AS score,
-               (SELECT jsonb_agg(jsonb_build_object(
-                           'nutrient', x.nutrient_id,
-                           'closes_pct', round(100 * x.fill),
-                           'per_serving', round(x.per_serving, 1))
-                        ORDER BY x.fill DESC)
-                FROM (SELECT * FROM contrib c2 WHERE c2.recipe_id = c.recipe_id AND c2.fill > 0
-                      ORDER BY c2.fill DESC LIMIT 3) x)                          AS top_reasons,
-               (SELECT jsonb_agg(x.nutrient_id || ' over daily limit')
-                FROM contrib x WHERE x.recipe_id = c.recipe_id AND x.over_limit = 1) AS warnings
-        FROM   contrib c
+               jsonb_agg(jsonb_build_object(
+                   'nutrient', c.nutrient_id,
+                   'closes_pct', round(100 * c.fill),
+                   'per_serving', round(c.per_serving, 1)) ORDER BY c.fill DESC)
+                   FILTER (WHERE c.rn <= 3 AND c.fill > 0)                          AS top_reasons,
+               jsonb_agg(c.nutrient_id || ' over daily limit') FILTER (WHERE c.over_limit = 1) AS warnings
+        FROM   ranked c
         GROUP  BY c.recipe_id
     )
     SELECT s.recipe_id, r.recipe_name, s.score,
@@ -242,8 +265,10 @@ LANGUAGE sql STABLE AS $$
         FROM   household_members
         WHERE  household_id = p_household_id AND deleted_at IS NULL
     ),
-    each AS (
-        SELECT m.member_id, m.member_name, rec.*
+    -- MATERIALIZED: score each member once, not once per output row
+    each AS MATERIALIZED (
+        SELECT m.member_name, rec.*,
+               row_number() OVER (PARTITION BY rec.recipe_id ORDER BY rec.score) AS weakest
         FROM   members m
         CROSS  JOIN LATERAL fn_recommend(m.member_id, p_date, p_meal, 1000) rec
     ),
@@ -253,8 +278,7 @@ LANGUAGE sql STABLE AS $$
            min(e.score),
            round(avg(e.score), 1),
            jsonb_object_agg(e.member_name, e.score),
-           (SELECT jsonb_build_object('member', x.member_name, 'reasons', x.top_reasons)
-            FROM each x WHERE x.recipe_id = e.recipe_id ORDER BY x.score LIMIT 1)
+           (jsonb_agg(jsonb_build_object('member', e.member_name, 'reasons', e.top_reasons) ORDER BY e.weakest)) -> 0
     FROM   each e
     GROUP  BY e.recipe_id, e.recipe_name
     -- only recipes that passed every member's hard filter
@@ -290,3 +314,8 @@ LANGUAGE sql STABLE AS $$
            ON v.recipe_id = p_recipe_id AND v.nutrient_id = g.nutrient_id
     ORDER  BY 6 DESC, g.nutrient_id
 $$;
+
+-- JIT compiles these for seconds on a partitioned schema and gains nothing.
+ALTER FUNCTION fn_recommend(UUID, DATE, TEXT, INT) SET jit = off;
+ALTER FUNCTION fn_recommend_household(UUID, DATE, TEXT, INT) SET jit = off;
+ALTER FUNCTION fn_explain(UUID, UUID, DATE, TEXT) SET jit = off;

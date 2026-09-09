@@ -221,3 +221,6 @@ SELECT t.member_id, current_date, t.nutrient_id,
 FROM   profile_nutrient_targets t
 WHERE  t.member_id = '01930000-0000-7000-8000-0000000000d2'
 ON CONFLICT (member_id, log_date, nutrient_id) DO NOTHING;
+
+-- recipes changed, so refresh the recommender's nutrient cache
+SELECT fn_refresh_recipe_nutrients();

@@ -17919,3 +17919,4 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 221.6, 'mg' FROM recipes WHERE external_source_id = '10852' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 
 COMMIT;
+DO $$ BEGIN IF to_regproc('fn_refresh_recipe_nutrients') IS NOT NULL THEN PERFORM fn_refresh_recipe_nutrients(); END IF; END $$;

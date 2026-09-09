@@ -98,3 +98,6 @@ LANGUAGE sql STABLE AS $$
         'blocked',   coalesce((SELECT j FROM blocked), '[]'::jsonb)
     )
 $$;
+
+-- JIT compiles this query for seconds on a partitioned schema and gains nothing.
+ALTER FUNCTION fn_home(UUID, DATE, INT) SET jit = off;

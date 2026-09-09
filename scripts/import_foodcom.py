@@ -304,6 +304,8 @@ def emit(chosen, out):
               f"ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;\n")
 
     w("\nCOMMIT;\n")
+    # the recommender caches nutrients per recipe; no-op on the week-1 schema
+    w("DO $$ BEGIN IF to_regproc('fn_refresh_recipe_nutrients') IS NOT NULL THEN PERFORM fn_refresh_recipe_nutrients(); END IF; END $$;" + "\n")
 
 
 # ---------------------------------------------------------------------------

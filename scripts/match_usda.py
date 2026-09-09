@@ -329,8 +329,12 @@ def emit(results, food, nutrition, nut_unit, serving, out):
     for r in results:
         if not r["ok"]: continue
         g = serving.get(r["fdc_id"])
+        cat = q(cat_by_fdc.get(r['fdc_id'], 'Uncategorized'))
+        # in partitioned mode (name, category) is the unique key, so don't move a
+        # row into a category where the same name already exists
         w(f"UPDATE ingredients SET data_source = 'USDA', "
-          f"food_category = {q(cat_by_fdc.get(r['fdc_id'], 'Uncategorized'))}, "
+          f"food_category = CASE WHEN EXISTS (SELECT 1 FROM ingredients y WHERE lower(btrim(y.ingredient_name)) = {q(r['name'].lower().strip())} "
+          f"AND y.food_category = {cat} AND y.ingredient_id <> ingredients.ingredient_id) THEN food_category ELSE {cat} END, "
           f"typical_serving_g = coalesce(typical_serving_g, {g if g else 'NULL'}), "
           f"usda_fdc_id = CASE WHEN EXISTS (SELECT 1 FROM ingredients x WHERE x.usda_fdc_id = {r['fdc_id']} "
           f"AND x.ingredient_id <> ingredients.ingredient_id) THEN usda_fdc_id ELSE {r['fdc_id']} END "
@@ -342,6 +346,7 @@ def emit(results, food, nutrition, nut_unit, serving, out):
               f"ON CONFLICT (ingredient_id, nutrient_id) DO UPDATE SET value_per_100g = EXCLUDED.value_per_100g, unit = EXCLUDED.unit;\n")
         w("\n")
     w("COMMIT;\n")
+    w("DO $$ BEGIN IF to_regproc('fn_refresh_recipe_nutrients') IS NOT NULL THEN PERFORM fn_refresh_recipe_nutrients(); END IF; END $$;" + "\n")
 
 
 def main():

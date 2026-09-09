@@ -47,7 +47,9 @@ For one member on one day:
 
 Recipe nutrients come from `recipe_nutrition` where published (Food.com
 gives calories and macros) and from the ingredients' USDA values for the
-rest, scaled so the two agree on calories. See `v_recipe_nutrients_per_serving`.
+rest, scaled so the two agree on calories. That table is cached
+(`mv_recipe_nutrients`); the seed files refresh it, and after any other change
+to recipes or ingredient nutrition run `select fn_refresh_recipe_nutrients();`.
 
 So the same recipe scores differently for different people and at different
 times of day. Salmon scores high for someone who hasn't had vitamin D; it
