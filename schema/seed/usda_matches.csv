@@ -1,0 +1,579 @@
+ok,score,name,fdc_id,description,aliased
+False,61,flax seed,169414,"Seeds, flaxseed",False
+False,64,cellophane noodle,174258,"Noodles, chinese, cellophane or long rice (mung beans), dehydrated",True
+False,68,"Oat beverage, unsweetened",175088,"Beverages, tea, instant, lemon, unsweetened",False
+False,69,apple pie spice,171332,"Spices, pumpkin pie spice",False
+False,69,great northern beans,175192,"Beans, great northern, mature seeds, canned",False
+True,72,dried parsley flakes,170930,"Spices, parsley, dried",False
+True,73,pesto sauce mix,171579,"Sauce, pesto, ready-to-serve, refrigerated",False
+True,73,unsweetened dried shredded coconut,174831,"Beverages, Coconut water, ready-to-drink, unsweetened",False
+True,76,parsley flakes,170416,"Parsley, fresh",False
+True,77,couscous,169699,"Couscous, dry",False
+True,78,tahini,169410,"Seeds, sesame butter, tahini, from raw and stone ground kernels",False
+True,82,chicken breast halves,171474,"Chicken, broilers or fryers, breast, meat and skin, raw",False
+True,82,vegetarian baked beans,175182,"Beans, baked, canned, plain or vegetarian",False
+True,83,boneless chicken breast halves,171077,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",False
+True,84,frozen blueberries,173951,"Blueberries, frozen, sweetened",True
+True,85,tomato paste,170460,"Tomato products, canned, puree, without salt added",True
+True,85,whole tomatoes,170052,"Tomatoes, red, ripe, canned, stewed",True
+True,86,potato starch,171861,"Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",False
+True,87,boneless skinless chicken breast halves,171077,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",False
+True,87,unsweetened applesauce,167772,"Applesauce, canned, unsweetened, with added ascorbic acid",False
+True,88,feta,173420,"Cheese, feta",False
+True,89,boneless beef chuck roast,168742,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, select, raw",False
+True,89,cherry pie filling,169062,"Pie fillings, cherry, low calorie",False
+True,93,applesauce,171696,"Applesauce, canned, sweetened, without salt",False
+True,93,chili sauce,171595,"Sauce, tomato chili sauce, bottled, with salt",False
+True,93,egg substitute,173429,"Egg substitute, powder",False
+True,93,escarole,168413,"Escarole, cooked, boiled, drained, no salt added",False
+True,93,green olives,169096,"Olives, pickled, canned or bottled, green",True
+True,93,lemon juice concentrate,167748,"Lemon juice from concentrate, canned or bottled",False
+True,93,sauerkraut,169279,"Sauerkraut, canned, solids and liquids",False
+True,93,Tabasco sauce,174527,"Sauce, ready-to-serve, pepper or hot",True
+True,93,tomato puree,170460,"Tomato products, canned, puree, without salt added",False
+True,94,cooked brown rice,168878,"Rice, white, long-grain, regular, enriched, cooked",True
+True,94,red seedless grapes,174683,"Grapes, red or green (European type, such as Thompson seedless), raw",False
+True,95,chicken broth,174536,"Soup, chicken broth, ready-to-serve",True
+True,95,condensed chicken broth,174536,"Soup, chicken broth, ready-to-serve",True
+True,95,green seedless grapes,174683,"Grapes, red or green (European type, such as Thompson seedless), raw",False
+True,95,reduced-sodium chicken broth,174536,"Soup, chicken broth, ready-to-serve",True
+True,96,Brussels sprouts,170383,"Brussels sprouts, raw",False
+True,96,ground beef,173068,"Beef, Australian, imported, grass-fed, ground, 85% lean / 15% fat, raw",True
+True,97,lemon,167746,"Lemons, raw, without peel",True
+True,97,lemon slices,167746,"Lemons, raw, without peel",True
+True,97,lemon wedge,167746,"Lemons, raw, without peel",True
+True,97,lemons,167746,"Lemons, raw, without peel",True
+True,98,oatmeal,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,oats,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,"Oats, rolled, dry",169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,old fashioned oats,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,Old mill oats,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,quick-cooking oatmeal,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,Robin Hood oats,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,rolled oats,169063,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",True
+True,98,seasoned croutons,172752,"Croutons, seasoned",False
+True,98,sweet Italian sausage link,172952,"Sausage, Italian, sweet, links",False
+True,98,toasted sesame seeds,170152,"Seeds, sesame seed kernels, toasted, without salt added (decorticated)",False
+True,99,brown sugar substitute,170675,"Sweeteners, sugar substitute, granulated, brown",False
+True,99,chicken stove top stuffing mix,174930,"Bread, stuffing, dry mix",True
+True,99,corn tortilla,169829,"Tortilla, blue corn, Sakwavikaviki (Hopi)",False
+True,99,deli roast beef,174570,"Roast beef, deli style, prepackaged, sliced",False
+True,99,dried marjoram,170928,"Spices, marjoram, dried",False
+True,99,dried parsley,170930,"Spices, parsley, dried",True
+True,99,fish sauce,174531,"Sauce, fish, ready-to-serve",False
+True,99,fresh herb,174156,"Beverages, tea, herb, brewed, chamomile",False
+True,99,frozen cauliflower,170398,"Cauliflower, frozen, unprepared",False
+True,99,ginger ale,174846,"Beverages, carbonated, ginger ale",False
+True,99,graham cracker,174083,"Cookies, graham crackers, plain or honey, lowfat",True
+True,99,half-and-half cream,171255,"Cream, fluid, half and half",False
+True,99,hash brown,170036,"Potatoes, hash brown, home-prepared",False
+True,99,hoisin sauce,172886,"Sauce, hoisin, ready-to-serve",False
+True,99,marshmallow cream,169664,"Toppings, marshmallow cream",False
+True,99,mustard seeds,170929,"Spices, mustard seed, ground",False
+True,99,Pepperidge Farm Herb Stuffing,174930,"Bread, stuffing, dry mix",True
+True,99,poultry seasoning,171331,"Spices, poultry seasoning",False
+True,99,pumpkin pie spice,171332,"Spices, pumpkin pie spice",False
+True,99,sake,167723,"Alcoholic beverage, rice (sake)",False
+True,99,sesame seeds,167557,"Snacks, rice cakes, brown rice, sesame seed",False
+True,99,yellow cornmeal,168039,"Cornmeal, yellow (Navajo)",False
+True,100,barbecue sauce,174523,"Sauce, barbecue",False
+True,100,caraway seed,170918,"Spices, caraway seed",False
+True,100,caraway seeds,170918,"Spices, caraway seed",False
+True,100,cardamom,170919,"Spices, cardamom",False
+True,100,celery seed,170920,"Spices, celery seed",False
+True,100,celery seeds,170920,"Spices, celery seed",False
+True,100,cumin seed,170923,"Spices, cumin seed",False
+True,100,cumin seeds,170923,"Spices, cumin seed",False
+True,100,fennel seed,171323,"Spices, fennel seed",False
+True,100,ground cardamom,170919,"Spices, cardamom",False
+True,100,provolone cheese,170850,"Cheese, provolone",False
+True,103,clams,174214,"Mollusks, clam, mixed species, raw",False
+True,103,coconut,170169,"Nuts, coconut meat, raw",False
+True,103,orange,170502,"Tomatoes, orange, raw",False
+True,103,spaghetti squash,169298,"Squash, winter, spaghetti, raw",False
+True,103,strawberry,173045,"Guavas, strawberry, raw",False
+True,103,trout,175153,"Fish, trout, mixed species, raw",False
+True,104,active dry yeast,175043,"Leavening agents, yeast, baker's, active dry",True
+True,104,American cheese,168121,"Cheese, pasteurized process, cheddar or American, low sodium",True
+True,104,baking powder,172804,"Leavening agents, baking powder, double-acting, straight phosphate",True
+True,104,cheese slice,168121,"Cheese, pasteurized process, cheddar or American, low sodium",True
+True,104,chickpeas,173800,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",True
+True,104,deli ham,168295,"Pork, cured, ham, boneless, extra lean and regular, unheated",True
+True,104,double-acting baking powder,172804,"Leavening agents, baking powder, double-acting, straight phosphate",True
+True,104,dried garbanzo beans,173800,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",True
+True,104,garbanzo beans,173800,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",True
+True,104,ham,168295,"Pork, cured, ham, boneless, extra lean and regular, unheated",True
+True,104,miniature bagels,174899,"Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",True
+True,104,process American cheese,168121,"Cheese, pasteurized process, cheddar or American, low sodium",True
+True,104,quick-cooking grits,171654,"Cereals, corn grits, white, regular and quick, enriched, dry",True
+True,104,skim milk,170873,"Milk, lowfat, fluid, 1% milkfat, with added nonfat milk solids, vitamin A and vitamin D",True
+True,104,solid white tuna,171986,"Fish, tuna, light, canned in water, without salt, drained solids",True
+True,104,swiss chard,169991,"Chard, swiss, raw",False
+True,104,"Tofu, firm",172448,"Tofu, firm, prepared with calcium sulfate and magnesium chloride (nigari)",True
+True,104,tuna,171986,"Fish, tuna, light, canned in water, without salt, drained solids",True
+True,104,Velveeta cheese,168121,"Cheese, pasteurized process, cheddar or American, low sodium",True
+True,105,1% low-fat milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,2% low-fat milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,all-purpose flour,169761,"Wheat flour, white, all-purpose, unenriched",True
+True,105,allspice,171315,"Spices, allspice, ground",True
+True,105,artichoke hearts,168387,"Artichokes, (globe or french), frozen, unprepared",True
+True,105,bacon,168277,"Pork, cured, bacon, unprepared",True
+True,105,baking mix,174902,"Biscuits, plain or buttermilk, dry mix",True
+True,105,baking soda,175040,"Leavening agents, baking soda",True
+True,105,beef bouillon cube,171560,"Soup, beef broth or bouillon, powder, dry",True
+True,105,beef broth,171538,"Soup, beef broth or bouillon canned, ready-to-serve",True
+True,105,Bisquick,174902,"Biscuits, plain or buttermilk, dry mix",True
+True,105,Bisquick baking mix,174902,"Biscuits, plain or buttermilk, dry mix",True
+True,105,black beans,175188,"Beans, black turtle, mature seeds, canned",True
+True,105,black olives,169094,"Olives, ripe, canned (small-extra large)",True
+True,105,black pepper,170931,"Spices, pepper, black",True
+True,105,boiling water,174158,"Water, bottled, generic",True
+True,105,Bulk Taco Seasoning Mix,172243,"Seasoning mix, dry, taco, original",True
+True,105,butter flavor shortening,172327,"Shortening, household, lard and vegetable oil",True
+True,105,buttermilk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,canned black beans,175188,"Beans, black turtle, mature seeds, canned",True
+True,105,canned pumpkin,168450,"Pumpkin, canned, without salt",True
+True,105,canned pumpkin puree,168450,"Pumpkin, canned, without salt",True
+True,105,cannellini beans,175204,"Beans, white, mature seeds, canned",True
+True,105,cayenne,170932,"Spices, pepper, red or cayenne",True
+True,105,cayenne pepper,170932,"Spices, pepper, red or cayenne",True
+True,105,cheddar cheese,170899,"Cheese, cheddar, sharp, sliced",True
+True,105,cheese,168124,"Cheese, swiss, low sodium",False
+True,105,chicken bouillon,171562,"Soup, chicken broth or bouillon, dry",True
+True,105,chicken bouillon cubes,171562,"Soup, chicken broth or bouillon, dry",True
+True,105,chicken flavor instant bouillon,171562,"Soup, chicken broth or bouillon, dry",True
+True,105,chili beans,174285,"Beans, kidney, red, mature seeds, canned, drained solids",True
+True,105,Chinese wine,174837,"Alcoholic beverage, wine, table, white",True
+True,105,chipotle pepper,170931,"Spices, pepper, black",True
+True,105,chocolate chips,170271,"Chocolate, dark, 45- 59% cacao solids",True
+True,105,cinnamon,171320,"Spices, cinnamon, ground",True
+True,105,cinnamon stick,171320,"Spices, cinnamon, ground",True
+True,105,clove,171321,"Spices, cloves, ground",True
+True,105,cocoa powder,169593,"Cocoa, dry powder, unsweetened",True
+True,105,cold water,174158,"Water, bottled, generic",True
+True,105,cooked ham,168296,"Pork, cured, ham, boneless, extra lean and regular, roasted",True
+True,105,corn tortilla chips,173143,"Tortilla chips, yellow, plain, salted",True
+True,105,corn tortillas,175036,"Tortillas, ready-to-bake or -fry, corn",True
+True,105,corned beef,173860,"Corned beef loaf, jellied",False
+True,105,cornmeal,167628,"Cornmeal, blue (Navajo)",False
+True,105,cottage cheese,172180,"Cheese, cottage, creamed, with fruit",True
+True,105,creamy peanut butter,172470,"Peanut butter, smooth style, without salt",True
+True,105,creme fraiche,171257,"Cream, sour, cultured",True
+True,105,crisp bacon,168277,"Pork, cured, bacon, unprepared",True
+True,105,crunchy peanut butter,172470,"Peanut butter, smooth style, without salt",True
+True,105,crushed red pepper flakes,170932,"Spices, pepper, red or cayenne",True
+True,105,dark soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,diced tomatoes,170052,"Tomatoes, red, ripe, canned, stewed",True
+True,105,Dijon mustard,172234,"Mustard, prepared, yellow",True
+True,105,dill pickle,168558,"Pickles, cucumber, dill or kosher dill",True
+True,105,dill pickle slices,168558,"Pickles, cucumber, dill or kosher dill",True
+True,105,dill pickles,168558,"Pickles, cucumber, dill or kosher dill",True
+True,105,dried ancho chile powder,169396,"Peppers, ancho, dried",True
+True,105,dried oregano,171328,"Spices, oregano, dried",True
+True,105,dried red pepper flakes,170932,"Spices, pepper, red or cayenne",True
+True,105,dried rosemary,171333,"Spices, rosemary, dried",True
+True,105,dry crushed red pepper,170932,"Spices, pepper, red or cayenne",True
+True,105,dry mustard,170929,"Spices, mustard seed, ground",True
+True,105,dry sherry,174837,"Alcoholic beverage, wine, table, white",True
+True,105,dry white wine,174837,"Alcoholic beverage, wine, table, white",True
+True,105,elbow macaroni,168927,"Pasta, dry, unenriched",True
+True,105,evaporated milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,extra virgin olive oil,171413,"Oil, olive, salad or cooking",True
+True,105,fat free sour cream,171257,"Cream, sour, cultured",True
+True,105,fat-free evaporated milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,fat-free mayonnaise,171009,"Salad dressing, mayonnaise, regular",True
+True,105,fettuccine,168927,"Pasta, dry, unenriched",True
+True,105,fettuccine pasta,168927,"Pasta, dry, unenriched",True
+True,105,flour,169761,"Wheat flour, white, all-purpose, unenriched",True
+True,105,flour tortillas,167535,"Tortillas, ready-to-bake or -fry, flour, shelf stable",True
+True,105,French vanilla instant pudding,168784,"Puddings, vanilla, dry mix, instant",True
+True,105,French's mustard,172234,"Mustard, prepared, yellow",True
+True,105,fresh black pepper,170931,"Spices, pepper, black",True
+True,105,fresh chili peppers,170931,"Spices, pepper, black",True
+True,105,fresh coarse ground black pepper,170931,"Spices, pepper, black",True
+True,105,fresh cracked pepper,170931,"Spices, pepper, black",True
+True,105,fresh ground black pepper,170931,"Spices, pepper, black",True
+True,105,fresh ground pepper,170931,"Spices, pepper, black",True
+True,105,fresh ground white pepper,170933,"Spices, pepper, white",True
+True,105,fresh oregano,171328,"Spices, oregano, dried",True
+True,105,fresh rosemary,171333,"Spices, rosemary, dried",True
+True,105,frozen corn,168400,"Corn, sweet, yellow, frozen, kernels on cob, unprepared",True
+True,105,frozen corn kernels,168400,"Corn, sweet, yellow, frozen, kernels on cob, unprepared",True
+True,105,garlic powder,171325,"Spices, garlic powder",True
+True,105,"Greek yogurt, plain",171304,"Yogurt, Greek, plain, whole milk",True
+True,105,green chili peppers,170931,"Spices, pepper, black",True
+True,105,green chilies,168577,"Peppers, chili, green, canned",True
+True,105,ground black pepper,170931,"Spices, pepper, black",True
+True,105,ground cinnamon,171320,"Spices, cinnamon, ground",True
+True,105,ground cloves,171321,"Spices, cloves, ground",True
+True,105,ground ginger,170926,"Spices, ginger, ground",True
+True,105,ground mustard,170929,"Spices, mustard seed, ground",True
+True,105,ground oregano,171328,"Spices, oregano, dried",True
+True,105,ground pepper,170931,"Spices, pepper, black",True
+True,105,ground turmeric,172231,"Spices, turmeric, ground",True
+True,105,half-and-half,171255,"Cream, fluid, half and half",True
+True,105,heavy cream,170859,"Cream, fluid, heavy whipping",True
+True,105,heavy whipping cream,170859,"Cream, fluid, heavy whipping",True
+True,105,Hellmann's mayonnaise,171009,"Salad dressing, mayonnaise, regular",True
+True,105,horseradish,173472,"Horseradish, prepared",False
+True,105,hot chili pepper,170931,"Spices, pepper, black",True
+True,105,instant coffee granules,171893,"Beverages, coffee, instant, regular, powder",True
+True,105,kalamata olive,169094,"Olives, ripe, canned (small-extra large)",True
+True,105,kidney beans,174285,"Beans, kidney, red, mature seeds, canned, drained solids",True
+True,105,lemon pepper,170931,"Spices, pepper, black",True
+True,105,lemon pepper seasoning,170931,"Spices, pepper, black",True
+True,105,light mayonnaise,171009,"Salad dressing, mayonnaise, regular",True
+True,105,light olive oil,171413,"Oil, olive, salad or cooking",True
+True,105,light soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,linguine,168927,"Pasta, dry, unenriched",True
+True,105,liquid smoke,171610,"Sauce, worcestershire",True
+True,105,low sodium soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,low-fat buttermilk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,low-fat cheddar cheese,170899,"Cheese, cheddar, sharp, sliced",True
+True,105,low-fat mayonnaise,171009,"Salad dressing, mayonnaise, regular",True
+True,105,low-fat yogurt,171284,"Yogurt, plain, whole milk",True
+True,105,macaroni,168927,"Pasta, dry, unenriched",True
+True,105,margarine,173585,"Margarine, regular, 80% fat, composite, stick, without salt",True
+True,105,matzo meal,172740,"Crackers, matzo, plain",True
+True,105,mayonnaise,171009,"Salad dressing, mayonnaise, regular",True
+True,105,medium cheddar,170899,"Cheese, cheddar, sharp, sliced",True
+True,105,milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,"Milk, whole",171265,"Milk, whole, 3.25% milkfat, with added vitamin D",True
+True,105,Miracle Whip,173594,"Salad dressing, mayonnaise, light",True
+True,105,mozzarella cheese,170845,"Cheese, mozzarella, whole milk",True
+True,105,mustard,172234,"Mustard, prepared, yellow",True
+True,105,mustard powder,170929,"Spices, mustard seed, ground",True
+True,105,navy beans,173747,"Beans, navy, mature seeds, canned",True
+True,105,non-fat tortilla chips,173143,"Tortilla chips, yellow, plain, salted",True
+True,105,nonfat milk,172225,"Milk, buttermilk, fluid, whole",True
+True,105,nonfat yogurt,171284,"Yogurt, plain, whole milk",True
+True,105,nutmeg,171326,"Spices, nutmeg, ground",True
+True,105,Olive oil,171413,"Oil, olive, salad or cooking",True
+True,105,olive oil,171413,"Oil, olive, salad or cooking",True
+True,105,oregano,171328,"Spices, oregano, dried",True
+True,105,orzo pasta,168927,"Pasta, dry, unenriched",True
+True,105,other pastas,168927,"Pasta, dry, unenriched",True
+True,105,pancetta,168277,"Pork, cured, bacon, unprepared",True
+True,105,panko breadcrumbs,174928,"Bread, crumbs, dry, grated, plain",True
+True,105,parmesan cheese,170848,"Cheese, parmesan, hard",True
+True,105,parmigiano-reggiano cheese,170848,"Cheese, parmesan, hard",True
+True,105,part-skim mozzarella cheese,170845,"Cheese, mozzarella, whole milk",True
+True,105,pasta,168927,"Pasta, dry, unenriched",True
+True,105,Peanut butter,172470,"Peanut butter, smooth style, without salt",True
+True,105,peanut butter,172470,"Peanut butter, smooth style, without salt",True
+True,105,pepper,170931,"Spices, pepper, black",True
+True,105,pickle,174576,"Pickle and pimiento loaf, pork",False
+True,105,pinto beans,175201,"Beans, pinto, mature seeds, canned, solids and liquids",True
+True,105,plain flour,169761,"Wheat flour, white, all-purpose, unenriched",True
+True,105,plain low-fat yogurt,171284,"Yogurt, plain, whole milk",True
+True,105,plain yogurt,171284,"Yogurt, plain, whole milk",True
+True,105,prepared mustard,172234,"Mustard, prepared, yellow",True
+True,105,prepared yellow mustard,172234,"Mustard, prepared, yellow",True
+True,105,pumpkin,168450,"Pumpkin, canned, without salt",True
+True,105,pumpkin pie filling,168450,"Pumpkin, canned, without salt",True
+True,105,pumpkin puree,168450,"Pumpkin, canned, without salt",True
+True,105,quick oats,173904,"Cereals, oats, regular and quick, not fortified, dry",True
+True,105,raisins,168164,"Raisins, golden, seedless",True
+True,105,red pepper flakes,170932,"Spices, pepper, red or cayenne",True
+True,105,red wine,173190,"Alcoholic beverage, wine, table, red",True
+True,105,reduced sodium soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,reduced-fat sour cream,171257,"Cream, sour, cultured",True
+True,105,rice wine,174837,"Alcoholic beverage, wine, table, white",True
+True,105,ricotta cheese,170851,"Cheese, ricotta, whole milk",True
+True,105,Rotel tomatoes & chilies,170053,"Tomatoes, red, ripe, canned, with green chilies",True
+True,105,rotini pasta,168927,"Pasta, dry, unenriched",True
+True,105,salsa,174524,"Sauce, salsa, ready-to-serve",True
+True,105,sharp cheddar cheese,170899,"Cheese, cheddar, sharp, sliced",True
+True,105,sherry wine,174837,"Alcoholic beverage, wine, table, white",True
+True,105,shortening,172327,"Shortening, household, lard and vegetable oil",True
+True,105,small curd cottage cheese,172180,"Cheese, cottage, creamed, with fruit",True
+True,105,smoked streaky bacon,168277,"Pork, cured, bacon, unprepared",True
+True,105,solid white tuna packed in water,174158,"Water, bottled, generic",True
+True,105,sour cream,171257,"Cream, sour, cultured",True
+True,105,soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,soya sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,soymilk,174293,"Soymilk, chocolate, unfortified",False
+True,105,spaghetti,168927,"Pasta, dry, unenriched",True
+True,105,Splenda sugar substitute,170675,"Sweeteners, sugar substitute, granulated, brown",True
+True,105,stewed tomatoes,170052,"Tomatoes, red, ripe, canned, stewed",True
+True,105,sugar-free instant vanilla pudding mix,168784,"Puddings, vanilla, dry mix, instant",True
+True,105,sweet peppers,170931,"Spices, pepper, black",True
+True,105,tamari soy sauce,174277,Soy sauce made from soy and wheat (shoyu),True
+True,105,tomato sauce,170054,"Tomato products, canned, sauce",True
+True,105,tortilla chips,173143,"Tortilla chips, yellow, plain, salted",True
+True,105,tuna in water,174158,"Water, bottled, generic",True
+True,105,turmeric,172231,"Spices, turmeric, ground",True
+True,105,Tzatziki,171304,"Yogurt, Greek, plain, whole milk",True
+True,105,unbleached all-purpose flour,169761,"Wheat flour, white, all-purpose, unenriched",True
+True,105,vanilla instant pudding mix,168784,"Puddings, vanilla, dry mix, instant",True
+True,105,vanilla yogurt,170888,"Yogurt, vanilla, low fat.",True
+True,105,vegetable broth,171583,"Soup, vegetable broth, ready to serve",True
+True,105,vegetarian worcestershire sauce,171610,"Sauce, worcestershire",True
+True,105,walnuts,170187,"Nuts, walnuts, english",True
+True,105,water,174158,"Water, bottled, generic",True
+True,105,wheat flour tortillas,167535,"Tortillas, ready-to-bake or -fry, flour, shelf stable",True
+True,105,white pepper,170933,"Spices, pepper, white",True
+True,105,white wine,174837,"Alcoholic beverage, wine, table, white",True
+True,105,whole wheat flour,168944,"Wheat flour, whole-grain, soft wheat",True
+True,105,Worcestershire sauce,171610,"Sauce, worcestershire",True
+True,105,yellow mustard,172234,"Mustard, prepared, yellow",True
+True,106,apple cider vinegar,173469,"Vinegar, cider",True
+True,106,basil,171317,"Spices, basil, dried",True
+True,106,bay leaf,170917,"Spices, bay leaf",True
+True,106,bay leaves,170917,"Spices, bay leaf",True
+True,106,boursin cheese,173418,"Cheese, cream",True
+True,106,brown sugar,168833,"Sugars, brown",True
+True,106,butter,173410,"Butter, salted",True
+True,106,Cajun Seasoning Mix,171319,"Spices, chili powder",True
+True,106,canning salt,173468,"Salt, table",True
+True,106,canola oil,172336,"Oil, canola",True
+True,106,catsup,168556,Catsup,False
+True,106,chili powder,171319,"Spices, chili powder",True
+True,106,chive & onion cream cheese,173418,"Cheese, cream",True
+True,106,cider vinegar,172237,"Vinegar, distilled",True
+True,106,confectioners' sugar,169656,"Sugars, powdered",True
+True,106,corn syrup,168837,"Syrups, corn, light",True
+True,106,cornstarch,169698,Cornstarch,True
+True,106,cream cheese,173418,"Cheese, cream",True
+True,106,cumin,170923,"Spices, cumin seed",True
+True,106,cumin powder,170923,"Spices, cumin seed",True
+True,106,curry powder,170924,"Spices, curry powder",True
+True,106,diced pimentos,168559,"Pimento, canned",True
+True,106,dill weed,172233,"Dill weed, fresh",False
+True,106,dried basil,171317,"Spices, basil, dried",True
+True,106,dried rubbed sage,170935,"Spices, sage, ground",True
+True,106,dried thyme,170938,"Spices, thyme, dried",True
+True,106,feta cheese,173420,"Cheese, feta",True
+True,106,flat leaf parsley,170416,"Parsley, fresh",True
+True,106,fresh basil,172232,"Basil, fresh",True
+True,106,fresh dill,172233,"Dill weed, fresh",False
+True,106,fresh flat-leaf parsley,170416,"Parsley, fresh",True
+True,106,fresh parsley,170416,"Parsley, fresh",True
+True,106,garam masala,170924,"Spices, curry powder",True
+True,106,golden brown sugar,168833,"Sugars, brown",True
+True,106,granulated sugar,169655,"Sugars, granulated",True
+True,106,ground cumin,170923,"Spices, cumin seed",True
+True,106,ground flax seeds,169414,"Seeds, flaxseed",True
+True,106,ground paprika,171329,"Spices, paprika",True
+True,106,hickory smoke salt,173468,"Salt, table",True
+True,106,honey,169640,Honey,True
+True,106,ice cream,172226,Ice cream sandwich,False
+True,106,icing sugar,169656,"Sugars, powdered",True
+True,106,ketchup,168556,Catsup,True
+True,106,kosher salt,173468,"Salt, table",True
+True,106,light brown sugar,168833,"Sugars, brown",True
+True,106,light corn syrup,168837,"Syrups, corn, light",True
+True,106,light cream cheese,173418,"Cheese, cream",True
+True,106,liquid honey,169640,Honey,True
+True,106,maple syrup,169661,"Syrups, maple",True
+True,106,monterey jack cheese,170844,"Cheese, monterey",True
+True,106,of fresh mint,173475,"Spearmint, fresh",True
+True,106,onion powder,171327,"Spices, onion powder",True
+True,106,paprika,171329,"Spices, paprika",True
+True,106,parsley,170416,"Parsley, fresh",True
+True,106,pecans,170182,"Nuts, pecans",True
+True,106,powdered sugar,169656,"Sugars, powdered",True
+True,106,pure vanilla extract,173471,Vanilla extract,True
+True,106,red wine vinegar,172240,"Vinegar, red wine",True
+True,106,rice vinegar,172237,"Vinegar, distilled",True
+True,106,saffron thread,170934,"Spices, saffron",True
+True,106,salt,173468,"Salt, table",True
+True,106,sea salt,173468,"Salt, table",True
+True,106,Season-All salt,173468,"Salt, table",True
+True,106,seasoning salt,173468,"Salt, table",True
+True,106,sorghum,169716,Sorghum grain,False
+True,106,sugar,169655,"Sugars, granulated",True
+True,106,sweet paprika,171329,"Spices, paprika",True
+True,106,swiss cheese,171251,"Cheese, swiss",True
+True,106,table salt,173468,"Salt, table",True
+True,106,thyme,170938,"Spices, thyme, dried",True
+True,106,unsalted butter,173430,"Butter, without salt",True
+True,106,vanilla,173471,Vanilla extract,True
+True,106,vanilla extract,173471,Vanilla extract,True
+True,106,vinegar,172237,"Vinegar, distilled",True
+True,106,wheat germ,168892,"Wheat germ, crude",False
+True,106,white sugar,169655,"Sugars, granulated",True
+True,106,white vinegar,172237,"Vinegar, distilled",True
+True,108,beef roast,174056,"Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8"" fat, choice, raw",True
+True,108,boneless chicken breast,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,boneless chicken breasts,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,boneless pork chops,168286,"Pork, fresh, loin, center loin (chops), boneless, separable lean and fat, raw",True
+True,108,boneless round steak,171804,"Beef, top sirloin, steak, separable lean only, trimmed to 1/8"" fat, select, raw",True
+True,108,boneless skinless chicken breast,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,boneless skinless chicken breasts,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,boneless skinless chicken thighs,173627,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",True
+True,108,chicken breast,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,chicken breast fillets,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,chicken breasts,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,chicken tenderloins,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,108,chicken thighs,173627,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",True
+True,108,london broil beef,171820,"Beef, round, top round, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",True
+True,108,skinless chicken piece,171509,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",True
+True,109,anaheim chilies,170497,"Peppers, hot chili, green, raw",True
+True,109,apple,171689,"Apples, raw, without skin",True
+True,109,apples,171689,"Apples, raw, without skin",True
+True,109,arborio rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,avocado,171707,"Avocados, raw, Florida",True
+True,109,baking potatoes,170026,"Potatoes, flesh and skin, raw",True
+True,109,basmati rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,bean sprouts,169957,"Mung beans, mature seeds, sprouted, raw",True
+True,109,beef,168608,"Beef, grass-fed, ground, raw",False
+True,109,beef stew meat,170809,"Beef, chuck for stew, separable lean and fat, select, raw",True
+True,109,bell pepper,170427,"Peppers, sweet, green, raw",True
+True,109,boneless skinless chicken,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,bulk pork sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,bulk sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,cherry tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,chicken,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,chicken drumsticks,172373,"Chicken, broilers or fryers, drumstick, meat and skin, raw",False
+True,109,chicken liver,171060,"Chicken, liver, all classes, raw",False
+True,109,chicken meat,171052,"Chicken, broilers or fryers, meat only, raw",False
+True,109,chicken pieces,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,chicken thigh,172385,"Chicken, broilers or fryers, thigh, meat and skin, raw",False
+True,109,chicken wings,172390,"Chicken, broilers or fryers, wing, meat and skin, raw",True
+True,109,chilies,170497,"Peppers, hot chili, green, raw",True
+True,109,chipotle chile,170106,"Peppers, hot chili, red, raw",True
+True,109,chopped tomato,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,chopped tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,cilantro,169997,"Coriander (cilantro) leaves, raw",True
+True,109,cod,171955,"Fish, cod, Atlantic, raw",True
+True,109,corn,169998,"Corn, sweet, yellow, raw",True
+True,109,cranberries,169805,"Cranberry, low bush or lingenberry, raw (Alaska Native)",False
+True,109,crushed pineapple,169124,"Pineapple, raw, all varieties",False
+True,109,cucumber,168409,"Cucumber, with peel, raw",True
+True,109,egg,171287,"Egg, whole, raw, fresh",True
+True,109,eggs,171287,"Egg, whole, raw, fresh",True
+True,109,extra firm tofu,172475,"Tofu, raw, firm, prepared with calcium sulfate",True
+True,109,firm tofu,172475,"Tofu, raw, firm, prepared with calcium sulfate",True
+True,109,fresh cilantro,169997,"Coriander (cilantro) leaves, raw",True
+True,109,fresh coriander,169997,"Coriander (cilantro) leaves, raw",True
+True,109,fresh mushrooms,169251,"Mushrooms, white, raw",True
+True,109,fresh tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,fresh white mushrooms,169251,"Mushrooms, white, raw",True
+True,109,frozen hash brown potatoes,170026,"Potatoes, flesh and skin, raw",True
+True,109,fryer chickens,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,golden delicious apples,171689,"Apples, raw, without skin",True
+True,109,grape tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,green beans,169961,"Beans, snap, green, raw",True
+True,109,green bell pepper,170427,"Peppers, sweet, green, raw",True
+True,109,green onion,170005,"Onions, spring or scallions (includes tops and bulb), raw",True
+True,109,green onions,170005,"Onions, spring or scallions (includes tops and bulb), raw",True
+True,109,green pepper,170427,"Peppers, sweet, green, raw",True
+True,109,green peppers,170427,"Peppers, sweet, green, raw",True
+True,109,ground coriander,169997,"Coriander (cilantro) leaves, raw",True
+True,109,hard-boiled eggs,171287,"Egg, whole, raw, fresh",True
+True,109,hot Italian sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,iceberg lettuce,169248,"Lettuce, iceberg (includes crisphead types), raw",True
+True,109,idaho potatoes,170026,"Potatoes, flesh and skin, raw",True
+True,109,Italian plum tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,Italian sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,jalapeno chile,168576,"Peppers, jalapeno, raw",True
+True,109,jumbo shrimp,175179,"Crustaceans, shrimp, raw",True
+True,109,kirby cucumber,168409,"Cucumber, with peel, raw",True
+True,109,lean ground beef,174030,"Beef, ground, 90% lean meat / 10% fat, raw",True
+True,109,lettuce,169248,"Lettuce, iceberg (includes crisphead types), raw",True
+True,109,lettuce leaf,168431,"Lettuce, red leaf, raw",False
+True,109,long grain rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,long-grain white rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,mashed potatoes,170026,"Potatoes, flesh and skin, raw",True
+True,109,Mexican-style tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,mushroom,169251,"Mushrooms, white, raw",True
+True,109,mushrooms,169251,"Mushrooms, white, raw",True
+True,109,pineapple chunks,169124,"Pineapple, raw, all varieties",True
+True,109,pineapple tidbits,169124,"Pineapple, raw, all varieties",True
+True,109,pork sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,potato,170026,"Potatoes, flesh and skin, raw",True
+True,109,potatoes,170026,"Potatoes, flesh and skin, raw",True
+True,109,raw zucchini,169291,"Squash, summer, zucchini, includes skin, raw",True
+True,109,red bell pepper,170108,"Peppers, sweet, red, raw",True
+True,109,rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,risotto rice,168877,"Rice, white, long-grain, regular, raw, enriched",True
+True,109,roasting chicken,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,roma tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,salmon fillets,175167,"Fish, salmon, Atlantic, farmed, raw",True
+True,109,sausage,171631,"Sausage, Italian, pork, mild, raw",True
+True,109,scallion,170005,"Onions, spring or scallions (includes tops and bulb), raw",True
+True,109,scallions,170005,"Onions, spring or scallions (includes tops and bulb), raw",True
+True,109,shrimp,175179,"Crustaceans, shrimp, raw",True
+True,109,sun-dried tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,sweet potatoes,169303,"Sweet potato leaves, raw",True
+True,109,tart apples,171689,"Apples, raw, without skin",True
+True,109,tomatoes,170457,"Tomatoes, red, ripe, raw, year round average",True
+True,109,turkey breast,171098,"Turkey, whole, breast, meat only, raw",False
+True,109,whole chickens,171052,"Chicken, broilers or fryers, meat only, raw",True
+True,109,whole kernel corn,169998,"Corn, sweet, yellow, raw",True
+True,109,zucchini,169291,"Squash, summer, zucchini, includes skin, raw",True
+True,110,asparagus,168389,"Asparagus, raw",True
+True,110,asparagus spear,168389,"Asparagus, raw",True
+True,110,banana,173944,"Bananas, raw",True
+True,110,bananas,173944,"Bananas, raw",True
+True,110,blueberries,171711,"Blueberries, raw",True
+True,110,broccoli,170379,"Broccoli, raw",True
+True,110,broccoli florets,170379,"Broccoli, raw",True
+True,110,brown lentils,172420,"Lentils, raw",True
+True,110,cabbage,169975,"Cabbage, raw",True
+True,110,carrot,170393,"Carrots, raw",True
+True,110,carrots,170393,"Carrots, raw",True
+True,110,cauliflower,169986,"Cauliflower, raw",False
+True,110,celery,169988,"Celery, raw",True
+True,110,celery rib,169988,"Celery, raw",True
+True,110,celery ribs,169988,"Celery, raw",True
+True,110,"Chicken breast, cooked",171477,"Chicken, broilers or fryers, breast, meat only, cooked, roasted",True
+True,110,"Chickpeas, cooked",173757,"Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",True
+True,110,chives,169994,"Chives, raw",True
+True,110,eggplant,169228,"Eggplant, raw",False
+True,110,fresh blueberries,171711,"Blueberries, raw",True
+True,110,fresh broccoli,170379,"Broccoli, raw",True
+True,110,fresh garlic,169230,"Garlic, raw",True
+True,110,fresh ginger,169231,"Ginger root, raw",True
+True,110,fresh lemon juice,167747,"Lemon juice, raw",True
+True,110,fresh lime juice,168156,"Lime juice, raw",True
+True,110,fresh onion,170000,"Onions, raw",True
+True,110,frozen broccoli,170379,"Broccoli, raw",True
+True,110,frozen chopped spinach,168462,"Spinach, raw",True
+True,110,garlic,169230,"Garlic, raw",True
+True,110,garlic clove,169230,"Garlic, raw",True
+True,110,garlic cloves,169230,"Garlic, raw",True
+True,110,"Garlic, raw",169230,"Garlic, raw",True
+True,110,ginger,169231,"Ginger root, raw",True
+True,110,gingerroot,169231,"Ginger root, raw",True
+True,110,grapes,168575,"Grape leaves, raw",False
+True,110,green cabbage,169975,"Cabbage, raw",True
+True,110,ground turkey,171505,"Turkey, Ground, raw",True
+True,110,kale,168421,"Kale, raw",False
+True,110,lemon juice,167747,"Lemon juice, raw",True
+True,110,"Lemon juice, raw",167747,"Lemon juice, raw",True
+True,110,lemon rind,167749,"Lemon peel, raw",True
+True,110,lemon zest,167749,"Lemon peel, raw",True
+True,110,"lemon, zest of",167749,"Lemon peel, raw",True
+True,110,lime,168155,"Limes, raw",True
+True,110,lime juice,168156,"Lime juice, raw",True
+True,110,limes,168155,"Limes, raw",True
+True,110,minced garlic clove,169230,"Garlic, raw",True
+True,110,minced garlic cloves,169230,"Garlic, raw",True
+True,110,onion,170000,"Onions, raw",True
+True,110,onions,170000,"Onions, raw",True
+True,110,"orange, rind of",169103,"Orange peel, raw",True
+True,110,"orange, zest of",169103,"Orange peel, raw",True
+True,110,peas,170419,"Peas, green, raw",True
+True,110,pickled ginger,169231,"Ginger root, raw",True
+True,110,purple onion,170000,"Onions, raw",True
+True,110,red onion,170000,"Onions, raw",True
+True,110,spinach,168462,"Spinach, raw",True
+True,110,"Spinach, raw",168462,"Spinach, raw",True
+True,110,strawberries,167762,"Strawberries, raw",True
+True,110,sweet onion,170000,"Onions, raw",True
+True,110,wasabi,168583,"Wasabi, root, raw",True
+True,110,watercress,170068,"Watercress, raw",False
+True,110,yellow onion,170000,"Onions, raw",True
+True,110,yellow onions,170000,"Onions, raw",True
+True,111,"Broccoli, cooked",169967,"Broccoli, cooked, boiled, drained, without salt",True
+True,111,cooked rice,168878,"Rice, white, long-grain, regular, enriched, cooked",True
+True,111,cooked white rice,168878,"Rice, white, long-grain, regular, enriched, cooked",True
+True,111,"Egg, whole, cooked",173424,"Egg, whole, cooked, hard-boiled",True
+True,111,Homemade Fresh Bacon Bits,167914,"Pork, cured, bacon, cooked, baked",True
+True,111,"Lentils, cooked",172421,"Lentils, mature seeds, cooked, boiled, without salt",True
+True,111,"Rice, white, long-grain, cooked",168878,"Rice, white, long-grain, regular, enriched, cooked",True
+True,111,"Salmon, cooked",175168,"Fish, salmon, Atlantic, farmed, cooked, dry heat",True
+True,111,"Sweet potato, baked",168483,"Sweet potato, cooked, baked in skin, flesh, without salt",True
+True,112,"Quinoa, cooked",168917,"Quinoa, cooked",True

@@ -60,6 +60,15 @@ SLOT_BY_CATEGORY = {
 }
 LIGHT_KCAL = 250   # "Lunch/Snacks" category: under this per serving is a Snack
 
+# A "Brunch" keyword on a chicken or steak recipe doesn't make it breakfast.
+MAIN_COURSE_CATEGORIES = {
+    "Chicken", "Chicken Breast", "Chicken Thigh & Leg", "Whole Chicken", "Poultry", "Turkey Breasts",
+    "Whole Turkey", "Duck", "Duck Breasts", "Pork", "Ham", "Meat", "Steak", "Roast Beef", "Meatloaf",
+    "Meatballs", "Lamb/Sheep", "Veal", "Deer", "Wild Game", "Tilapia", "Halibut", "Catfish", "Trout",
+    "Bass", "Whitefish", "Mahi Mahi", "Orange Roughy", "Perch", "Tuna", "Crab", "Lobster", "Mussels",
+    "Squid", "Crawfish", "Stew", "Curries", "Gumbo", "Roast",
+}
+
 NUTRIENTS = [  # dataset column -> (nutrient_id, unit)
     ("calories",             "Energy",             "kcal"),
     ("protein_content",      "Macro_Protein",      "g"),
@@ -144,7 +153,8 @@ def meal_slot(category, keywords, kcal):
         return "Snack" if kcal is not None and kcal < LIGHT_KCAL else "Lunch"
     if category in ("Quick Breads", "Scones"):   # muffins, banana bread
         return "Breakfast" if kw & {"Breakfast", "Brunch"} else "Snack"
-    if kw & {"Breakfast", "Brunch"}:     return "Breakfast"
+    if kw & {"Breakfast", "Brunch"} and category not in MAIN_COURSE_CATEGORIES:
+        return "Breakfast"
     if "Lunch/Snacks" in kw:
         return "Snack" if kcal is not None and kcal < LIGHT_KCAL else "Lunch"
     return "Dinner"

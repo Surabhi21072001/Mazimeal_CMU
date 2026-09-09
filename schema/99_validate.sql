@@ -162,6 +162,13 @@ BEGIN
         status := 'INFO'; check_name := 'ingredient count'; detail := n || ' ingredients';
         RETURN NEXT;
 
+        IF to_regclass('public.ingredient_nutrition') IS NOT NULL THEN
+            EXECUTE 'SELECT count(*), count(DISTINCT ingredient_id) FROM ingredient_nutrition' INTO n, m;
+            status := 'INFO'; check_name := 'ingredients with USDA nutrition';
+            detail := m || ' ingredients, ' || n || ' nutrient values';
+            RETURN NEXT;
+        END IF;
+
         -- If we each add ingredients as we go, "Tomato", "tomato" and
         -- "Tomatoes" end up as three rows and the nutrition maths splits.
         EXECUTE $q$

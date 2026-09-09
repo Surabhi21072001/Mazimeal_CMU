@@ -305,11 +305,7 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('s
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('banana', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('blueberries', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grapes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('white sugar', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fettuccine', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried rosemary', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('grape tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -317,13 +313,11 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('c
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick-cooking oatmeal', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('broccoli', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh basil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coriander', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fish sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat cheddar cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bulk sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Bisquick baking mix', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pork sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('baking potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen hash brown potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -333,9 +327,12 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('a
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('seasoned croutons', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cellophane noodle', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fish sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh basil', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pumpkin puree', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pure vanilla extract', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('rolled oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('boneless skinless chicken thighs', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dark soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dry sherry', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -442,8 +439,6 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('p
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cardamom', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('crushed pineapple', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('bay leaf', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('puff pastry', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('button mushroom', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('yellow onions', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('coconut', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -466,6 +461,8 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('f
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('maple syrup', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('half-and-half', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('solid white tuna packed in water', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('golden delicious apples', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('apple pie spice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('frozen broccoli', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('swiss chard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fat free sour cream', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -475,6 +472,7 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('f
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('hot Italian sausage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('Tzatziki', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken liver', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('low-fat yogurt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -499,9 +497,12 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('d
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('pickle', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('light mayonnaise', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh onion', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cumin powder', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('corn tortillas', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('roma tomatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh cracked pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('parmigiano-reggiano cheese', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh coriander', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetarian baked beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tomato puree', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chilies', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -510,20 +511,18 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('f
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried rubbed sage', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('lemon rind', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('chicken breast halves', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('peppercorns', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('cooked white rice', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('vegetarian worcestershire sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('london broil beef', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('liquid smoke', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('shortening', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
-INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('quick oats', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('firm tofu', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('tamari soy sauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sake', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsweetened applesauce', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh dill', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('canning salt', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('active dry yeast', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('plain flour', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('French''s mustard', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -536,6 +535,18 @@ INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('s
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('egg substitute', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh herb', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dill pickle slices', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('wheat germ', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('flax seed', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('unsweetened dried shredded coconut', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('brown sugar substitute', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sorghum', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('nonfat milk', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('idaho potatoes', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('potato starch', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('dried garbanzo beans', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('fresh black pepper', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('sweet paprika', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
+INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('ground turmeric', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('extra firm tofu', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('minced garlic clove', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
 INSERT INTO ingredients (ingredient_name, food_category, data_source) VALUES ('brown lentils', 'Uncategorized', 'Manual') ON CONFLICT DO NOTHING;
@@ -868,7 +879,7 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('63733', 'Macaroni Salad', 'I was hesitant about posting this recipe - it''s the macaroni salad I grew up with, and pretty basic. But it is so darned good that I decided to go ahead.', 'Dinner', NULL, 15, 12, 4, 237.3, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('129345', 'Chicken Scaloppine With Lemon Glaze (Low Fat and Delicious!)', 'This is a wonderful lower-fat restaurant-quality dish that is easy to make, I also like to add in a few tablespoons of capers and cook with the lemon glaze if you are a lover of capers then add them in as it really adds to the flavour of this dish --- this lemon sauce is not a heavy creamy sauce which is what makes this dish lower in fat, it is more like a glaze that soaks into the chicken, and I would strongly suggest to double or even triple the glaze I most always do, and please be certain to use only dry breadcrumbs as fresh will not stick to the chicken as well --- this is *very* good!', 'Breakfast', NULL, 25, 10, 4, 301.6, NULL, 'Food.com')
+VALUES ('129345', 'Chicken Scaloppine With Lemon Glaze (Low Fat and Delicious!)', 'This is a wonderful lower-fat restaurant-quality dish that is easy to make, I also like to add in a few tablespoons of capers and cook with the lemon glaze if you are a lover of capers then add them in as it really adds to the flavour of this dish --- this lemon sauce is not a heavy creamy sauce which is what makes this dish lower in fat, it is more like a glaze that soaks into the chicken, and I would strongly suggest to double or even triple the glaze I most always do, and please be certain to use only dry breadcrumbs as fresh will not stick to the chicken as well --- this is *very* good!', 'Dinner', NULL, 25, 10, 4, 301.6, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('82486', 'Very Moist Banana Nut Bread', 'This is a very easy, "no mixer" bread to make. It is very moist and a little heavy type banana bread. The really important thing to remember is using all black bananas to get my same results. I always use 5 medium sized bananas and this recipe makes 2 loaves. Also, I''ve never used buttermilk, but sour milk instead..a little vinegar added to regular milk. I''ve used this recipe since 1972 and last year made 32 loaves to give away for Christmas! It''s truly a wonderful bread. I only bake it until the toothpick comes out almost clean, as we like it really moist. If you over bake it, or wait til the toothpick is completely clean, the bread will be a lot dryer. I realize some like it this way, so thats why I''ve given this hint. My family and friends would rather have it a little under done than over. It''s so good with coffee, butter/jelly or I like mine just plain. I bake it in tin foil pans and it freezes wonderfully. I try to always have one or two in the freezer for company, or a little gift. This recipe came from a ladies club cookbook. The kind where everyone contributes recipes, they are made into a recipe book and sold to make money for charities. All the cooks are just plain "down home" country gals that produce miracles in the kitchen. It''s my favorite cookbook and I''ve almost worn it out and it can''t be replaced. I know there are many banana bread recipes here, so thanks for trying this recipe. I hope you enjoy it!', 'Breakfast', NULL, 5, 60, 24, 226.7, NULL, 'Food.com')
@@ -907,7 +918,7 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('486641', 'Moist & Delicious Banana Nut Bread', 'I got this recipe when I was 12 and have used it for the past 33 years and haven''t found one better! My son used it when he was 12 at the California State Fair and won a first place ribbon with it. It is just simply delicious & moist. I either make a loaf or put it into muffin cups & make muffins for my kids to grab in the morning on their way to school. Using margarine makes the muffins come out in a better form, but the butter has a better flavor, so I usually use 1/2 of each to get the best of both worlds.', 'Snack', NULL, 20, 60, 18, 177.8, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('57130', 'Awesome Slow Cooker Pot Roast', 'I found this on the all recipes site. This is a very easy recipe for a delicious pot roast. It makes its own gravy. It''s designed especially for the working person who does not have time to cook all day, but it tastes like you did. You''ll want the cut to be between 5 and 6 pounds.', 'Breakfast', NULL, 10, 480, 12, 50.0, NULL, 'Food.com')
+VALUES ('57130', 'Awesome Slow Cooker Pot Roast', 'I found this on the all recipes site. This is a very easy recipe for a delicious pot roast. It makes its own gravy. It''s designed especially for the working person who does not have time to cook all day, but it tastes like you did. You''ll want the cut to be between 5 and 6 pounds.', 'Dinner', NULL, 10, 480, 12, 50.0, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('26516', 'Fish Tacos', 'We got the best fish tacos in a little fishing village in Mexico. I have tried to recreate them as best as possible', 'Lunch', NULL, 15, 15, 6, 258.9, NULL, 'Food.com')
@@ -946,13 +957,7 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('66575', 'Fruit Salad With Pudding!', 'I get compliments on this fruit salad wherever I take it. It is super easy to make and a great dish to bring to a potluck or family party. Kids love it too. Everyone asks "what''s in the sauce"? The secret ingredient is the vanilla pudding mix.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, NULL, 15, 73.9, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('74730', 'Zesty Oven Baked Fries', 'Make and share this Zesty Oven Baked Fries recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 15, 35, 2, 203.8, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8603', 'Easy Banana Muffins', 'Make and share this Easy Banana Muffins recipe from Food.com.', 'Snack', NULL, 10, 20, 12, 170.7, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('34881', 'Black Bean and Tortilla Bake', 'Make and share this Black Bean and Tortilla Bake recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol']::text[], 5, 30, 6, 268.8, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('8596', 'Olive Garden Fettuccine Alfredo', 'Make and share this Olive Garden Fettuccine Alfredo recipe from Food.com.', 'Lunch', NULL, NULL, 25, 6, 880.3, NULL, 'Food.com')
@@ -989,9 +994,6 @@ VALUES ('30954', 'Amish Baked Oatmeal', 'Make and share this Amish Baked Oatmeal
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31342', 'Blender Quiche - or Whatever You Have in Your Kitchen Leftover', 'The great part is you can use whatever leftovers (well...almost) you have on hand. This dish can be served hot or cold. Freezes very well! Use any cheese of your choice.', 'Lunch', NULL, 20, 45, 6, 308.4, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('99156', 'Thai-Style Grilled Chicken Thighs', 'This is my first recipe - please be kind! My kids love it and when I take it to a BBQ everyone wants the recipe. It is a variation on one I found in epicurious a while ago. It is very easy and very yummy!!', 'Breakfast', ARRAY['high_protein']::text[], 10, 15, 4, 327.1, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('251220', 'Kittencal''s Fluffiest Scrambled Eggs', 'Once you make these eggs you will *never* go back to your old way again, this is the way the higher end restaurants prepare their eggs ----for six eggs you may increase the milk by 1 tablespoon, do not add in more than 1/4 teaspoon baking powder --- if you are not afraid of some extra calories for 4 eggs use 2 tablespoons whipping cream in place of low-fat milk :)', 'Breakfast', NULL, 5, NULL, 2, 186.5, NULL, 'Food.com')
@@ -1040,9 +1042,6 @@ VALUES ('73469', 'Harvest Pumpkin Apple Bread', 'All the flavors of Autumn combi
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('259573', 'Kittencal''s Technique for Perfect Easy-Peel Hard-Boiled Eggs', 'The one and only method I use for perfect hard-boiled eggs and the only one you will use also, this is a no-fail method your eggs will come out perfectly cooked!--- don''t omit the vinegar it makes peeling the eggs easier and your eggs will be bright yellow and the whites a pure white! -- it doesn''t matter what amount of water or eggs that you use just make certain that you add in about 2 teaspoons of vinegar, I don''t even measure I just pour the vinegar into the water from the bottle the exact 2 teaspoons does not really matter, of course use as many eggs as you wish and the exact amount of ice is not necessary you can use more, also try to use eggs that are at least 2 weeks old fresh eggs are somewhat harder to peel.', 'Breakfast', NULL, 15, 2, 6, 71.8, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('77316', 'Baked Potato Soup', 'Make and share this Baked Potato Soup recipe from Food.com.', 'Breakfast', NULL, 30, 60, 8, 632.5, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('31235', 'Crunchy Granola', 'This granola makes a GREAT, filling snack. Good dry or with milk. It is very addictive, but it''s good for you, so enjoy!', 'Breakfast', ARRAY['low_cholesterol']::text[], 10, 45, 10, 533.3, NULL, 'Food.com')
@@ -1342,9 +1341,6 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('71017', 'Croissant Breakfast Casserole', 'Adapted many years ago from a recipe in the Calgary Herald newspaper. It is a no fail recipe! Easy for the beginner cook and looks very elegant. Can be doubled and tripled with no problem! Cook time does not take into consideration overnight sitting time, so plan ahead!!', 'Breakfast', NULL, 10, 35, 4, 590.6, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('149540', 'Chicken Wellington (Puff Pastry-Wrapped Chicken)', 'This is not at all hard to put together, it''s an amazing dish to serve to dinner guests and I have done so many times over the years and have always receive rave reviews from everyone at my table and you will too! --- to save time saute the onion, garlic and mushrooms up to a day ahead, the cream cheese and Dijon mustard mixture may be increased slightly -- I always serve this with recipe#149547 drizzled over or on the side of the plate, you will *love* this!', 'Breakfast', NULL, 45, 20, 8, 651.1, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('36023', 'Country Fried Steak', 'Also known as chicken fried steak. Not to be confused with chicken. When they do chicken this way it is chicken fried chicken.', 'Lunch', NULL, 5, 15, 6, 272.7, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
@@ -1417,6 +1413,9 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('19484', 'Sour Cream Banana Streusel Muffins', 'Make and share this Sour Cream Banana Streusel Muffins recipe from Food.com.', 'Breakfast', NULL, 10, 25, 12, 285.5, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('106262', 'Cracker Barrel Fried Apples', 'I grew up eating fried apples and then as an adult I discovered Cracker Barrel and their fried apples. This recipe is from another site and is as close as I have seen to Cracker Barrel. The recipe says you can freeze the cooked apples. I have never done this as there is never any left.', 'Breakfast', NULL, 20, 15, 6, 172.6, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('258508', 'Kittencal''s Sausage Sawmill Gravy (With Biscuits)', 'Comfort food at it''s best, this is a family favorite that goes back years! --- Jimmy Dean has a wonderful bulk sausage roll that will work great for this recipe, you may adjust the pepper flakes to suit heat level, my family likes extreme heat so I use 2 heaping teaspoons or you may use spicy sausage meat --- serve this over biscuits, I also like to serve it over mashed potatoes or fries :)', 'Lunch', NULL, 10, 20, 4, 360.4, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
@@ -1432,16 +1431,28 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('10837', 'Fresh Tomato Spaghetti Sauce', 'This is a great sauce i add 1 lb hot italian sausage and 1 lb ground beef browned together as well as 2 tablespoons fressh oregano', 'Lunch', ARRAY['low_cholesterol','low_protein']::text[], 5, 125, 6, 584.2, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('12975', 'Scrambled Egg Muffins', 'I got this recipe from a magazine. It''s very easy to make and is great for any meal. Kids love them.', 'Breakfast', NULL, 30, 20, 12, 152.2, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('81725', 'Souvlaki', 'This is the way I do souvlaki or shish kebab - and I mean the sandwich with pita bread you can find on nearly every street corner in Greece, not just the skewered meat. This is the best! Prep time does not include marinating time. OAMC instructions provided.', 'Lunch', NULL, 30, 30, 4, 811.8, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('94528', 'Banana-Buttermilk Muffins', 'This recipe is from Williams-Sonoma Essentials of Healthful Cooking. They bake up light and full of flavor. The riper the bananas the sweeter the muffins.', 'Breakfast', NULL, 15, 20, 12, 174.8, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('110936', 'Stolen Garlic Chicken Livers', 'This is the ultimate Garlic Chicken Liver recipe. Simple, quick, minimal ingredients. Stolen from my local Italian restaurant after two weeks working there as a dish washer just to get the recipe. They''ve retired now so I don''t think they''ll mind me divulging their secret!', 'Lunch', ARRAY['high_protein']::text[], 5, 5, 1, 403.8, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('117412', 'Peach Oatmeal', 'I have created one delicious oatmeal! It sort of reminds me of the Quaker peaches and cream oatmeal. I still prefer this oatmeal however, which is healthier, to packaged any day.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, 5, 1, 106.6, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('141367', 'Chicken Gyros for 2', 'Tender marinated chicken and a creamy cucumber yogurt sauce tucked into a pita, topped with lettuce and tomato if you like. Sounds like a great lunch to me! Cooked in or outside! Note: time to make does NOT include 1 hour marinating time. from TOH... ZWT Greek and US Regional - East Coast', 'Lunch', NULL, 25, NULL, 2, 294.0, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('14111', 'Caramel Apple Dip', 'Take my advice, make lots of this dip. The recipe may say that it is for 4 servings, but I have seen sophisticated friends turn barbaric over a bowl of this stuff. It''s very sweet and goes great with tart apples.', 'Lunch', ARRAY['kosher']::text[], 5, NULL, 4, 402.4, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('94520', 'Simple Tomato and Avocado Salad', 'Make and share this Simple Tomato and Avocado Salad recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 10, NULL, 4, 129.1, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('129615', 'Classic BLT Sandwich', 'This is a sandwich that I crave a lot. I am just posting it because I couldn''t find it posted already on the Zaar...I couldn''t believe that! My ex-DH wondered how I make these, so I decided to post it and send him the recipe. Nothing fancy -- just the real, simple, unabridged version. UPDATE: After reading Peg629''s review, I have tried it that way, with one slice of toast spread with yellow mustard, and I must say it really, really makes an exceptional BLT! Such a subtle difference, yet genuinely makes a superior BLT, in my opinion! (Thank you Peg629 for that awesome suggestion!)', 'Lunch', NULL, 10, 5, 4, 516.8, NULL, 'Food.com')
@@ -1513,6 +1524,12 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('109699', 'Maid-Rite Sandwiches', 'This is a very TASTY, JUICY, LOOSE MEAT sandwich filling. In reading thru this recipe you will notice the use of both fresh and dried onion.....please use the onion type specified in the recipe step you are on for maximum flavor. Although traditionally served on hamburger buns, this filling can be messy for young children trying to keep filling in. Try using hotdog rolls for the youngsters. Mustard & Onions are the seasonings of choice for this recipe. Added 11/12/2008 Maid Rite sandwiches are made across the country. One would think as a franchise all would be made and served the same way. This is not the case.... we have Maid Rites being served that are boiled or steamed, with water, chicken broth, beef broth, coke, or beer. There are those that add vinegar or sugar to the mix. Some top with mustard, onions, ketsup, and pickles......well, move over McDonalds! This is the way I made my Maid Rite sandwiches....faux or real....the name stands. As they say,,,variety is the spice of life. You can make changes to suite your tastes, share your changes here with me, I will try them all...unless we have some bazarre ingredients. Chocolate syrup will not intice me no matter how much I love chocolate.', 'Lunch', NULL, 10, 15, 6, 264.6, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('74730', 'Zesty Oven Baked Fries', 'Make and share this Zesty Oven Baked Fries recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 15, 35, 2, 203.8, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('34881', 'Black Bean and Tortilla Bake', 'Make and share this Black Bean and Tortilla Bake recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol']::text[], 5, 30, 6, 268.8, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('27475', 'Salsa Chicken', 'Someone gave me this recipe a few years back and it''s become a household favorite. You can use mild, medium or hot salsa depending on your taste. I usually serve it with Spanish rice and Mexican-style canned corn. Very easy and quick!', 'Dinner', ARRAY['high_protein']::text[], 20, 30, 4, 267.5, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
@@ -1535,6 +1552,9 @@ VALUES ('68159', 'Roasted Garlic Mashed Potatoes - the Best You''ve Ever Had', '
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('57919', 'Tilapia Al Ajillo (Garlic Tilapia)', 'You can do this with any white fish, sea bass is great this way. Fish is often served this way in the Canary Islands, though usually it is the whole fish instead of fillets. YUM!', 'Dinner', ARRAY['high_protein']::text[], 5, 15, 4, 257.4, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('99156', 'Thai-Style Grilled Chicken Thighs', 'This is my first recipe - please be kind! My kids love it and when I take it to a BBQ everyone wants the recipe. It is a variation on one I found in epicurious a while ago. It is very easy and very yummy!!', 'Dinner', ARRAY['high_protein']::text[], 10, 15, 4, 327.1, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('5478', 'Easy Garlic Chicken', 'A quick, easy chicken recipe for days when you don''t want to spend time in the kitchen. Even finicky people will eat it. Goes great with traditional potatoes or rice. As it bakes, the garlic and sugar will melt into a sweet glaze. Customize with your favorite herbs or spices. After many comments, I have reduced the temperature at which to cook the chicken. I have also added instructions to wrap your baking sheet or casserole dish in aluminum foil for easier clean-up.', 'Dinner', ARRAY['high_protein']::text[], 10, 20, 4, 221.3, NULL, 'Food.com')
@@ -1564,15 +1584,6 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('55673', 'Baked Balsamic Chicken', 'Love balsamic vinegar, hope you enjoy this chicken. Note; I have found that it''s better with boneless, skinless chicken breast or boneless, skinless thighs. Baking time may be less due to size.', 'Dinner', ARRAY['high_protein']::text[], 10, 40, 4, 170.3, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('103403', 'French Dip Roast Beef for the Crock Pot', 'This is one of the best recipes I''ve come up with for beef roast. The cheapest cuts come out tasting like you slaved over a stove all day long. You can add potatoes and carrots to the recipe if you like, or shred it and serve it as a French Dip sandwich with the au jus juice from the crock pot on the side. If you are watching your sodium, use the lite soy sauce and it will taste just as delicious.', 'Dinner', ARRAY['high_protein']::text[], 10, 420, 12, 300.4, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('30358', 'Perfect Pasta With No Watching and No Sweating', 'This doesn''t save time but it does make consistently al dente pasta every time (very important for folks in warm climates like mine in New Orleans). It cuts down on the steam you put out into your kitchen.', 'Dinner', ARRAY['low_cholesterol']::text[], 3, 15, 4, 422.9, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('37106', 'Spicy Sweet Potatoes', 'Make and share this Spicy Sweet Potatoes recipe from Food.com.', 'Dinner', ARRAY['low_cholesterol','low_protein']::text[], 10, 45, 8, 86.0, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('18762', 'Greek-Style Oven Fries', 'When I first saw this recipe I though it was "Geek"-style, not Greek. Tried them anyway, and they''re very good, geeky or Greeky!', 'Snack', ARRAY['kosher','low_cholesterol','low_protein','vegan']::text[], 5, 45, 6, 75.4, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
@@ -1589,12 +1600,6 @@ VALUES ('15117', 'Crispy Seared Pork Chops', 'Make and share this Crispy Seared 
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('109423', 'Extra Cheesy Crescent Mozzarella Wedges', 'I was sitting here trying to figure out what would be a quick thing to feed my kiddos for lunch and at the same time thumbing through the most recent issue of Quick Cooking magazine. This recipe was submitted by Lisa Keesee and it is so simple to make with ingredients you most likely have on hand. These soft cheesy wedges would be great as an appetizer or as an addition to your next meal. For my kids, this and some carrots with ranch was their lunch and they loved it! If you love extra cheesy things and like the sweet flavor of crescents, then you''ll love this recipe! UPDATED 2/15/2005 Thanks to the tips of some wonderful reviewers, I tried this a different way. These can easily be rolled into a big rectangle shape. I also sprinkled some oregeno and pizza seasoning on it and it added a whole new dimension of flavor!', 'Snack', ARRAY['high_protein']::text[], 5, 17, 8, 184.2, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('117412', 'Peach Oatmeal', 'I have created one delicious oatmeal! It sort of reminds me of the Quaker peaches and cream oatmeal. I still prefer this oatmeal however, which is healthier, to packaged any day.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, 5, 1, 106.6, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('94520', 'Simple Tomato and Avocado Salad', 'Make and share this Simple Tomato and Avocado Salad recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 10, NULL, 4, 129.1, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('81284', 'Asian Style Savory Baked Tofu', 'This was absolutely delicious! It will make a tofu lover out of you yet (I hope!). I let my tofu sit overnight in the marinade, and then baked it, and I thought it turned out great. As I describe below, be sure to really "press" the excess liquid out of your tofu to ensure that it absorbs the marinade. Don''t be afraid to put something really heavy on it to draw out the moisture. Cast iron pan works great! Source: Sunday Moosewood cookbook', 'Snack', ARRAY['low_cholesterol','vegan']::text[], 30, 45, 4, 133.4, NULL, 'Food.com')
@@ -1633,9 +1638,6 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('38584', 'Yummy and Super Easy Crock Pot Oatmeal', 'Tip for oatmeal: make it in the crock pot overnight! It comes out very creamy from the slow cooking, and I love being able to get up and have that hot steamy bowl right away without having to do anything at all. You do have to clean up the crock pot, but you can make a large quantity and refrigerate the leftovers to be heated in the microwave for the next several days. I use two cups of oatmeal at a time, which is enough for four breakfasts (for me, anyway; probably more for people who don''t have huge bowls like I do).', 'Breakfast', ARRAY['kosher','low_cholesterol','low_protein','vegan']::text[], 5, 600, 4, 153.5, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('28141', 'Best Marinated Pork Tenderloin', 'Make and share this Best Marinated Pork Tenderloin recipe from Food.com.', 'Breakfast', ARRAY['high_protein']::text[], 15, 20, 12, 235.8, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('37027', 'Giant Soft Pretzels', 'These are so yummy! Even if a bit messy to make. You can also shape the pretzels into letters or numbers. Kids love to do that. You can also brush with butter after you take the out of the oven and sprinkle cinnamon sugar over them. My Kids love them that way.', 'Snack', ARRAY['low_cholesterol','low_protein']::text[], 20, 15, 8, 192.7, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
@@ -1655,9 +1657,6 @@ VALUES ('260781', '2 Ingredient Pumpkin Muffins', 'This is too good to be true, 
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('63509', 'Easy Vegan Pancakes', 'Make and share this Easy Vegan Pancakes recipe from Food.com.', 'Breakfast', ARRAY['low_cholesterol','vegan']::text[], 10, 10, 4, 424.3, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('139902', 'Greek Lemon Chicken Soup', 'Oh so simple soup, great way to use up leftover chicken or get a ready cooked on in the grocery store. Has a light, lemony flavor. Posted for the Zaar World Tour 2005 to Greece.', 'Breakfast', ARRAY['low_cholesterol']::text[], 5, 20, 8, 210.3, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('278278', 'Very Simple Blueberry Muffins', 'These vegan blueberry muffins are as easy as a box mix. I originally saw it published as a user submission at vegweb.', 'Breakfast', ARRAY['dairy_free','egg_free','low_cholesterol','vegan']::text[], 5, 30, 12, 153.4, NULL, 'Food.com')
@@ -1682,9 +1681,6 @@ VALUES ('519', 'Spicy Hash Browns - Homemade', 'Make and share this Spicy Hash B
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('11194', 'Latkes (Potato Pancakes)', 'Make and share this Latkes (Potato Pancakes) recipe from Food.com.', 'Breakfast', ARRAY['low_protein']::text[], 30, 20, 10, 131.9, NULL, 'Food.com')
-ON CONFLICT DO NOTHING;
-INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
-VALUES ('127029', 'Gambas Al Ajillo (Shrimp W/ Garlic) Catalonia', 'While this is usually served as a tapa, it is too good not to eat as a main course. After trying the ones that were posted here on Zaar, I found myself still searching for the gambas we had in Barcelona. Finally I found the recipe with the flavor and creaminess of the dish we fell in love with in Spain! The same dish can be made with squid, cut into rings, or scallops. Serve with lots of warm crusty bread to sop up the sauce…. You will not want to waste a drop! (Make sure you are "warming" the olive oil and the butter, not cooking it off..... cause you''ll want every last bit of it for the sauce)', 'Breakfast', ARRAY['shellfish_free']::text[], 10, 3, 4, 353.3, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('61439', 'Tofu Egg Salad', 'I really enjoyed this! It was inspired by a recipe I saw on Food 911. Careful with the cayenne. (I personally like it a little spicy, but use your own judgment) I also usually only make half of this recipe. (I''m the only one in the house who will actually EAT tofu!)', 'Lunch', ARRAY['low_cholesterol','vegan']::text[], 10, NULL, 4, 371.0, NULL, 'Food.com')
@@ -1714,10 +1710,25 @@ INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_c
 VALUES ('119643', 'Low Carb White Castle Casserole', 'Make and share this Low Carb White Castle Casserole recipe from Food.com.', 'Lunch', ARRAY['high_protein']::text[], 15, 45, 4, 695.1, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('100464', 'Healthy Granola', 'This recipe has been in the making for several months. I have tried a number of combinations and this works best. The sugar and fat have been reduced. I can only get two pans in my oven at a time so the cooking time reflects cooking two at a time.', 'Breakfast', ARRAY['dairy_free']::text[], 20, 90, 40, 287.2, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('112725', 'Anemic Build Your Blood With Honey and Bananas', 'Honey is the best blood enricher by raising corpuscle content. The darker the honey (like buckwheat) the more minerals it contains. Disclaimer: Statements contained herein have not been evaluated by the Food and Drug Administration. This recipe is not intended to diagnose, treat and cure or prevent disease. Personally, I make these home remedies that I researched. I believed in it and hope you give it a try.', 'Breakfast', ARRAY['low_cholesterol','low_protein']::text[], 5, NULL, 1, 168.9, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('206184', 'Oven Roasted Broccoli', 'After oven roasting asparagus, green beans, cauliflower I thought WHY NOT BROCCOLI. The result is crispy on the outside, tender on the inside and a great new way for me to enjoy one of my favorite veggies. Hope you like it too. The garlic is smashed and diced to get as much garlic flavor as you can from each clove.', 'Lunch', ARRAY['egg_free','low_cholesterol']::text[], 5, 10, 2, 400.4, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('206594', 'Weight Watchers Au Gratin Potatoes 3 Pts (Low-Fat)', 'If you are not on the WW program you might want to adjust amounts to taste, for Weight Watchers this dish is 8 servings/3 points each :)', 'Breakfast', ARRAY['egg_free','low_cholesterol']::text[], 20, 80, 8, 158.7, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('17591', 'Healthy Hamburger and Green Bean Soup', 'I make this thick comforting soup often for my family during the cold winter months. It is so fast and easy to fix and it is rather low in fat and calories. This makes 4 very large servings. To reduce sodium, you may use low sodium green beans if you prefer. I adapted this recipe from "Fast, Cheap and Easy," by JoAnna Lund. Condensed cream of tomato soup and condensed regular tomato soup are interchangeable in this recipe; no alterations necessary.The important part is that it is indeed a condensed version of tomato soup, as opposed to ready to serve.', 'Lunch', ARRAY['low_cholesterol']::text[], 5, 25, 4, 288.2, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('71313', 'Lacy Potato Kugel', 'I have been eating potato kugel all my life - take it from me, this one is the absolute best. It''s from the "Kosher Palette Cookbook" it is crispy on the outside and creamy and, well, ''lacy'' on the inside. It freezes very well so I usually double the recipe. Enjoy!', 'Breakfast', ARRAY['kosher','low_protein']::text[], 30, 60, 12, 278.0, NULL, 'Food.com')
+ON CONFLICT DO NOTHING;
+INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
+VALUES ('140868', 'Hasa Al Hummus -- Moroccan Chickpea Soup', 'Hasa Al Hummus is a wonderful Moroccan vegetarian soup for a comforting winter warmer. Morocco adores her soups though there are not a million varieties. Many recipes online may taste good though are faux or Moroccan "style" soups. I can guarantee that from me what you get is completely authentic Moroccan fare. I owe this to those interested in Moroccan food/cooking that is authentic. This is a very simple basic soup as most Moroccan foods are. Go to a touristy, especially a fancy one, spot and you will get French food with Moroccan influences; not how we eat every day. We eat Moroccan food perhaps with a French influence or two though never vice versa. My housemaid Nasiha who is approximately 60 taught me this recipe. I say approximately as many in Morocco do not know their birthday. Whip this up like we do and enjoy! In a pinch you can use canned chickpeas. They are acceptable, merely omit the first cooking hour. As an aside, here, hummus is the word for chickpea, not the dip/spread.', 'Breakfast', ARRAY['low_cholesterol','low_protein','vegan']::text[], 20, 120, 6, 179.3, NULL, 'Food.com')
 ON CONFLICT DO NOTHING;
 INSERT INTO recipes (external_source_id, recipe_name, recipe_description, meal_category, dietary_tags, prep_time_min, cook_time_min, servings, calories_per_serving, regional_origin, data_source)
 VALUES ('114102', 'Marinated Baked Tofu', 'I am addicted to baked tofu!! Thank you Mollie Katzen and The Enchanted Broccoli Forest for the excellent marinade recipe! The tofu never lasts long enough to make it into a stir-fry at my house. I end up eating it by itself. I love it hot or cold. And of course absolutely everything to do with this recipe can be adapted to taste or what you have in the kitchen. Enjoy!', 'Lunch', ARRAY['low_cholesterol','vegan']::text[], 10, 60, 2, 305.7, NULL, 'Food.com')
@@ -5061,24 +5072,6 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '66575' AND lower(btrim(i.ingredient_name)) = 'sugar'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'baking potatoes'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'parmesan cheese'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'salt'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'garlic powder'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'paprika'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'black pepper'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '8603' AND lower(btrim(i.ingredient_name)) = 'bananas'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -5104,39 +5097,6 @@ SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '8603' AND lower(btrim(i.ingredient_name)) = 'chocolate chips'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'garlic clove'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'onion'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'chopped tomato'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'green onion'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'chili powder'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'cumin powder'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'tomato sauce'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'black beans'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'cilantro'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'corn tortillas'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'low-fat cheddar cheese'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '8596' AND lower(btrim(i.ingredient_name)) = 'butter'
@@ -5443,30 +5403,6 @@ SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '31342' AND lower(btrim(i.ingredient_name)) = 'paprika'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'boneless skinless chicken thighs'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fresh basil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fresh coriander'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'garlic'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'soy sauce'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fish sauce'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'olive oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'brown sugar'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '251220' AND lower(btrim(i.ingredient_name)) = 'butter'
@@ -5836,33 +5772,6 @@ SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '259573' AND lower(btrim(i.ingredient_name)) = 'water'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'baking potatoes'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.6666666666666666, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'butter'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.6666666666666666, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'flour'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'milk'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'garlic clove'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'sour cream'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 6.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'green onions'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 14.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'bacon'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '77316' AND lower(btrim(i.ingredient_name)) = 'sharp cheddar cheese'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '31235' AND lower(btrim(i.ingredient_name)) = 'brown sugar'
@@ -8232,42 +8141,6 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71017' AND lower(btrim(i.ingredient_name)) = 'parmesan cheese'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'puff pastry'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'boneless skinless chicken breasts'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'butter'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'seasoning salt'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'pepper'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'onion'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'garlic'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'button mushroom'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'fresh parsley'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'cream cheese'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'dijon mustard'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '149540' AND lower(btrim(i.ingredient_name)) = 'egg'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '36023' AND lower(btrim(i.ingredient_name)) = 'all-purpose flour'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -8826,6 +8699,18 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '19484' AND lower(btrim(i.ingredient_name)) = 'margarine'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '106262' AND lower(btrim(i.ingredient_name)) = 'golden delicious apples'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '106262' AND lower(btrim(i.ingredient_name)) = 'cornstarch'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '106262' AND lower(btrim(i.ingredient_name)) = 'apple pie spice'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '106262' AND lower(btrim(i.ingredient_name)) = 'sugar'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '258508' AND lower(btrim(i.ingredient_name)) = 'bulk pork sausage'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -8970,6 +8855,30 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '10837' AND lower(btrim(i.ingredient_name)) = 'ground beef'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'pork sausage'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'eggs'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'onion'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'green pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'garlic powder'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '12975' AND lower(btrim(i.ingredient_name)) = 'sharp cheddar cheese'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '81725' AND lower(btrim(i.ingredient_name)) = 'olive oil'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -8994,6 +8903,39 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '81725' AND lower(btrim(i.ingredient_name)) = 'parsley'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'all-purpose flour'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.75, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'whole wheat flour'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'sugar'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'baking powder'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'baking soda'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'low-fat buttermilk'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'banana'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'canola oil'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'egg'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'vanilla'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94528' AND lower(btrim(i.ingredient_name)) = 'walnuts'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '110936' AND lower(btrim(i.ingredient_name)) = 'chicken liver'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -9007,6 +8949,27 @@ SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '110936' AND lower(btrim(i.ingredient_name)) = 'garlic cloves'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'old fashioned oats'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'quick oats'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'water'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.125, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'cinnamon'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.125, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'vanilla extract'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'sugar'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'honey'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '141367' AND lower(btrim(i.ingredient_name)) = 'lemon juice'
@@ -9052,6 +9015,21 @@ SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients 
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '14111' AND lower(btrim(i.ingredient_name)) = 'vanilla'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'tomatoes'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'avocado'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'red onion'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'olive oil'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'lemon juice'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '129615' AND lower(btrim(i.ingredient_name)) = 'bacon'
@@ -9618,6 +9596,57 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '109699' AND lower(btrim(i.ingredient_name)) = 'fresh onion'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'baking potatoes'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'parmesan cheese'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'garlic powder'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'paprika'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '74730' AND lower(btrim(i.ingredient_name)) = 'black pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'garlic clove'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'onion'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'chopped tomato'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'green onion'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'chili powder'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'cumin powder'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'tomato sauce'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'black beans'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'cilantro'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'corn tortillas'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '34881' AND lower(btrim(i.ingredient_name)) = 'low-fat cheddar cheese'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '27475' AND lower(btrim(i.ingredient_name)) = 'boneless skinless chicken breast halves'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -9739,6 +9768,30 @@ SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '57919' AND lower(btrim(i.ingredient_name)) = 'parsley'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'boneless skinless chicken thighs'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fresh basil'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fresh coriander'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'garlic'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'soy sauce'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'fish sauce'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'olive oil'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '99156' AND lower(btrim(i.ingredient_name)) = 'brown sugar'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '5478' AND lower(btrim(i.ingredient_name)) = 'boneless skinless chicken breasts'
@@ -9936,54 +9989,6 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '55673' AND lower(btrim(i.ingredient_name)) = 'fresh ground black pepper'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 3.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'soy sauce'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'beef bouillon cube'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'bay leaf'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'peppercorns'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'dried rosemary'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'dried thyme'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '103403' AND lower(btrim(i.ingredient_name)) = 'garlic powder'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 16.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '30358' AND lower(btrim(i.ingredient_name)) = 'pasta'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '30358' AND lower(btrim(i.ingredient_name)) = 'water'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'sweet potatoes'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'olive oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'canola oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'brown sugar'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'chili powder'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'salt'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37106' AND lower(btrim(i.ingredient_name)) = 'cayenne pepper'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '18762' AND lower(btrim(i.ingredient_name)) = 'baking potatoes'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -10093,42 +10098,6 @@ SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '109423' AND lower(btrim(i.ingredient_name)) = 'mozzarella cheese'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'old fashioned oats'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.3333333333333333, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'quick oats'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'water'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.125, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'cinnamon'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.125, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'vanilla extract'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'sugar'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '117412' AND lower(btrim(i.ingredient_name)) = 'honey'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'tomatoes'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'avocado'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'red onion'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'olive oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '94520' AND lower(btrim(i.ingredient_name)) = 'lemon juice'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 12.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '81284' AND lower(btrim(i.ingredient_name)) = 'firm tofu'
@@ -10332,21 +10301,6 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '38584' AND lower(btrim(i.ingredient_name)) = 'cinnamon'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '28141' AND lower(btrim(i.ingredient_name)) = 'soy sauce'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '28141' AND lower(btrim(i.ingredient_name)) = 'olive oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 3.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '28141' AND lower(btrim(i.ingredient_name)) = 'garlic cloves'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '28141' AND lower(btrim(i.ingredient_name)) = 'fresh ginger'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '28141' AND lower(btrim(i.ingredient_name)) = 'brown sugar'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '37027' AND lower(btrim(i.ingredient_name)) = 'water'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -10468,15 +10422,6 @@ SELECT rc.recipe_id, i.ingredient_id, 2.5, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '63509' AND lower(btrim(i.ingredient_name)) = 'cinnamon'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '139902' AND lower(btrim(i.ingredient_name)) = 'chicken broth'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '139902' AND lower(btrim(i.ingredient_name)) = 'fresh lemon juice'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '139902' AND lower(btrim(i.ingredient_name)) = 'lemon rind'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '278278' AND lower(btrim(i.ingredient_name)) = 'flour'
@@ -10612,36 +10557,6 @@ SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients 
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '11194' AND lower(btrim(i.ingredient_name)) = 'paprika'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'olive oil'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'butter'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'shrimp'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'garlic cloves'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'fresh lemon juice'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'paprika'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'red pepper flakes'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'flat leaf parsley'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'salt'
-ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
-INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
-SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '127029' AND lower(btrim(i.ingredient_name)) = 'fresh ground pepper'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '61439' AND lower(btrim(i.ingredient_name)) = 'firm tofu'
@@ -10878,6 +10793,54 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1, 'portion' FROM recipes rc, ingredients i WHERE rc.external_source_id = '119643' AND lower(btrim(i.ingredient_name)) = 'mustard'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 10.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'old fashioned oats'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'wheat germ'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'flax seed'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'unsweetened dried shredded coconut'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'sesame seeds'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'pecans'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'brown sugar substitute'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'water'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'canola oil'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.75, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'honey'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'sorghum'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'cinnamon'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '100464' AND lower(btrim(i.ingredient_name)) = 'vanilla'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '112725' AND lower(btrim(i.ingredient_name)) = 'banana'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '112725' AND lower(btrim(i.ingredient_name)) = 'honey'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206184' AND lower(btrim(i.ingredient_name)) = 'broccoli'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
@@ -10891,6 +10854,27 @@ SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients 
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206184' AND lower(btrim(i.ingredient_name)) = 'parmesan cheese'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'butter'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'onion'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'flour'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'nonfat milk'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'potatoes'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '206594' AND lower(btrim(i.ingredient_name)) = 'black pepper'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '17591' AND lower(btrim(i.ingredient_name)) = 'lean ground beef'
@@ -10909,6 +10893,63 @@ SELECT rc.recipe_id, i.ingredient_id, 1.5, 'unit' FROM recipes rc, ingredients i
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 0.6666666666666666, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '17591' AND lower(btrim(i.ingredient_name)) = 'ground black pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 6.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'idaho potatoes'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'onions'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 4.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'eggs'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 5.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'fresh ground pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.25, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'potato starch'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '71313' AND lower(btrim(i.ingredient_name)) = 'boiling water'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'dried garbanzo beans'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'water'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'onions'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'tomatoes'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'garlic cloves'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 8.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'fresh coriander'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'flat leaf parsley'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'salt'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 0.5, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'fresh black pepper'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 2.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'lemon'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'sweet paprika'
+ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
+SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '140868' AND lower(btrim(i.ingredient_name)) = 'ground turmeric'
 ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)
 SELECT rc.recipe_id, i.ingredient_id, 1.0, 'unit' FROM recipes rc, ingredients i WHERE rc.external_source_id = '114102' AND lower(btrim(i.ingredient_name)) = 'firm tofu'
@@ -12148,26 +12189,11 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Mix well until pudding is dissolved.' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Stir in strawberries, banana, blueberries, grapes, and sugar if desired.' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Chill.' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Heat oven to 450°.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Spray a baking sheet with cooking spray.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Combine all dry ingredients and combine with potatoes, tossing to coat.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Drizzle with oil, tossing again to coat.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Arrange potatoes in a single layer on baking sheet and bake for 35 minutes or until golden brown.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Mash bananas, add sugar and the slightly beaten egg.' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Stir in melted butter.' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Stir in dry ingredients.' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Spoon into medium size muffin pan (I use the paper muffin cups inside pan).' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Bake 20 minutes at 350F degrees - 375F degrees.' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 350* F.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Spray a large skillet with cooking spray.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add garlic, onions, tomato, green onion, cumin, and chili powder.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Cook on medium heat until onion is tender.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Add tomato sauce and cook 5 minutes more.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Stir in beans, cilantro, salt and pepper.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Spray a 9 inch square baking dish with cooking spray.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Layer 4 tortillas, 1/3 cheese, and 1/3 of the bean mixture; repeat 2 more times.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Top with reserved 2 tablespoons of cheese.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Bake 20 minutes, covered, then 10 minutes uncovered or until bubbly.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a medium saucepan, melt butter.' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'When butter is melted, add cream cheese.' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'When the cream cheese is softened, add heavy cream.' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -12257,11 +12283,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Sprinkle with paprika.' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Bake in preheated oven for 40 minutes.' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Cool 10 minutes before serving.' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine all ingredients except chicken in a bowl.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Mix thoroughly.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add chicken and leave to marinate at least one hour, preferably longer.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Grill chicken on the BBQ, hotplate or in the griller until golden brown and cooked through.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Ususlly you would expect 12 thigh fillets to feed 4 to 6 people- in my family the kids eat 4 each so this recipe serves 3.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a bowl whisk the eggs vigorously with milk, baking powder, salt and black pepper until very well combined; let stand at room temperature for 5-7 minutes.' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Heat butter until sizzling over medium-high heat in a large skillet (or spray the skillet with vegetable spray).' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Whisk eggs again briefly then mix in the cheese (if using).' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -12391,12 +12412,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Cover the eggs with cold water then add in some ice.' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Allow the eggs to sit in ice water for about 3 minutes.' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Drain and peel.' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Heat oven to 350F and bake the potatoes until fork tender, about 1 hour to 1 hour 15 minutes. (You can bake the potatoes beforehand).' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Melt butter in a medium saucepan. Slowly blend in flour with a wire whisk until thoroughly blended. Cook the roux (flour in butter) until a very pale golden. Gradually add milk to the roux, garlic and season to taste, whisking constantly.' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Cut potatoes in half, scoop out the interior and set aside. Chop up half the potato peels and discard the remainder.' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'When milk mixture is very hot, whisk in potato. Add green onion and potato peels. Whisk well, add sour cream and crumbled bacon. Heat thoroughly. Add cheese a little at a time until all is melted in .' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Note: You can set aside a bit of the bacon, green onions and cheese to sprinkle on top for a nice appearance.' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Enjoy!' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Heat oven to 275 degrees F.' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Line 2 cookie sheets with parchment paper.' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Combine brown sugar and water in a 4 cup microwave proof cup.' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13217,24 +13232,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Let stand over night in the refrigerator.' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Bake at 350*F for 25 to 30 minutes or until set.' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Cover with foil if browns too quickly.' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Season the chicken breast with seasoning salt and pepper on all sides.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Heat butter and oil in a skillet.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Brown the breasts on all sides until almost completely cooked through; transfer to a plate.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'To the same skillet add in onions, garlic and sliced mushrooms; saute until the mushrooms lose their moisture and the onions are tender.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Stir in parsley.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'On a floured surface, roll out each puff pastry sheet to a 14-inch square.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Cut into four even 7-inch squares (you should have 8 squares total).' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Place each breast over each puff pastry square.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Set oven to 375 degrees.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'In a small bowl combine the softened cream cheese with mustard, then spread over EACH breast.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 11, 'Then top with about 2-3 tablespoons mushroom/onion mixture.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 12, 'Brush the edges of each pastry square with water.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 13, 'Wrap pastry around the chicken breast, pressing edges to seal tightly.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 14, 'Place seam-side down on greased baking sheets.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 15, 'Brush the tops with egg wash.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 16, 'Bake for about 20 minutes, or until puffed and golden brown.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 17, 'Serve with mushroom sauce over the Wellington or on the side of the plate.' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 18, 'Delicious!' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Place 1 cup flour, 1/2 cup milk, and eggs in 3 separate shallow bowls in the working area.' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Mix 1 tsp salt, 1 tsp pepper, and the paprika into the flour and mix well.' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Season both sides of cube steaks with additional salt and pepper, if desired.' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13438,6 +13435,14 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'For streusel, combine sugar, flour and cinnamon in a small bowl; cut in butter.' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Sprinkle over muffins.' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Bake at 375F for 20 to 25 minutes.' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a medium skillet, combine the 2 cups apple juice and sliced apples.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Simmer gently until apples are fork tender but not mushy, turning apples frequently.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Remove apples from juice using a slotted spoon and place in an oven safe dish.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'In a blender, combine the remaining 1/2 cup apple juice, cornstarch, apple pie spice and sugar.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Blend a few seconds until smooth.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Whisk mixture into hot apple juice in skillet and cook, stirring constantly on medium high heat until it bubbles and becomes thickened and smooth.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Pour thickened mixture over apples and serve.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Please note the cooking time is an approximate.' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Cook the sausage meat with onion (if using) in a large skillet over medium heat until sausage meat no longer pink; drain fat.' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Add in crushed red pepper flakes and cook stirring until the meat is lightly browned (about 12-15 minutes, the meat must be browned).' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Stir in 1/4 cup plus 2 teaspoon flour into the skillet and mix until dissolved with the meat (about 2 minutes).' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13475,6 +13480,12 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Brown meat add to sauce.' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'If needed add tomato sauce for consistency' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Serve over cooked spaghetti or other Italian pasta and top with Parmesan cheese.' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Brown sausage; drain well.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Preheat oven to 350°.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'In a bowl, beat eggs, then add onion, green peppers, salt, pepper and garlic powder.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Stir in sausage and cheese.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Spoon 1/3 cupfuls into greased muffin cups.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Bake at 350° for 20-25 minutes or until a knife inserted comes out clean.' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'To marinate meat: Cut tenderloin into bite-size chunks and put into a Tupperware with remaining marinade ingredients.' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Swish everything around to distribute, put in fridge and forget for a day (this long marination is not absolutely necessary- but longer means more flavour. If you haven''t the time, just do what you can).' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'When ready to BBQ, skewer meat onto metal or wooden skewers (remember to soak the wooden skewers in water for at least 1/2 an hour first) and bbq until the meat is nicely brown all over, and you know you can''t possibly wait any longer to eat.' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13490,6 +13501,16 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 13, 'You will never settle for a Big Mac again!' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 14, 'To freeze: Place meat and marinade in a freezer bag or rigid freezer container.' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 15, 'To serve: Thaw in fridge overnight and proceed with cooking directions.' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 375°F.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Spray 12 regular muffin cups with non-stick cooking spray.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'In a large bowl, mix together the flours, sugar, baking powder and baking soda.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'In separate bowl, whisk together the buttermilk, mashed banana, oil, egg and vanilla.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Pour wet ingredients over dry ingredients and stir just until blended.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Spoon batter into muffin cups, filling about three-fourths full.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Sprinkle tops evenly with nuts.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Bake until lightly brown and a toothpick inserted in center comes out clean, approximately 15 to 20 minutes.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Allow to cool in pan on wire rack for 15 minutes, then turn out onto rack and cool completely.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'These muffins freeze well and can be warmed in microwave.' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Wash, trim and dry the Chicken Livers.' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'DRY fry them, NO OIL, in a frying pan, for three or four minutes until cooked through.' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Whilst still on the cooker add the oil, lemon juice and salt to taste.' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13498,6 +13519,11 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'The dry fry technique prevents the liver from browning and keeps it tender enough to melt in your mouth.' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Don''t use Virgin Olive oil, the Greeks and Italians only use that for salads and dressings, very rarely for cooking.' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Bon Appetite!' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Cut up peach slices into small pieces.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'In a bowl add oats, water, and peaches with juice.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Microwave in 500watt microwave for 2 minutes, stir, microwave for another 2 minutes, stir, then microwave in 1 minute intervals until cooked. In a 1200watt microwave, microwave for 30 seconds, stir, microwave for another 30 seconds, stir, and then continue microwaving in 30 second intervals until cooked.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Once cooked, add cinnamon, butterscotch extract, and sweetener.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'NOTE: This serving seems small since it is only 1/4 cup of oats, but with the addition of peaches, it is quite filling, especially when served with a glass of milk; Feel free however, to increase one serving size to double this amount for a very hearty breakfast.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine lemon juice, oil, 1/2 t of the garlic, mustard and oregano in a gallon zip top plastic bag.' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Add chicken and seal bag.' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Turn bag and gently move chicken around to distribute marinade evenly.' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13510,6 +13536,8 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Fold in half and enjoy.' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Mix above ingredients.' FROM recipes WHERE external_source_id = '14111' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Use as a dip for sliced apples, or other fruit.' FROM recipes WHERE external_source_id = '14111' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine all ingredients in small bowl and toss together.' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Let stand 5 minutes before serving.' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Cook bacon until crispy, then drain on paper towels.' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Toast the 8 slices of bread.' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Spread 1 tablespoon mayo on each slice of toasted bread. (More or less, to taste).' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13716,6 +13744,21 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Cook until liquid is ALMOST gone, about 10 minutes.' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Serve meat on buns with mustard and fresh chopped onions.' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'ENJOY!' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Heat oven to 450°.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Spray a baking sheet with cooking spray.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Combine all dry ingredients and combine with potatoes, tossing to coat.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Drizzle with oil, tossing again to coat.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Arrange potatoes in a single layer on baking sheet and bake for 35 minutes or until golden brown.' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 350* F.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Spray a large skillet with cooking spray.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add garlic, onions, tomato, green onion, cumin, and chili powder.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Cook on medium heat until onion is tender.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Add tomato sauce and cook 5 minutes more.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Stir in beans, cilantro, salt and pepper.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Spray a 9 inch square baking dish with cooking spray.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Layer 4 tortillas, 1/3 cheese, and 1/3 of the bean mixture; repeat 2 more times.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Top with reserved 2 tablespoons of cheese.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Bake 20 minutes, covered, then 10 minutes uncovered or until bubbly.' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 375 degrees F (190 degrees C).' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Place chicken breasts in a lightly greased 9x13 inch baking dish.' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Sprinkle taco seasoning on both sides of chicken breasts, and pour salsa over all.' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13783,6 +13826,11 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Fry until cooked through, and fish flakes easily with a fork-- this will depend entirely on the thickness of your fillets, so you will need to watch them carefully.' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'The garlic should turn a dark golden brown, but not be burned, if you notice that the garlic is starting to burn, spoon it over the fish, so it is no longer in contact with the pan.' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Serve with freshly squeezed lemon juice and garnish with chopped parsley.' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine all ingredients except chicken in a bowl.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Mix thoroughly.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add chicken and leave to marinate at least one hour, preferably longer.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Grill chicken on the BBQ, hotplate or in the griller until golden brown and cooked through.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Ususlly you would expect 12 thigh fillets to feed 4 to 6 people- in my family the kids eat 4 each so this recipe serves 3.' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 450°F Line a baking dish or cookie sheet with aluminum foil and lightly coat with cooking spray or lightly brush with oil.' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'In small sauté pan, sauté garlic with the oil until tender.' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Remove from heat and stir in brown sugar. Add additional herbs and spices as desired.' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13850,23 +13898,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Bake the chicken 20 minutes and baste with the vinegar juices.' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Bake 20 minutes more (depending the size of breast) or until juices run clear.' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Serve chicken with juices spooned over them.' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Place roast in a 5-quart slow cooker.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Combine soy sauce and next 6 ingredients.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Pour over roast.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Add water to slow cooker until roast is almost covered.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Cook, covered, on LOW for 7 hours or until very tender.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Remove roast, reserving broth.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'You may shred roast with a fork and serve on sandwich rolls with the broth on the side for dipping.' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Boil lots of water, enough for at least one inch above the pasta.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'When boil is reached, add your pasta & place lid on pot.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Remove the pot from the heat.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Set a timer for 15 minutes and let pan sit covered.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'After 15 minutes, drain off water.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'NOTES: Makes perfect pasta every time. I do this with frozen ravioli, too, but it only takes 10 minutes or so. What''s funny is that this seems to work for most types of pasta I prepare, without adjusting the timing. I rarely do angel hair or other fine varieties, but they would probably take less time. Play with it and set your own timings.' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a zip-top plastic bag, toss potatoes and oil.' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Combine remaining ingredients; add to bag; toss to coat.' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Transfer to a greased 11x7 inch baking dish.' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Bake, uncovered, at 400 degrees for 40-45 minutes or until potatoes are tender, stirring every 15 minutes.' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Cut each potato lengthwise into 8 wedges.' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Combine lemon juice, olive oil, oregano, pepper, salt, and garlic in a large bowl.' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add potatoes and toss well to coat.' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13917,13 +13948,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Brush with butter; sprinkle with garlic powder and cheese.' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Bake at 375 degree oven for 15-17 minutes or until crust is golden brown and cheese is lightly browned.' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Cut into wedges and serve warm.' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Cut up peach slices into small pieces.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'In a bowl add oats, water, and peaches with juice.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Microwave in 500watt microwave for 2 minutes, stir, microwave for another 2 minutes, stir, then microwave in 1 minute intervals until cooked. In a 1200watt microwave, microwave for 30 seconds, stir, microwave for another 30 seconds, stir, and then continue microwaving in 30 second intervals until cooked.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Once cooked, add cinnamon, butterscotch extract, and sweetener.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'NOTE: This serving seems small since it is only 1/4 cup of oats, but with the addition of peaches, it is quite filling, especially when served with a glass of milk; Feel free however, to increase one serving size to double this amount for a very hearty breakfast.' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine all ingredients in small bowl and toss together.' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Let stand 5 minutes before serving.' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'For best results, tofu should be "pressed" in order to remove excess liquid and absorb the flavors of the marinade.' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Press tofu block between two plates, weighted down with a cast iron pan, large bowl of water, or heavy cans, for about 30 minutes.' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Halfway through, you may dump the plate of water and flip the tofu block.' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -13990,16 +14014,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'You can add other flavorings as you like, such as dried fruits, other sweet spices, diced apples, etc.' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'I usually put raisins on after it''s cooked because I like them chewy.' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'I''ve been meaning to try dried cranberries.' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Place pork tenderloin in large ziploc bag.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Peel and lightly crush garlic.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add garlic and ginger to bag.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Whisk together soy sauce, olive oil and brown sugar in medium mixing bowl.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Pour over pork tenderloin.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Marinate in ziploc bag in fridge for up to 3 days.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, '(3 days= the most tender pork you''ve ever had) Remove from bag and discard marinade.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Grill on BBQ or broil in oven until medium (about 15 minutes).' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Very dark and tasty with a light pink centre.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Great over rice or with baked potatoes and grilled asparagus.' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 425.' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Place water, flour, sugar & yeast in a large bowl.' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Mix and knead dough for 5 to 10 minutes.' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -14041,11 +14055,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Cook on a greased skillet or griddle over medium to medium high heat until golden.' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'If there are large lumps, carefully break them apart with the spatula while the pancakes are cooking.' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Serve immediately.' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a 5-quart Dutch oven, combine chicken broth and cream of chicken soup, mixing until well blended.' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Stir in rice, chicken, lemon juice and rind.' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Bring mixture to a boil.' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Reduce heat.' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Cover; simmer 15 to 20 minutes or until rice is tender.' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Combine flour, sugar, salt, and baking powder in a mixing bowl. Mix in soy milk and oil.' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Gently fold in blueberries.' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Pour into paper cups in a muffin pan and bake at 400 degrees for 25-30 minutes.' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -14096,9 +14105,6 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Fry to golden brown on both sides (about 3 minutes per side).' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Drain on paper towels.' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Serve topped with applesauce or sour cream.' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a wide, shallow sauté pan over high heat, warm the Olive Oil and the Butter; add the Shrimp and Garlic and sauté quickly for about 2-3 minutes.' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Add the lemon juice, paprika, pepper flakes, and salt and pepper to taste. Adjust seasonings to your liking.' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, step_number) DO NOTHING;
-INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Transfer to a warmed serving dish, sprinkle with the parsley and serve at once.' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'I always drain my tofu first.' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'I cut it into 1/4s, wrap it in paper towels on a cookie sheet, with another one on top, weighted down with some heavy canned goods.' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Let sit in refrigerator for 10-20 minutes.' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -14167,6 +14173,18 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Beat eggs, mayonnaise, cream, salt and pepper together then pour evenly over the meat.' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Bake at 350ºF for 30-35 minutes.' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Let stand 10 minutes before serving.' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 300 degrees.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'In a large bowl combine oats, wheat germ, flax seed, coconut, sesame seeds and nuts, mixing well.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'In a large saucepan, combine the brown sugar substitute or brown sugar, water, oil, honey, sorghum, salt, cinnamon and vanilla.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Heat until thoroughly mixed; do not boil.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Pour the syrup over dry ingredients and stir until coated well.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Spread into five 13 x 9 inch jelly roll pans.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Bake 20 to 30 minutes, stirring occasionally.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'For a crunchier texture, bake an additional 10 to 15 minutes.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Cool mixture and add dried fruit.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Store in airtight container in a cool dry place.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 11, 'Will keep up to 6 months; but it doens''t make it that long in our house.' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Dip banana into honey or mix into your favorite smoothie.' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat to the oven to 400°F.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Mix together the oil, garlic, red pepper flakes, salt and pepper.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Toss together the broccoli and the oil mixture in a large bowl.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -14178,6 +14196,18 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'If you don''t like al dente broccoli, cook a little longer.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'I usually remove after 10-15 minutes.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 11, 'When the broccoli is as done as you like remove from the oven and toss with the cheese.' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Heat oven to 375 degrees.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Coat a 2-quart baking dish with cooking spray.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Melt butter in a large frypan over medium heat; add in onion and cook stirring occasionally until onion begins to brown (about 5 minutes).' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Stir in flour, then slowly add in milk.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Add in potatoes; stir to mix; bring to a boil.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Stir in 3/4 cup cheese, salt and black pepper.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Pour mixture into prepared baking dish then spread out.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Bake for 1 hour uncovered.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'After 1 hour cooking time cover with foil and continue to bake another 20 minutes more.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Change oven to broil heat.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 11, 'Sprinkle the remaining cheese over potatoes and broil 6-inches from heat until the cheese is golden (about 1-2 minutes).' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 12, 'Cool 5 minutes before serving.' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Spray a large saucepan with cooking spray.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Brown beef and chopped onions over medium heat until cooked though; drain any fat.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'To the browned meat and onions, add the cream of tomato soup, tomato sauce, and water.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -14185,6 +14215,21 @@ INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id,
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Add uncooked instant rice, green beans, parsley, and black pepper; stir well.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Cover and reduce heat to low.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Simmer for 15 minutes or until rice is tender, stirring once or twice.' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Preheat oven to 500 degrees.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Saute diced onion until nicely caramelized and golden.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'While onion is caramelizing, grate potatoes using the fine (smallest holes) disc in the food processor.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'Squeeze out liquid and place in a large mixing bowl.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 5, 'Process onions (don''t change the blade) and pour the onion pulp and juices into the bowl with the potatoes.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 6, 'Stir in eggs, 5 tbsp. oil, salt, pepper and caramelized onions.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 7, 'Sprinkle starch on top.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 8, 'Pour boiling water over starch and stir thoroughly.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 9, 'Pour 1/4 cup of oil into a 9x13 baking pan and heat in oven for about a minute. Do not allow oil to burn.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 10, 'Carefully pour mixture into pan and bake for 20 minutes.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 11, 'After 20 minutes, reduce heat to 400 degrees and bake for 40 minutes or until the top is a deep golden brown.' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'In a soup pot combine the chickpeas and water and bring to a rolling boil. Cover, reduce heat to medium and cook 1 hour.' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'While the beans are cooking, heat the oil in a skillet and sauté the onions, garlic, and hot pepper (we use a small straight pickled hot pepper from a jar) until they barely take on color; very slightly browned.' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Add the mixture and the remainder of the ingredients to the soup pot and simmer 1 hour or until the chickpeas are soft. You don''t want a "bite" to the chickpeas but firm and creamy.' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, step_number) DO NOTHING;
+INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 4, 'NB: The preparation time does not include soaking the chickpeas.' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 1, 'Drain tofu and cut into 1" cubes.' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 2, 'Mix all other ingredients together except olive oil.' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, step_number) DO NOTHING;
 INSERT INTO recipe_steps (recipe_id, step_number, instruction) SELECT recipe_id, 3, 'Pour marinade over tofu and cover.' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, step_number) DO NOTHING;
@@ -15451,15 +15496,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 15.9, 'g' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 86.1, 'mg' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '66575' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 203.8, 'kcal' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 3.9, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 7.7, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.4, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 30.8, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 2.9, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 1.4, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 335.4, 'mg' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 2.2, 'mg' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 170.7, 'kcal' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 2.6, 'g' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 5.8, 'g' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -15469,15 +15505,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 12.5, 'g' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 186.8, 'mg' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 29.0, 'mg' FROM recipes WHERE external_source_id = '8603' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 268.8, 'kcal' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 18.1, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 4.7, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 2.0, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 40.8, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 9.3, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.8, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 461.9, 'mg' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 8.0, 'mg' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 880.3, 'kcal' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 19.2, 'g' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 64.2, 'g' FROM recipes WHERE external_source_id = '8596' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -15586,15 +15613,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.0, 'g' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 486.2, 'mg' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 121.5, 'mg' FROM recipes WHERE external_source_id = '31342' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 327.1, 'kcal' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 42.3, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 13.4, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 2.9, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 7.3, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.4, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.5, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1108.8, 'mg' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 172.5, 'mg' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 186.5, 'kcal' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 13.1, 'g' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 13.9, 'g' FROM recipes WHERE external_source_id = '251220' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -15739,15 +15757,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.2, 'g' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 100.5, 'mg' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 186.0, 'mg' FROM recipes WHERE external_source_id = '259573' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 632.5, 'kcal' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 20.1, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 45.8, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 26.7, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 36.6, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 1.9, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.1, 'g' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 574.8, 'mg' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 129.0, 'mg' FROM recipes WHERE external_source_id = '77316' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 533.3, 'kcal' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 12.5, 'g' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 19.2, 'g' FROM recipes WHERE external_source_id = '31235' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16639,15 +16648,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 8.2, 'g' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 649.7, 'mg' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 292.8, 'mg' FROM recipes WHERE external_source_id = '71017' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 651.1, 'kcal' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 33.3, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 43.3, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 14.6, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 31.8, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 1.7, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.8, 'g' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 460.5, 'mg' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 137.6, 'mg' FROM recipes WHERE external_source_id = '149540' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 272.7, 'kcal' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 9.1, 'g' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 15.5, 'g' FROM recipes WHERE external_source_id = '36023' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16864,6 +16864,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 23.4, 'g' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 339.9, 'mg' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 58.9, 'mg' FROM recipes WHERE external_source_id = '19484' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 172.6, 'kcal' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 0.5, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 0.4, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.1, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 44.3, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 3.8, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 33.8, 'g' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 6.1, 'mg' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '106262' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 360.4, 'kcal' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 19.1, 'g' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 25.8, 'g' FROM recipes WHERE external_source_id = '258508' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16909,6 +16918,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 12.3, 'g' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1368.4, 'mg' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 94.5, 'mg' FROM recipes WHERE external_source_id = '10837' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 152.2, 'kcal' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 10.4, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 11.3, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 4.2, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 1.4, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.2, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.6, 'g' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 317.9, 'mg' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 204.6, 'mg' FROM recipes WHERE external_source_id = '12975' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 811.8, 'kcal' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 47.3, 'g' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 34.7, 'g' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16918,6 +16936,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.2, 'g' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 824.1, 'mg' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 110.7, 'mg' FROM recipes WHERE external_source_id = '81725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 174.8, 'kcal' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 4.2, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 6.4, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.8, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 26.4, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 1.7, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 11.1, 'g' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 193.4, 'mg' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 16.3, 'mg' FROM recipes WHERE external_source_id = '94528' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 403.8, 'kcal' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 39.0, 'g' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 24.5, 'g' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16927,6 +16954,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.2, 'g' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1325.6, 'mg' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 782.5, 'mg' FROM recipes WHERE external_source_id = '110936' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 106.6, 'kcal' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 3.1, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 1.3, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.2, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 21.3, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 3.0, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 6.7, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 6.2, 'mg' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 294.0, 'kcal' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 27.1, 'g' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 16.8, 'g' FROM recipes WHERE external_source_id = '141367' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -16945,6 +16981,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 54.5, 'g' FROM recipes WHERE external_source_id = '14111' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 194.1, 'mg' FROM recipes WHERE external_source_id = '14111' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 62.5, 'mg' FROM recipes WHERE external_source_id = '14111' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 129.1, 'kcal' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 1.7, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 10.9, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.6, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 8.4, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 4.3, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.0, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 8.0, 'mg' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 516.8, 'kcal' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 11.2, 'g' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 37.1, 'g' FROM recipes WHERE external_source_id = '129615' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17152,6 +17197,24 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.0, 'g' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 636.7, 'mg' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 49.1, 'mg' FROM recipes WHERE external_source_id = '109699' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 203.8, 'kcal' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 3.9, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 7.7, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.4, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 30.8, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 2.9, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 1.4, 'g' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 335.4, 'mg' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 2.2, 'mg' FROM recipes WHERE external_source_id = '74730' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 268.8, 'kcal' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 18.1, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 4.7, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 2.0, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 40.8, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 9.3, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.8, 'g' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 461.9, 'mg' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 8.0, 'mg' FROM recipes WHERE external_source_id = '34881' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 267.5, 'kcal' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 33.1, 'g' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 12.5, 'g' FROM recipes WHERE external_source_id = '27475' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17224,6 +17287,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.0, 'g' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 89.2, 'mg' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 85.1, 'mg' FROM recipes WHERE external_source_id = '57919' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 327.1, 'kcal' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 42.3, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 13.4, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 2.9, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 7.3, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.4, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.5, 'g' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1108.8, 'mg' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 172.5, 'mg' FROM recipes WHERE external_source_id = '99156' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 221.3, 'kcal' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 25.3, 'g' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 6.5, 'g' FROM recipes WHERE external_source_id = '5478' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17305,33 +17377,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.4, 'g' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 630.9, 'mg' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 46.4, 'mg' FROM recipes WHERE external_source_id = '55673' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 300.4, 'kcal' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 32.6, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 9.8, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 4.0, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 20.6, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 1.4, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.4, 'g' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1055.3, 'mg' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 87.4, 'mg' FROM recipes WHERE external_source_id = '103403' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 422.9, 'kcal' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 14.9, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 1.7, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.3, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 85.1, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 3.6, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.0, 'g' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 6.8, 'mg' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '30358' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 86.0, 'kcal' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 0.8, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 3.5, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.5, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 13.4, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 1.6, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.4, 'g' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 178.7, 'mg' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '37106' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 75.4, 'kcal' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 1.4, 'g' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 1.6, 'g' FROM recipes WHERE external_source_id = '18762' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17386,24 +17431,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 1.5, 'g' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 318.6, 'mg' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 40.1, 'mg' FROM recipes WHERE external_source_id = '109423' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 106.6, 'kcal' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 3.1, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 1.3, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.2, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 21.3, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 3.0, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 6.7, 'g' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 6.2, 'mg' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '117412' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 129.1, 'kcal' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 1.7, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 10.9, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.6, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 8.4, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 4.3, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 3.0, 'g' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 8.0, 'mg' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '94520' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 133.4, 'kcal' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 8.0, 'g' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 10.4, 'g' FROM recipes WHERE external_source_id = '81284' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17512,15 +17539,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.4, 'g' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 13.1, 'mg' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '38584' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 235.8, 'kcal' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 26.0, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 13.0, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 2.6, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 2.7, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.2, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 1.5, 'g' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1400.3, 'mg' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 73.8, 'mg' FROM recipes WHERE external_source_id = '28141' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 192.7, 'kcal' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 5.2, 'g' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 0.5, 'g' FROM recipes WHERE external_source_id = '37027' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17584,15 +17602,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 12.6, 'g' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1205.1, 'mg' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '63509' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 210.3, 'kcal' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 14.8, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 5.7, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.6, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 23.3, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.4, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.9, 'g' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 830.6, 'mg' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 29.3, 'mg' FROM recipes WHERE external_source_id = '139902' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 153.4, 'kcal' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 2.2, 'g' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 5.0, 'g' FROM recipes WHERE external_source_id = '278278' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17665,15 +17674,6 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 1.6, 'g' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 273.6, 'mg' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 37.2, 'mg' FROM recipes WHERE external_source_id = '11194' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 353.3, 'kcal' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 23.7, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 26.9, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 9.4, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 4.3, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 0.5, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 0.5, 'g' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1067.5, 'mg' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
-INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 244.8, 'mg' FROM recipes WHERE external_source_id = '127029' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 371.0, 'kcal' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 19.7, 'g' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 31.9, 'g' FROM recipes WHERE external_source_id = '61439' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17755,6 +17755,24 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.6, 'g' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1246.8, 'mg' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 257.8, 'mg' FROM recipes WHERE external_source_id = '119643' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 287.2, 'kcal' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 6.2, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 17.0, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 4.5, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 31.0, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 6.1, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 4.5, 'g' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 94.3, 'mg' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '100464' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 168.9, 'kcal' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 1.4, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 0.4, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.1, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 44.3, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 3.1, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 31.7, 'g' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 2.0, 'mg' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '112725' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 400.4, 'kcal' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 13.6, 'g' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 31.7, 'g' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17764,6 +17782,15 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.3, 'g' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 292.5, 'mg' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 11.0, 'mg' FROM recipes WHERE external_source_id = '206184' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 158.7, 'kcal' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 8.7, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 2.8, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.7, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 25.3, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 2.8, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 4.7, 'g' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 437.5, 'mg' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 8.5, 'mg' FROM recipes WHERE external_source_id = '206594' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 288.2, 'kcal' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 16.4, 'g' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 7.6, 'g' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
@@ -17773,6 +17800,24 @@ INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT 
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 5.0, 'g' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 1144.3, 'mg' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 39.9, 'mg' FROM recipes WHERE external_source_id = '17591' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 278.0, 'kcal' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 6.3, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 12.0, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 1.9, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 37.5, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 4.7, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 2.7, 'g' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 425.7, 'mg' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 62.0, 'mg' FROM recipes WHERE external_source_id = '71313' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 179.3, 'kcal' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 7.8, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 4.5, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Saturated_Fat', 0.6, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Carbohydrate', 29.0, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Fiber', 7.7, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sugar', 6.5, 'g' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Sodium', 800.0, 'mg' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
+INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Cholesterol', 0.0, 'mg' FROM recipes WHERE external_source_id = '140868' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Energy', 305.7, 'kcal' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Protein', 21.7, 'g' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;
 INSERT INTO recipe_nutrition (recipe_id, nutrient_id, per_serving, unit) SELECT recipe_id, 'Macro_Fat', 23.1, 'g' FROM recipes WHERE external_source_id = '114102' ON CONFLICT (recipe_id, nutrient_id) DO NOTHING;

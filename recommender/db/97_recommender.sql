@@ -38,7 +38,14 @@ $$;
 -- ---------------------------------------------------------------------------
 -- Nutrients per serving for every recipe. Published values (recipe_nutrition,
 -- e.g. from Food.com) take precedence; anything else is derived from
--- ingredient quantities. A view for now; materialize at thousands of recipes.
+-- ingredient quantities.
+--
+-- Derived values are scaled so the recipe's derived calories match its
+-- published calories. Imported recipes have quantities without units, so the
+-- gram estimate per line is rough; the proportions are usually right but the
+-- total isn't. Anchoring to published energy fixes the total. The factor is
+-- clamped to 0.25..4 so one bad line can't blow up a recipe.
+-- A view for now; materialize at thousands of recipes.
 -- ---------------------------------------------------------------------------
 CREATE OR REPLACE VIEW v_recipe_nutrients_per_serving AS
 WITH derived AS (
@@ -54,6 +61,13 @@ WITH derived AS (
     JOIN   ingredients i          ON i.ingredient_id = ri.ingredient_id
     JOIN   ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id
     GROUP  BY ri.recipe_id, n.nutrient_id, n.unit, r.servings
+),
+scale AS (
+    SELECT d.recipe_id,
+           least(greatest(p.per_serving / nullif(d.per_serving, 0), 0.25), 4) AS factor
+    FROM   derived d
+    JOIN   recipe_nutrition p ON p.recipe_id = d.recipe_id AND p.nutrient_id = 'Energy'
+    WHERE  d.nutrient_id = 'Energy' AND p.per_serving > 0
 )
 -- published values first
 SELECT p.recipe_id, p.nutrient_id, p.unit, p.per_serving, 0 AS unconverted_lines
@@ -61,22 +75,28 @@ FROM   recipe_nutrition p
 JOIN   recipes r ON r.recipe_id = p.recipe_id AND r.deleted_at IS NULL
 UNION ALL
 -- then anything derived that the published data doesn't cover
-SELECT d.recipe_id, d.nutrient_id, d.unit, d.per_serving, d.unconverted_lines
+SELECT d.recipe_id, d.nutrient_id, d.unit,
+       d.per_serving * coalesce(s.factor, 1),
+       d.unconverted_lines
 FROM   derived d
+LEFT   JOIN scale s ON s.recipe_id = d.recipe_id
 WHERE  NOT EXISTS (SELECT 1 FROM recipe_nutrition p
                    WHERE p.recipe_id = d.recipe_id AND p.nutrient_id = d.nutrient_id);
 
 -- ---------------------------------------------------------------------------
 -- What this member still needs today: target minus what's been logged.
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION fn_member_gap(p_member_id UUID, p_date DATE)
-RETURNS TABLE (nutrient_id VARCHAR, target DECIMAL, consumed DECIMAL, gap DECIMAL, upper_day DECIMAL)
+DROP FUNCTION IF EXISTS fn_member_gap(UUID, DATE) CASCADE;
+CREATE FUNCTION fn_member_gap(p_member_id UUID, p_date DATE)
+RETURNS TABLE (nutrient_id VARCHAR, target DECIMAL, consumed DECIMAL, gap DECIMAL, upper_day DECIMAL,
+               adjusted BOOLEAN)   -- a modifier (condition, goal, activity) changed this target
 LANGUAGE sql STABLE AS $$
     SELECT t.nutrient_id,
            t.final_target_value,
            coalesce(l.consumed_value, 0),
            greatest(t.final_target_value - coalesce(l.consumed_value, 0), 0),
-           b.upper_threshold_day
+           b.upper_threshold_day,
+           coalesce(t.applied_rules_csv, '') <> ''
     FROM   profile_nutrient_targets t
     LEFT   JOIN nutrient_daily_log l
            ON l.member_id = t.member_id AND l.nutrient_id = t.nutrient_id AND l.log_date = p_date
@@ -153,7 +173,7 @@ LANGUAGE sql STABLE AS $$
         FROM   fn_member_gap(p_member_id, p_date) g
     ),
     n_targets AS (
-        SELECT count(*) AS n FROM gap
+        SELECT count(*) AS n FROM gap WHERE target > 0   -- limit-only nutrients don't count
     ),
     contrib AS (
         SELECT v.recipe_id,

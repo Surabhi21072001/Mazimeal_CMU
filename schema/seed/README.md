@@ -34,6 +34,33 @@ skipped. Adjust with `--targets`, `--special`, `--min-reviews`,
 `foodcom_400.sql` in this folder is the output of that run, so you can load it
 without downloading the dataset.
 
+## Ingredient nutrition from USDA
+
+Food.com only gives calories and macros per recipe. For iron, calcium,
+vitamins and the rest, each ingredient is matched to USDA FoodData Central
+(SR Legacy) and its per-100 g values go into `ingredient_nutrition`.
+
+Get the data: [FoodData Central downloads](https://fdc.nal.usda.gov/download-datasets),
+"SR Legacy" CSV, unzip. Then:
+
+```bash
+python3 scripts/ingredient_names.py > /tmp/names.txt
+python3 scripts/match_usda.py <unzipped folder> --names /tmp/names.txt --dry-run   # see the weak matches
+python3 scripts/match_usda.py <unzipped folder> --names /tmp/names.txt \
+    --review schema/seed/usda_matches.csv -o schema/seed/usda_nutrition.sql
+psql -d mazimeal -v ON_ERROR_STOP=1 -f schema/seed/usda_nutrition.sql
+```
+
+`usda_matches.csv` lists every ingredient with the USDA entry it was matched
+to and a score. Worth a scan; the matching is fuzzy plus a list of aliases for
+recipe wording ("green onions" is "Onions, spring or scallions" in USDA). When
+a match is wrong, add an alias to `ALIASES` in `scripts/match_usda.py` and
+rerun. Anything under the score cutoff is left out of the SQL.
+
+`usda_nutrition.sql` is the output for the current 400 recipes, so again you
+can load it without the download. Loads into both the week-1 schema and the
+recommender's.
+
 What lands where:
 
 | dataset | table |
@@ -43,6 +70,7 @@ What lands where:
 | RecipeInstructions | `recipe_steps` |
 | Calories, Protein, Fat, Carbs, Fiber, Sugar, Sodium, Cholesterol, Sat. fat | `recipe_nutrition` |
 | everything, untouched | `foodcom_recipes_raw` (optional: add `--raw-csv raw.csv`, the script prints the `\copy` command) |
+| ingredient names, matched to USDA | `ingredient_nutrition` (second step, below) |
 
 Two things the dataset doesn't give us: ingredient **units** (quantities are
 bare numbers, so `recipe_ingredients.unit` is `unit`), and a clean meal type.

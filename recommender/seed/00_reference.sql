@@ -1,31 +1,20 @@
 -- ============================================================================
 --  Reference seed data
 --
---  Enough real reference data to exercise the full chain end to end:
+--  Real reference data for the full chain:
 --    profile -> category -> baseline -> modifier -> target
 --    ingredient -> nutrition -> synergy/bioavailability/GI -> recipe
 --
---  Run after install.sql:  psql -d synergia -f db/seed/00_reference.sql
---  Idempotent — every insert is ON CONFLICT DO NOTHING.
+--  Run after install.sql. Safe to run more than once.
 --
---  ---------------------------------------------------------------------------
---  UNRESOLVED: the C001-C021 category mapping
---  ---------------------------------------------------------------------------
---  Sheet 04 sources categories from "Jessica's spreadsheet" and gives two
---  anchors: C001 = newborn female, C016 = early adult female. Twenty-one codes
---  cannot be reconstructed from two anchors — no ordering of age bands by sex
---  produces both. That file was not supplied with the schema.
---
---  The 18 rows below (9 age bands x 2 sexes, C001-C018) are a WORKING
---  PLACEHOLDER chosen to satisfy the schema's constraints and let
---  fn_derive_category_id() run. They are NOT the real clinical mapping and
---  C016 here is not early-adult-female. Replace this block wholesale once the
---  source spreadsheet arrives; nothing else in the schema depends on the codes
---  themselves, only on the FK.
+--  Category codes: the schema doc names C001 as newborn female and C016 as
+--  early adult female but doesn't list the rest. The 18 codes below are
+--  9 DRI age bands x 2 sexes, in age order. If the doc's own list turns up,
+--  swap this block; only the FK depends on the codes.
 -- ============================================================================
 
 -- ---------------------------------------------------------------------------
--- categories  (PLACEHOLDER — see header)
+-- categories
 -- ---------------------------------------------------------------------------
 INSERT INTO public.categories (category_id, category_name, age_group, sex, description) VALUES
     ('C001', 'newborn_female',        '0-6m',   'F', 'Newborn female, 0-6 months'),
@@ -49,7 +38,7 @@ INSERT INTO public.categories (category_id, category_name, age_group, sex, descr
 ON CONFLICT (category_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
--- nutrients_master — the MVP core 25
+-- nutrients_master, the MVP core 25
 -- usda_nutrient_code values are USDA FoodData Central nutrient numbers.
 -- ---------------------------------------------------------------------------
 INSERT INTO public.nutrients_master
@@ -85,7 +74,7 @@ INSERT INTO public.nutrients_master
 ON CONFLICT (nutrient_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
--- usda_nutrient_ref — import mapping
+-- usda_nutrient_ref, import mapping
 -- ---------------------------------------------------------------------------
 INSERT INTO public.usda_nutrient_ref (usda_nutrient_id, nutrient_id, usda_nutrient_name, usda_unit, conversion_factor)
 SELECT usda_nutrient_code, nutrient_id, nutrient_name, default_unit, 1.0
@@ -94,7 +83,7 @@ WHERE  usda_nutrient_code IS NOT NULL
 ON CONFLICT (usda_nutrient_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
--- documents — evidence for the seeded rules
+-- documents, evidence for the seeded rules
 -- ---------------------------------------------------------------------------
 INSERT INTO public.documents (document_id, title, document_type, url, rule_id_tags, category_tags) VALUES
     ('001', 'Ascorbic acid enhancement of non-heme iron absorption', 'peer_review',
@@ -103,7 +92,7 @@ INSERT INTO public.documents (document_id, title, document_type, url, rule_id_ta
             'https://pubmed.ncbi.nlm.nih.gov/11238797/', 'R002', NULL),
     ('003', 'Starch retrogradation and resistant starch formation on cooling', 'peer_review',
             'https://pubmed.ncbi.nlm.nih.gov/26693746/', 'R011', NULL),
-    ('004', 'Dietary Reference Intakes — USDA / National Academies', 'USDA',
+    ('004', 'Dietary Reference Intakes, USDA / National Academies', 'USDA',
             'https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator', NULL, NULL)
 ON CONFLICT (document_id) DO NOTHING;
 
@@ -176,31 +165,397 @@ INSERT INTO public.nutrient_modifiers
 ON CONFLICT (rule_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
--- profile_nutrient_baselines — USDA DRI for the two adult categories
--- Seeded for C013 (adult female 19-50) and C014 (adult male 19-50) only; the
--- full ~25K-row matrix is an import job, not a seed file.
+-- profile_nutrient_baselines
+-- Dietary Reference Intakes (RDA, or AI where there is no RDA) and upper
+-- limits for every age/sex category from 1 year up, 28 nutrients each.
+-- Generated by seed/gen_dri.py; edit that, not this block.
+-- Sodium, saturated fat, sugar and cholesterol have a target of 0 and only an
+-- upper limit, so the recommender never rewards them.
+-- Infants (C001-C004) have no rows on purpose.
 -- ---------------------------------------------------------------------------
 INSERT INTO public.profile_nutrient_baselines
     (category_id, nutrient_id, baseline_value, unit, per, upper_threshold_day, source_url) VALUES
-    ('C013', 'Energy',            2000,   'kcal', 'Day', NULL,  'https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator'),
-    ('C013', 'Macro_Protein',     0.8000, 'g/kg/day', 'Day', NULL, 'https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator'),
-    ('C013', 'Fiber',             25,     'g',   'Day', NULL,  NULL),
-    ('C013', 'Iron',              18,     'mg',  'Day', 45,    NULL),
-    ('C013', 'Calcium',           1000,   'mg',  'Day', 2500,  NULL),
-    ('C013', 'Vitamin_C',         75,     'mg',  'Day', 2000,  NULL),
-    ('C013', 'Vitamin_D',         15,     'mcg', 'Day', 100,   NULL),
-    ('C013', 'Folate',            400,    'mcg', 'Day', 1000,  NULL),
-    ('C013', 'Vitamin_B12',       2.4,    'mcg', 'Day', NULL,  NULL),
-    ('C014', 'Energy',            2500,   'kcal', 'Day', NULL, NULL),
-    ('C014', 'Macro_Protein',     0.8000, 'g/kg/day', 'Day', NULL, NULL),
-    ('C014', 'Fiber',             38,     'g',   'Day', NULL,  NULL),
-    ('C014', 'Iron',              8,      'mg',  'Day', 45,    NULL),
-    ('C014', 'Calcium',           1000,   'mg',  'Day', 2500,  NULL),
-    ('C014', 'Vitamin_C',         90,     'mg',  'Day', 2000,  NULL),
-    ('C014', 'Vitamin_D',         15,     'mcg', 'Day', 100,   NULL),
-    ('C014', 'Folate',            400,    'mcg', 'Day', 1000,  NULL),
-    ('C014', 'Vitamin_B12',       2.4,    'mcg', 'Day', NULL,  NULL)
-ON CONFLICT (category_id, nutrient_id) DO NOTHING;
+    ('C005', 'Energy', 1200, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C005', 'Macro_Protein', 1.05, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Fiber', 19, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Calcium', 700, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Iron', 7, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Magnesium', 80, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Phosphorus', 460, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Potassium', 2000, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Zinc', 3, 'mg', 'Day', 7, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Copper', 0.34, 'mg', 'Day', 1, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Selenium', 20, 'mcg', 'Day', 90, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_A', 300, 'mcg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_D', 15, 'mcg', 'Day', 63, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_E', 6, 'mg', 'Day', 200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_K', 30, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_C', 15, 'mg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Thiamin', 0.5, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Riboflavin', 0.5, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Niacin', 6, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_B6', 0.5, 'mg', 'Day', 30, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Folate', 150, 'mcg', 'Day', 300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Vitamin_B12', 0.9, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Sodium', 0, 'mg', 'Day', 1200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Saturated_Fat', 0, 'g', 'Day', 13, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C005', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Energy', 1200, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C006', 'Macro_Protein', 1.05, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Fiber', 19, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Calcium', 700, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Iron', 7, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Magnesium', 80, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Phosphorus', 460, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Potassium', 2000, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Zinc', 3, 'mg', 'Day', 7, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Copper', 0.34, 'mg', 'Day', 1, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Selenium', 20, 'mcg', 'Day', 90, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_A', 300, 'mcg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_D', 15, 'mcg', 'Day', 63, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_E', 6, 'mg', 'Day', 200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_K', 30, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_C', 15, 'mg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Thiamin', 0.5, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Riboflavin', 0.5, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Niacin', 6, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_B6', 0.5, 'mg', 'Day', 30, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Folate', 150, 'mcg', 'Day', 300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Vitamin_B12', 0.9, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Sodium', 0, 'mg', 'Day', 1200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Saturated_Fat', 0, 'g', 'Day', 13, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C006', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Energy', 1500, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C007', 'Macro_Protein', 0.95, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Fiber', 25, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Calcium', 1000, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Iron', 10, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Magnesium', 130, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Phosphorus', 500, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Potassium', 2300, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Zinc', 5, 'mg', 'Day', 12, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Copper', 0.44, 'mg', 'Day', 3, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Selenium', 30, 'mcg', 'Day', 150, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_A', 400, 'mcg', 'Day', 900, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_D', 15, 'mcg', 'Day', 75, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_E', 7, 'mg', 'Day', 300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_K', 55, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_C', 25, 'mg', 'Day', 650, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Thiamin', 0.6, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Riboflavin', 0.6, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Niacin', 8, 'mg', 'Day', 15, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_B6', 0.6, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Folate', 200, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Vitamin_B12', 1.2, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Sodium', 0, 'mg', 'Day', 1500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Saturated_Fat', 0, 'g', 'Day', 17, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C007', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Energy', 1600, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C008', 'Macro_Protein', 0.95, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Fiber', 25, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Calcium', 1000, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Iron', 10, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Magnesium', 130, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Phosphorus', 500, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Potassium', 2300, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Zinc', 5, 'mg', 'Day', 12, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Copper', 0.44, 'mg', 'Day', 3, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Selenium', 30, 'mcg', 'Day', 150, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_A', 400, 'mcg', 'Day', 900, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_D', 15, 'mcg', 'Day', 75, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_E', 7, 'mg', 'Day', 300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_K', 55, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_C', 25, 'mg', 'Day', 650, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Thiamin', 0.6, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Riboflavin', 0.6, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Niacin', 8, 'mg', 'Day', 15, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_B6', 0.6, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Folate', 200, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Vitamin_B12', 1.2, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Sodium', 0, 'mg', 'Day', 1500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Saturated_Fat', 0, 'g', 'Day', 18, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C008', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Energy', 1800, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C009', 'Macro_Protein', 0.95, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Fiber', 26, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Calcium', 1300, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Iron', 8, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Magnesium', 240, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Phosphorus', 1250, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Potassium', 2300, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Zinc', 8, 'mg', 'Day', 23, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Copper', 0.7, 'mg', 'Day', 5, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Selenium', 40, 'mcg', 'Day', 280, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_A', 600, 'mcg', 'Day', 1700, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_E', 11, 'mg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_K', 60, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_C', 45, 'mg', 'Day', 1200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Thiamin', 0.9, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Riboflavin', 0.9, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Niacin', 12, 'mg', 'Day', 20, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_B6', 1, 'mg', 'Day', 60, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Folate', 300, 'mcg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Vitamin_B12', 1.8, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Sodium', 0, 'mg', 'Day', 1800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Saturated_Fat', 0, 'g', 'Day', 20, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C009', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Energy', 2000, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C010', 'Macro_Protein', 0.95, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Fiber', 31, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Calcium', 1300, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Iron', 8, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Magnesium', 240, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Phosphorus', 1250, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Potassium', 2500, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Zinc', 8, 'mg', 'Day', 23, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Copper', 0.7, 'mg', 'Day', 5, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Selenium', 40, 'mcg', 'Day', 280, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_A', 600, 'mcg', 'Day', 1700, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_E', 11, 'mg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_K', 60, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_C', 45, 'mg', 'Day', 1200, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Thiamin', 0.9, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Riboflavin', 0.9, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Niacin', 12, 'mg', 'Day', 20, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_B6', 1, 'mg', 'Day', 60, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Folate', 300, 'mcg', 'Day', 600, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Vitamin_B12', 1.8, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Sodium', 0, 'mg', 'Day', 1800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Saturated_Fat', 0, 'g', 'Day', 22, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C010', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Energy', 2000, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C011', 'Macro_Protein', 0.85, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Fiber', 26, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Calcium', 1300, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Iron', 15, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Magnesium', 360, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Phosphorus', 1250, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Potassium', 2300, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Zinc', 9, 'mg', 'Day', 34, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Copper', 0.89, 'mg', 'Day', 8, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_A', 700, 'mcg', 'Day', 2800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_E', 15, 'mg', 'Day', 800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_K', 75, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_C', 65, 'mg', 'Day', 1800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Thiamin', 1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Riboflavin', 1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Niacin', 14, 'mg', 'Day', 30, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_B6', 1.2, 'mg', 'Day', 80, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Folate', 400, 'mcg', 'Day', 800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Saturated_Fat', 0, 'g', 'Day', 22, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C011', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Energy', 2600, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C012', 'Macro_Protein', 0.85, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Fiber', 38, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Calcium', 1300, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Iron', 11, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Magnesium', 410, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Phosphorus', 1250, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Potassium', 3000, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Zinc', 11, 'mg', 'Day', 34, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Copper', 0.89, 'mg', 'Day', 8, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_A', 900, 'mcg', 'Day', 2800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_E', 15, 'mg', 'Day', 800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_K', 75, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_C', 75, 'mg', 'Day', 1800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Thiamin', 1.2, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Riboflavin', 1.3, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Niacin', 16, 'mg', 'Day', 30, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_B6', 1.3, 'mg', 'Day', 80, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Folate', 400, 'mcg', 'Day', 800, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Saturated_Fat', 0, 'g', 'Day', 29, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C012', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Energy', 2000, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C013', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Fiber', 25, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Calcium', 1000, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Iron', 18, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Magnesium', 320, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Phosphorus', 700, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Potassium', 2600, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Zinc', 8, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_A', 700, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_K', 90, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_C', 75, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Thiamin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Riboflavin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Niacin', 14, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_B6', 1.3, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Saturated_Fat', 0, 'g', 'Day', 22, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C013', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Energy', 2600, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C014', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Fiber', 38, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Calcium', 1000, 'mg', 'Day', 2500, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Iron', 8, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Magnesium', 420, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Phosphorus', 700, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Potassium', 3400, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Zinc', 11, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_A', 900, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_K', 120, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_C', 90, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Thiamin', 1.2, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Riboflavin', 1.3, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Niacin', 16, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_B6', 1.3, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Saturated_Fat', 0, 'g', 'Day', 29, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C014', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Energy', 1800, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C015', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Fiber', 21, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Calcium', 1200, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Iron', 8, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Magnesium', 320, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Phosphorus', 700, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Potassium', 2600, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Zinc', 8, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_A', 700, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_K', 90, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_C', 75, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Thiamin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Riboflavin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Niacin', 14, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_B6', 1.5, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Saturated_Fat', 0, 'g', 'Day', 20, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C015', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Energy', 2300, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C016', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Fiber', 30, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Calcium', 1000, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Iron', 8, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Magnesium', 420, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Phosphorus', 700, 'mg', 'Day', 4000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Potassium', 3400, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Zinc', 11, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_A', 900, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_D', 15, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_K', 120, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_C', 90, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Thiamin', 1.2, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Riboflavin', 1.3, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Niacin', 16, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_B6', 1.7, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Saturated_Fat', 0, 'g', 'Day', 26, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C016', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Energy', 1800, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C017', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Fiber', 21, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Calcium', 1200, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Iron', 8, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Magnesium', 320, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Phosphorus', 700, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Potassium', 2600, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Zinc', 8, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_A', 700, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_D', 20, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_K', 90, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_C', 75, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Thiamin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Riboflavin', 1.1, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Niacin', 14, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_B6', 1.5, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Saturated_Fat', 0, 'g', 'Day', 20, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C017', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Energy', 2200, 'kcal', 'Day', NULL, 'https://www.dietaryguidelines.gov/sites/default/files/2020-12/Dietary_Guidelines_for_Americans_2020-2025.pdf'),
+    ('C018', 'Macro_Protein', 0.8, 'g/kg/day', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Macro_Carbohydrate', 130, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Fiber', 30, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Calcium', 1200, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Iron', 8, 'mg', 'Day', 45, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Magnesium', 420, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Phosphorus', 700, 'mg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Potassium', 3400, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Zinc', 11, 'mg', 'Day', 40, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Copper', 0.9, 'mg', 'Day', 10, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Selenium', 55, 'mcg', 'Day', 400, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_A', 900, 'mcg', 'Day', 3000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_D', 20, 'mcg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_E', 15, 'mg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_K', 120, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_C', 90, 'mg', 'Day', 2000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Thiamin', 1.2, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Riboflavin', 1.3, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Niacin', 16, 'mg', 'Day', 35, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_B6', 1.7, 'mg', 'Day', 100, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Folate', 400, 'mcg', 'Day', 1000, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Vitamin_B12', 2.4, 'mcg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Sodium', 0, 'mg', 'Day', 2300, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Saturated_Fat', 0, 'g', 'Day', 24, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Sugar', 0, 'g', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/'),
+    ('C018', 'Cholesterol', 0, 'mg', 'Day', NULL, 'https://www.ncbi.nlm.nih.gov/books/NBK545442/')
+ON CONFLICT (category_id, nutrient_id) DO UPDATE SET
+    baseline_value = EXCLUDED.baseline_value, unit = EXCLUDED.unit,
+    upper_threshold_day = EXCLUDED.upper_threshold_day, source_url = EXCLUDED.source_url;
 
 -- ---------------------------------------------------------------------------
 -- cultural_categories
@@ -212,7 +567,7 @@ INSERT INTO public.cultural_categories (category_id, category_name, region, styl
 ON CONFLICT (category_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
--- ingredients — enough to demonstrate synergy, bioavailability and GI
+-- ingredients, enough to demonstrate synergy, bioavailability and GI
 -- Fixed UUIDs so downstream seed rows can reference them.
 -- ---------------------------------------------------------------------------
 INSERT INTO public.ingredients
@@ -287,7 +642,7 @@ ON CONFLICT (original_ingredient_id, substitute_ingredient_id, reason_type) DO N
 INSERT INTO public.glycemic_index_data
     (ingredient_id, prep_method, glycemic_index, glycemic_load, resistant_starch_pct, notes) VALUES
     ('01930000-0000-7000-8000-000000000004', 'cooked',                  73, 29.00,  0.60, 'Baseline white rice.'),
-    ('01930000-0000-7000-8000-000000000004', 'cooked_cooled',           54, 21.00,  2.80, 'Retrogradation after 12h at 4C — rule R011.'),
+    ('01930000-0000-7000-8000-000000000004', 'cooked_cooled',           54, 21.00,  2.80, 'Retrogradation after 12h at 4C, rule R011.'),
     ('01930000-0000-7000-8000-000000000004', 'cooked_cooled_reheated',  58, 22.00,  2.40, 'Most of the resistant starch survives reheating.')
 ON CONFLICT (ingredient_id, prep_method) DO NOTHING;
 

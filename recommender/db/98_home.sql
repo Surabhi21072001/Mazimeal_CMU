@@ -9,7 +9,7 @@
 -- {
 --   household: { id, name },
 --   date: '2026-09-08',
---   members: [ { id, name, gaps: [ { nutrient, label, unit, target, consumed, gap, pct_open } ] } ],
+--   members: [ { id, name, gaps: [ { nutrient, label, unit, target, consumed, gap, adjusted, pct_open } ] } ],
 --   picks:   { Breakfast: [ { recipe_id, name, min_score, avg_score, per_member, top_reasons,
 --                             calories, prep_min, cook_min, tags } ], Lunch: [...], ... },
 --   blocked: [ { recipe_id, name, reason } ]
@@ -44,9 +44,12 @@ LANGUAGE sql STABLE AS $$
                                        'target',   round(g.target, 1),
                                        'consumed', round(g.consumed, 1),
                                        'gap',      round(g.gap, 1),
+                                       'adjusted', g.adjusted,
                                        'pct_open', CASE WHEN g.target > 0
                                                         THEN round(100 * g.gap / g.target) ELSE 0 END)
-                                   ORDER BY CASE WHEN g.target > 0 THEN g.gap / g.target ELSE 0 END DESC)
+                                   -- most open first; among ties, targets a modifier raised
+                                   ORDER BY CASE WHEN g.target > 0 THEN g.gap / g.target ELSE 0 END DESC,
+                                            g.adjusted DESC, g.nutrient_id)
                             FROM fn_member_gap(m.member_id, p_date) g
                             LEFT JOIN nutrients_master n ON n.nutrient_id = g.nutrient_id)
                ) ORDER BY m.member_name) AS j
