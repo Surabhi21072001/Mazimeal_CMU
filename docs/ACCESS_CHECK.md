@@ -6,3 +6,4 @@ of `docs/BRANCHING.md`. Add your line and push.
 | Developer | Confirmed |
 |---|---|
 | Zihan Liu | 2026-08-20 |
+| Swetha Thotakura | 2026-09-16 |
