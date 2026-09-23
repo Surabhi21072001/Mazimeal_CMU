@@ -36,7 +36,7 @@
 -- ---------------------------------------------------------------------------
 -- Extensions
 -- ---------------------------------------------------------------------------
-CREATE EXTENSION IF NOT EXISTS pgcrypto;   -- gen_random_bytes(), PHI encryption
+CREATE EXTENSION IF NOT EXISTS pgcrypto;   -- PHI encryption (not needed by gen_ulid)
 
 -- pgvector is required for the RAG / recipe-similarity features (sheets 03, 07).
 -- It ships with Supabase and Postgres 15+ images, but is absent from a stock
@@ -81,8 +81,11 @@ BEGIN
 
   ts_millis  := floor(extract(epoch FROM clock_timestamp()) * 1000)::bigint;
 
-  -- 48-bit big-endian timestamp (bytes 3..8 of an int8) + 10 random bytes
-  uuid_bytes := substring(int8send(ts_millis) FROM 3 FOR 6) || gen_random_bytes(10);
+  -- 48-bit big-endian timestamp (bytes 3..8 of an int8) + 10 random bytes.
+  -- Random bytes come from the built-in gen_random_uuid() rather than
+  -- pgcrypto, so this works where pgcrypto isn't visible (Supabase roles).
+  uuid_bytes := substring(int8send(ts_millis) FROM 3 FOR 6)
+             || substring(uuid_send(gen_random_uuid()) FROM 1 FOR 10);
 
   -- byte 6: high nibble = version 7
   uuid_bytes := set_byte(uuid_bytes, 6, (get_byte(uuid_bytes, 6) & 15)  | 112);

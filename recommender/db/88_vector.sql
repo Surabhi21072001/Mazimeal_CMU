@@ -15,7 +15,9 @@
 --  distance, targeting sub-10ms similarity search at 500K recipes.
 -- ============================================================================
 
-SELECT CASE WHEN EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'vector')
+-- Installed is not enough: the type must be visible to this role (on Supabase
+-- it lives in the extensions schema, which needs USAGE). Skip cleanly if not.
+SELECT CASE WHEN to_regtype('vector') IS NOT NULL
             THEN 'true' ELSE 'false' END AS has_vector \gset
 
 \if :has_vector
@@ -42,8 +44,8 @@ SELECT CASE WHEN EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'vector')
 
 \else
 
-  \echo '!! pgvector missing — embedding columns and HNSW indexes SKIPPED.'
-  \echo '!! Install pgvector, then re-run 88_vector.sql. Nothing else is affected.'
+  \echo '!! pgvector not usable by this role. Embedding columns and HNSW indexes SKIPPED.'
+  \echo '!! Install pgvector (Supabase: GRANT USAGE ON SCHEMA extensions TO <role>), then re-run 88_vector.sql.'
 
 \endif
 

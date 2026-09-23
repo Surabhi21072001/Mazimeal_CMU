@@ -13,6 +13,9 @@
 \set ON_ERROR_STOP on
 \set QUIET on
 
+-- Supabase keeps extensions (pgvector) in their own schema. Harmless elsewhere.
+SET search_path = public, extensions;
+
 BEGIN;
 
 \ir 00_extensions.sql
