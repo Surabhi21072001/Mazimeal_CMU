@@ -7,3 +7,4 @@ of `docs/BRANCHING.md`. Add your line and push.
 |---|---|
 | Zihan Liu | 2026-08-20 |
 | Swetha Thotakura | 2026-09-16 |
+| Kate | 2026-09-29 |
