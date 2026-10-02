@@ -59,3 +59,9 @@ Thumbs.db
 .Rhistory
 .Rproj.user/
 .ipynb_checkpoints/
+
+# Working documents from the nutrition team, not repo content
+/docs/1. Human Nutrition Requirements and Thresholds/
+/docs/*.xlsx
+/docs/*.xlsm
+/baseline_export.csv
