@@ -13,9 +13,10 @@
 -- Callable from the frontend as supabase.rpc('fn_recommend', {...}).
 
 -- ---------------------------------------------------------------------------
--- Grams for one ingredient line. Volumes assume water density; whole items
--- use typical_serving_g. Lines that can't be converted return NULL and are
--- left out of the total, so a recipe with unconvertible lines under-reports.
+-- Grams for one ingredient line with a real unit. Used when loading lines
+-- that were entered with units (demo recipes); imported lines get their
+-- grams from ingredient_measures (scripts/ingredient_grams.py). Nutrition
+-- always reads recipe_ingredients.quantity_g, never this directly.
 -- ---------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION fn_line_grams(
     p_quantity DECIMAL, p_unit TEXT, p_typical_serving_g DECIMAL
@@ -36,55 +37,94 @@ LANGUAGE sql IMMUTABLE AS $$
 $$;
 
 -- ---------------------------------------------------------------------------
--- Nutrients per serving for every recipe. Published values (recipe_nutrition,
--- e.g. from Food.com) take precedence; anything else is derived from
--- ingredient quantities.
+-- Data quality per recipe: how many ingredient lines have grams, whether the
+-- imported quantities lined up with their ingredients, and how far the
+-- derived calories are from the published ones.
 --
--- Derived values are scaled so the recipe's derived calories match its
--- published calories. Imported recipes have quantities without units, so the
--- gram estimate per line is rough; the proportions are usually right but the
--- total isn't. Anchoring to published energy fixes the total. The factor is
--- clamped to 0.25..4 so one bad line can't blow up a recipe.
---
--- Materialized: the recommender reads it many times per page and computing
--- it costs a few seconds. Refresh after loading recipes or ingredient
--- nutrition: select fn_refresh_recipe_nutrients();  The seed files do it.
+-- calibration_factor = published kcal / derived kcal, clamped to 0.25..4.
+-- Imported recipes have a number per line but no unit, so grams are
+-- estimates; the proportions between ingredients are usually right but the
+-- total often isn't. Derived nutrients are multiplied by this factor so the
+-- total agrees with the published calories. It's stored here, not hidden.
+-- A factor near 1 means the gram estimates were good.
 -- ---------------------------------------------------------------------------
 DROP VIEW IF EXISTS v_recipe_nutrients_per_serving;
 DROP MATERIALIZED VIEW IF EXISTS mv_recipe_nutrients;
+DROP MATERIALIZED VIEW IF EXISTS mv_recipe_quality;
+CREATE MATERIALIZED VIEW mv_recipe_quality AS
+WITH lines AS (
+    SELECT ri.recipe_id,
+           count(*)                                                        AS lines_total,
+           count(ri.quantity_g)                                            AS lines_with_grams,
+           count(ri.quantity_g) FILTER (WHERE EXISTS (
+               SELECT 1 FROM ingredient_nutrition n WHERE n.ingredient_id = ri.ingredient_id))
+                                                                           AS lines_usable,
+           bool_and(ri.quantity_aligned)                                   AS quantity_aligned
+    FROM   recipe_ingredients ri
+    JOIN   recipes r ON r.recipe_id = ri.recipe_id AND r.deleted_at IS NULL
+    GROUP  BY ri.recipe_id
+),
+energy AS (
+    SELECT ri.recipe_id,
+           sum(ri.quantity_g * n.value_per_100g / 100.0) / greatest(r.servings, 1) AS derived_kcal
+    FROM   recipe_ingredients ri
+    JOIN   recipes r              ON r.recipe_id = ri.recipe_id
+    JOIN   ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id AND n.nutrient_id = 'Energy'
+    WHERE  ri.quantity_g IS NOT NULL
+    GROUP  BY ri.recipe_id, r.servings
+)
+SELECT l.recipe_id,
+       l.lines_total,
+       l.lines_with_grams,
+       l.lines_usable,
+       round(l.lines_usable::numeric / greatest(l.lines_total, 1), 2)      AS coverage,
+       l.quantity_aligned,
+       round(e.derived_kcal, 1)                                            AS derived_kcal,
+       p.per_serving                                                       AS published_kcal,
+       CASE WHEN p.per_serving > 0 AND e.derived_kcal > 0
+            THEN round(least(greatest(p.per_serving / e.derived_kcal, 0.25), 4), 3)
+       END                                                                 AS calibration_factor
+FROM   lines l
+LEFT   JOIN energy e ON e.recipe_id = l.recipe_id
+LEFT   JOIN recipe_nutrition p ON p.recipe_id = l.recipe_id AND p.nutrient_id = 'Energy'
+WITH NO DATA;
+
+CREATE UNIQUE INDEX mv_recipe_quality_pk ON mv_recipe_quality (recipe_id);
+
+-- ---------------------------------------------------------------------------
+-- Nutrients per serving for every recipe. Published values (recipe_nutrition,
+-- e.g. from Food.com) take precedence; anything else is derived from
+-- ingredient grams: sum(quantity_g x value per 100 g / 100) / servings.
+-- Lines without grams are left out, never counted as zero; a recipe whose
+-- lines all lack grams simply has no derived rows. Derived rows carry the
+-- calibration factor that was applied (see mv_recipe_quality).
+--
+-- Materialized: the recommender reads it many times per page. Refresh after
+-- loading recipes, grams or ingredient nutrition:
+--   select fn_refresh_recipe_nutrients();   The seed files do it.
+-- ---------------------------------------------------------------------------
 CREATE MATERIALIZED VIEW mv_recipe_nutrients AS
 WITH derived AS (
     SELECT ri.recipe_id,
            n.nutrient_id,
            n.unit,
-           sum(fn_line_grams(ri.quantity, ri.unit, i.typical_serving_g) * n.value_per_100g / 100.0)
-               / greatest(r.servings, 1)                                   AS per_serving,
-           count(*) FILTER (WHERE fn_line_grams(ri.quantity, ri.unit, i.typical_serving_g) IS NULL)
-                                                                             AS unconverted_lines
+           sum(ri.quantity_g * n.value_per_100g / 100.0) / greatest(r.servings, 1) AS per_serving
     FROM   recipe_ingredients ri
     JOIN   recipes r              ON r.recipe_id = ri.recipe_id AND r.deleted_at IS NULL
-    JOIN   ingredients i          ON i.ingredient_id = ri.ingredient_id
     JOIN   ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id
+    WHERE  ri.quantity_g IS NOT NULL
     GROUP  BY ri.recipe_id, n.nutrient_id, n.unit, r.servings
-),
-scale AS (
-    SELECT d.recipe_id,
-           least(greatest(p.per_serving / nullif(d.per_serving, 0), 0.25), 4) AS factor
-    FROM   derived d
-    JOIN   recipe_nutrition p ON p.recipe_id = d.recipe_id AND p.nutrient_id = 'Energy'
-    WHERE  d.nutrient_id = 'Energy' AND p.per_serving > 0
 )
--- published values first
-SELECT p.recipe_id, p.nutrient_id, p.unit, p.per_serving, 0 AS unconverted_lines
+SELECT p.recipe_id, p.nutrient_id, p.unit, p.per_serving,
+       'published'::text AS source, NULL::numeric AS calibration_factor
 FROM   recipe_nutrition p
 JOIN   recipes r ON r.recipe_id = p.recipe_id AND r.deleted_at IS NULL
 UNION ALL
--- then anything derived that the published data doesn't cover
 SELECT d.recipe_id, d.nutrient_id, d.unit,
-       d.per_serving * coalesce(s.factor, 1),
-       d.unconverted_lines
+       round(d.per_serving * coalesce(q.calibration_factor, 1), 4),
+       'derived', coalesce(q.calibration_factor, 1)
 FROM   derived d
-LEFT   JOIN scale s ON s.recipe_id = d.recipe_id
+LEFT   JOIN mv_recipe_quality q ON q.recipe_id = d.recipe_id
 WHERE  NOT EXISTS (SELECT 1 FROM recipe_nutrition p
                    WHERE p.recipe_id = d.recipe_id AND p.nutrient_id = d.nutrient_id)
 WITH NO DATA;
@@ -98,9 +138,11 @@ CREATE VIEW v_recipe_nutrients_per_serving AS SELECT * FROM mv_recipe_nutrients;
 CREATE OR REPLACE FUNCTION fn_refresh_recipe_nutrients() RETURNS void
 LANGUAGE plpgsql AS $$
 BEGIN
-    IF EXISTS (SELECT 1 FROM pg_class WHERE relname = 'mv_recipe_nutrients' AND relispopulated) THEN
+    IF EXISTS (SELECT 1 FROM pg_class WHERE relname = 'mv_recipe_quality' AND relispopulated) THEN
+        REFRESH MATERIALIZED VIEW CONCURRENTLY mv_recipe_quality;
         REFRESH MATERIALIZED VIEW CONCURRENTLY mv_recipe_nutrients;
     ELSE
+        REFRESH MATERIALIZED VIEW mv_recipe_quality;
         REFRESH MATERIALIZED VIEW mv_recipe_nutrients;
     END IF;
 END $$;

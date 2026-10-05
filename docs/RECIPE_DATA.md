@@ -11,7 +11,7 @@ design pass Naveen asked for.
 | Title, description | `recipes.recipe_name`, `recipe_description` | Have | |
 | Prep time, cook time, servings, difficulty | `recipes.prep_time_min`, `cook_time_min`, `servings`, `difficulty_level` | Have (difficulty empty for Food.com) | Derive difficulty from step count and total time, one-time |
 | Nutrition facts panel | `recipe_nutrition` per serving, from Food.com | Have, static | Becomes dynamic: `fn_recipe_nutrition(recipe_id, overrides)` recalculates from ingredient grams, so a swap or quantity change updates the panel |
-| Iron, calcium, vitamins and other micros | `mv_recipe_nutrients` derived from `ingredient_nutrition` (USDA) | Have, approximate | Better once ingredient units are parsed |
+| Iron, calcium, vitamins and other micros | `mv_recipe_nutrients`, grams per line x USDA per 100 g | Have, estimated | Gram estimates are rough for imported recipes; `mv_recipe_quality` says how rough per recipe |
 | Probiotics, antioxidants, omega-3 | nothing | Missing, not in USDA | Tag ingredients in `ingredient_attributes` (yogurt = probiotic, salmon = omega-3, berries = antioxidant) from a keyword list, then a recipe has the tag if any ingredient does. One-time |
 | Meal type, dietary tags | `recipes.meal_category`, `dietary_tags` | Have | |
 | Cuisine (Mediterranean, Asian) | `recipes.cultural_category_id` and `cultural_categories` | Table exists, column empty | Fill from Food.com Keywords (Asian, Mexican, Greek, ...), one-time. Fallback: AI classification for the rest |

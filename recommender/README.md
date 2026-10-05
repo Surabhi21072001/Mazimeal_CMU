@@ -47,10 +47,15 @@ For one member on one day:
    push a nutrient past its daily upper limit loses 25 points per nutrient.
 
 Recipe nutrients come from `recipe_nutrition` where published (Food.com
-gives calories and macros) and from the ingredients' USDA values for the
-rest, scaled so the two agree on calories. That table is cached
-(`mv_recipe_nutrients`); the seed files refresh it, and after any other change
-to recipes or ingredient nutrition run `select fn_refresh_recipe_nutrients();`.
+gives calories and macros) and for the rest from the ingredient lines:
+grams per line x the ingredient's USDA value per 100 g, summed, divided by
+servings. Lines without grams are left out, never counted as zero. Derived
+values are multiplied by a calibration factor so the recipe's derived
+calories match its published ones; the factor and the share of lines with
+usable data are in `mv_recipe_quality`, per recipe. That and
+`mv_recipe_nutrients` are cached; the seed files refresh them, and after any
+other change to recipes, grams or ingredient nutrition run
+`select fn_refresh_recipe_nutrients();`.
 
 So the same recipe scores differently for different people and at different
 times of day. Salmon scores high for someone who hasn't had vitamin D; it
