@@ -277,14 +277,18 @@ def emit(chosen, out):
           f"{r['servings']}, {r['nutrition'].get('Energy', (None,))[0] or 'NULL'}, NULL, 'Food.com')\n"
           f"ON CONFLICT DO NOTHING;\n")
 
-    w("\n-- recipe_ingredients (units aren't in the dataset; quantity is the bare number)\n")
+    w("\n-- recipe_ingredients (units aren't in the dataset; quantity is the bare number).\n"
+      "-- quantity_aligned is FALSE when the dataset's quantity list is a different length\n"
+      "-- from its ingredient list, so the number next to an ingredient may be another's.\n"
+      "-- Grams come later from scripts/ingredient_grams.py.\n")
     for r in chosen:
+        aligned = "TRUE" if len(r["quantities"]) == len(r["parts"]) else "FALSE"
         for i, p in enumerate(r["parts"]):
             k = clean(p, 200)
             if not k: continue
             qty = quantity(r["quantities"][i]) if i < len(r["quantities"]) else None
-            w(f"INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit)\n"
-              f"SELECT rc.recipe_id, i.ingredient_id, {qty if qty else 1}, {q('unit') if qty else q('portion')} "
+            w(f"INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit, quantity_aligned)\n"
+              f"SELECT rc.recipe_id, i.ingredient_id, {qty if qty else 1}, {q('unit') if qty else q('portion')}, {aligned} "
               f"FROM recipes rc, ingredients i WHERE rc.external_source_id = {q(r['ext_id'])} "
               f"AND lower(btrim(i.ingredient_name)) = {q(k.lower())}\n"
               f"ON CONFLICT (recipe_id, ingredient_id) DO NOTHING;\n")

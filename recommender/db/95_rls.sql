@@ -173,7 +173,7 @@ BEGIN
     FOREACH t IN ARRAY ARRAY[
         'conditions', 'condition_attributes', 'nutrient_rules', 'nutrient_modifiers',
         'documents', 'categories', 'nutrients_master', 'profile_nutrient_baselines',
-        'ingredients', 'ingredient_nutrition', 'usda_nutrient_ref', 'ingredient_attributes',
+        'ingredients', 'ingredient_nutrition', 'ingredient_measures', 'usda_nutrient_ref', 'ingredient_attributes',
         'ingredient_synergy_pairs', 'ingredient_bioavailability',
         'ingredient_substitutions', 'glycemic_index_data',
         'cultural_categories', 'recipes', 'recipe_ingredients', 'recipe_steps',

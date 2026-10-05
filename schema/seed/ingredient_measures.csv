@@ -1,0 +1,574 @@
+name,category,usda,measure,grams,basis,usda_modifier
+black beans,Legumes and Legume Products,"Beans, black turtle, mature seeds, canned",can,400,fallback,
+canned black beans,Legumes and Legume Products,"Beans, black turtle, mature seeds, canned",can,400,fallback,
+canned pumpkin,Vegetables and Vegetable Products,"Pumpkin, canned, without salt",can,400,fallback,
+canned pumpkin puree,Vegetables and Vegetable Products,"Pumpkin, canned, without salt",can,400,fallback,
+cannellini beans,Legumes and Legume Products,"Beans, white, mature seeds, canned",can,400,fallback,
+diced tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, canned, stewed",can,400,fallback,
+navy beans,Legumes and Legume Products,"Beans, navy, mature seeds, canned",can,400,fallback,
+solid white tuna packed in water,Beverages,"Water, bottled, generic",can,400,fallback,
+stewed tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, canned, stewed",can,400,fallback,
+tomato sauce,Vegetables and Vegetable Products,"Tomato products, canned, sauce",can,400,fallback,
+tuna in water,Beverages,"Water, bottled, generic",can,400,fallback,
+vegetarian baked beans,Legumes and Legume Products,"Beans, baked, canned, plain or vegetarian",can,400,fallback,
+Chinese wine,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+"Greek yogurt, plain",Dairy and Egg Products,"Yogurt, Greek, plain, whole milk",cup,120,fallback,
+"Oats, rolled, dry",Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+Old mill oats,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+Robin Hood oats,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+Tzatziki,Dairy and Egg Products,"Yogurt, Greek, plain, whole milk",cup,120,fallback,
+artichoke hearts,Vegetables and Vegetable Products,"Artichokes, (globe or french), frozen, unprepared",cup,130,fallback,
+black olives,Fruits and Fruit Juices,"Olives, ripe, canned (small-extra large)",cup,150,fallback,
+cheddar cheese,Dairy and Egg Products,"Cheese, cheddar, sharp, sliced",cup,120,fallback,
+chicken bouillon,"Soups, Sauces, and Gravies","Soup, chicken broth or bouillon, dry",cup,240,fallback,
+chicken bouillon cubes,"Soups, Sauces, and Gravies","Soup, chicken broth or bouillon, dry",cup,240,fallback,
+chicken flavor instant bouillon,"Soups, Sauces, and Gravies","Soup, chicken broth or bouillon, dry",cup,240,fallback,
+chickpeas,Legumes and Legume Products,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",cup,180,fallback,
+chives,Vegetables and Vegetable Products,"Chives, raw",cup,130,fallback,
+chocolate chips,Sweets,"Chocolate, dark, 45- 59% cacao solids",cup,170,fallback,
+cornmeal,American Indian/Alaska Native Foods,"Cornmeal, blue (Navajo)",cup,200,fallback,
+cranberries,American Indian/Alaska Native Foods,"Cranberry, low bush or lingenberry, raw (Alaska Native)",cup,200,fallback,
+dried ancho chile powder,Vegetables and Vegetable Products,"Peppers, ancho, dried",cup,130,fallback,
+dry sherry,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+dry white wine,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+green olives,Fruits and Fruit Juices,"Olives, pickled, canned or bottled, green",cup,150,fallback,
+ice cream,Dairy and Egg Products,Ice cream sandwich,cup,120,fallback,
+instant coffee granules,Beverages,"Beverages, coffee, instant, regular, powder",cup,240,fallback,
+kalamata olive,Fruits and Fruit Juices,"Olives, ripe, canned (small-extra large)",cup,150,fallback,
+low-fat cheddar cheese,Dairy and Egg Products,"Cheese, cheddar, sharp, sliced",cup,120,fallback,
+marshmallow cream,Sweets,"Toppings, marshmallow cream",cup,170,fallback,
+medium cheddar,Dairy and Egg Products,"Cheese, cheddar, sharp, sliced",cup,120,fallback,
+oatmeal,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+oats,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+old fashioned oats,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+parmesan cheese,Dairy and Egg Products,"Cheese, parmesan, hard",cup,120,fallback,
+quick-cooking oatmeal,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+red wine,Beverages,"Alcoholic beverage, wine, table, red",cup,240,fallback,
+rice wine,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+rolled oats,Snacks,"Breakfast bars, oats, sugar, raisins, coconut (include granola bar)",cup,90,fallback,
+sake,Beverages,"Alcoholic beverage, rice (sake)",cup,240,fallback,
+sesame seeds,Snacks,"Snacks, rice cakes, brown rice, sesame seed",cup,90,fallback,
+sharp cheddar cheese,Dairy and Egg Products,"Cheese, cheddar, sharp, sliced",cup,120,fallback,
+sherry wine,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+white wine,Beverages,"Alcoholic beverage, wine, table, white",cup,240,fallback,
+whole wheat flour,Cereal Grains and Pasta,"Wheat flour, whole-grain, soft wheat",cup,150,fallback,
+yellow cornmeal,American Indian/Alaska Native Foods,"Cornmeal, yellow (Navajo)",cup,200,fallback,
+Rotel tomatoes & chilies,Vegetables and Vegetable Products,"Tomatoes, red, ripe, canned, with green chilies",each,100,fallback,
+baking potatoes,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+chive & onion cream cheese,Dairy and Egg Products,"Cheese, cream",each,100,fallback,
+corn tortilla chips,Snacks,"Tortilla chips, yellow, plain, salted",each,100,fallback,
+cucumber,Vegetables and Vegetable Products,"Cucumber, with peel, raw",each,100,fallback,
+dry crushed red pepper,Spices and Herbs,"Spices, pepper, red or cayenne",each,100,fallback,
+egg substitute,Dairy and Egg Products,"Egg substitute, powder",each,100,fallback,
+eggplant,Vegetables and Vegetable Products,"Eggplant, raw",each,100,fallback,
+frozen hash brown potatoes,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+idaho potatoes,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+kirby cucumber,Vegetables and Vegetable Products,"Cucumber, with peel, raw",each,100,fallback,
+lemon pepper,Spices and Herbs,"Spices, pepper, black",each,100,fallback,
+lemon rind,Fruits and Fruit Juices,"Lemon peel, raw",each,100,fallback,
+lemon zest,Fruits and Fruit Juices,"Lemon peel, raw",each,100,fallback,
+"lemon, zest of",Fruits and Fruit Juices,"Lemon peel, raw",each,100,fallback,
+mashed potatoes,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+non-fat tortilla chips,Snacks,"Tortilla chips, yellow, plain, salted",each,100,fallback,
+onion powder,Spices and Herbs,"Spices, onion powder",each,100,fallback,
+orange,Vegetables and Vegetable Products,"Tomatoes, orange, raw",each,100,fallback,
+"orange, rind of",Fruits and Fruit Juices,"Orange peel, raw",each,100,fallback,
+"orange, zest of",Fruits and Fruit Juices,"Orange peel, raw",each,100,fallback,
+parmigiano-reggiano cheese,Dairy and Egg Products,"Cheese, parmesan, hard",each,100,fallback,
+potato,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+potato starch,Baked Products,"Rolls, gluten-free, white, made with brown rice flour, tapioca starch, and potato starch",each,100,fallback,
+potatoes,Vegetables and Vegetable Products,"Potatoes, flesh and skin, raw",each,100,fallback,
+sweet potatoes,Vegetables and Vegetable Products,"Sweet potato leaves, raw",each,100,fallback,
+tomato puree,Vegetables and Vegetable Products,"Tomato products, canned, puree, without salt added",each,100,fallback,
+tortilla chips,Snacks,"Tortilla chips, yellow, plain, salted",each,100,fallback,
+whole tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, canned, stewed",each,100,fallback,
+Homemade Fresh Bacon Bits,Pork Products,"Pork, cured, bacon, cooked, baked",lb,453.6,fallback,
+"Salmon, cooked",Finfish and Shellfish Products,"Fish, salmon, Atlantic, farmed, cooked, dry heat",lb,453.6,fallback,
+beef,Beef Products,"Beef, grass-fed, ground, raw",lb,453.6,fallback,
+beef bouillon cube,"Soups, Sauces, and Gravies","Soup, beef broth or bouillon, powder, dry",lb,453.6,fallback,
+beef broth,"Soups, Sauces, and Gravies","Soup, beef broth or bouillon canned, ready-to-serve",lb,453.6,fallback,
+beef stew meat,Beef Products,"Beef, chuck for stew, separable lean and fat, select, raw",lb,453.6,fallback,
+boneless beef chuck roast,Beef Products,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, select, raw",lb,453.6,fallback,
+boneless skinless chicken,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+chicken,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+chicken drumsticks,Poultry Products,"Chicken, broilers or fryers, drumstick, meat and skin, raw",lb,453.6,fallback,
+chicken liver,Poultry Products,"Chicken, liver, all classes, raw",lb,453.6,fallback,
+chicken meat,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+chicken pieces,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+chicken tenderloins,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",lb,453.6,fallback,
+chicken wings,Poultry Products,"Chicken, broilers or fryers, wing, meat and skin, raw",lb,453.6,fallback,
+cod,Finfish and Shellfish Products,"Fish, cod, Atlantic, raw",lb,453.6,fallback,
+cooked ham,Pork Products,"Pork, cured, ham, boneless, extra lean and regular, roasted",lb,453.6,fallback,
+corned beef,Sausages and Luncheon Meats,"Corned beef loaf, jellied",lb,453.6,fallback,
+crisp bacon,Pork Products,"Pork, cured, bacon, unprepared",lb,453.6,fallback,
+deli ham,Pork Products,"Pork, cured, ham, boneless, extra lean and regular, unheated",lb,453.6,fallback,
+deli roast beef,Sausages and Luncheon Meats,"Roast beef, deli style, prepackaged, sliced",lb,453.6,fallback,
+fryer chickens,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+ground beef,Beef Products,"Beef, Australian, imported, grass-fed, ground, 85% lean / 15% fat, raw",lb,453.6,fallback,
+ham,Pork Products,"Pork, cured, ham, boneless, extra lean and regular, unheated",lb,453.6,fallback,
+jumbo shrimp,Finfish and Shellfish Products,"Crustaceans, shrimp, raw",lb,453.6,fallback,
+lean ground beef,Beef Products,"Beef, ground, 90% lean meat / 10% fat, raw",lb,453.6,fallback,
+pancetta,Pork Products,"Pork, cured, bacon, unprepared",lb,453.6,fallback,
+pickle,Sausages and Luncheon Meats,"Pickle and pimiento loaf, pork",lb,453.6,fallback,
+roasting chicken,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+shrimp,Finfish and Shellfish Products,"Crustaceans, shrimp, raw",lb,453.6,fallback,
+skinless chicken piece,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",lb,453.6,fallback,
+smoked streaky bacon,Pork Products,"Pork, cured, bacon, unprepared",lb,453.6,fallback,
+trout,Finfish and Shellfish Products,"Fish, trout, mixed species, raw",lb,453.6,fallback,
+turkey breast,Poultry Products,"Turkey, whole, breast, meat only, raw",lb,453.6,fallback,
+whole chickens,Poultry Products,"Chicken, broilers or fryers, meat only, raw",lb,453.6,fallback,
+Bisquick,Baked Products,"Biscuits, plain or buttermilk, dry mix",slice,28,fallback,
+Bisquick baking mix,Baked Products,"Biscuits, plain or buttermilk, dry mix",slice,28,fallback,
+Pepperidge Farm Herb Stuffing,Baked Products,"Bread, stuffing, dry mix",slice,28,fallback,
+baking mix,Baked Products,"Biscuits, plain or buttermilk, dry mix",slice,28,fallback,
+chicken stove top stuffing mix,Baked Products,"Bread, stuffing, dry mix",slice,28,fallback,
+graham cracker,Baked Products,"Cookies, graham crackers, plain or honey, lowfat",slice,28,fallback,
+matzo meal,Baked Products,"Crackers, matzo, plain",slice,28,fallback,
+miniature bagels,Baked Products,"Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",slice,28,fallback,
+panko breadcrumbs,Baked Products,"Bread, crumbs, dry, grated, plain",slice,28,fallback,
+seasoned croutons,Baked Products,"Croutons, seasoned",slice,28,fallback,
+Dijon mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+French's mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+"Lemon juice, raw",Fruits and Fruit Juices,"Lemon juice, raw",tbsp,15,fallback,
+Tabasco sauce,"Soups, Sauces, and Gravies","Sauce, ready-to-serve, pepper or hot",tbsp,15,fallback,
+applesauce,Fruits and Fruit Juices,"Applesauce, canned, sweetened, without salt",tbsp,15,fallback,
+boiling water,Beverages,"Water, bottled, generic",tbsp,15,fallback,
+buttermilk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",tbsp,15,fallback,
+chili sauce,"Soups, Sauces, and Gravies","Sauce, tomato chili sauce, bottled, with salt",tbsp,15,fallback,
+cornstarch,Cereal Grains and Pasta,Cornstarch,tbsp,15,fallback,
+fresh lemon juice,Fruits and Fruit Juices,"Lemon juice, raw",tbsp,15,fallback,
+fresh lime juice,Fruits and Fruit Juices,"Lime juice, raw",tbsp,15,fallback,
+hard-boiled eggs,Dairy and Egg Products,"Egg, whole, raw, fresh",tbsp,15,fallback,
+lemon juice,Fruits and Fruit Juices,"Lemon juice, raw",tbsp,15,fallback,
+lime juice,Fruits and Fruit Juices,"Lime juice, raw",tbsp,15,fallback,
+london broil beef,Beef Products,"Beef, round, top round, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",tbsp,15,fallback,
+low-fat buttermilk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",tbsp,15,fallback,
+mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+pesto sauce mix,"Soups, Sauces, and Gravies","Sauce, pesto, ready-to-serve, refrigerated",tbsp,15,fallback,
+prepared mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+prepared yellow mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+tomato paste,Vegetables and Vegetable Products,"Tomato products, canned, puree, without salt added",tbsp,15,fallback,
+unsweetened applesauce,Fruits and Fruit Juices,"Applesauce, canned, unsweetened, with added ascorbic acid",tbsp,15,fallback,
+yellow mustard,Spices and Herbs,"Mustard, prepared, yellow",tbsp,15,fallback,
+French vanilla instant pudding,Sweets,"Puddings, vanilla, dry mix, instant",tsp,5,fallback,
+Italian sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+bulk pork sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+bulk sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+dill pickle,Vegetables and Vegetable Products,"Pickles, cucumber, dill or kosher dill",tsp,5,fallback,
+dill pickle slices,Vegetables and Vegetable Products,"Pickles, cucumber, dill or kosher dill",tsp,5,fallback,
+dill pickles,Vegetables and Vegetable Products,"Pickles, cucumber, dill or kosher dill",tsp,5,fallback,
+dill weed,Spices and Herbs,"Dill weed, fresh",tsp,5,fallback,
+fresh basil,Spices and Herbs,"Basil, fresh",tsp,5,fallback,
+fresh dill,Spices and Herbs,"Dill weed, fresh",tsp,5,fallback,
+ginger ale,Beverages,"Beverages, carbonated, ginger ale",tsp,5,fallback,
+hot Italian sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+of fresh mint,Spices and Herbs,"Spearmint, fresh",tsp,5,fallback,
+parsley flakes,Vegetables and Vegetable Products,"Parsley, fresh",tsp,5,fallback,
+pork sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+sausage,Sausages and Luncheon Meats,"Sausage, Italian, pork, mild, raw",tsp,5,fallback,
+sugar-free instant vanilla pudding mix,Sweets,"Puddings, vanilla, dry mix, instant",tsp,5,fallback,
+sweet Italian sausage link,Sausages and Luncheon Meats,"Sausage, Italian, sweet, links",tsp,5,fallback,
+unsalted butter,Dairy and Egg Products,"Butter, without salt",tsp,5,fallback,
+vanilla instant pudding mix,Sweets,"Puddings, vanilla, dry mix, instant",tsp,5,fallback,
+vanilla yogurt,Dairy and Egg Products,"Yogurt, vanilla, low fat.",tsp,5,fallback,
+chili beans,Legumes and Legume Products,"Beans, kidney, red, mature seeds, canned, drained solids",can,266.0,usda,can drained solids
+dried garbanzo beans,Legumes and Legume Products,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",can,253.0,usda,can drained
+garbanzo beans,Legumes and Legume Products,"Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",can,253.0,usda,can drained
+kidney beans,Legumes and Legume Products,"Beans, kidney, red, mature seeds, canned, drained solids",can,266.0,usda,can drained solids
+pinto beans,Legumes and Legume Products,"Beans, pinto, mature seeds, canned, solids and liquids",can,442.0,usda,can
+solid white tuna,Finfish and Shellfish Products,"Fish, tuna, light, canned in water, without salt, drained solids",can,165.0,usda,can
+tuna,Finfish and Shellfish Products,"Fish, tuna, light, canned in water, without salt, drained solids",can,165.0,usda,can
+garlic,Vegetables and Vegetable Products,"Garlic, raw",clove,3.0,usda,clove
+garlic clove,Vegetables and Vegetable Products,"Garlic, raw",clove,3.0,usda,clove
+garlic cloves,Vegetables and Vegetable Products,"Garlic, raw",clove,3.0,usda,clove
+1% low-fat milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+2% low-fat milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+American cheese,Dairy and Egg Products,"Cheese, pasteurized process, cheddar or American, low sodium",cup,140.0,usda,"cup, diced"
+"Broccoli, cooked",Vegetables and Vegetable Products,"Broccoli, cooked, boiled, drained, without salt",cup,156.0,usda,"cup, chopped"
+Brussels sprouts,Vegetables and Vegetable Products,"Brussels sprouts, raw",cup,88.0,usda,cup
+"Chickpeas, cooked",Legumes and Legume Products,"Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",cup,164.0,usda,cup
+"Garlic, raw",Vegetables and Vegetable Products,"Garlic, raw",cup,136.0,usda,cup
+"Lentils, cooked",Legumes and Legume Products,"Lentils, mature seeds, cooked, boiled, without salt",cup,198.0,usda,cup
+"Milk, whole",Dairy and Egg Products,"Milk, whole, 3.25% milkfat, with added vitamin D",cup,244.0,usda,cup
+"Quinoa, cooked",Cereal Grains and Pasta,"Quinoa, cooked",cup,185.0,usda,cup
+"Rice, white, long-grain, cooked",Cereal Grains and Pasta,"Rice, white, long-grain, regular, enriched, cooked",cup,158.0,usda,cup
+"Spinach, raw",Vegetables and Vegetable Products,"Spinach, raw",cup,30.0,usda,cup
+Splenda sugar substitute,Sweets,"Sweeteners, sugar substitute, granulated, brown",cup,23.0,usda,cup
+"Tofu, firm",Legumes and Legume Products,"Tofu, firm, prepared with calcium sulfate and magnesium chloride (nigari)",cup,252.0,usda,cup
+Velveeta cheese,Dairy and Egg Products,"Cheese, pasteurized process, cheddar or American, low sodium",cup,140.0,usda,"cup, diced"
+all-purpose flour,Cereal Grains and Pasta,"Wheat flour, white, all-purpose, unenriched",cup,125.0,usda,cup
+anaheim chilies,Vegetables and Vegetable Products,"Peppers, hot chili, green, raw",cup,150.0,usda,"cup, chopped or diced"
+arborio rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+asparagus,Vegetables and Vegetable Products,"Asparagus, raw",cup,134.0,usda,cup
+asparagus spear,Vegetables and Vegetable Products,"Asparagus, raw",cup,134.0,usda,cup
+basmati rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+bean sprouts,Vegetables and Vegetable Products,"Mung beans, mature seeds, sprouted, raw",cup,104.0,usda,cup
+blueberries,Fruits and Fruit Juices,"Blueberries, raw",cup,148.0,usda,cup
+boursin cheese,Dairy and Egg Products,"Cheese, cream",cup,232.0,usda,cup
+broccoli,Vegetables and Vegetable Products,"Broccoli, raw",cup,91.0,usda,cup chopped
+broccoli florets,Vegetables and Vegetable Products,"Broccoli, raw",cup,91.0,usda,cup chopped
+brown lentils,Legumes and Legume Products,"Lentils, raw",cup,192.0,usda,cup
+brown sugar,Sweets,"Sugars, brown",cup,220.0,usda,cup packed
+brown sugar substitute,Sweets,"Sweeteners, sugar substitute, granulated, brown",cup,23.0,usda,cup
+cabbage,Vegetables and Vegetable Products,"Cabbage, raw",cup,89.0,usda,"cup, chopped"
+catsup,Vegetables and Vegetable Products,Catsup,cup,240.0,usda,cup
+cauliflower,Vegetables and Vegetable Products,"Cauliflower, raw",cup,107.0,usda,"cup chopped (1/2"" pieces)"
+celery rib,Vegetables and Vegetable Products,"Celery, raw",cup,101.0,usda,cup chopped
+celery ribs,Vegetables and Vegetable Products,"Celery, raw",cup,101.0,usda,cup chopped
+cheese,Dairy and Egg Products,"Cheese, swiss, low sodium",cup,108.0,usda,"cup, shredded"
+cheese slice,Dairy and Egg Products,"Cheese, pasteurized process, cheddar or American, low sodium",cup,140.0,usda,"cup, diced"
+cherry pie filling,Sweets,"Pie fillings, cherry, low calorie",cup,264.0,usda,cup
+chicken broth,"Soups, Sauces, and Gravies","Soup, chicken broth, ready-to-serve",cup,249.0,usda,cup
+chilies,Vegetables and Vegetable Products,"Peppers, hot chili, green, raw",cup,150.0,usda,"cup, chopped or diced"
+chipotle chile,Vegetables and Vegetable Products,"Peppers, hot chili, red, raw",cup,150.0,usda,"cup, chopped or diced"
+cilantro,Vegetables and Vegetable Products,"Coriander (cilantro) leaves, raw",cup,16.0,usda,cup
+cocoa powder,Sweets,"Cocoa, dry powder, unsweetened",cup,86.0,usda,cup
+coconut,Nut and Seed Products,"Nuts, coconut meat, raw",cup,80.0,usda,"cup, shredded"
+cold water,Beverages,"Water, bottled, generic",cup,237.0,usda,cup
+condensed chicken broth,"Soups, Sauces, and Gravies","Soup, chicken broth, ready-to-serve",cup,249.0,usda,cup
+confectioners' sugar,Sweets,"Sugars, powdered",cup,120.0,usda,cup unsifted
+cooked brown rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, enriched, cooked",cup,158.0,usda,cup
+cooked rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, enriched, cooked",cup,158.0,usda,cup
+cooked white rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, enriched, cooked",cup,158.0,usda,cup
+corn,Vegetables and Vegetable Products,"Corn, sweet, yellow, raw",cup,145.0,usda,cup
+cottage cheese,Dairy and Egg Products,"Cheese, cottage, creamed, with fruit",cup,226.0,usda,cup (not packed)
+couscous,Cereal Grains and Pasta,"Couscous, dry",cup,173.0,usda,cup
+creme fraiche,Dairy and Egg Products,"Cream, sour, cultured",cup,230.0,usda,cup
+diced pimentos,Vegetables and Vegetable Products,"Pimento, canned",cup,192.0,usda,cup
+elbow macaroni,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+escarole,Vegetables and Vegetable Products,"Escarole, cooked, boiled, drained, no salt added",cup,150.0,usda,cup
+evaporated milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+extra firm tofu,Legumes and Legume Products,"Tofu, raw, firm, prepared with calcium sulfate",cup,252.0,usda,cup
+fat free sour cream,Dairy and Egg Products,"Cream, sour, cultured",cup,230.0,usda,cup
+fat-free evaporated milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+feta,Dairy and Egg Products,"Cheese, feta",cup,150.0,usda,"cup, crumbled"
+feta cheese,Dairy and Egg Products,"Cheese, feta",cup,150.0,usda,"cup, crumbled"
+fettuccine,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+fettuccine pasta,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+firm tofu,Legumes and Legume Products,"Tofu, raw, firm, prepared with calcium sulfate",cup,252.0,usda,cup
+flat leaf parsley,Vegetables and Vegetable Products,"Parsley, fresh",cup,60.0,usda,cup chopped
+flour,Cereal Grains and Pasta,"Wheat flour, white, all-purpose, unenriched",cup,125.0,usda,cup
+fresh blueberries,Fruits and Fruit Juices,"Blueberries, raw",cup,148.0,usda,cup
+fresh broccoli,Vegetables and Vegetable Products,"Broccoli, raw",cup,91.0,usda,cup chopped
+fresh cilantro,Vegetables and Vegetable Products,"Coriander (cilantro) leaves, raw",cup,16.0,usda,cup
+fresh coriander,Vegetables and Vegetable Products,"Coriander (cilantro) leaves, raw",cup,16.0,usda,cup
+fresh flat-leaf parsley,Vegetables and Vegetable Products,"Parsley, fresh",cup,60.0,usda,cup chopped
+fresh garlic,Vegetables and Vegetable Products,"Garlic, raw",cup,136.0,usda,cup
+fresh herb,Beverages,"Beverages, tea, herb, brewed, chamomile",cup,237.0,usda,cup (8 fl oz)
+fresh mushrooms,Vegetables and Vegetable Products,"Mushrooms, white, raw",cup,70.0,usda,"cup, pieces or slices"
+fresh parsley,Vegetables and Vegetable Products,"Parsley, fresh",cup,60.0,usda,cup chopped
+fresh white mushrooms,Vegetables and Vegetable Products,"Mushrooms, white, raw",cup,70.0,usda,"cup, pieces or slices"
+frozen blueberries,Fruits and Fruit Juices,"Blueberries, frozen, sweetened",cup,230.0,usda,"cup, thawed"
+frozen broccoli,Vegetables and Vegetable Products,"Broccoli, raw",cup,91.0,usda,cup chopped
+frozen cauliflower,Vegetables and Vegetable Products,"Cauliflower, frozen, unprepared",cup,132.0,usda,"cup (1"" pieces)"
+frozen chopped spinach,Vegetables and Vegetable Products,"Spinach, raw",cup,30.0,usda,cup
+frozen corn,Vegetables and Vegetable Products,"Corn, sweet, yellow, frozen, kernels on cob, unprepared",cup,165.0,usda,cup kernels
+frozen corn kernels,Vegetables and Vegetable Products,"Corn, sweet, yellow, frozen, kernels on cob, unprepared",cup,165.0,usda,cup kernels
+golden brown sugar,Sweets,"Sugars, brown",cup,220.0,usda,cup packed
+granulated sugar,Sweets,"Sugars, granulated",cup,200.0,usda,cup
+grapes,Vegetables and Vegetable Products,"Grape leaves, raw",cup,14.0,usda,cup
+green beans,Vegetables and Vegetable Products,"Beans, snap, green, raw",cup,100.0,usda,"cup 1/2"" pieces"
+green cabbage,Vegetables and Vegetable Products,"Cabbage, raw",cup,89.0,usda,"cup, chopped"
+green chilies,Vegetables and Vegetable Products,"Peppers, chili, green, canned",cup,139.0,usda,cup
+green seedless grapes,Fruits and Fruit Juices,"Grapes, red or green (European type, such as Thompson seedless), raw",cup,151.0,usda,cup
+ground coriander,Vegetables and Vegetable Products,"Coriander (cilantro) leaves, raw",cup,16.0,usda,cup
+ground flax seeds,Nut and Seed Products,"Seeds, flaxseed",cup,168.0,usda,"cup, whole"
+half-and-half,Dairy and Egg Products,"Cream, fluid, half and half",cup,242.0,usda,cup
+half-and-half cream,Dairy and Egg Products,"Cream, fluid, half and half",cup,242.0,usda,cup
+hash brown,Vegetables and Vegetable Products,"Potatoes, hash brown, home-prepared",cup,156.0,usda,cup
+heavy cream,Dairy and Egg Products,"Cream, fluid, heavy whipping",cup,120.0,usda,"cup, whipped"
+heavy whipping cream,Dairy and Egg Products,"Cream, fluid, heavy whipping",cup,120.0,usda,"cup, whipped"
+iceberg lettuce,Vegetables and Vegetable Products,"Lettuce, iceberg (includes crisphead types), raw",cup,72.0,usda,cup shredded
+icing sugar,Sweets,"Sugars, powdered",cup,120.0,usda,cup unsifted
+jalapeno chile,Vegetables and Vegetable Products,"Peppers, jalapeno, raw",cup,90.0,usda,"cup, sliced"
+kale,Vegetables and Vegetable Products,"Kale, raw",cup,21.0,usda,cup
+lettuce,Vegetables and Vegetable Products,"Lettuce, iceberg (includes crisphead types), raw",cup,72.0,usda,cup shredded
+lettuce leaf,Vegetables and Vegetable Products,"Lettuce, red leaf, raw",cup,28.0,usda,cup shredded
+light brown sugar,Sweets,"Sugars, brown",cup,220.0,usda,cup packed
+light cream cheese,Dairy and Egg Products,"Cheese, cream",cup,232.0,usda,cup
+linguine,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+liquid smoke,"Soups, Sauces, and Gravies","Sauce, worcestershire",cup,275.0,usda,cup
+long grain rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+long-grain white rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+low-fat yogurt,Dairy and Egg Products,"Yogurt, plain, whole milk",cup,245.0,usda,cup (8 fl oz)
+macaroni,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+minced garlic clove,Vegetables and Vegetable Products,"Garlic, raw",cup,136.0,usda,cup
+monterey jack cheese,Dairy and Egg Products,"Cheese, monterey",cup,132.0,usda,"cup, diced"
+mozzarella cheese,Dairy and Egg Products,"Cheese, mozzarella, whole milk",cup,112.0,usda,"cup, shredded"
+mushroom,Vegetables and Vegetable Products,"Mushrooms, white, raw",cup,70.0,usda,"cup, pieces or slices"
+mushrooms,Vegetables and Vegetable Products,"Mushrooms, white, raw",cup,70.0,usda,"cup, pieces or slices"
+nonfat milk,Dairy and Egg Products,"Milk, buttermilk, fluid, whole",cup,245.0,usda,cup
+nonfat yogurt,Dairy and Egg Products,"Yogurt, plain, whole milk",cup,245.0,usda,cup (8 fl oz)
+orzo pasta,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+other pastas,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+parsley,Vegetables and Vegetable Products,"Parsley, fresh",cup,60.0,usda,cup chopped
+part-skim mozzarella cheese,Dairy and Egg Products,"Cheese, mozzarella, whole milk",cup,112.0,usda,"cup, shredded"
+pasta,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+peas,Vegetables and Vegetable Products,"Peas, green, raw",cup,145.0,usda,cup
+pecans,Nut and Seed Products,"Nuts, pecans",cup,109.0,usda,"cup, chopped"
+plain flour,Cereal Grains and Pasta,"Wheat flour, white, all-purpose, unenriched",cup,125.0,usda,cup
+plain low-fat yogurt,Dairy and Egg Products,"Yogurt, plain, whole milk",cup,245.0,usda,cup (8 fl oz)
+plain yogurt,Dairy and Egg Products,"Yogurt, plain, whole milk",cup,245.0,usda,cup (8 fl oz)
+powdered sugar,Sweets,"Sugars, powdered",cup,120.0,usda,cup unsifted
+process American cheese,Dairy and Egg Products,"Cheese, pasteurized process, cheddar or American, low sodium",cup,140.0,usda,"cup, diced"
+provolone cheese,Dairy and Egg Products,"Cheese, provolone",cup,132.0,usda,"cup, diced"
+pumpkin,Vegetables and Vegetable Products,"Pumpkin, canned, without salt",cup,245.0,usda,cup
+pumpkin pie filling,Vegetables and Vegetable Products,"Pumpkin, canned, without salt",cup,245.0,usda,cup
+pumpkin puree,Vegetables and Vegetable Products,"Pumpkin, canned, without salt",cup,245.0,usda,cup
+quick oats,Breakfast Cereals,"Cereals, oats, regular and quick, not fortified, dry",cup,81.0,usda,cup
+quick-cooking grits,Breakfast Cereals,"Cereals, corn grits, white, regular and quick, enriched, dry",cup,156.0,usda,cup
+raisins,Fruits and Fruit Juices,"Raisins, golden, seedless",cup,165.0,usda,"cup, packed"
+red seedless grapes,Fruits and Fruit Juices,"Grapes, red or green (European type, such as Thompson seedless), raw",cup,151.0,usda,cup
+reduced-fat sour cream,Dairy and Egg Products,"Cream, sour, cultured",cup,230.0,usda,cup
+reduced-sodium chicken broth,"Soups, Sauces, and Gravies","Soup, chicken broth, ready-to-serve",cup,249.0,usda,cup
+rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+ricotta cheese,Dairy and Egg Products,"Cheese, ricotta, whole milk",cup,248.0,usda,cup
+risotto rice,Cereal Grains and Pasta,"Rice, white, long-grain, regular, raw, enriched",cup,185.0,usda,cup
+rotini pasta,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+salsa,"Soups, Sauces, and Gravies","Sauce, salsa, ready-to-serve",cup,260.0,usda,cup
+sauerkraut,Vegetables and Vegetable Products,"Sauerkraut, canned, solids and liquids",cup,142.0,usda,cup
+skim milk,Dairy and Egg Products,"Milk, lowfat, fluid, 1% milkfat, with added nonfat milk solids, vitamin A and vitamin D",cup,245.0,usda,cup
+small curd cottage cheese,Dairy and Egg Products,"Cheese, cottage, creamed, with fruit",cup,226.0,usda,cup (not packed)
+sorghum,Cereal Grains and Pasta,Sorghum grain,cup,192.0,usda,cup
+sour cream,Dairy and Egg Products,"Cream, sour, cultured",cup,230.0,usda,cup
+soymilk,Legumes and Legume Products,"Soymilk, chocolate, unfortified",cup,243.0,usda,cup
+spaghetti,Cereal Grains and Pasta,"Pasta, dry, unenriched",cup,91.0,usda,cup spaghetti
+spaghetti squash,Vegetables and Vegetable Products,"Squash, winter, spaghetti, raw",cup,101.0,usda,"cup, cubes"
+spinach,Vegetables and Vegetable Products,"Spinach, raw",cup,30.0,usda,cup
+strawberries,Fruits and Fruit Juices,"Strawberries, raw",cup,152.0,usda,"cup, halves"
+strawberry,Fruits and Fruit Juices,"Guavas, strawberry, raw",cup,244.0,usda,cup
+sugar,Sweets,"Sugars, granulated",cup,200.0,usda,cup
+swiss chard,Vegetables and Vegetable Products,"Chard, swiss, raw",cup,36.0,usda,cup
+swiss cheese,Dairy and Egg Products,"Cheese, swiss",cup,132.0,usda,"cup, diced"
+toasted sesame seeds,Nut and Seed Products,"Seeds, sesame seed kernels, toasted, without salt added (decorticated)",cup,128.0,usda,cup
+unbleached all-purpose flour,Cereal Grains and Pasta,"Wheat flour, white, all-purpose, unenriched",cup,125.0,usda,cup
+unsweetened dried shredded coconut,Beverages,"Beverages, Coconut water, ready-to-drink, unsweetened",cup,245.0,usda,cup
+vegetable broth,"Soups, Sauces, and Gravies","Soup, vegetable broth, ready to serve",cup,221.0,usda,cup
+walnuts,Nut and Seed Products,"Nuts, walnuts, english",cup,117.0,usda,"cup, chopped"
+wasabi,Vegetables and Vegetable Products,"Wasabi, root, raw",cup,130.0,usda,"cup, sliced"
+water,Beverages,"Water, bottled, generic",cup,237.0,usda,cup
+watercress,Vegetables and Vegetable Products,"Watercress, raw",cup,34.0,usda,"cup, chopped"
+wheat germ,Cereal Grains and Pasta,"Wheat germ, crude",cup,115.0,usda,cup
+white sugar,Sweets,"Sugars, granulated",cup,200.0,usda,cup
+whole kernel corn,Vegetables and Vegetable Products,"Corn, sweet, yellow, raw",cup,145.0,usda,cup
+"Chicken breast, cooked",Poultry Products,"Chicken, broilers or fryers, breast, meat only, cooked, roasted",each,52.0,usda,unit (yield from 1 lb ready-to-cook chicken)
+"Egg, whole, cooked",Dairy and Egg Products,"Egg, whole, cooked, hard-boiled",each,50.0,usda,large
+Italian plum tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+Mexican-style tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+"Sweet potato, baked",Vegetables and Vegetable Products,"Sweet potato, cooked, baked in skin, flesh, without salt",each,114.0,usda,"medium (2"" dia, 5"" long, raw)"
+apple,Fruits and Fruit Juices,"Apples, raw, without skin",each,161.0,usda,"medium (3"" dia)"
+apples,Fruits and Fruit Juices,"Apples, raw, without skin",each,161.0,usda,"medium (3"" dia)"
+avocado,Fruits and Fruit Juices,"Avocados, raw, Florida",each,304.0,usda,fruit without skin and seeds
+banana,Fruits and Fruit Juices,"Bananas, raw",each,118.0,usda,"medium (7"" to 7-7/8"" long)"
+bananas,Fruits and Fruit Juices,"Bananas, raw",each,118.0,usda,"medium (7"" to 7-7/8"" long)"
+bell pepper,Vegetables and Vegetable Products,"Peppers, sweet, green, raw",each,119.0,usda,"medium (approx 2-3/4"" long, 2-1/2"" dia)"
+boneless chicken breast,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+boneless chicken breast halves,Poultry Products,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",each,272.0,usda,piece
+boneless chicken breasts,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+boneless pork chops,Pork Products,"Pork, fresh, loin, center loin (chops), boneless, separable lean and fat, raw",each,170.0,usda,chop
+boneless skinless chicken breast,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+boneless skinless chicken breast halves,Poultry Products,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",each,272.0,usda,piece
+boneless skinless chicken breasts,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+boneless skinless chicken thighs,Poultry Products,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",each,149.0,usda,thigh without skin
+carrot,Vegetables and Vegetable Products,"Carrots, raw",each,61.0,usda,medium
+carrots,Vegetables and Vegetable Products,"Carrots, raw",each,61.0,usda,medium
+celery,Vegetables and Vegetable Products,"Celery, raw",each,64.0,usda,"stalk, large (11""-12"" long)"
+cherry tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+chicken breast,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+chicken breast fillets,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+chicken breast halves,Poultry Products,"Chicken, broilers or fryers, breast, meat and skin, raw",each,174.0,usda,"breast, bone removed (yield from 1 lb ready-to-cook chicken)"
+chicken breasts,Poultry Products,"Chicken, broilers or fryers, breast, skinless, boneless, meat only, with added solution, raw",each,236.0,usda,breast
+chicken thigh,Poultry Products,"Chicken, broilers or fryers, thigh, meat and skin, raw",each,193.0,usda,thigh with skin
+chicken thighs,Poultry Products,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",each,149.0,usda,thigh without skin
+chopped tomato,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+chopped tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+corn tortilla,American Indian/Alaska Native Foods,"Tortilla, blue corn, Sakwavikaviki (Hopi)",each,57.0,usda,piece
+corn tortillas,Baked Products,"Tortillas, ready-to-bake or -fry, corn",each,24.0,usda,tortilla
+crushed pineapple,Fruits and Fruit Juices,"Pineapple, raw, all varieties",each,905.0,usda,fruit
+egg,Dairy and Egg Products,"Egg, whole, raw, fresh",each,50.0,usda,large
+eggs,Dairy and Egg Products,"Egg, whole, raw, fresh",each,50.0,usda,large
+flour tortillas,Baked Products,"Tortillas, ready-to-bake or -fry, flour, shelf stable",each,49.0,usda,tortilla
+fresh onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+fresh tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+golden delicious apples,Fruits and Fruit Juices,"Apples, raw, without skin",each,161.0,usda,"medium (3"" dia)"
+grape tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+green bell pepper,Vegetables and Vegetable Products,"Peppers, sweet, green, raw",each,119.0,usda,"medium (approx 2-3/4"" long, 2-1/2"" dia)"
+green onion,Vegetables and Vegetable Products,"Onions, spring or scallions (includes tops and bulb), raw",each,15.0,usda,"medium (4-1/8"" long)"
+green onions,Vegetables and Vegetable Products,"Onions, spring or scallions (includes tops and bulb), raw",each,15.0,usda,"medium (4-1/8"" long)"
+green pepper,Vegetables and Vegetable Products,"Peppers, sweet, green, raw",each,119.0,usda,"medium (approx 2-3/4"" long, 2-1/2"" dia)"
+green peppers,Vegetables and Vegetable Products,"Peppers, sweet, green, raw",each,119.0,usda,"medium (approx 2-3/4"" long, 2-1/2"" dia)"
+lemon,Fruits and Fruit Juices,"Lemons, raw, without peel",each,58.0,usda,"fruit (2-1/8"" dia)"
+lemon slices,Fruits and Fruit Juices,"Lemons, raw, without peel",each,58.0,usda,"fruit (2-1/8"" dia)"
+lemon wedge,Fruits and Fruit Juices,"Lemons, raw, without peel",each,58.0,usda,"fruit (2-1/8"" dia)"
+lemons,Fruits and Fruit Juices,"Lemons, raw, without peel",each,58.0,usda,"fruit (2-1/8"" dia)"
+lime,Fruits and Fruit Juices,"Limes, raw",each,67.0,usda,"fruit (2"" dia)"
+limes,Fruits and Fruit Juices,"Limes, raw",each,67.0,usda,"fruit (2"" dia)"
+onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+onions,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+pineapple chunks,Fruits and Fruit Juices,"Pineapple, raw, all varieties",each,905.0,usda,fruit
+pineapple tidbits,Fruits and Fruit Juices,"Pineapple, raw, all varieties",each,905.0,usda,fruit
+purple onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+raw zucchini,Vegetables and Vegetable Products,"Squash, summer, zucchini, includes skin, raw",each,196.0,usda,medium
+red bell pepper,Vegetables and Vegetable Products,"Peppers, sweet, red, raw",each,119.0,usda,"medium (approx 2-3/4"" long, 2-1/2 dia.)"
+red onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+roma tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+salmon fillets,Finfish and Shellfish Products,"Fish, salmon, Atlantic, farmed, raw",each,396.0,usda,fillet
+scallion,Vegetables and Vegetable Products,"Onions, spring or scallions (includes tops and bulb), raw",each,15.0,usda,"medium (4-1/8"" long)"
+scallions,Vegetables and Vegetable Products,"Onions, spring or scallions (includes tops and bulb), raw",each,15.0,usda,"medium (4-1/8"" long)"
+sun-dried tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+sweet onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+tart apples,Fruits and Fruit Juices,"Apples, raw, without skin",each,161.0,usda,"medium (3"" dia)"
+tomatoes,Vegetables and Vegetable Products,"Tomatoes, red, ripe, raw, year round average",each,123.0,usda,"medium whole (2-3/5"" dia)"
+wheat flour tortillas,Baked Products,"Tortillas, ready-to-bake or -fry, flour, shelf stable",each,49.0,usda,tortilla
+yellow onion,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+yellow onions,Vegetables and Vegetable Products,"Onions, raw",each,110.0,usda,"medium (2-1/2"" dia)"
+zucchini,Vegetables and Vegetable Products,"Squash, summer, zucchini, includes skin, raw",each,196.0,usda,medium
+beef roast,Beef Products,"Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8"" fat, choice, raw",lb,453.6,usda,lb
+boneless round steak,Beef Products,"Beef, top sirloin, steak, separable lean only, trimmed to 1/8"" fat, select, raw",lb,453.6,usda,lb
+clams,Finfish and Shellfish Products,"Mollusks, clam, mixed species, raw",lb,68.0,usda,"lb (with shell), yield after shell removed"
+ground turkey,Poultry Products,"Turkey, Ground, raw",lb,453.6,usda,lb
+cream cheese,Dairy and Egg Products,"Cheese, cream",oz,28.35,usda,oz
+bacon,Pork Products,"Pork, cured, bacon, unprepared",slice,28.0,usda,slice raw
+Hellmann's mayonnaise,Fats and Oils,"Salad dressing, mayonnaise, regular",tbsp,13.8,usda,tbsp
+Miracle Whip,Fats and Oils,"Salad dressing, mayonnaise, light",tbsp,15.0,usda,tablespoon
+Olive oil,Fats and Oils,"Oil, olive, salad or cooking",tbsp,13.5,usda,tablespoon
+Peanut butter,Legumes and Legume Products,"Peanut butter, smooth style, without salt",tbsp,16.0,usda,tbsp
+Worcestershire sauce,"Soups, Sauces, and Gravies","Sauce, worcestershire",tbsp,17.0,usda,tbsp
+apple cider vinegar,Spices and Herbs,"Vinegar, cider",tbsp,14.9,usda,tbsp
+barbecue sauce,"Soups, Sauces, and Gravies","Sauce, barbecue",tbsp,17.0,usda,tbsp
+butter,Dairy and Egg Products,"Butter, salted",tbsp,14.2,usda,tbsp
+butter flavor shortening,Fats and Oils,"Shortening, household, lard and vegetable oil",tbsp,12.8,usda,tablespoon
+canola oil,Fats and Oils,"Oil, canola",tbsp,14.0,usda,tbsp
+cider vinegar,Spices and Herbs,"Vinegar, distilled",tbsp,14.9,usda,tbsp
+corn syrup,Sweets,"Syrups, corn, light",tbsp,22.0,usda,tbsp
+creamy peanut butter,Legumes and Legume Products,"Peanut butter, smooth style, without salt",tbsp,16.0,usda,tbsp
+crunchy peanut butter,Legumes and Legume Products,"Peanut butter, smooth style, without salt",tbsp,16.0,usda,tbsp
+dark soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+dry mustard,Spices and Herbs,"Spices, mustard seed, ground",tbsp,6.3,usda,tbsp
+extra virgin olive oil,Fats and Oils,"Oil, olive, salad or cooking",tbsp,13.5,usda,tablespoon
+fat-free mayonnaise,Fats and Oils,"Salad dressing, mayonnaise, regular",tbsp,13.8,usda,tbsp
+fish sauce,"Soups, Sauces, and Gravies","Sauce, fish, ready-to-serve",tbsp,18.0,usda,tbsp
+ground mustard,Spices and Herbs,"Spices, mustard seed, ground",tbsp,6.3,usda,tbsp
+hoisin sauce,"Soups, Sauces, and Gravies","Sauce, hoisin, ready-to-serve",tbsp,16.0,usda,tbsp
+honey,Sweets,Honey,tbsp,21.0,usda,tbsp
+ketchup,Vegetables and Vegetable Products,Catsup,tbsp,17.0,usda,tbsp
+lemon juice concentrate,Fruits and Fruit Juices,"Lemon juice from concentrate, canned or bottled",tbsp,15.0,usda,tbsp
+light corn syrup,Sweets,"Syrups, corn, light",tbsp,22.0,usda,tbsp
+light mayonnaise,Fats and Oils,"Salad dressing, mayonnaise, regular",tbsp,13.8,usda,tbsp
+light olive oil,Fats and Oils,"Oil, olive, salad or cooking",tbsp,13.5,usda,tablespoon
+light soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+liquid honey,Sweets,Honey,tbsp,21.0,usda,tbsp
+low sodium soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+low-fat mayonnaise,Fats and Oils,"Salad dressing, mayonnaise, regular",tbsp,13.8,usda,tbsp
+maple syrup,Sweets,"Syrups, maple",tbsp,20.0,usda,tbsp
+margarine,Fats and Oils,"Margarine, regular, 80% fat, composite, stick, without salt",tbsp,14.2,usda,tbsp
+mayonnaise,Fats and Oils,"Salad dressing, mayonnaise, regular",tbsp,13.8,usda,tbsp
+mustard powder,Spices and Herbs,"Spices, mustard seed, ground",tbsp,6.3,usda,tbsp
+mustard seeds,Spices and Herbs,"Spices, mustard seed, ground",tbsp,6.3,usda,tbsp
+olive oil,Fats and Oils,"Oil, olive, salad or cooking",tbsp,13.5,usda,tablespoon
+peanut butter,Legumes and Legume Products,"Peanut butter, smooth style, without salt",tbsp,16.0,usda,tbsp
+red wine vinegar,Spices and Herbs,"Vinegar, red wine",tbsp,14.9,usda,tbsp
+reduced sodium soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+rice vinegar,Spices and Herbs,"Vinegar, distilled",tbsp,14.9,usda,tbsp
+shortening,Fats and Oils,"Shortening, household, lard and vegetable oil",tbsp,12.8,usda,tablespoon
+soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+soya sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+tahini,Nut and Seed Products,"Seeds, sesame butter, tahini, from raw and stone ground kernels",tbsp,15.0,usda,tbsp
+tamari soy sauce,Legumes and Legume Products,Soy sauce made from soy and wheat (shoyu),tbsp,16.0,usda,tbsp
+vegetarian worcestershire sauce,"Soups, Sauces, and Gravies","Sauce, worcestershire",tbsp,17.0,usda,tbsp
+vinegar,Spices and Herbs,"Vinegar, distilled",tbsp,14.9,usda,tbsp
+white vinegar,Spices and Herbs,"Vinegar, distilled",tbsp,14.9,usda,tbsp
+Bulk Taco Seasoning Mix,Spices and Herbs,"Seasoning mix, dry, taco, original",tsp,2.85,usda,tsp
+Cajun Seasoning Mix,Spices and Herbs,"Spices, chili powder",tsp,2.7,usda,tsp
+Season-All salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+active dry yeast,Baked Products,"Leavening agents, yeast, baker's, active dry",tsp,4.0,usda,tsp
+allspice,Spices and Herbs,"Spices, allspice, ground",tsp,1.9,usda,tsp
+baking powder,Baked Products,"Leavening agents, baking powder, double-acting, straight phosphate",tsp,4.6,usda,tsp
+baking soda,Baked Products,"Leavening agents, baking soda",tsp,4.6,usda,tsp
+basil,Spices and Herbs,"Spices, basil, dried",tsp,0.7,usda,"tsp, leaves"
+bay leaf,Spices and Herbs,"Spices, bay leaf",tsp,0.6,usda,"tsp, crumbled"
+bay leaves,Spices and Herbs,"Spices, bay leaf",tsp,0.6,usda,"tsp, crumbled"
+black pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+canning salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+caraway seed,Spices and Herbs,"Spices, caraway seed",tsp,2.1,usda,tsp
+caraway seeds,Spices and Herbs,"Spices, caraway seed",tsp,2.1,usda,tsp
+cardamom,Spices and Herbs,"Spices, cardamom",tsp,2.0,usda,"tsp, ground"
+cayenne,Spices and Herbs,"Spices, pepper, red or cayenne",tsp,1.8,usda,tsp
+cayenne pepper,Spices and Herbs,"Spices, pepper, red or cayenne",tsp,1.8,usda,tsp
+celery seed,Spices and Herbs,"Spices, celery seed",tsp,2.0,usda,tsp
+celery seeds,Spices and Herbs,"Spices, celery seed",tsp,2.0,usda,tsp
+chili powder,Spices and Herbs,"Spices, chili powder",tsp,2.7,usda,tsp
+chipotle pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+cinnamon,Spices and Herbs,"Spices, cinnamon, ground",tsp,2.6,usda,tsp
+cinnamon stick,Spices and Herbs,"Spices, cinnamon, ground",tsp,2.6,usda,tsp
+clove,Spices and Herbs,"Spices, cloves, ground",tsp,2.1,usda,tsp
+crushed red pepper flakes,Spices and Herbs,"Spices, pepper, red or cayenne",tsp,1.8,usda,tsp
+cumin,Spices and Herbs,"Spices, cumin seed",tsp,2.1,usda,"tsp, whole"
+cumin powder,Spices and Herbs,"Spices, cumin seed",tsp,2.1,usda,"tsp, whole"
+cumin seed,Spices and Herbs,"Spices, cumin seed",tsp,2.1,usda,"tsp, whole"
+cumin seeds,Spices and Herbs,"Spices, cumin seed",tsp,2.1,usda,"tsp, whole"
+curry powder,Spices and Herbs,"Spices, curry powder",tsp,2.0,usda,tsp
+double-acting baking powder,Baked Products,"Leavening agents, baking powder, double-acting, straight phosphate",tsp,4.6,usda,tsp
+dried basil,Spices and Herbs,"Spices, basil, dried",tsp,0.7,usda,"tsp, leaves"
+dried marjoram,Spices and Herbs,"Spices, marjoram, dried",tsp,0.6,usda,tsp
+dried oregano,Spices and Herbs,"Spices, oregano, dried",tsp,1.0,usda,"tsp, leaves"
+dried parsley,Spices and Herbs,"Spices, parsley, dried",tsp,0.5,usda,tsp
+dried parsley flakes,Spices and Herbs,"Spices, parsley, dried",tsp,0.5,usda,tsp
+dried red pepper flakes,Spices and Herbs,"Spices, pepper, red or cayenne",tsp,1.8,usda,tsp
+dried rosemary,Spices and Herbs,"Spices, rosemary, dried",tsp,1.2,usda,tsp
+dried rubbed sage,Spices and Herbs,"Spices, sage, ground",tsp,0.7,usda,tsp
+dried thyme,Spices and Herbs,"Spices, thyme, dried",tsp,1.0,usda,"tsp, leaves"
+fennel seed,Spices and Herbs,"Spices, fennel seed",tsp,2.0,usda,"tsp, whole"
+fresh black pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh chili peppers,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh coarse ground black pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh cracked pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh ginger,Vegetables and Vegetable Products,"Ginger root, raw",tsp,2.0,usda,tsp
+fresh ground black pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh ground pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+fresh ground white pepper,Spices and Herbs,"Spices, pepper, white",tsp,2.4,usda,"tsp, ground"
+fresh oregano,Spices and Herbs,"Spices, oregano, dried",tsp,1.0,usda,"tsp, leaves"
+fresh rosemary,Spices and Herbs,"Spices, rosemary, dried",tsp,1.2,usda,tsp
+garam masala,Spices and Herbs,"Spices, curry powder",tsp,2.0,usda,tsp
+garlic powder,Spices and Herbs,"Spices, garlic powder",tsp,3.1,usda,tsp
+ginger,Vegetables and Vegetable Products,"Ginger root, raw",tsp,2.0,usda,tsp
+gingerroot,Vegetables and Vegetable Products,"Ginger root, raw",tsp,2.0,usda,tsp
+green chili peppers,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+ground black pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+ground cardamom,Spices and Herbs,"Spices, cardamom",tsp,2.0,usda,"tsp, ground"
+ground cinnamon,Spices and Herbs,"Spices, cinnamon, ground",tsp,2.6,usda,tsp
+ground cloves,Spices and Herbs,"Spices, cloves, ground",tsp,2.1,usda,tsp
+ground cumin,Spices and Herbs,"Spices, cumin seed",tsp,2.1,usda,"tsp, whole"
+ground ginger,Spices and Herbs,"Spices, ginger, ground",tsp,1.8,usda,tsp
+ground oregano,Spices and Herbs,"Spices, oregano, dried",tsp,1.0,usda,"tsp, leaves"
+ground paprika,Spices and Herbs,"Spices, paprika",tsp,2.3,usda,tsp
+ground pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+ground turmeric,Spices and Herbs,"Spices, turmeric, ground",tsp,3.0,usda,tsp
+hickory smoke salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+horseradish,Spices and Herbs,"Horseradish, prepared",tsp,5.0,usda,tsp
+hot chili pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+kosher salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+lemon pepper seasoning,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+minced garlic cloves,Vegetables and Vegetable Products,"Garlic, raw",tsp,2.8,usda,tsp
+nutmeg,Spices and Herbs,"Spices, nutmeg, ground",tsp,2.2,usda,tsp
+oregano,Spices and Herbs,"Spices, oregano, dried",tsp,1.0,usda,"tsp, leaves"
+paprika,Spices and Herbs,"Spices, paprika",tsp,2.3,usda,tsp
+pepper,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+pickled ginger,Vegetables and Vegetable Products,"Ginger root, raw",tsp,2.0,usda,tsp
+poultry seasoning,Spices and Herbs,"Spices, poultry seasoning",tsp,1.5,usda,tsp
+pumpkin pie spice,Spices and Herbs,"Spices, pumpkin pie spice",tsp,1.7,usda,tsp
+pure vanilla extract,Spices and Herbs,Vanilla extract,tsp,4.2,usda,tsp
+red pepper flakes,Spices and Herbs,"Spices, pepper, red or cayenne",tsp,1.8,usda,tsp
+saffron thread,Spices and Herbs,"Spices, saffron",tsp,0.7,usda,tsp
+salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+sea salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+seasoning salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+sweet paprika,Spices and Herbs,"Spices, paprika",tsp,2.3,usda,tsp
+sweet peppers,Spices and Herbs,"Spices, pepper, black",tsp,2.3,usda,"tsp, ground"
+table salt,Spices and Herbs,"Salt, table",tsp,6.0,usda,tsp
+thyme,Spices and Herbs,"Spices, thyme, dried",tsp,1.0,usda,"tsp, leaves"
+turmeric,Spices and Herbs,"Spices, turmeric, ground",tsp,3.0,usda,tsp
+vanilla,Spices and Herbs,Vanilla extract,tsp,4.2,usda,tsp
+vanilla extract,Spices and Herbs,Vanilla extract,tsp,4.2,usda,tsp
+white pepper,Spices and Herbs,"Spices, pepper, white",tsp,2.4,usda,"tsp, ground"

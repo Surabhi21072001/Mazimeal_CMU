@@ -16,11 +16,12 @@ psql -d mazimeal_full -f recommender/seed/00_reference.sql
 psql -d mazimeal_full -f recommender/seed/01_demo_household.sql
 psql -d mazimeal_full -f schema/seed/foodcom_400.sql
 psql -d mazimeal_full -f schema/seed/usda_nutrition.sql
+psql -d mazimeal_full -f schema/seed/ingredient_grams.sql
 ```
 
-The last two lines are the 400 Food.com recipes and the USDA nutrition for
-their ingredients. Same files the week-1 schema uses; both schemas accept
-them.
+The last three lines are the 400 Food.com recipes, the USDA nutrition for
+their ingredients, and grams per ingredient line. Same files the week-1
+schema uses; both schemas accept them.
 
 Then:
 
@@ -96,11 +97,13 @@ curry (26% of her iron gap) because salmon closes more gaps overall. Weighting
 condition-linked nutrients higher is the obvious first improvement, and the
 data to do it is already there in `nutrient_rules.applies_to_condition`.
 
-**Better gram estimates.** Imported recipes have ingredient quantities but no
-units, so "2 chicken" becomes two USDA portions. The recipe's derived
-nutrients are scaled so its derived calories match the calories Food.com
-publishes, which fixes the total but not the mix. Parsing units out of the
-original ingredient text, or asking the user, would fix the mix too.
+**Better gram estimates.** Imported recipes have a number per ingredient
+but no unit, and in most of them the number isn't reliably attached to the
+right ingredient (see `schema/seed/README.md`). Grams per line are an
+estimate from a default measure per ingredient and USDA portion weights, and
+the derived nutrients are still scaled so derived calories match the
+published ones. Real amounts would need a dataset that keeps the original
+ingredient text, or user edits; `ingredient_measures` is ready for either.
 
 **Variety.** Nothing stops it recommending salmon every night. A penalty for
 recipes eaten in the last N days needs `profile_recipe_history`, which exists
@@ -113,9 +116,9 @@ Column and index exist when pgvector is installed. Needs embeddings generated.
 
 ## Known limits
 
-- Volumes (cup, tbsp) convert to grams assuming water density. Whole items use
-  `ingredients.typical_serving_g`. Lines that can't convert are left out, so a
-  recipe with unconvertible lines under-reports.
+- Grams per line (`recipe_ingredients.quantity_g`) are estimates for
+  imported recipes. Lines with no grams are left out, so a recipe with
+  unknown lines under-reports; `grams_source` says which.
 - `v_recipe_nutrients_per_serving` is a plain view. Fine for hundreds of
   recipes; make it materialized before thousands.
 - Demo data is illustrative. The iron modifier for C002 is a placeholder, not

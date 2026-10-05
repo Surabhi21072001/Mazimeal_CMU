@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS ingredient_nutrition (
 
 CREATE INDEX IF NOT EXISTS idx_in_nutrient ON ingredient_nutrition (nutrient_id);
 
-COMMENT ON COLUMN ingredient_nutrition.value_per_100g IS 'USDA value per 100 g. Recipe totals scale this by recipe_ingredients.quantity.';
+COMMENT ON COLUMN ingredient_nutrition.value_per_100g IS 'USDA value per 100 g. Recipe totals scale this by recipe_ingredients.quantity_g.';

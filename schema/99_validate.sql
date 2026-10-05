@@ -169,6 +169,13 @@ BEGIN
             RETURN NEXT;
         END IF;
 
+        IF to_regclass('public.ingredient_measures') IS NOT NULL THEN
+            EXECUTE 'SELECT count(*) FILTER (WHERE quantity_g IS NOT NULL), count(*) FROM recipe_ingredients' INTO n, m;
+            status := 'INFO'; check_name := 'recipe lines with grams';
+            detail := n || ' of ' || m;
+            RETURN NEXT;
+        END IF;
+
         -- If we each add ingredients as we go, "Tomato", "tomato" and
         -- "Tomatoes" end up as three rows and the nutrition maths splits.
         EXECUTE $q$

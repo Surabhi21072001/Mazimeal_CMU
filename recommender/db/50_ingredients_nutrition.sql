@@ -27,6 +27,7 @@ CREATE TABLE public.ingredients (
     is_pet_toxic            BOOLEAN       NOT NULL DEFAULT FALSE,
     pet_toxic_notes         TEXT,
     typical_serving_g       DECIMAL(8,2),
+    default_measure         VARCHAR(40),
     data_source             VARCHAR(50)   NOT NULL DEFAULT 'USDA',
     created_at              TIMESTAMPTZ   NOT NULL DEFAULT now(),
 
@@ -68,8 +69,30 @@ CREATE TABLE public.ingredient_nutrition (
     CONSTRAINT ck_in_quality  CHECK (data_quality_flag IN ('standard', 'estimated', 'measured'))
 ) :part_ing_nutrition ;
 
-COMMENT ON COLUMN public.ingredient_nutrition.value_per_100g      IS 'Raw USDA value per 100g. Recipe totals scale this by recipe_ingredients.quantity.';
+COMMENT ON COLUMN public.ingredient_nutrition.value_per_100g      IS 'Raw USDA value per 100g. Recipe totals scale this by recipe_ingredients.quantity_g.';
 COMMENT ON COLUMN public.ingredient_nutrition.bioavailability_pct IS 'Baseline absorbed fraction, e.g. non-heme iron 5-10%. Prep-specific values live in ingredient_bioavailability.';
+
+-- ---------------------------------------------------------------------------
+-- ingredient_measures · household measures and their weight in grams
+--
+-- "1 cup flour" is 125 g, "1 large egg" 50 g, "1 clove garlic" 3 g. Loaded
+-- from USDA food_portion for the matched food; fallback rows are constants
+-- for measures USDA doesn't publish. Recipe lines convert to grams through
+-- this table, so a swap or a scaled amount recalculates nutrition.
+-- ---------------------------------------------------------------------------
+CREATE TABLE public.ingredient_measures (
+    ingredient_id      UUID          NOT NULL,
+    measure            VARCHAR(40)   NOT NULL,
+    gram_weight        DECIMAL(8,2)  NOT NULL,
+    source             VARCHAR(30)   NOT NULL DEFAULT 'USDA SR Legacy',
+    source_portion_id  BIGINT,
+
+    CONSTRAINT pk_ingredient_measures PRIMARY KEY (ingredient_id, measure),
+    CONSTRAINT ck_im_grams CHECK (gram_weight > 0)
+);
+
+COMMENT ON TABLE  public.ingredient_measures                   IS 'Grams per one household measure of an ingredient. Source rows come from USDA food_portion; fallback rows are estimates.';
+COMMENT ON COLUMN public.ingredient_measures.source_portion_id IS 'USDA food_portion.id when the weight came from USDA.';
 
 -- ---------------------------------------------------------------------------
 -- usda_nutrient_ref · ~300 rows · USDA code <-> internal nutrient_id

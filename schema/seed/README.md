@@ -77,6 +77,38 @@ bare numbers, so `recipe_ingredients.unit` is `unit`), and a clean meal type.
 Meal type comes from RecipeCategory first, then Keywords; "Lunch/Snacks"
 recipes under 250 kcal a serving count as Snack. Worth spot-checking.
 
+The quantities are also not reliably attached to the right ingredient. In
+most recipes the dataset's quantity list is longer than its ingredient list
+(it dropped some ingredient names but kept their numbers), so the number
+next to an ingredient may belong to another one. Only 114 of the 400 line
+up. `recipe_ingredients.quantity_aligned` says which.
+
+## Grams per ingredient line
+
+Nutrition is calculated as grams x per-100 g values, so every line needs
+grams. With no units in the dataset, this is an estimate: each ingredient
+gets a default household measure (flour: cup, olive oil: tbsp, egg: each,
+garlic: clove, ground beef: lb) and the weight of that measure comes from
+USDA `food_portion` for the matched food, or a fallback constant when USDA
+has none. Every USDA measure is also stored in `ingredient_measures`, so a
+line can later be switched to "2 tbsp" and recalculated.
+
+```bash
+python3 scripts/ingredient_grams.py <unzipped SR Legacy folder> --parquet recipes.parquet \
+    --review schema/seed/ingredient_measures.csv -o schema/seed/ingredient_grams.sql
+psql -d mazimeal -v ON_ERROR_STOP=1 -f schema/seed/ingredient_grams.sql
+```
+
+`ingredient_measures.csv` shows the measure chosen per ingredient, the grams
+and whether USDA or a fallback supplied them. When one is wrong, add it to
+`OVERRIDES` in the script and rerun. `--parquet` is optional; it fills
+`quantity_aligned` for databases loaded before the importer wrote it.
+
+Each line records how its grams were arrived at (`grams_source`): `measure`
+for number x measure weight, `assumed` when the source had no number and one
+measure was assumed, `manual` when someone entered grams, `none` when
+unknown. Unknown stays NULL.
+
 The dataset is scraped from Food.com. Fine for development; check the terms
 before anything ships to real users.
 

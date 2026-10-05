@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
     is_pet_toxic            BOOLEAN       NOT NULL DEFAULT FALSE,
     pet_toxic_notes         TEXT,
     typical_serving_g       DECIMAL(8,2),
+    default_measure         VARCHAR(40),
     data_source             VARCHAR(50)   NOT NULL DEFAULT 'USDA',
     created_at              TIMESTAMPTZ   NOT NULL DEFAULT now(),
 
