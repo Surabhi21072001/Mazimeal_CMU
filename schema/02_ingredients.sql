@@ -1,11 +1,9 @@
 -- 02_ingredients.sql
 -- Ingredient master table. From the schema doc, sheet 05_Ingredients_Nutrition.
 -- Load after 01_recipes, before 03_recipe_ingredients.
+-- Owner: Swetha.
 --
--- Draft to get the schema loading end to end. Owner can rework freely.
---
--- Nutrition values per ingredient live in a separate table in the doc
--- (ingredient_nutrition). Not included this week.
+-- Nutrition values per ingredient live in 08_ingredient_nutrition.sql.
 
 CREATE TABLE IF NOT EXISTS ingredients (
     ingredient_id           UUID          NOT NULL DEFAULT gen_random_uuid(),
@@ -48,7 +46,7 @@ CREATE INDEX IF NOT EXISTS idx_ingredients_category ON ingredients (food_categor
 CREATE INDEX IF NOT EXISTS idx_ingredients_allergen ON ingredients (allergen_type) WHERE is_allergen;
 CREATE INDEX IF NOT EXISTS idx_ingredients_pet_toxic ON ingredients (ingredient_id) WHERE is_pet_toxic;
 
-COMMENT ON TABLE  ingredients               IS 'Ingredient master. Nutrition per 100g lives in ingredient_nutrition (not yet built).';
+COMMENT ON TABLE  ingredients               IS 'Ingredient master. Nutrition per 100g lives in ingredient_nutrition.';
 COMMENT ON COLUMN ingredients.usda_fdc_id   IS 'USDA FoodData Central id. NULL for manual entries.';
 COMMENT ON COLUMN ingredients.food_category IS 'USDA food group.';
 COMMENT ON COLUMN ingredients.is_pet_toxic  IS 'Onion, grapes, chocolate, xylitol etc. Shown when a household has pets.';

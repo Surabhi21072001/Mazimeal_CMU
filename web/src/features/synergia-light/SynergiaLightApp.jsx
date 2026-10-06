@@ -2,11 +2,67 @@ import { useState, useEffect, useRef } from "react";
 import { C } from "../../shared/theme/colors";
 import { calculateDailyCalorieTarget, describeCalorieGoal, formatNutrientLabel } from "../../shared/nutrition/calorieTarget";
 import HomeDashboardClassic from "../home/HomeDashboardClassic";
+import { hasSupabaseEnv, supabase } from "../../shared/services/supabase/client";
 import {
   loadPlannerState,
   normalizePlannerState,
   savePlannerState,
 } from "../../shared/services/planner/plannerStore";
+import {
+  getCurrentUserId,
+  loadHouseholdForUser,
+  saveHousehold,
+  signIn,
+  signUp,
+} from "../../shared/services/auth/authStore";
+
+// A day-of-week planner slot needs a template at every index 0-6, so any
+// fetched replacement must supply exactly 7 recipes per category or the
+// hardcoded fallback below is used for that category instead.
+const REQUIRED_TEMPLATES_PER_CATEGORY = 7;
+
+async function fetchWeeklyMealTemplates() {
+  if (!hasSupabaseEnv || !supabase) return null;
+
+  const categoryToSlot = { Breakfast: "breakfast", Lunch: "lunch", Dinner: "dinner", Snack: "snack" };
+  const slotEmoji = { breakfast: "🍳", lunch: "🥗", dinner: "🍽️", snack: "🍎" };
+  const result = {};
+
+  for (const [category, slot] of Object.entries(categoryToSlot)) {
+    const { data: recipes, error } = await supabase
+      .from("recipes")
+      .select("recipe_id, recipe_name, recipe_description, calories_per_serving")
+      .eq("meal_category", category)
+      .is("deleted_at", null)
+      .limit(REQUIRED_TEMPLATES_PER_CATEGORY);
+
+    if (error || !recipes || recipes.length < REQUIRED_TEMPLATES_PER_CATEGORY) {
+      console.warn(`Weekly planner: not enough ${category} recipes to replace the placeholder templates.`, error);
+      continue;
+    }
+
+    const recipeIds = recipes.map((r) => r.recipe_id);
+    const { data: nutrition } = await supabase
+      .from("recipe_nutrition")
+      .select("recipe_id, nutrient_id, per_serving")
+      .in("recipe_id", recipeIds)
+      .eq("nutrient_id", "Macro_Protein");
+
+    const proteinByRecipe = Object.fromEntries((nutrition || []).map((n) => [n.recipe_id, n.per_serving]));
+
+    result[slot] = recipes.map((r) => ({
+      name: r.recipe_name,
+      calories: Number(r.calories_per_serving) || 0,
+      protein: proteinByRecipe[r.recipe_id] ?? null,
+      image: WEEKLY_PLANNER_IMAGE_SET[slot],
+      tip: r.recipe_description || "",
+      nutrients: { Protein: proteinByRecipe[r.recipe_id] ?? 0 },
+      emoji: slotEmoji[slot],
+    }));
+  }
+
+  return Object.keys(result).length ? result : null;
+}
 
 // ─── MOCK DATA ────────────────────────────────────────────────────────────────
 const CONDITIONS = ["Diabetes (Type 2)", "Iron Deficiency", "Celiac Disease", "Lactose Intolerance",
@@ -87,17 +143,59 @@ function buildHeightValue(feet, inches) {
   return `${normalizedFeet} ft ${normalizedInches} in`;
 }
 
-function createInitialWeeklyPlannerState(anchorDate = new Date()) {
+const WEEKLY_PLANNER_IMAGE_SET = {
+  breakfast: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=1200&q=80",
+  lunch: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+  dinner: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
+  snack: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1200&q=80",
+};
+
+// Placeholder meals shown until fetchWeeklyMealTemplates() resolves with real
+// recipes. Kept at module scope (not just inside createInitialWeeklyPlannerState)
+// so the "has this slot been swapped by the user?" check in App can compare a
+// meal's name against these without re-running the generator.
+const DEFAULT_BREAKFAST_TEMPLATES = [
+    { name: "Berry oat bowl", calories: 350, protein: 12, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Add seeds for extra fiber and better staying power.", nutrients: { Fiber: 82, Protein: 48, Antioxidants: 86 }, emoji: "🥣" },
+    { name: "Avocado toast", calories: 340, protein: 14, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Egg or yogurt on the side makes this more filling.", nutrients: { Fiber: 56, Protein: 54, Satiety: 88 }, emoji: "🍞" },
+    { name: "Greek yogurt parfait", calories: 310, protein: 18, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Lower-sugar granola keeps the protein-to-sugar balance stronger.", nutrients: { Protein: 72, Calcium: 70, Probiotics: 82 }, emoji: "🥛" },
+    { name: "Green smoothie bowl", calories: 300, protein: 15, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Use yogurt or protein milk to avoid a carb-only breakfast.", nutrients: { Hydration: 82, VitaminC: 90, Protein: 52 }, emoji: "🍓" },
+    { name: "Chia pudding", calories: 280, protein: 11, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Soak overnight for a smoother texture and easier digestion.", nutrients: { Fiber: 84, Omega3: 74, Calcium: 66 }, emoji: "🥄" },
+    { name: "Protein waffles", calories: 360, protein: 17, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Add yogurt and fruit to balance the plate.", nutrients: { Carbs: 70, Protein: 58, FamilyAppeal: 90 }, emoji: "🧇" },
+    { name: "Fruit and nuts", calories: 240, protein: 9, image: WEEKLY_PLANNER_IMAGE_SET.breakfast, tip: "Pair with milk or yogurt if you need more protein.", nutrients: { HealthyFats: 74, Fiber: 52, Energy: 60 }, emoji: "🍎" },
+];
+const DEFAULT_LUNCH_TEMPLATES = [
+    { name: "Mediterranean chicken bowl", calories: 600, protein: 35, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Add extra greens for more fiber without much prep.", nutrients: { Protein: 84, Fiber: 64, Balance: 82 }, emoji: "🥗" },
+    { name: "Protein wrap", calories: 540, protein: 32, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "A bean or chickpea side can lift fiber quickly.", nutrients: { Protein: 74, Fiber: 56, Convenience: 86 }, emoji: "🌯" },
+    { name: "Rice and veggie bowl", calories: 560, protein: 29, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Cool and reheat rice for a gentler glucose response.", nutrients: { Carbs: 68, Protein: 72, Fiber: 58 }, emoji: "🍚" },
+    { name: "Lentil salad box", calories: 520, protein: 26, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Citrus dressing helps boost iron absorption.", nutrients: { Iron: 80, Fiber: 82, Protein: 58 }, emoji: "🥙" },
+    { name: "Turkey sandwich plate", calories: 510, protein: 31, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Choose whole grain bread for better satiety.", nutrients: { Protein: 74, Fiber: 48, Satiety: 76 }, emoji: "🥪" },
+    { name: "Paneer power bowl", calories: 580, protein: 28, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Pair paneer with fresh herbs and citrus for brighter flavor.", nutrients: { Protein: 68, Calcium: 72, Balance: 78 }, emoji: "🫓" },
+    { name: "Chickpea crunch salad", calories: 500, protein: 24, image: WEEKLY_PLANNER_IMAGE_SET.lunch, tip: "Roasted chickpeas keep the texture lively and satisfying.", nutrients: { Fiber: 80, Protein: 52, Energy: 70 }, emoji: "🥬" },
+];
+const DEFAULT_DINNER_TEMPLATES = [
+    { name: "Salmon veggie skillet", calories: 520, protein: 30, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Pair with colorful veg to support antioxidant intake.", nutrients: { Protein: 82, Omega3: 90, VitaminD: 76 }, emoji: "🍲" },
+    { name: "Tofu stir fry", calories: 500, protein: 27, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Use sesame and lime to add flavor without a heavy sauce.", nutrients: { Protein: 70, Fiber: 62, Balance: 80 }, emoji: "🥘" },
+    { name: "Chicken tray bake", calories: 560, protein: 34, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Roast extra vegetables for tomorrow's lunch.", nutrients: { Protein: 84, Fiber: 54, FamilyAppeal: 88 }, emoji: "🍗" },
+    { name: "Lentil pasta plate", calories: 540, protein: 25, image: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=1200&q=80", tip: "Add greens into the sauce for a fast nutrient boost.", nutrients: { Protein: 62, Fiber: 72, Iron: 58 }, emoji: "🍝" },
+    { name: "Stuffed pepper tray", calories: 510, protein: 23, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Beans and quinoa make this filling without feeling heavy.", nutrients: { Fiber: 76, Protein: 56, Satiety: 78 }, emoji: "🫑" },
+    { name: "Shrimp rice bowl", calories: 530, protein: 32, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Add cabbage slaw for crunch and extra fiber.", nutrients: { Protein: 82, Balance: 74, Energy: 72 }, emoji: "🍤" },
+    { name: "Veggie taco night", calories: 550, protein: 22, image: WEEKLY_PLANNER_IMAGE_SET.dinner, tip: "Add avocado and beans to round out the plate.", nutrients: { Fiber: 70, Protein: 50, FamilyAppeal: 90 }, emoji: "🌮" },
+];
+const DEFAULT_SNACK_TEMPLATES = [
+    { name: "Apple and peanut butter", calories: 190, protein: 7, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Fruit plus fat makes this snack more sustaining.", nutrients: { Fiber: 60, HealthyFats: 72, Energy: 58 }, emoji: "🍎" },
+    { name: "Greek yogurt cup", calories: 140, protein: 15, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Keep sugar lower so protein stays the star.", nutrients: { Protein: 78, Calcium: 64, Probiotics: 82 }, emoji: "🥛" },
+    { name: "Trail mix", calories: 210, protein: 8, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Pre-portion servings so the snack stays balanced.", nutrients: { HealthyFats: 78, Fiber: 42, Energy: 68 }, emoji: "🥜" },
+    { name: "Hummus and carrots", calories: 160, protein: 6, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "A veggie snack helps spread produce through the day.", nutrients: { Fiber: 58, VitaminA: 84, Energy: 44 }, emoji: "🥕" },
+    { name: "Cheese and crackers", calories: 200, protein: 10, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Whole grain crackers hold the snack steadier than refined ones.", nutrients: { Protein: 48, Calcium: 62, Satiety: 60 }, emoji: "🧀" },
+    { name: "Berry smoothie", calories: 220, protein: 14, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Adding yogurt gives it a better protein profile.", nutrients: { Protein: 70, Hydration: 78, Antioxidants: 74 }, emoji: "🫐" },
+    { name: "Banana oat bites", calories: 180, protein: 6, image: WEEKLY_PLANNER_IMAGE_SET.snack, tip: "Batch prep these to avoid last-minute snack scrambles.", nutrients: { Energy: 58, Fiber: 46, Potassium: 72 }, emoji: "🍌" },
+];
+
+function createInitialWeeklyPlannerState(anchorDate = new Date(), templates = null) {
   const plannerAnchorDate = new Date(anchorDate);
   plannerAnchorDate.setHours(0, 0, 0, 0);
   const startOfWeek = new Date(plannerAnchorDate);
   startOfWeek.setDate(plannerAnchorDate.getDate() - plannerAnchorDate.getDay());
-  const imageSet = {
-    breakfast: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=1200&q=80",
-    lunch: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    dinner: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
-    snack: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1200&q=80",
-  };
   const baseSlots = [["breakfast", "Breakfast"], ["lunch", "Lunch"], ["dinner", "Dinner"], ["snack", "Snack"]];
   const createMealEntry = (slotType, template, labelOverride) => ({
     ...template,
@@ -105,42 +203,14 @@ function createInitialWeeklyPlannerState(anchorDate = new Date()) {
     label: labelOverride || (baseSlots.find(([slot]) => slot === slotType)?.[1] || "Meal"),
   });
   const calculateTotalCalories = (meals) => Object.values(meals).reduce((sum, meal) => sum + meal.calories, 0);
-  const breakfastTemplates = [
-    { name: "Berry oat bowl", calories: 350, protein: 12, image: imageSet.breakfast, tip: "Add seeds for extra fiber and better staying power.", nutrients: { Fiber: 82, Protein: 48, Antioxidants: 86 }, emoji: "🥣" },
-    { name: "Avocado toast", calories: 340, protein: 14, image: imageSet.breakfast, tip: "Egg or yogurt on the side makes this more filling.", nutrients: { Fiber: 56, Protein: 54, Satiety: 88 }, emoji: "🍞" },
-    { name: "Greek yogurt parfait", calories: 310, protein: 18, image: imageSet.breakfast, tip: "Lower-sugar granola keeps the protein-to-sugar balance stronger.", nutrients: { Protein: 72, Calcium: 70, Probiotics: 82 }, emoji: "🥛" },
-    { name: "Green smoothie bowl", calories: 300, protein: 15, image: imageSet.breakfast, tip: "Use yogurt or protein milk to avoid a carb-only breakfast.", nutrients: { Hydration: 82, VitaminC: 90, Protein: 52 }, emoji: "🍓" },
-    { name: "Chia pudding", calories: 280, protein: 11, image: imageSet.breakfast, tip: "Soak overnight for a smoother texture and easier digestion.", nutrients: { Fiber: 84, Omega3: 74, Calcium: 66 }, emoji: "🥄" },
-    { name: "Protein waffles", calories: 360, protein: 17, image: imageSet.breakfast, tip: "Add yogurt and fruit to balance the plate.", nutrients: { Carbs: 70, Protein: 58, FamilyAppeal: 90 }, emoji: "🧇" },
-    { name: "Fruit and nuts", calories: 240, protein: 9, image: imageSet.breakfast, tip: "Pair with milk or yogurt if you need more protein.", nutrients: { HealthyFats: 74, Fiber: 52, Energy: 60 }, emoji: "🍎" },
-  ];
-  const lunchTemplates = [
-    { name: "Mediterranean chicken bowl", calories: 600, protein: 35, image: imageSet.lunch, tip: "Add extra greens for more fiber without much prep.", nutrients: { Protein: 84, Fiber: 64, Balance: 82 }, emoji: "🥗" },
-    { name: "Protein wrap", calories: 540, protein: 32, image: imageSet.lunch, tip: "A bean or chickpea side can lift fiber quickly.", nutrients: { Protein: 74, Fiber: 56, Convenience: 86 }, emoji: "🌯" },
-    { name: "Rice and veggie bowl", calories: 560, protein: 29, image: imageSet.lunch, tip: "Cool and reheat rice for a gentler glucose response.", nutrients: { Carbs: 68, Protein: 72, Fiber: 58 }, emoji: "🍚" },
-    { name: "Lentil salad box", calories: 520, protein: 26, image: imageSet.lunch, tip: "Citrus dressing helps boost iron absorption.", nutrients: { Iron: 80, Fiber: 82, Protein: 58 }, emoji: "🥙" },
-    { name: "Turkey sandwich plate", calories: 510, protein: 31, image: imageSet.lunch, tip: "Choose whole grain bread for better satiety.", nutrients: { Protein: 74, Fiber: 48, Satiety: 76 }, emoji: "🥪" },
-    { name: "Paneer power bowl", calories: 580, protein: 28, image: imageSet.lunch, tip: "Pair paneer with fresh herbs and citrus for brighter flavor.", nutrients: { Protein: 68, Calcium: 72, Balance: 78 }, emoji: "🫓" },
-    { name: "Chickpea crunch salad", calories: 500, protein: 24, image: imageSet.lunch, tip: "Roasted chickpeas keep the texture lively and satisfying.", nutrients: { Fiber: 80, Protein: 52, Energy: 70 }, emoji: "🥬" },
-  ];
-  const dinnerTemplates = [
-    { name: "Salmon veggie skillet", calories: 520, protein: 30, image: imageSet.dinner, tip: "Pair with colorful veg to support antioxidant intake.", nutrients: { Protein: 82, Omega3: 90, VitaminD: 76 }, emoji: "🍲" },
-    { name: "Tofu stir fry", calories: 500, protein: 27, image: imageSet.dinner, tip: "Use sesame and lime to add flavor without a heavy sauce.", nutrients: { Protein: 70, Fiber: 62, Balance: 80 }, emoji: "🥘" },
-    { name: "Chicken tray bake", calories: 560, protein: 34, image: imageSet.dinner, tip: "Roast extra vegetables for tomorrow's lunch.", nutrients: { Protein: 84, Fiber: 54, FamilyAppeal: 88 }, emoji: "🍗" },
-    { name: "Lentil pasta plate", calories: 540, protein: 25, image: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=1200&q=80", tip: "Add greens into the sauce for a fast nutrient boost.", nutrients: { Protein: 62, Fiber: 72, Iron: 58 }, emoji: "🍝" },
-    { name: "Stuffed pepper tray", calories: 510, protein: 23, image: imageSet.dinner, tip: "Beans and quinoa make this filling without feeling heavy.", nutrients: { Fiber: 76, Protein: 56, Satiety: 78 }, emoji: "🫑" },
-    { name: "Shrimp rice bowl", calories: 530, protein: 32, image: imageSet.dinner, tip: "Add cabbage slaw for crunch and extra fiber.", nutrients: { Protein: 82, Balance: 74, Energy: 72 }, emoji: "🍤" },
-    { name: "Veggie taco night", calories: 550, protein: 22, image: imageSet.dinner, tip: "Add avocado and beans to round out the plate.", nutrients: { Fiber: 70, Protein: 50, FamilyAppeal: 90 }, emoji: "🌮" },
-  ];
-  const snackTemplates = [
-    { name: "Apple and peanut butter", calories: 190, protein: 7, image: imageSet.snack, tip: "Fruit plus fat makes this snack more sustaining.", nutrients: { Fiber: 60, HealthyFats: 72, Energy: 58 }, emoji: "🍎" },
-    { name: "Greek yogurt cup", calories: 140, protein: 15, image: imageSet.snack, tip: "Keep sugar lower so protein stays the star.", nutrients: { Protein: 78, Calcium: 64, Probiotics: 82 }, emoji: "🥛" },
-    { name: "Trail mix", calories: 210, protein: 8, image: imageSet.snack, tip: "Pre-portion servings so the snack stays balanced.", nutrients: { HealthyFats: 78, Fiber: 42, Energy: 68 }, emoji: "🥜" },
-    { name: "Hummus and carrots", calories: 160, protein: 6, image: imageSet.snack, tip: "A veggie snack helps spread produce through the day.", nutrients: { Fiber: 58, VitaminA: 84, Energy: 44 }, emoji: "🥕" },
-    { name: "Cheese and crackers", calories: 200, protein: 10, image: imageSet.snack, tip: "Whole grain crackers hold the snack steadier than refined ones.", nutrients: { Protein: 48, Calcium: 62, Satiety: 60 }, emoji: "🧀" },
-    { name: "Berry smoothie", calories: 220, protein: 14, image: imageSet.snack, tip: "Adding yogurt gives it a better protein profile.", nutrients: { Protein: 70, Hydration: 78, Antioxidants: 74 }, emoji: "🫐" },
-    { name: "Banana oat bites", calories: 180, protein: 6, image: imageSet.snack, tip: "Batch prep these to avoid last-minute snack scrambles.", nutrients: { Energy: 58, Fiber: 46, Potassium: 72 }, emoji: "🍌" },
-  ];
+
+  // Real recipes replace a category's defaults only when exactly 7 were
+  // fetched (see fetchWeeklyMealTemplates) — a short array would produce
+  // `undefined` for the missing day indexes below.
+  const breakfastTemplates = templates?.breakfast?.length === 7 ? templates.breakfast : DEFAULT_BREAKFAST_TEMPLATES;
+  const lunchTemplates = templates?.lunch?.length === 7 ? templates.lunch : DEFAULT_LUNCH_TEMPLATES;
+  const dinnerTemplates = templates?.dinner?.length === 7 ? templates.dinner : DEFAULT_DINNER_TEMPLATES;
+  const snackTemplates = templates?.snack?.length === 7 ? templates.snack : DEFAULT_SNACK_TEMPLATES;
 
   const days = Array.from({ length: 7 }, (_, index) => {
     const date = new Date(startOfWeek);
@@ -1010,6 +1080,8 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [captcha, setCaptcha] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleNavClick = (section) => {
     if (onNavigateToSection) {
@@ -1019,6 +1091,55 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
     }
   };
   const derivedName = name.trim() || (email.includes("@") ? email.split("@")[0] : "Mazimeal User");
+
+  const handleSubmit = async () => {
+    setSubmitError("");
+
+    if (!email.trim() || !pw.trim()) {
+      setSubmitError("Please enter your email and password.");
+      return;
+    }
+    if (tab === "signup" && (!name.trim() || !username.trim())) {
+      setSubmitError("Please complete all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      if (tab === "signup") {
+        const { data, error } = await signUp({ name: name.trim(), username: username.trim(), email: email.trim(), password: pw });
+        if (error) throw error;
+        const userId = data?.user?.id;
+
+        if (userId && !data.session) {
+          // Supabase requires email confirmation before issuing a session.
+          // Without a session the household insert below would run as an
+          // unauthenticated request and get silently rejected by RLS, so
+          // stop here and say so instead of pretending it worked.
+          setSubmitError("Account created — check your email to confirm it, then log in. (If email isn't set up yet, ask whoever owns the Supabase project to turn off \"Confirm email\" in Authentication settings.)");
+          return;
+        }
+
+        if (userId) {
+          // This quick form only collects a name — not the full household
+          // questionnaire — so it creates a minimal one-person household.
+          const { error: householdError } = await saveHousehold({ userId, household: {}, profiles: [{ name: name.trim() }] });
+          if (householdError) throw householdError;
+        }
+        onLogin(derivedName, null);
+      } else {
+        const { data, error } = await signIn({ email: email.trim(), password: pw });
+        if (error) throw error;
+        const userId = data?.user?.id;
+        const loaded = userId ? await loadHouseholdForUser(userId) : null;
+        onLogin(derivedName, loaded);
+      }
+    } catch (error) {
+      setSubmitError(error?.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: C.bg }}>
@@ -1240,8 +1361,13 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
                       </div>
                     </div>
                   )}
-                  <button className="btn-primary" style={{ width: "100%", padding: "13px", fontSize: 15, marginTop: 6 }} onClick={() => onLogin(derivedName)}>
-                    {tab === "login" ? "Enter Nutrition Hub →" : "Create Access & Continue →"}
+                  {submitError && (
+                    <div role="alert" style={{ background: "#FCE7E0", border: `1px solid ${C.coral}`, color: "#8A2D20", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontWeight: 600 }}>
+                      {submitError}
+                    </div>
+                  )}
+                  <button className="btn-primary" style={{ width: "100%", padding: "13px", fontSize: 15, marginTop: 6 }} onClick={handleSubmit} disabled={isSubmitting}>
+                    {isSubmitting ? "Please wait..." : tab === "login" ? "Enter Nutrition Hub →" : "Create Access & Continue →"}
                   </button>
                 </div>
 
@@ -4823,7 +4949,7 @@ function BottomNav({ step, setStep }) {
   );
 }
 
-function OnboardingModule({ user, profiles, profile, profileCount, setProfiles, step, setStep, plannerDay, plannerState, setPlannerState }) {
+function OnboardingModule({ user, profiles, profile, profileCount, setProfiles, step, setStep, plannerDay, plannerState, setPlannerState, mealTemplates }) {
   const showRightSidebar = step === "profile";
   const [showIntro, setShowIntro] = useState(true);
   const classicMealLogStorageKey = `mazimeal:classic-meal-log:${user || "guest"}`;
@@ -4893,6 +5019,7 @@ function OnboardingModule({ user, profiles, profile, profileCount, setProfiles, 
         {step === "weeklyPlanner" && (
           <WeeklyPlannerShowcase
             profiles={profiles}
+            mealTemplates={mealTemplates}
             plannerDays={plannerState.days}
             setPlannerDays={(daysOrUpdater) =>
               setPlannerState((current) => ({
@@ -5738,6 +5865,7 @@ function WeeklyPlanTab({ profiles }) {
 
 function WeeklyPlannerShowcase({
   profiles,
+  mealTemplates,
   plannerDays,
   setPlannerDays,
   plannerAnchorDate,
@@ -5753,48 +5881,12 @@ function WeeklyPlannerShowcase({
   const startOfWeek = new Date(plannerAnchorDate);
   startOfWeek.setHours(0, 0, 0, 0);
   startOfWeek.setDate(plannerAnchorDate.getDate() - plannerAnchorDate.getDay());
-  const imageSet = {
-    breakfast: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=1200&q=80",
-    lunch: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-    dinner: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
-    snack: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=1200&q=80",
-  };
-  const breakfastTemplates = [
-    { name: "Berry oat bowl", calories: 350, protein: 12, image: imageSet.breakfast, tip: "Add seeds for extra fiber and better staying power.", nutrients: { Fiber: 82, Protein: 48, Antioxidants: 86 }, emoji: "🥣" },
-    { name: "Avocado toast", calories: 340, protein: 14, image: imageSet.breakfast, tip: "Egg or yogurt on the side makes this more filling.", nutrients: { Fiber: 56, Protein: 54, Satiety: 88 }, emoji: "🍞" },
-    { name: "Greek yogurt parfait", calories: 310, protein: 18, image: imageSet.breakfast, tip: "Lower-sugar granola keeps the protein-to-sugar balance stronger.", nutrients: { Protein: 72, Calcium: 70, Probiotics: 82 }, emoji: "🥛" },
-    { name: "Green smoothie bowl", calories: 300, protein: 15, image: imageSet.breakfast, tip: "Use yogurt or protein milk to avoid a carb-only breakfast.", nutrients: { Hydration: 82, VitaminC: 90, Protein: 52 }, emoji: "🍓" },
-    { name: "Chia pudding", calories: 280, protein: 11, image: imageSet.breakfast, tip: "Soak overnight for a smoother texture and easier digestion.", nutrients: { Fiber: 84, Omega3: 74, Calcium: 66 }, emoji: "🥄" },
-    { name: "Protein waffles", calories: 360, protein: 17, image: imageSet.breakfast, tip: "Add yogurt and fruit to balance the plate.", nutrients: { Carbs: 70, Protein: 58, FamilyAppeal: 90 }, emoji: "🧇" },
-    { name: "Fruit and nuts", calories: 240, protein: 9, image: imageSet.breakfast, tip: "Pair with milk or yogurt if you need more protein.", nutrients: { HealthyFats: 74, Fiber: 52, Energy: 60 }, emoji: "🍎" },
-  ];
-  const lunchTemplates = [
-    { name: "Mediterranean chicken bowl", calories: 600, protein: 35, image: imageSet.lunch, tip: "Add extra greens for more fiber without much prep.", nutrients: { Protein: 84, Fiber: 64, Balance: 82 }, emoji: "🥗" },
-    { name: "Protein wrap", calories: 540, protein: 32, image: imageSet.lunch, tip: "A bean or chickpea side can lift fiber quickly.", nutrients: { Protein: 74, Fiber: 56, Convenience: 86 }, emoji: "🌯" },
-    { name: "Rice and veggie bowl", calories: 560, protein: 29, image: imageSet.lunch, tip: "Cool and reheat rice for a gentler glucose response.", nutrients: { Carbs: 68, Protein: 72, Fiber: 58 }, emoji: "🍚" },
-    { name: "Lentil salad box", calories: 520, protein: 26, image: imageSet.lunch, tip: "Citrus dressing helps boost iron absorption.", nutrients: { Iron: 80, Fiber: 82, Protein: 58 }, emoji: "🥙" },
-    { name: "Turkey sandwich plate", calories: 510, protein: 31, image: imageSet.lunch, tip: "Choose whole grain bread for better satiety.", nutrients: { Protein: 74, Fiber: 48, Satiety: 76 }, emoji: "🥪" },
-    { name: "Paneer power bowl", calories: 580, protein: 28, image: imageSet.lunch, tip: "Pair paneer with fresh herbs and citrus for brighter flavor.", nutrients: { Protein: 68, Calcium: 72, Balance: 78 }, emoji: "🫓" },
-    { name: "Chickpea crunch salad", calories: 500, protein: 24, image: imageSet.lunch, tip: "Roasted chickpeas keep the texture lively and satisfying.", nutrients: { Fiber: 80, Protein: 52, Energy: 70 }, emoji: "🥬" },
-  ];
-  const dinnerTemplates = [
-    { name: "Salmon veggie skillet", calories: 520, protein: 30, image: imageSet.dinner, tip: "Pair with colorful veg to support antioxidant intake.", nutrients: { Protein: 82, Omega3: 90, VitaminD: 76 }, emoji: "🍲" },
-    { name: "Tofu stir fry", calories: 500, protein: 27, image: imageSet.dinner, tip: "Use sesame and lime to add flavor without a heavy sauce.", nutrients: { Protein: 70, Fiber: 62, Balance: 80 }, emoji: "🥘" },
-    { name: "Chicken tray bake", calories: 560, protein: 34, image: imageSet.dinner, tip: "Roast extra vegetables for tomorrow's lunch.", nutrients: { Protein: 84, Fiber: 54, FamilyAppeal: 88 }, emoji: "🍗" },
-    { name: "Lentil pasta plate", calories: 540, protein: 25, image: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=1200&q=80", tip: "Add greens into the sauce for a fast nutrient boost.", nutrients: { Protein: 62, Fiber: 72, Iron: 58 }, emoji: "🍝" },
-    { name: "Stuffed pepper tray", calories: 510, protein: 23, image: imageSet.dinner, tip: "Beans and quinoa make this filling without feeling heavy.", nutrients: { Fiber: 76, Protein: 56, Satiety: 78 }, emoji: "🫑" },
-    { name: "Shrimp rice bowl", calories: 530, protein: 32, image: imageSet.dinner, tip: "Add cabbage slaw for crunch and extra fiber.", nutrients: { Protein: 82, Balance: 74, Energy: 72 }, emoji: "🍤" },
-    { name: "Veggie taco night", calories: 550, protein: 22, image: imageSet.dinner, tip: "Add avocado and beans to round out the plate.", nutrients: { Fiber: 70, Protein: 50, FamilyAppeal: 90 }, emoji: "🌮" },
-  ];
-  const snackTemplates = [
-    { name: "Apple and peanut butter", calories: 190, protein: 7, image: imageSet.snack, tip: "Fruit plus fat makes this snack more sustaining.", nutrients: { Fiber: 60, HealthyFats: 72, Energy: 58 }, emoji: "🍎" },
-    { name: "Greek yogurt cup", calories: 140, protein: 15, image: imageSet.snack, tip: "Keep sugar lower so protein stays the star.", nutrients: { Protein: 78, Calcium: 64, Probiotics: 82 }, emoji: "🥛" },
-    { name: "Trail mix", calories: 210, protein: 8, image: imageSet.snack, tip: "Pre-portion servings so the snack stays balanced.", nutrients: { HealthyFats: 78, Fiber: 42, Energy: 68 }, emoji: "🥜" },
-    { name: "Hummus and carrots", calories: 160, protein: 6, image: imageSet.snack, tip: "A veggie snack helps spread produce through the day.", nutrients: { Fiber: 58, VitaminA: 84, Energy: 44 }, emoji: "🥕" },
-    { name: "Cheese and crackers", calories: 200, protein: 10, image: imageSet.snack, tip: "Whole grain crackers hold the snack steadier than refined ones.", nutrients: { Protein: 48, Calcium: 62, Satiety: 60 }, emoji: "🧀" },
-    { name: "Berry smoothie", calories: 220, protein: 14, image: imageSet.snack, tip: "Adding yogurt gives it a better protein profile.", nutrients: { Protein: 70, Hydration: 78, Antioxidants: 74 }, emoji: "🫐" },
-    { name: "Banana oat bites", calories: 180, protein: 6, image: imageSet.snack, tip: "Batch prep these to avoid last-minute snack scrambles.", nutrients: { Energy: 58, Fiber: 46, Potassium: 72 }, emoji: "🍌" },
-  ];
+  // Same "exactly 7 real recipes or fall back to the placeholder set" rule as
+  // createInitialWeeklyPlannerState — this feeds the swap/add-meal pickers below.
+  const breakfastTemplates = mealTemplates?.breakfast?.length === 7 ? mealTemplates.breakfast : DEFAULT_BREAKFAST_TEMPLATES;
+  const lunchTemplates = mealTemplates?.lunch?.length === 7 ? mealTemplates.lunch : DEFAULT_LUNCH_TEMPLATES;
+  const dinnerTemplates = mealTemplates?.dinner?.length === 7 ? mealTemplates.dinner : DEFAULT_DINNER_TEMPLATES;
+  const snackTemplates = mealTemplates?.snack?.length === 7 ? mealTemplates.snack : DEFAULT_SNACK_TEMPLATES;
   const templateGroups = { breakfast: breakfastTemplates, lunch: lunchTemplates, dinner: dinnerTemplates, snack: snackTemplates };
   const addMealCategories = [
     { key: "breakfast", label: "Breakfast", description: "Morning meal ideas with more staying power." },
@@ -5812,28 +5904,6 @@ function WeeklyPlannerShowcase({
     label: labelOverride || (baseSlots.find(([slot]) => slot === slotType)?.[1] || "Meal"),
   });
   const calculateTotalCalories = (meals) => Object.values(meals).reduce((sum, meal) => sum + meal.calories, 0);
-
-  const weekEntries = Array.from({ length: 7 }, (_, index) => {
-    const date = new Date(startOfWeek);
-    const meals = {
-      breakfast: createMealEntry("breakfast", breakfastTemplates[index], "Breakfast"),
-      lunch: createMealEntry("lunch", lunchTemplates[index], "Lunch"),
-      dinner: createMealEntry("dinner", dinnerTemplates[index], "Dinner"),
-      snack: createMealEntry("snack", snackTemplates[index], "Snack"),
-    };
-    date.setDate(startOfWeek.getDate() + index);
-    return {
-      key: date.toISOString(),
-      shortDay: date.toLocaleDateString("en-US", { weekday: "short" }),
-      longDay: date.toLocaleDateString("en-US", { weekday: "long" }),
-      dayNumber: date.toLocaleDateString("en-US", { day: "numeric" }),
-      monthLabel: date.toLocaleDateString("en-US", { month: "short" }),
-      display: date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-      mealOrder: baseSlots.map(([slot]) => slot),
-      totalCalories: calculateTotalCalories(meals),
-      meals,
-    };
-  });
 
   const [activeRecipeSlot, setActiveRecipeSlot] = useState(null);
   const [activeSwapSlot, setActiveSwapSlot] = useState(null);
@@ -6002,7 +6072,7 @@ function WeeklyPlannerShowcase({
     <>
       <div style={{ padding: "26px 20px 92px", maxWidth: 1180, margin: "0 auto", display: "grid", gap: 22 }}>
         <div className="card" style={{ position: "relative", overflow: "hidden", minHeight: 760, padding: 0, background: "linear-gradient(180deg, rgba(255,253,248,0.96), rgba(248,245,238,0.94))", border: `1.5px solid ${C.border}` }}>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(180deg, rgba(255,253,248,0.92), rgba(255,253,248,0.74)), url('${imageSet.dinner}')`, backgroundSize: "cover", backgroundPosition: "center" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(180deg, rgba(255,253,248,0.92), rgba(255,253,248,0.74)), url('${WEEKLY_PLANNER_IMAGE_SET.dinner}')`, backgroundSize: "cover", backgroundPosition: "center" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(255,255,255,0.18), rgba(245,241,232,0.74))" }} />
           <div style={{ position: "relative", zIndex: 1, padding: "22px 24px 28px", display: "grid", gap: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
@@ -6389,7 +6459,7 @@ function WeeklyPlannerShowcase({
                         key={week.key}
                         type="button"
                         onClick={() => {
-                          const nextPlannerState = createInitialWeeklyPlannerState(new Date(week.start));
+                          const nextPlannerState = createInitialWeeklyPlannerState(new Date(week.start), mealTemplates);
                           setPlannerAnchorDate(nextPlannerState.anchorDate);
                           setPlannerDays(nextPlannerState.days);
                           setSelectedDayIndex(Math.min(Math.max(selectedDayIndex, 0), 6));
@@ -6508,6 +6578,7 @@ export default function App() {
   const [step, setStep] = useState("homeClassic");
   const [plannerState, setPlannerState] = useState(() => createInitialWeeklyPlannerState(new Date()));
   const [plannerHydrated, setPlannerHydrated] = useState(false);
+  const [mealTemplates, setMealTemplates] = useState(null);
   const [accountEmail, setAccountEmail] = useState("");
   const [household, setHousehold] = useState({ name: "", country: "US", members: 4, pets: { cat: false, dog: false }, scraps: false });
   const [profiles, setProfiles] = useState([
@@ -6546,6 +6617,47 @@ export default function App() {
   }, [user]);
 
   useEffect(() => {
+    let cancelled = false;
+    fetchWeeklyMealTemplates().then((templates) => {
+      if (!cancelled && templates) setMealTemplates(templates);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mealTemplates || !plannerHydrated) return;
+    const defaultsBySlot = {
+      breakfast: DEFAULT_BREAKFAST_TEMPLATES,
+      lunch: DEFAULT_LUNCH_TEMPLATES,
+      dinner: DEFAULT_DINNER_TEMPLATES,
+      snack: DEFAULT_SNACK_TEMPLATES,
+    };
+    setPlannerState((prev) => {
+      let stateChanged = false;
+      const days = prev.days.map((day, index) => {
+        const meals = { ...day.meals };
+        let dayChanged = false;
+        for (const slot of Object.keys(defaultsBySlot)) {
+          const stillDefault = day.meals[slot]?.name === defaultsBySlot[slot][index]?.name;
+          const replacement = mealTemplates[slot]?.[index];
+          if (stillDefault && replacement) {
+            meals[slot] = { ...replacement, slotType: slot, label: day.meals[slot].label };
+            dayChanged = true;
+          }
+        }
+        if (!dayChanged) return day;
+        stateChanged = true;
+        return { ...day, meals, totalCalories: Object.values(meals).reduce((sum, meal) => sum + meal.calories, 0) };
+      });
+      return stateChanged ? { ...prev, days } : prev;
+    });
+    // Only replaces meals that still match a hardcoded default (i.e. the user
+    // hasn't swapped that slot yet), so it never overwrites a saved edit.
+  }, [mealTemplates, plannerHydrated]);
+
+  useEffect(() => {
     if (!plannerHydrated || !user) return undefined;
 
     if (plannerSaveTimerRef.current) {
@@ -6570,7 +6682,15 @@ export default function App() {
   if (screen === "login") return (
     <LoginModule 
       initialTab={loginTab} 
-      onLogin={n => { setUser(n); setScreen("app"); setStep("homeClassic"); }} 
+      onLogin={(n, loaded) => {
+        setUser(n);
+        if (loaded) {
+          setHousehold((h) => ({ ...h, ...loaded.household }));
+          if (loaded.profiles.length) setProfiles(loaded.profiles);
+        }
+        setScreen("app");
+        setStep("homeClassic");
+      }}
       onBack={() => setScreen("landing")}
       onNavigateToSection={(section) => {
         setScreen("landing");
@@ -6662,6 +6782,7 @@ export default function App() {
       plannerDay={plannerDay}
       plannerState={plannerState}
       setPlannerState={setPlannerState}
+      mealTemplates={mealTemplates}
     />
   );
 
