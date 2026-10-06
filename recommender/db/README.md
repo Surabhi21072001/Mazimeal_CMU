@@ -41,7 +41,7 @@ partitioning, and partitioning is not free.
 | CHECK constraints | 87 | 87 |
 | RLS policies | 34 | 34 |
 
-### Why 22 foreign keys disappear
+### Why 23 foreign keys disappear
 
 Postgres will not let a foreign key reference a partitioned table unless it
 targets a unique constraint that contains the partition key. Sheet 09 partitions
@@ -57,7 +57,7 @@ recipe filter will never apply.
 The gap is queryable, not buried in a comment:
 
 ```sql
-SELECT * FROM v_unenforced_fks;   -- 0 rows in MVP, 22 rows in SCALE
+SELECT * FROM v_unenforced_fks;   -- 0 rows in MVP, 23 rows in SCALE
 ```
 
 **Recommendation: start in MVP mode.** The partition scheme is designed for

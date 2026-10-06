@@ -1,0 +1,586 @@
+{
+    "steps": [
+        {
+            "instruction": "Editor's Note: Named Bourbon Chicken because it was supposedly created by a Chinese cook who worked in a restaurant on Bourbon Street.",
+            "step_number": 1,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Heat oil in a large skillet.",
+            "step_number": 2,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Add chicken pieces and cook until lightly browned.",
+            "step_number": 3,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Remove chicken.",
+            "step_number": 4,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Add remaining ingredients, heating over medium Heat until well mixed and dissolved.",
+            "step_number": 5,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Add chicken and bring to a hard boil.",
+            "step_number": 6,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Reduce heat and simmer for 20 minutes.",
+            "step_number": 7,
+            "timing_note": null,
+            "duration_min": null
+        },
+        {
+            "instruction": "Serve over hot rice and ENJOY.",
+            "step_number": 8,
+            "timing_note": null,
+            "duration_min": null
+        }
+    ],
+    "recipe": {
+        "servings": 4,
+        "recipe_id": "01a0cf6c-be51-7eec-aac3-50fd406cbc67",
+        "recipe_name": "Bourbon Chicken",
+        "dietary_tags": [
+            "high_protein"
+        ],
+        "cook_time_min": 20,
+        "meal_category": "Dinner",
+        "prep_time_min": 15,
+        "difficulty_level": null,
+        "recipe_description": "I searched and finally found this recipe on the internet. It is a copycat of the Bourbon Chicken sold in Chinese carry-outs in my hometown. This recipe is so good that my sons gobble it up leaving me just a spoonful. Their excuse was they thought I had eaten. Editor's Note: Named Bourbon Chicken because it was supposedly created by a Chinese cook who worked in a restaurant on Bourbon Street."
+    },
+    "nutrition": {
+        "name": "Bourbon Chicken",
+        "lines": [
+            {
+                "basis": "stored",
+                "grams": 472.0,
+                "changed": false,
+                "line_id": "01a0cf6d-4c5d-7187-99a8-ed734ff1819e",
+                "measure": "each",
+                "measures": [
+                    {
+                        "grams": 236.00,
+                        "measure": "breast"
+                    },
+                    {
+                        "grams": 236.00,
+                        "measure": "each"
+                    },
+                    {
+                        "grams": 28.25,
+                        "measure": "oz"
+                    },
+                    {
+                        "grams": 263.00,
+                        "measure": "piece"
+                    }
+                ],
+                "quantity": 2.000,
+                "ingredient": "boneless chicken breasts",
+                "ingredient_id": "01a0cf6c-0dc0-7685-830f-6bf34dfdb65b"
+            },
+            {
+                "basis": "stored",
+                "grams": 29.8,
+                "changed": false,
+                "line_id": "01a0cf6d-4e8f-7c64-8789-5b104e669d17",
+                "measure": "tbsp",
+                "measures": [
+                    {
+                        "grams": 238.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 14.90,
+                        "measure": "tbsp"
+                    },
+                    {
+                        "grams": 5.00,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 2.000,
+                "ingredient": "cider vinegar",
+                "ingredient_id": "01a0cf6c-0ff7-75fd-9c7f-d0304f1b970e"
+            },
+            {
+                "basis": "stored",
+                "grams": 1.4,
+                "changed": false,
+                "line_id": "01a0cf6d-4da0-7d5a-8c67-77014379b21a",
+                "measure": "tsp",
+                "measures": [
+                    {
+                        "grams": 5.30,
+                        "measure": "tbsp"
+                    },
+                    {
+                        "grams": 1.80,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 0.750,
+                "ingredient": "crushed red pepper flakes",
+                "ingredient_id": "01a0cf6c-0f08-7b60-85e0-5f6e4f3eabd2"
+            },
+            {
+                "basis": "stored",
+                "grams": 3.0,
+                "changed": false,
+                "line_id": "01a0cf6d-4d00-7b74-b960-a55f475d9a87",
+                "measure": "clove",
+                "measures": [
+                    {
+                        "grams": 3.00,
+                        "measure": "clove"
+                    },
+                    {
+                        "grams": 136.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 2.80,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 1.000,
+                "ingredient": "garlic clove",
+                "ingredient_id": "01a0cf6c-0e67-73ab-8da9-e19247c3a10d"
+            },
+            {
+                "basis": "stored",
+                "grams": 0.5,
+                "changed": false,
+                "line_id": "01a0cf6d-4d4f-7a7c-be7d-eca64503aa14",
+                "measure": "tsp",
+                "measures": [
+                    {
+                        "grams": 96.00,
+                        "measure": "cup slices"
+                    },
+                    {
+                        "grams": 2.20,
+                        "measure": "slice"
+                    },
+                    {
+                        "grams": 2.00,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 0.250,
+                "ingredient": "ginger",
+                "ingredient_id": "01a0cf6c-0eb9-7da9-8d51-05dd4f8782ba"
+            },
+            {
+                "basis": "stored",
+                "grams": 5.7,
+                "changed": false,
+                "line_id": "01a0cf6d-4e3f-73f0-a644-d2a84af5a663",
+                "measure": "tbsp",
+                "measures": [
+                    {
+                        "grams": 240.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 9.00,
+                        "measure": "packet"
+                    },
+                    {
+                        "grams": 17.00,
+                        "measure": "tbsp"
+                    }
+                ],
+                "quantity": 0.333,
+                "ingredient": "ketchup",
+                "ingredient_id": "01a0cf6c-0fa9-7f8b-9445-d5f34868b99f"
+            },
+            {
+                "basis": "stored",
+                "grams": 55.0,
+                "changed": false,
+                "line_id": "01a0cf6d-4df0-7181-8381-dad24c55b199",
+                "measure": "cup",
+                "measures": [
+                    {
+                        "grams": 220.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 220.00,
+                        "measure": "cup packed"
+                    },
+                    {
+                        "grams": 145.00,
+                        "measure": "cup unpacked"
+                    },
+                    {
+                        "grams": 3.20,
+                        "measure": "tsp brownulated"
+                    },
+                    {
+                        "grams": 4.60,
+                        "measure": "tsp packed"
+                    },
+                    {
+                        "grams": 3.00,
+                        "measure": "tsp unpacked"
+                    }
+                ],
+                "quantity": 0.250,
+                "ingredient": "light brown sugar",
+                "ingredient_id": "01a0cf6c-0f57-7875-b288-870c4e7782f8"
+            },
+            {
+                "basis": "stored",
+                "grams": 13.5,
+                "changed": false,
+                "line_id": "01a0cf6d-4cae-75d3-a769-a21544ce821c",
+                "measure": "tbsp",
+                "measures": [
+                    {
+                        "grams": 216.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 13.50,
+                        "measure": "tbsp"
+                    },
+                    {
+                        "grams": 4.50,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 1.000,
+                "ingredient": "Olive oil",
+                "ingredient_id": "01930000-0000-7000-8000-000000000021"
+            },
+            {
+                "basis": "stored",
+                "grams": 8.0,
+                "changed": false,
+                "line_id": "01a0cf6d-4f2f-7b5e-945c-4f7a438cba31",
+                "measure": "tbsp",
+                "measures": [
+                    {
+                        "grams": 255.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 8.90,
+                        "measure": "individual packet"
+                    },
+                    {
+                        "grams": 16.00,
+                        "measure": "tbsp"
+                    },
+                    {
+                        "grams": 5.30,
+                        "measure": "tsp"
+                    }
+                ],
+                "quantity": 0.500,
+                "ingredient": "soy sauce",
+                "ingredient_id": "01a0cf6c-109b-76c0-8538-ca1e4cef8606"
+            },
+            {
+                "basis": "stored",
+                "grams": 237.0,
+                "changed": false,
+                "line_id": "01a0cf6d-4edf-7dc5-b5e9-6b29439bb50f",
+                "measure": "cup",
+                "measures": [
+                    {
+                        "grams": 237.00,
+                        "measure": "cup"
+                    },
+                    {
+                        "grams": 29.60,
+                        "measure": "fl oz"
+                    },
+                    {
+                        "grams": 1.00,
+                        "measure": "ml"
+                    }
+                ],
+                "quantity": 1.000,
+                "ingredient": "water",
+                "ingredient_id": "01a0cf6c-1049-722b-97e9-c04043c6bbd7"
+            }
+        ],
+        "changed": false,
+        "coverage": 1.00,
+        "servings": 4,
+        "nutrients": [
+            {
+                "unit": "kcal",
+                "label": "Energy",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Energy",
+                "original": 521.40,
+                "per_serving": 521.40
+            },
+            {
+                "unit": "g",
+                "label": "Dietary Fiber",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Fiber",
+                "original": 0.30,
+                "per_serving": 0.30
+            },
+            {
+                "unit": "g",
+                "label": "Carbohydrate",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Macro_Carbohydrate",
+                "original": 23.40,
+                "per_serving": 23.40
+            },
+            {
+                "unit": "g",
+                "label": "Total Fat",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Macro_Fat",
+                "original": 24.50,
+                "per_serving": 24.50
+            },
+            {
+                "unit": "g",
+                "label": "Protein",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Macro_Protein",
+                "original": 50.10,
+                "per_serving": 50.10
+            },
+            {
+                "unit": "g",
+                "label": "Saturated Fat",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Saturated_Fat",
+                "original": 6.50,
+                "per_serving": 6.50
+            },
+            {
+                "unit": "g",
+                "label": "Total Sugars",
+                "source": "published",
+                "category": "Macro",
+                "nutrient": "Sugar",
+                "original": 21.50,
+                "per_serving": 21.50
+            },
+            {
+                "unit": "mcg",
+                "label": "Vitamin A",
+                "source": "derived",
+                "category": "Fat-soluble",
+                "nutrient": "Vitamin_A",
+                "original": 49.26,
+                "per_serving": 49.26
+            },
+            {
+                "unit": "mcg",
+                "label": "Vitamin D",
+                "source": "derived",
+                "category": "Fat-soluble",
+                "nutrient": "Vitamin_D",
+                "original": 0.00,
+                "per_serving": 0.00
+            },
+            {
+                "unit": "mg",
+                "label": "Vitamin E",
+                "source": "derived",
+                "category": "Fat-soluble",
+                "nutrient": "Vitamin_E",
+                "original": 2.01,
+                "per_serving": 2.01
+            },
+            {
+                "unit": "mcg",
+                "label": "Vitamin K",
+                "source": "derived",
+                "category": "Fat-soluble",
+                "nutrient": "Vitamin_K",
+                "original": 5.70,
+                "per_serving": 5.70
+            },
+            {
+                "unit": "mcg",
+                "label": "Folate",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Folate",
+                "original": 25.10,
+                "per_serving": 25.10
+            },
+            {
+                "unit": "mg",
+                "label": "Niacin",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Niacin",
+                "original": 21.91,
+                "per_serving": 21.91
+            },
+            {
+                "unit": "mg",
+                "label": "Riboflavin",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Riboflavin",
+                "original": 0.39,
+                "per_serving": 0.39
+            },
+            {
+                "unit": "mg",
+                "label": "Thiamin",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Thiamin",
+                "original": 0.20,
+                "per_serving": 0.20
+            },
+            {
+                "unit": "mcg",
+                "label": "Vitamin B12",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Vitamin_B12",
+                "original": 0.54,
+                "per_serving": 0.54
+            },
+            {
+                "unit": "mg",
+                "label": "Vitamin B6",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Vitamin_B6",
+                "original": 2.24,
+                "per_serving": 2.24
+            },
+            {
+                "unit": "mg",
+                "label": "Vitamin C",
+                "source": "derived",
+                "category": "Water-soluble",
+                "nutrient": "Vitamin_C",
+                "original": 1.34,
+                "per_serving": 1.34
+            },
+            {
+                "unit": "mg",
+                "label": "Calcium",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Calcium",
+                "original": 64.00,
+                "per_serving": 64.00
+            },
+            {
+                "unit": "mg",
+                "label": "Copper",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Copper",
+                "original": 0.12,
+                "per_serving": 0.12
+            },
+            {
+                "unit": "mg",
+                "label": "Iron",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Iron",
+                "original": 1.44,
+                "per_serving": 1.44
+            },
+            {
+                "unit": "mg",
+                "label": "Magnesium",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Magnesium",
+                "original": 83.22,
+                "per_serving": 83.22
+            },
+            {
+                "unit": "mg",
+                "label": "Phosphorus",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Phosphorus",
+                "original": 581.18,
+                "per_serving": 581.18
+            },
+            {
+                "unit": "mg",
+                "label": "Potassium",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Potassium",
+                "original": 1047.55,
+                "per_serving": 1047.55
+            },
+            {
+                "unit": "mcg",
+                "label": "Selenium",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Selenium",
+                "original": 76.19,
+                "per_serving": 76.19
+            },
+            {
+                "unit": "mg",
+                "label": "Sodium",
+                "source": "published",
+                "category": "Mineral",
+                "nutrient": "Sodium",
+                "original": 1573.00,
+                "per_serving": 1573.00
+            },
+            {
+                "unit": "mg",
+                "label": "Zinc",
+                "source": "derived",
+                "category": "Mineral",
+                "nutrient": "Zinc",
+                "original": 1.90,
+                "per_serving": 1.90
+            },
+            {
+                "unit": "mg",
+                "label": "Cholesterol",
+                "source": "published",
+                "category": "Other",
+                "nutrient": "Cholesterol",
+                "original": 145.30,
+                "per_serving": 145.30
+            }
+        ],
+        "recipe_id": "01a0cf6c-be51-7eec-aac3-50fd406cbc67",
+        "original_servings": 4,
+        "calibration_factor": 2.418
+    }
+}

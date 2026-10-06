@@ -601,7 +601,7 @@ INSERT INTO public.ingredient_nutrition
     ('01930000-0000-7000-8000-000000000005', 'Macro_Protein',       9.0200, 'g', NULL, NULL),
     ('01930000-0000-7000-8000-000000000005', 'Iron',                3.3300, 'mg', 6.00, 'Non-heme.'),
     ('01930000-0000-7000-8000-000000000006', 'Calcium',           123.0000, 'mg', NULL, NULL)
-ON CONFLICT (ingredient_id, nutrient_id) DO NOTHING;
+ON CONFLICT (ingredient_id, nutrient_id, source_id) DO NOTHING;
 
 INSERT INTO public.ingredient_attributes (ingredient_id, attribute_type, attribute_value, rule_id) VALUES
     ('01930000-0000-7000-8000-000000000001', 'dietary_restriction', 'vegan',        NULL),

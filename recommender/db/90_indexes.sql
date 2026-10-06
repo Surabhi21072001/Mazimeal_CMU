@@ -214,6 +214,7 @@ CREATE INDEX idx_hrp_created_brin ON public.household_recipe_plan USING BRIN (cr
 CREATE INDEX idx_prh_member_eaten ON public.profile_recipe_history (member_id, eaten_at DESC);
 CREATE INDEX idx_prh_recipe    ON public.profile_recipe_history (recipe_id);
 CREATE INDEX idx_prh_week      ON public.profile_recipe_history (member_id, week_number);
+CREATE INDEX idx_prh_log       ON public.profile_recipe_history (log_id);
 CREATE INDEX idx_prh_snapshot  ON public.profile_recipe_history USING GIN (nutrient_snapshot);
 CREATE INDEX idx_prh_created_brin ON public.profile_recipe_history USING BRIN (created_at);
 

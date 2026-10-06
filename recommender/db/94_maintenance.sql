@@ -80,7 +80,8 @@ BEGIN
     NEW.updated_at := now();
 
     IF NEW.target_value > 0 THEN
-        NEW.pct_of_target := round((NEW.consumed_value / NEW.target_value) * 100, 2);
+        -- a tiny target (a child's 0.9 mcg of B12) can put one meal at several thousand percent
+        NEW.pct_of_target := least(round((NEW.consumed_value / NEW.target_value) * 100, 2), 999999.99);
     ELSE
         NEW.pct_of_target := NULL;
     END IF;

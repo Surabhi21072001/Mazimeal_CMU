@@ -14,6 +14,42 @@
 -- ============================================================================
 
 -- ---------------------------------------------------------------------------
+-- data_sources · where ingredient data comes from
+--
+-- One row per upstream database (USDA SR Legacy today, CNF / AUSNUT / Fineli
+-- later) plus one for our own estimates. Every nutrient value, measure and
+-- match points at one of these, so attribution and licence are a join away
+-- and a second source slots in without touching the fact tables.
+-- precedence: lower wins when two sources give a value for the same nutrient.
+-- ---------------------------------------------------------------------------
+CREATE TABLE public.data_sources (
+    source_id         VARCHAR(30)   NOT NULL,
+    source_name       VARCHAR(120)  NOT NULL,
+    publisher         VARCHAR(120),
+    region            VARCHAR(60),
+    release           VARCHAR(40),
+    licence           VARCHAR(120),
+    attribution_text  TEXT,
+    url               TEXT,
+    precedence        SMALLINT      NOT NULL,
+    ingested_at       DATE,
+
+    CONSTRAINT pk_data_sources PRIMARY KEY (source_id),
+    CONSTRAINT uq_data_sources_precedence UNIQUE (precedence)
+);
+
+INSERT INTO public.data_sources VALUES
+    ('usda_sr_legacy', 'USDA FoodData Central, SR Legacy', 'USDA Agricultural Research Service', 'United States',
+     '2018-04 (FDC release 2019-04)', 'CC0 1.0 (public domain)',
+     'U.S. Department of Agriculture, Agricultural Research Service. FoodData Central, SR Legacy. fdc.nal.usda.gov',
+     'https://fdc.nal.usda.gov/', 10, '2026-09-08'),
+    ('foodcom', 'Food.com recipes (Kaggle)', 'Food.com via Kaggle', 'United States',
+     'irkaal/foodcom-recipes-and-reviews', 'scraped dataset; check terms before shipping',
+     'Recipes and per-serving nutrition from Food.com', 'https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews', 50, '2026-09-08'),
+    ('mazi_estimate', 'MaziMeal estimate', 'MaziMeal', NULL, NULL, NULL,
+     'Estimated by MaziMeal when no source publishes a value', NULL, 90, NULL);
+
+-- ---------------------------------------------------------------------------
 -- ingredients · ~1M rows · USDA FDC + Open Food Facts
 -- ---------------------------------------------------------------------------
 CREATE TABLE public.ingredients (
@@ -60,9 +96,11 @@ CREATE TABLE public.ingredient_nutrition (
     bioavailability_notes TEXT,
     usda_nutrient_code    VARCHAR(20),
     data_quality_flag     VARCHAR(20)    NOT NULL DEFAULT 'standard',
+    source_id             VARCHAR(30)    NOT NULL DEFAULT 'usda_sr_legacy',
 
     CONSTRAINT pk_ingredient_nutrition PRIMARY KEY (:pk_ing_nutrition),
-    CONSTRAINT uq_in_ing_nut  UNIQUE (ingredient_id, nutrient_id),
+    -- one value per nutrient per source; v_ingredient_nutrition picks by precedence
+    CONSTRAINT uq_in_ing_nut  UNIQUE (ingredient_id, nutrient_id, source_id),
     CONSTRAINT ck_in_value    CHECK (value_per_100g >= 0),
     CONSTRAINT ck_in_bioavail CHECK (bioavailability_pct IS NULL
                                      OR bioavailability_pct BETWEEN 0 AND 100),
@@ -71,6 +109,7 @@ CREATE TABLE public.ingredient_nutrition (
 
 COMMENT ON COLUMN public.ingredient_nutrition.value_per_100g      IS 'Raw USDA value per 100g. Recipe totals scale this by recipe_ingredients.quantity_g.';
 COMMENT ON COLUMN public.ingredient_nutrition.bioavailability_pct IS 'Baseline absorbed fraction, e.g. non-heme iron 5-10%. Prep-specific values live in ingredient_bioavailability.';
+COMMENT ON COLUMN public.ingredient_nutrition.source_id           IS 'Which data_sources row this value came from.';
 
 -- ---------------------------------------------------------------------------
 -- ingredient_measures · household measures and their weight in grams
@@ -84,7 +123,7 @@ CREATE TABLE public.ingredient_measures (
     ingredient_id      UUID          NOT NULL,
     measure            VARCHAR(40)   NOT NULL,
     gram_weight        DECIMAL(8,2)  NOT NULL,
-    source             VARCHAR(30)   NOT NULL DEFAULT 'USDA SR Legacy',
+    source_id          VARCHAR(30)   NOT NULL DEFAULT 'usda_sr_legacy',
     source_portion_id  BIGINT,
 
     CONSTRAINT pk_ingredient_measures PRIMARY KEY (ingredient_id, measure),
@@ -93,6 +132,38 @@ CREATE TABLE public.ingredient_measures (
 
 COMMENT ON TABLE  public.ingredient_measures                   IS 'Grams per one household measure of an ingredient. Source rows come from USDA food_portion; fallback rows are estimates.';
 COMMENT ON COLUMN public.ingredient_measures.source_portion_id IS 'USDA food_portion.id when the weight came from USDA.';
+
+-- ---------------------------------------------------------------------------
+-- ingredient_source_map · which record in which upstream database an
+-- ingredient was matched to. One row per ingredient per source.
+-- ---------------------------------------------------------------------------
+CREATE TABLE public.ingredient_source_map (
+    ingredient_id       UUID          NOT NULL,
+    source_id           VARCHAR(30)   NOT NULL,
+    source_record_id    VARCHAR(60)   NOT NULL,
+    source_description  TEXT,
+    match_score         SMALLINT,
+    matched_by          VARCHAR(20)   NOT NULL DEFAULT 'fuzzy',
+    matched_at          DATE          NOT NULL DEFAULT current_date,
+
+    CONSTRAINT pk_ingredient_source_map PRIMARY KEY (ingredient_id, source_id),
+    CONSTRAINT ck_ism_matched_by CHECK (matched_by IN ('fuzzy', 'alias', 'manual'))
+);
+
+COMMENT ON TABLE public.ingredient_source_map IS 'Provenance: the upstream record each ingredient maps to, per source. source_record_id is the FDC id for USDA.';
+
+-- ---------------------------------------------------------------------------
+-- v_ingredient_nutrition · one value per ingredient and nutrient, from the
+-- highest-precedence source that has one. Everything that calculates
+-- nutrition reads this, never ingredient_nutrition directly.
+-- ---------------------------------------------------------------------------
+CREATE VIEW public.v_ingredient_nutrition AS
+SELECT DISTINCT ON (n.ingredient_id, n.nutrient_id)
+       n.ingredient_id, n.nutrient_id, n.value_per_100g, n.unit,
+       n.bioavailability_pct, n.data_quality_flag, n.source_id
+FROM   public.ingredient_nutrition n
+JOIN   public.data_sources s ON s.source_id = n.source_id
+ORDER  BY n.ingredient_id, n.nutrient_id, s.precedence;
 
 -- ---------------------------------------------------------------------------
 -- usda_nutrient_ref · ~300 rows · USDA code <-> internal nutrient_id

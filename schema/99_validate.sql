@@ -169,6 +169,13 @@ BEGIN
             RETURN NEXT;
         END IF;
 
+        IF to_regclass('public.ingredient_source_map') IS NOT NULL THEN
+            EXECUTE 'SELECT count(DISTINCT ingredient_id), count(*) FROM ingredient_source_map' INTO n, m;
+            status := 'INFO'; check_name := 'ingredients with a source record';
+            detail := n || ' ingredients, ' || m || ' source links';
+            RETURN NEXT;
+        END IF;
+
         IF to_regclass('public.ingredient_measures') IS NOT NULL THEN
             EXECUTE 'SELECT count(*) FILTER (WHERE quantity_g IS NOT NULL), count(*) FROM recipe_ingredients' INTO n, m;
             status := 'INFO'; check_name := 'recipe lines with grams';

@@ -17,11 +17,13 @@ psql -d mazimeal_full -f recommender/seed/01_demo_household.sql
 psql -d mazimeal_full -f schema/seed/foodcom_400.sql
 psql -d mazimeal_full -f schema/seed/usda_nutrition.sql
 psql -d mazimeal_full -f schema/seed/ingredient_grams.sql
+psql -d mazimeal_full -f schema/seed/ingredient_sources.sql
 ```
 
-The last three lines are the 400 Food.com recipes, the USDA nutrition for
-their ingredients, and grams per ingredient line. Same files the week-1
-schema uses; both schemas accept them.
+The last four lines are the 400 Food.com recipes, the USDA nutrition for
+their ingredients, grams per ingredient line, and the USDA record each
+ingredient maps to. Same files the week-1 schema uses; both schemas accept
+them.
 
 Then:
 
@@ -118,6 +120,25 @@ but the demo doesn't populate.
 Column and index exist when pgvector is installed. Needs embeddings generated.
 
 **Learned ranking.** Only after there's usage data. There isn't any.
+
+## Logging what was eaten
+
+```sql
+select fn_log_meal(recipe_id, '[{"member_id": "...", "servings": 1.5}, {"member_id": "...", "servings": 1}]', 'Dinner');
+select fn_member_meals(member_id);        -- today's meals for one person
+select fn_unlog_meal(log_id);             -- undo
+```
+
+One call per meal, one row per person in `profile_recipe_history` with
+`nutrient_snapshot` holding what they ate, frozen; editing the recipe later
+does not change past meals. The same amounts are added to
+`nutrient_daily_log`, which is what `fn_member_gap` and the home page read,
+so the next recommendation accounts for the meal. A client-generated
+`log_id` makes the call idempotent: logging the same id twice returns the
+first result and changes nothing. Checks: `tests/fn_log_meal.sql`.
+
+The recipe can be logged with changes (`p_overrides`, same shape as
+`fn_recipe_nutrition`), so what's recorded is what was cooked.
 
 ## Known limits
 

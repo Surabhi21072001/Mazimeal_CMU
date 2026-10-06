@@ -15,7 +15,7 @@
 --  partitions household_members by household_id, ingredients by food_category,
 --  and recipes by data_source — none of which appear in the referencing tables.
 --
---  The result: 22 foreign keys CANNOT EXIST in SCALE mode. They are listed at
+--  The result: 23 foreign keys CANNOT EXIST in SCALE mode. They are listed at
 --  the bottom of this file. Every one of them must be enforced in application
 --  code instead. Options, in order of preference:
 --
@@ -108,6 +108,18 @@ ALTER TABLE public.ingredient_nutrition
     ADD CONSTRAINT fk_in_nutrient
     FOREIGN KEY (nutrient_id) REFERENCES public.nutrients_master (nutrient_id);
 
+ALTER TABLE public.ingredient_nutrition
+    ADD CONSTRAINT fk_in_source
+    FOREIGN KEY (source_id) REFERENCES public.data_sources (source_id);
+
+ALTER TABLE public.ingredient_measures
+    ADD CONSTRAINT fk_im_source
+    FOREIGN KEY (source_id) REFERENCES public.data_sources (source_id);
+
+ALTER TABLE public.ingredient_source_map
+    ADD CONSTRAINT fk_ism_source
+    FOREIGN KEY (source_id) REFERENCES public.data_sources (source_id);
+
 ALTER TABLE public.usda_nutrient_ref
     ADD CONSTRAINT fk_unr_nutrient
     FOREIGN KEY (nutrient_id) REFERENCES public.nutrients_master (nutrient_id);
@@ -172,10 +184,10 @@ ALTER TABLE public.nutrient_daily_log
     FOREIGN KEY (nutrient_id) REFERENCES public.nutrients_master (nutrient_id);
 
 -- ---------------------------------------------------------------------------
--- MVP mode only: 22 FKs whose target is partitioned under SCALE mode
+-- MVP mode only: 23 FKs whose target is partitioned under SCALE mode
 -- ---------------------------------------------------------------------------
 \if :scale
-  \echo '!! SCALE mode: skipping 22 foreign keys into partitioned tables.'
+  \echo '!! SCALE mode: skipping 23 foreign keys into partitioned tables.'
   \echo '!! These must be enforced in the application. See v_unenforced_fks.'
 \else
 
@@ -215,6 +227,10 @@ ALTER TABLE public.ingredient_attributes
 
 ALTER TABLE public.ingredient_measures
     ADD CONSTRAINT fk_im_ingredient
+    FOREIGN KEY (ingredient_id) REFERENCES public.ingredients (ingredient_id) ON DELETE CASCADE;
+
+ALTER TABLE public.ingredient_source_map
+    ADD CONSTRAINT fk_ism_ingredient
     FOREIGN KEY (ingredient_id) REFERENCES public.ingredients (ingredient_id) ON DELETE CASCADE;
 
 ALTER TABLE public.ingredient_synergy_pairs
@@ -280,7 +296,7 @@ ALTER TABLE public.profile_recipe_history
 -- v_unenforced_fks — the integrity gap, queryable at runtime
 --
 -- Lists every relationship the workbook implies that the database is not
--- currently enforcing. Empty in MVP mode; 22 rows in SCALE mode. Wire this into
+-- currently enforcing. Empty in MVP mode; 23 rows in SCALE mode. Wire this into
 -- a startup assertion so the gap can never be forgotten.
 -- ---------------------------------------------------------------------------
 CREATE OR REPLACE VIEW public.v_unenforced_fks AS
@@ -295,6 +311,7 @@ WITH expected (child_table, child_column, parent_table, parent_column) AS (
         ('ingredient_nutrition',     'ingredient_id',            'ingredients',       'ingredient_id'),
         ('ingredient_attributes',    'ingredient_id',            'ingredients',       'ingredient_id'),
         ('ingredient_measures',      'ingredient_id',            'ingredients',       'ingredient_id'),
+        ('ingredient_source_map',    'ingredient_id',            'ingredients',       'ingredient_id'),
         ('ingredient_synergy_pairs', 'ingredient_id_a',          'ingredients',       'ingredient_id'),
         ('ingredient_synergy_pairs', 'ingredient_id_b',          'ingredients',       'ingredient_id'),
         ('ingredient_bioavailability','ingredient_id',           'ingredients',       'ingredient_id'),

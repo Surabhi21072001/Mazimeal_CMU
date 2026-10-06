@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { C } from "../../shared/theme/colors";
 import { calculateDailyCalorieTarget, describeCalorieGoal, formatNutrientLabel } from "../../shared/nutrition/calorieTarget";
 import RecommendedMeals from "./RecommendedMeals";
+import RecipeDetail from "../recipe/RecipeDetail";
 import { gapSentences, loadHome } from "./homeData";
 
 export default function HomeDashboardClassic({
@@ -20,8 +21,11 @@ export default function HomeDashboardClassic({
   const [showStreakCelebration, setShowStreakCelebration] = useState(false);
   const [assistantMessageIndex, setAssistantMessageIndex] = useState(0);
   const [classicCookMeal, setClassicCookMeal] = useState(null);
+  const [openRecipeId, setOpenRecipeId] = useState(null);
   const [home, setHome] = useState(null);
   const [homeLoading, setHomeLoading] = useState(true);
+
+  const [homeVersion, setHomeVersion] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -29,7 +33,7 @@ export default function HomeDashboardClassic({
       .then((data) => { if (!cancelled) setHome(data); })
       .finally(() => { if (!cancelled) setHomeLoading(false); });
     return () => { cancelled = true; };
-  }, []);
+  }, [homeVersion]);
 
   const items = plannerDay
     ? plannerDay.mealOrder.map((slot) => {
@@ -290,11 +294,23 @@ export default function HomeDashboardClassic({
       <RecommendedMeals
         home={home}
         loading={homeLoading}
-        onSelectRecipe={(pick) => {
-          setClassicCookMeal({ name: pick.name, calories: pick.calories });
-          setActiveClassicModal("cook");
-        }}
+        onSelectRecipe={(pick) => setOpenRecipeId(pick.recipe_id)}
       />
+
+      {openRecipeId && (
+        <RecipeDetail
+          recipeId={openRecipeId}
+          members={home?.members}
+          onLogged={() => setHomeVersion((v) => v + 1)}
+          onClose={() => setOpenRecipeId(null)}
+          onCook={({ recipe, nutrition }) => {
+            const kcal = nutrition?.nutrients?.find((n) => n.nutrient === "Energy")?.per_serving;
+            setClassicCookMeal({ name: recipe.recipe_name, calories: kcal ? Math.round(kcal) : null });
+            setOpenRecipeId(null);
+            setActiveClassicModal("cook");
+          }}
+        />
+      )}
 
       <div className="card" style={{ ...plannerInspiredShell, padding: 0, overflow: "hidden" }}>
         <div style={{ display: "grid", gridTemplateColumns: "220px minmax(0, 1fr) 330px", gap: 0, alignItems: "stretch" }}>

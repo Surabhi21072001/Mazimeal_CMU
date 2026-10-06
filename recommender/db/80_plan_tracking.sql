@@ -42,6 +42,7 @@ COMMENT ON COLUMN public.household_recipe_plan.status IS 'planned -> cooked writ
 -- ---------------------------------------------------------------------------
 CREATE TABLE public.profile_recipe_history (
     history_id        UUID          NOT NULL DEFAULT public.gen_ulid(),
+    log_id            UUID,
     member_id         UUID          NOT NULL,
     household_id      UUID          NOT NULL,
     recipe_id         UUID,
@@ -65,6 +66,7 @@ CREATE TABLE public.profile_recipe_history (
 ) :part_prh ;
 
 COMMENT ON COLUMN public.profile_recipe_history.recipe_id         IS 'NULL for manually logged meals with no matching recipe.';
+COMMENT ON COLUMN public.profile_recipe_history.log_id            IS 'One meal logged once for several members shares a log_id. Client-generated, so a retried fn_log_meal call is a no-op.';
 COMMENT ON COLUMN public.profile_recipe_history.nutrient_snapshot IS '{nutrient_id: consumed_value} frozen at eat-time. GIN-indexed for per-nutrient queries.';
 COMMENT ON COLUMN public.profile_recipe_history.week_number       IS 'ISO week. Denormalised so weekly summaries avoid a date function per row.';
 
@@ -92,7 +94,7 @@ CREATE TABLE public.nutrient_daily_log (
     nutrient_id     VARCHAR(40)    NOT NULL,
     consumed_value  DECIMAL(10,4)  NOT NULL DEFAULT 0,
     target_value    DECIMAL(10,4)  NOT NULL,
-    pct_of_target   DECIMAL(5,2),
+    pct_of_target   DECIMAL(8,2),
     alert_triggered BOOLEAN        NOT NULL DEFAULT FALSE,
     updated_at      TIMESTAMPTZ    NOT NULL DEFAULT now(),
 

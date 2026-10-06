@@ -104,6 +104,23 @@ and whether USDA or a fallback supplied them. When one is wrong, add it to
 `OVERRIDES` in the script and rerun. `--parquet` is optional; it fills
 `quantity_aligned` for databases loaded before the importer wrote it.
 
+## Where each value came from
+
+`data_sources` has one row per upstream database (USDA SR Legacy now; the
+Canadian, Australian and Finnish ones later) with its licence and the
+attribution text to show. Every row in `ingredient_nutrition` and
+`ingredient_measures` carries a `source_id`, and `ingredient_source_map`
+records which USDA record each ingredient was matched to, with the match
+score. When a second database is added, its values sit beside USDA's under
+their own `source_id`; `v_ingredient_nutrition` picks one value per
+nutrient by `data_sources.precedence`, and everything that calculates
+nutrition reads that view.
+
+```bash
+python3 scripts/ingredient_sources.py --review schema/seed/usda_matches.csv -o schema/seed/ingredient_sources.sql
+psql -d mazimeal -v ON_ERROR_STOP=1 -f schema/seed/ingredient_sources.sql
+```
+
 Each line records how its grams were arrived at (`grams_source`): `measure`
 for number x measure weight, `assumed` when the source had no number and one
 measure was assumed, `manual` when someone entered grams, `none` when

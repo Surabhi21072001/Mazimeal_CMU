@@ -111,7 +111,7 @@ INSERT INTO ingredient_nutrition (ingredient_id, nutrient_id, value_per_100g, un
     ('01930000-0000-7000-8000-000000000005', 'Energy', 116, 'kcal'),     -- lentils
     ('01930000-0000-7000-8000-000000000005', 'Fiber', 7.9, 'g'),
     ('01930000-0000-7000-8000-000000000005', 'Folate', 181, 'mcg')
-ON CONFLICT (ingredient_id, nutrient_id) DO NOTHING;
+ON CONFLICT (ingredient_id, nutrient_id, source_id) DO NOTHING;
 
 -- ---------------------------------------------------------------------------
 -- Recipes, all 4 servings, gram quantities

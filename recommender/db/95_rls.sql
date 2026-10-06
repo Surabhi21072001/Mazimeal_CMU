@@ -173,7 +173,8 @@ BEGIN
     FOREACH t IN ARRAY ARRAY[
         'conditions', 'condition_attributes', 'nutrient_rules', 'nutrient_modifiers',
         'documents', 'categories', 'nutrients_master', 'profile_nutrient_baselines',
-        'ingredients', 'ingredient_nutrition', 'ingredient_measures', 'usda_nutrient_ref', 'ingredient_attributes',
+        'data_sources', 'ingredients', 'ingredient_nutrition', 'ingredient_measures', 'ingredient_source_map',
+        'usda_nutrient_ref', 'ingredient_attributes',
         'ingredient_synergy_pairs', 'ingredient_bioavailability',
         'ingredient_substitutions', 'glycemic_index_data',
         'cultural_categories', 'recipes', 'recipe_ingredients', 'recipe_steps',
@@ -192,6 +193,17 @@ $$;
 DROP POLICY recipes_public_read ON public.recipes;
 CREATE POLICY recipes_public_read ON public.recipes
     FOR SELECT USING (deleted_at IS NULL);
+
+-- Supabase: the policies above decide which rows, but the API roles also
+-- need the table-level grant on the public reference tables. No-op elsewhere.
+DO $$ BEGIN
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+        GRANT SELECT ON public.recipes, public.recipe_steps, public.recipe_ingredients, public.ingredients,
+                        public.ingredient_measures, public.data_sources, public.nutrients_master,
+                        public.ingredient_nutrition, public.ingredient_source_map
+        TO anon, authenticated;
+    END IF;
+END $$;
 
 -- ---------------------------------------------------------------------------
 -- WHAT IS DELIBERATELY ABSENT

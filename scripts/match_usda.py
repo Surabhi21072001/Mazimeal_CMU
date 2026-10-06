@@ -343,7 +343,7 @@ def emit(results, food, nutrition, nut_unit, serving, out):
             w(f"INSERT INTO ingredient_nutrition (ingredient_id, nutrient_id, value_per_100g, unit) "
               f"SELECT ingredient_id, {q(nid)}, {amount}, {q(nut_unit[nid])} FROM ingredients "
               f"WHERE lower(btrim(ingredient_name)) = {q(r['name'].lower().strip())} "
-              f"ON CONFLICT (ingredient_id, nutrient_id) DO UPDATE SET value_per_100g = EXCLUDED.value_per_100g, unit = EXCLUDED.unit;\n")
+              f"ON CONFLICT (ingredient_id, nutrient_id, source_id) DO UPDATE SET value_per_100g = EXCLUDED.value_per_100g, unit = EXCLUDED.unit;\n")
         w("\n")
     w("COMMIT;\n")
     w("DO $$ BEGIN IF to_regproc('fn_refresh_recipe_nutrients') IS NOT NULL THEN PERFORM fn_refresh_recipe_nutrients(); END IF; END $$;" + "\n")

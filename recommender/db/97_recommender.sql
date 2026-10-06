@@ -57,7 +57,7 @@ WITH lines AS (
            count(*)                                                        AS lines_total,
            count(ri.quantity_g)                                            AS lines_with_grams,
            count(ri.quantity_g) FILTER (WHERE EXISTS (
-               SELECT 1 FROM ingredient_nutrition n WHERE n.ingredient_id = ri.ingredient_id))
+               SELECT 1 FROM v_ingredient_nutrition n WHERE n.ingredient_id = ri.ingredient_id))
                                                                            AS lines_usable,
            bool_and(ri.quantity_aligned)                                   AS quantity_aligned
     FROM   recipe_ingredients ri
@@ -69,7 +69,7 @@ energy AS (
            sum(ri.quantity_g * n.value_per_100g / 100.0) / greatest(r.servings, 1) AS derived_kcal
     FROM   recipe_ingredients ri
     JOIN   recipes r              ON r.recipe_id = ri.recipe_id
-    JOIN   ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id AND n.nutrient_id = 'Energy'
+    JOIN   v_ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id AND n.nutrient_id = 'Energy'
     WHERE  ri.quantity_g IS NOT NULL
     GROUP  BY ri.recipe_id, r.servings
 )
@@ -111,7 +111,7 @@ WITH derived AS (
            sum(ri.quantity_g * n.value_per_100g / 100.0) / greatest(r.servings, 1) AS per_serving
     FROM   recipe_ingredients ri
     JOIN   recipes r              ON r.recipe_id = ri.recipe_id AND r.deleted_at IS NULL
-    JOIN   ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id
+    JOIN   v_ingredient_nutrition n ON n.ingredient_id = ri.ingredient_id
     WHERE  ri.quantity_g IS NOT NULL
     GROUP  BY ri.recipe_id, n.nutrient_id, n.unit, r.servings
 )

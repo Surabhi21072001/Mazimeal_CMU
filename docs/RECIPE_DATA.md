@@ -31,7 +31,7 @@ design pass Naveen asked for.
 | On screen | Where it lives | Status | Plan |
 |---|---|---|---|
 | Recommendations, member gaps, hidden recipes | `fn_home` | Have, live | |
-| Calorie ring, nutrient bars | `nutrient_daily_log` | Table exists, only demo rows | Meal logging writes it |
+| Calorie ring, nutrient bars | `nutrient_daily_log` | Have; `fn_log_meal` writes it | Wire the ring and bars to `fn_member_gap` |
 | Today's Menu | planner sample | Missing | Top pick per slot from `fn_home`, or the planner's saved day |
 | Hydration, sleep | browser only | Missing | New tables `hydration_log`, `sleep_log` (member, date, value) |
 | Streaks, achievements | hardcoded | Missing | Computed from the logs; `member_achievements` to remember unlocks |
@@ -77,10 +77,10 @@ runnable by anyone with the database and an API key.
 
 ## Order
 
-1. Ingredient grams from the Food.com text, then per-serving nutrition recomputed from them with a coverage figure per recipe. Three or four days.
-2. Source tracking: `data_sources`, `ingredient_source_map`, `source_id` on nutrition rows. A day, with USDA as the only source.
-3. `fn_recipe_nutrition` for the dynamic panel, and the recipe screen showing ingredients, steps and the panel. Two days.
-4. Meal logging with nutrient snapshot. Two days.
+1. Ingredient grams from USDA household measures, then per-serving nutrition recomputed from them with a coverage figure per recipe. Done; the gram estimates are rough where the source quantities were misaligned.
+2. Source tracking: `data_sources`, `ingredient_source_map`, `source_id` on nutrition rows. Done, USDA as the only source.
+3. `fn_recipe_nutrition` for the dynamic panel, and the recipe screen showing ingredients, steps and the panel. Done.
+4. Meal logging with nutrient snapshot. Done: `fn_log_meal`, `fn_unlog_meal`, `fn_member_meals`, and the log row on the recipe screen.
 5. Cheap one-time fills: image URL, cuisine from keywords, difficulty, probiotic/omega/antioxidant tags, rule matching into `recipe_rules_map`. Two days.
 6. New tables and favorites. A day.
 7. Raw/cooked variants, starting with the most used ingredients. Ongoing.
@@ -101,11 +101,12 @@ Ingredients get a preparation state (raw, cooked, ...) so a line can point at
 the right variant. Cooking losses are applied once, never to values that
 already represent cooked food.
 
-Every nutrient value carries its source. New tables `data_sources` (name,
-version, license, attribution text) and `ingredient_source_map`
-(ingredient_id, source_id, source_record_id); `ingredient_nutrition` gets a
-`source_id`. USDA is first in precedence; other sources fill gaps. Attribution
-is tied to the ingredient, not the recipe.
+Every nutrient value carries its source. `data_sources` (name, release,
+licence, attribution text, precedence), `ingredient_source_map` (ingredient
+to upstream record, with match score), and `source_id` on
+`ingredient_nutrition` and `ingredient_measures`. `v_ingredient_nutrition`
+picks one value per nutrient by precedence; USDA first, other sources fill
+gaps. Attribution is tied to the ingredient, not the recipe.
 
 Logging a meal saves a nutrient snapshot per person. Editing a recipe later
 does not change past meals.
