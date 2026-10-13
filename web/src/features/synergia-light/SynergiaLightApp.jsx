@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { C } from "../../shared/theme/colors";
 import { calculateDailyCalorieTarget, describeCalorieGoal, formatNutrientLabel } from "../../shared/nutrition/calorieTarget";
 import HomeDashboardClassic from "../home/HomeDashboardClassic";
@@ -10,7 +10,10 @@ import {
 } from "../../shared/services/planner/plannerStore";
 import {
   getCurrentUserId,
+  getSession,
   loadHouseholdForUser,
+  onSignedIn,
+  resendSignupEmail,
   saveHousehold,
   signIn,
   signUp,
@@ -1415,20 +1418,27 @@ function CreateAccountModule({ onNext, onBack }) {
 
     setIsSubmitting(true);
     try {
-      // Email sending is temporarily disabled.
-      // await sendAccountSetupEmail({
-      //   name: name.trim(),
-      //   email: email.trim(),
-      //   username: username.trim(),
-      // });
-      setSubmitSuccess("Account created successfully. Email delivery is currently disabled.");
+      const { data, error } = await signUp({ name: name.trim(), username: username.trim(), email: email.trim(), password: pw });
+      if (error) throw error;
+      // Supabase hides whether an email is already registered: signing up
+      // with a taken address "succeeds" but returns a user with no
+      // identities and sends nothing, so catch that here.
+      if (data?.user && data.user.identities?.length === 0) {
+        setSubmitError("An account with this email already exists. Log in instead.");
+        return;
+      }
+      setSubmitSuccess("Account created.");
       onNext({
         name: name.trim(),
         email: email.trim(),
         username: username.trim(),
+        password: pw,
+        // A session straight away means "Confirm email" is off in Supabase,
+        // so there's nothing to verify.
+        verified: Boolean(data?.session),
       });
     } catch (error) {
-      setSubmitError(error?.message || "Unable to send account email right now. Please try again.");
+      setSubmitError(error?.message || "Unable to create your account right now. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -1618,8 +1628,51 @@ function CreateAccountModule({ onNext, onBack }) {
   );
 }
 
-function EmailVerificationModule({ email, onVerified, onBack }) {
-  const [sent, setSent] = useState(true);
+function EmailVerificationModule({ email, password, onVerified, onBack }) {
+  const [status, setStatus] = useState({ tone: "info", text: "" });
+  const [checking, setChecking] = useState(false);
+  const [resending, setResending] = useState(false);
+
+  // Clicking the link in another tab of this browser signs that tab in, and
+  // Supabase shares the session across tabs, so this one can move on too.
+  useEffect(() => onSignedIn(() => onVerified()), [onVerified]);
+
+  const handleCheck = async () => {
+    setChecking(true);
+    setStatus({ tone: "info", text: "" });
+    try {
+      if (await getSession()) {
+        onVerified();
+        return;
+      }
+      // Covers clicking the link on another device: signing in only
+      // succeeds once the address is confirmed.
+      if (!password) {
+        setStatus({ tone: "error", text: "Please log in with your email and password to continue." });
+        return;
+      }
+      const { error } = await signIn({ email, password });
+      if (error) {
+        const notConfirmed = /not confirmed/i.test(error.message || "");
+        setStatus({ tone: "error", text: notConfirmed ? "Your email isn't confirmed yet. Open the link in the email we sent, then try again." : error.message });
+        return;
+      }
+      onVerified();
+    } finally {
+      setChecking(false);
+    }
+  };
+
+  const handleResend = async () => {
+    setResending(true);
+    setStatus({ tone: "info", text: "" });
+    try {
+      const { error } = await resendSignupEmail(email);
+      setStatus(error ? { tone: "error", text: error.message } : { tone: "info", text: `Verification email re-sent to ${email}.` });
+    } finally {
+      setResending(false);
+    }
+  };
 
   return (
     <CenteredPageShell>
@@ -1629,12 +1682,13 @@ function EmailVerificationModule({ email, onVerified, onBack }) {
           <span style={{ fontSize: 50 }}>📧</span>
           <h2 style={{ fontFamily: "'Lora'", fontWeight: 700, fontSize: 28, color: C.text }}>Verify your email</h2>
           <p style={{ color: C.subtext, fontSize: 14, lineHeight: 1.7 }}>We sent a verification link to <strong>{email}</strong>. Click the link in your inbox to continue.</p>
-          <button className="btn-primary" style={{ width: "100%" }} onClick={onVerified}>I clicked the link</button>
+          <button className="btn-primary" style={{ width: "100%" }} onClick={handleCheck} disabled={checking}>{checking ? "Checking..." : "I clicked the link"}</button>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginTop: 8 }}>
             <button className="btn-ghost" onClick={onBack}>Back</button>
-            <button className="btn-ghost" onClick={() => setSent(true)}>Resend email</button>
+            <button className="btn-ghost" onClick={handleResend} disabled={resending}>{resending ? "Sending..." : "Resend email"}</button>
           </div>
-          {sent && <p style={{ color: C.accent, fontSize: 13, marginTop: 8 }}>Verification email sent.</p>}
+          {status.text && <p role={status.tone === "error" ? "alert" : undefined} style={{ color: status.tone === "error" ? "#8A2D20" : C.accent, fontSize: 13, marginTop: 8 }}>{status.text}</p>}
+          <p style={{ color: C.muted, fontSize: 12, margin: 0 }}>Can't find it? Check your spam folder.</p>
         </div>
       </div>
     </CenteredPageShell>
@@ -1900,7 +1954,18 @@ function LifeStageModule({ profile, updateProfile, onNext, onBack }) {
   );
 }
 
-function AdditionalProfilesModule({ profiles, onAddAdult, onAddChild, onInvite, onContinue, onBack }) {
+function AdditionalProfilesModule({ profiles, onAddAdult, onAddChild, onInvite, onContinue, onBack, saveError }) {
+  const [saving, setSaving] = useState(false);
+
+  const handleContinue = async () => {
+    setSaving(true);
+    try {
+      await onContinue();
+    } finally {
+      setSaving(false);
+    }
+  };
+
   return (
     <CenteredPageShell>
       <div className="card" style={{ width: "100%", maxWidth: 760, padding: "42px 40px" }}>
@@ -1935,8 +2000,9 @@ function AdditionalProfilesModule({ profiles, onAddAdult, onAddChild, onInvite, 
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
             <button className="btn-ghost" onClick={onBack}>Back</button>
-            <button className="btn-ghost" onClick={onContinue}>Continue to app</button>
+            <button className="btn-ghost" onClick={handleContinue} disabled={saving}>{saving ? "Saving..." : "Continue to app"}</button>
           </div>
+          {saveError && <p role="alert" style={{ color: "#8A2D20", fontSize: 13, margin: 0 }}>{saveError}</p>}
         </div>
       </div>
     </CenteredPageShell>
@@ -6580,6 +6646,10 @@ export default function App() {
   const [plannerHydrated, setPlannerHydrated] = useState(false);
   const [mealTemplates, setMealTemplates] = useState(null);
   const [accountEmail, setAccountEmail] = useState("");
+  // Held in memory only, so "I clicked the link" can confirm the address by
+  // signing in when the link was opened on another device.
+  const [pendingPassword, setPendingPassword] = useState("");
+  const [setupSaveError, setSetupSaveError] = useState("");
   const [household, setHousehold] = useState({ name: "", country: "US", members: 4, pets: { cat: false, dog: false }, scraps: false });
   const [profiles, setProfiles] = useState([
     { id: 1, name: "Maya", age: "34", height: "5 ft 6 in", weight: "141", role: "Adult", sex: "Female", activity: "Moderate", goal: "Maintain weight", allergies: "None", dislikes: "None", dietaryPattern: "Mediterranean", preferences: "Chicken, Onion", cuisines: ["Mexican"], lifeStage: "None", pregnancyWeek: "" },
@@ -6675,6 +6745,45 @@ export default function App() {
     };
   }, [plannerState, plannerHydrated, user]);
 
+  // Landing back from the confirmation email (?confirmed=1): resume
+  // onboarding at the step after verification.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has("confirmed")) return;
+    params.delete("confirmed");
+    const query = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+
+    getSession().then((session) => {
+      if (!session) return;
+      const meta = session.user?.user_metadata || {};
+      setUser(meta.full_name || session.user?.email?.split("@")[0] || "Mazimeal User");
+      setAccountEmail(session.user?.email || "");
+      setScreen("legal");
+    });
+  }, []);
+
+  // Stable so the verification screen's auth listener isn't re-subscribed
+  // on every render.
+  const goToLegal = useCallback(() => setScreen("legal"), []);
+
+  const finishOnboarding = async () => {
+    setSetupSaveError("");
+    if (setupProfiles.length > 0) {
+      const userId = await getCurrentUserId();
+      if (userId) {
+        const { error } = await saveHousehold({ userId, household, profiles: setupProfiles });
+        if (error) {
+          setSetupSaveError(error.message || "Couldn't save your household. Please try again.");
+          return;
+        }
+      }
+      setProfiles(setupProfiles);
+    }
+    setPendingPassword("");
+    setScreen("app");
+  };
+
   if (screen === "landing") return (
     <LandingModule onTrial={() => { setLoginTab("signup"); setSetupProfiles([]); setProfileDraft(defaultProfileDraft()); setScreen("account"); }} onLogin={() => { setLoginTab("login"); setScreen("login"); }} />
   );
@@ -6706,11 +6815,19 @@ export default function App() {
   );
 
   if (screen === "account") return (
-    <CreateAccountModule onBack={() => setScreen("landing")} onNext={({ name, email }) => { setUser(name || "Mazimeal User"); setAccountEmail(email); setScreen("verify"); }} />
+    <CreateAccountModule
+      onBack={() => setScreen("landing")}
+      onNext={({ name, email, password, verified }) => {
+        setUser(name || "Mazimeal User");
+        setAccountEmail(email);
+        setPendingPassword(password);
+        setScreen(verified ? "legal" : "verify");
+      }}
+    />
   );
 
   if (screen === "verify") return (
-    <EmailVerificationModule email={accountEmail} onVerified={() => setScreen("legal")} onBack={() => setScreen("account")} />
+    <EmailVerificationModule email={accountEmail} password={pendingPassword} onVerified={goToLegal} onBack={() => setScreen("account")} />
   );
 
   if (screen === "legal") return (
@@ -6757,12 +6874,8 @@ export default function App() {
       onAddChild={() => { setProfileDraft(defaultProfileDraft("Child")); setScreen("profileBasics"); }}
       onInvite={() => setScreen("inviteAdult")}
       onBack={() => setScreen("lifeStage")}
-      onContinue={() => {
-        if (setupProfiles.length > 0) {
-          setProfiles(setupProfiles);
-        }
-        setScreen("app");
-      }}
+      onContinue={finishOnboarding}
+      saveError={setupSaveError}
     />
   );
 

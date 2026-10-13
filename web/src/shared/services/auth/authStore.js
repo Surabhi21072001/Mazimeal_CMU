@@ -118,14 +118,46 @@ function notConfigured() {
   return { error: { message: "Supabase isn't configured in this environment." } };
 }
 
+// The confirmation link lands back on the site with ?confirmed=1 so the app
+// can tell a fresh confirmation apart from an ordinary visit and resume
+// onboarding. The URL must be allowed under Authentication → URL
+// Configuration in Supabase, or the link falls back to the project Site URL.
+function confirmRedirectUrl() {
+  return typeof window === "undefined" ? undefined : `${window.location.origin}/?confirmed=1`;
+}
+
 export async function signUp({ name, username, email, password }) {
   if (!hasSupabaseEnv || !supabase) return notConfigured();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { full_name: name, username } },
+    options: { data: { full_name: name, username }, emailRedirectTo: confirmRedirectUrl() },
   });
   return { data, error };
+}
+
+export async function resendSignupEmail(email) {
+  if (!hasSupabaseEnv || !supabase) return notConfigured();
+  return supabase.auth.resend({
+    type: "signup",
+    email,
+    options: { emailRedirectTo: confirmRedirectUrl() },
+  });
+}
+
+export async function getSession() {
+  if (!hasSupabaseEnv || !supabase) return null;
+  const { data } = await supabase.auth.getSession();
+  return data?.session || null;
+}
+
+// Returns an unsubscribe function; a no-op when Supabase isn't configured.
+export function onSignedIn(callback) {
+  if (!hasSupabaseEnv || !supabase) return () => {};
+  const { data } = supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN" && session) callback(session);
+  });
+  return () => data.subscription.unsubscribe();
 }
 
 export async function signIn({ email, password }) {
@@ -148,17 +180,28 @@ export async function saveHousehold({ userId, household, profiles }) {
   if (!profiles?.length) return { error: { message: "At least one profile is required." } };
 
   const hasPets = Boolean(household?.pets?.cat || household?.pets?.dog);
-  const { data: householdRow, error: householdError } = await supabase
+  const householdFields = {
+    household_name: household?.name || null,
+    country_region: COUNTRY_REGION[household?.country] || "US",
+    has_pets: hasPets,
+    pets_receive_scraps: hasPets ? Boolean(household?.scraps) : null,
+  };
+
+  // A failed member insert leaves the household row behind; reuse it on
+  // retry rather than creating a second one, which would make
+  // loadHouseholdForUser's maybeSingle() fail for this user.
+  const { data: existing, error: lookupError } = await supabase
     .from("households")
-    .insert({
-      created_by_user_id: userId,
-      household_name: household?.name || null,
-      country_region: COUNTRY_REGION[household?.country] || "US",
-      has_pets: hasPets,
-      pets_receive_scraps: hasPets ? Boolean(household?.scraps) : null,
-    })
-    .select()
-    .single();
+    .select("household_id")
+    .eq("created_by_user_id", userId)
+    .is("deleted_at", null)
+    .maybeSingle();
+
+  if (lookupError) return { error: lookupError };
+
+  const { data: householdRow, error: householdError } = existing
+    ? await supabase.from("households").update(householdFields).eq("household_id", existing.household_id).select().single()
+    : await supabase.from("households").insert({ created_by_user_id: userId, ...householdFields }).select().single();
 
   if (householdError) return { error: householdError };
 

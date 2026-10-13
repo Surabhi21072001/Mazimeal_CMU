@@ -200,7 +200,7 @@ DO $$ BEGIN
     IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
         GRANT SELECT ON public.recipes, public.recipe_steps, public.recipe_ingredients, public.ingredients,
                         public.ingredient_measures, public.data_sources, public.nutrients_master,
-                        public.ingredient_nutrition, public.ingredient_source_map
+                        public.ingredient_nutrition, public.ingredient_source_map, public.categories
         TO anon, authenticated;
     END IF;
 END $$;
