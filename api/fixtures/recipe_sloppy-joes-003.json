@@ -1,0 +1,357 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver.",
+  "recipe_id": "sloppy-joes-003",
+  "name": "Sloppy Joes",
+  "meal": "Lunch",
+  "servings": 4,
+  "time_min": 35,
+  "tags": [
+    "weeknight"
+  ],
+  "image_url": null,
+  "ingredients": [
+    {
+      "line_id": 1,
+      "name": "extra virgin olive oil",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 2,
+      "name": "onion",
+      "quantity": 0.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 3,
+      "name": "brown sugar",
+      "quantity": 1.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 4,
+      "name": "red bell pepper",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 5,
+      "name": "red wine vinegar",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 6,
+      "name": "Worcestershire sauce",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 7,
+      "name": "tomato paste",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 8,
+      "name": "tomato sauce",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 9,
+      "name": "tomatoes",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 10,
+      "name": "pickle",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    }
+  ],
+  "nutrition_per_serving": [
+    {
+      "nutrient": "Energy",
+      "label": "Calories",
+      "value": 555.3,
+      "unit": "kcal",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 28,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Protein",
+      "label": "Protein",
+      "value": 36.5,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 76,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Carbohydrate",
+      "label": "Carbohydrates",
+      "value": 56.2,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Fat",
+      "label": "Fat",
+      "value": 20.3,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Fiber",
+      "label": "Fiber",
+      "value": 4.3,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Sodium",
+      "label": "Sodium",
+      "value": 1156.7,
+      "unit": "mg",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 50,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Iron",
+      "label": "Iron",
+      "value": 9.9,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 37,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Vitamin_C",
+      "label": "Vitamin C",
+      "value": 425.5,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 567,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Calcium",
+      "label": "Calcium",
+      "value": 218.3,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 22,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Zinc",
+      "label": "Zinc",
+      "value": 3.6,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Folate",
+      "label": "Folate",
+      "value": 239.9,
+      "unit": "mcg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": null,
+      "instruction": "Heat a large skillet over medium high heat.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 2,
+      "title": null,
+      "instruction": "Add oil and meat to the pan.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 3,
+      "title": null,
+      "instruction": "Spread the meat around the pan and begin to break it up.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 4,
+      "title": null,
+      "instruction": "Combine brown sugar and steak seasoning.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 5,
+      "title": null,
+      "instruction": "Add sugar and spice mixture to the skillet and combine.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 6,
+      "title": null,
+      "instruction": "When the meat has browned, add onion and red peppers to the skillet.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 7,
+      "title": null,
+      "instruction": "Reduce heat to medium and cook onions, peppers, red wine vinegar and Worcestershire sauce with meat for 5 minutes.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 8,
+      "title": null,
+      "instruction": "Add tomato sauce and paste to pan.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 9,
+      "title": null,
+      "instruction": "Stir to combine.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 10,
+      "title": null,
+      "instruction": "Reduce heat to simmer and cook Sloppy Joe mixture 5 minutes longer.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 11,
+      "title": null,
+      "instruction": "Using a large spoon or ice cream scoop, pile sloppy meat onto toasted, buttered bun bottoms and cover with bun tops.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 12,
+      "title": null,
+      "instruction": "Serve with your favorite sides or sliced tomatoes seasoned with salt and pepper, dill pickles and Potato Salad.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 13,
+      "title": null,
+      "instruction": "We like to put a thick slice of cheddar on top of the meat in the sandwich and broil it for a few minutes to melt. YUM.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    }
+  ],
+  "matched_rules": [],
+  "source": "fixture"
+}

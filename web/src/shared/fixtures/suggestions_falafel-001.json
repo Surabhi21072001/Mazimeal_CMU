@@ -1,0 +1,30 @@
+{
+  "_fixture_note": "Stub text, written by hand. No model call. Replaced when the LLM endpoint is wired.",
+  "recipe_id": "falafel-001",
+  "member_id": "maya",
+  "source": "stub",
+  "disclaimer": "Generated from matched rules. Nutrition figures come from the database, not the model.",
+  "suggestions": [
+    {
+      "rule_id": "BIO-002",
+      "headline": "Let the garlic rest before it hits the oil",
+      "body": "Crush the garlic first and leave it on the board for ten minutes while you shape the patties. Nothing else about the recipe changes.",
+      "evidence_tier": "B",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/"
+    },
+    {
+      "rule_id": "SYN-001",
+      "headline": "The lemon is doing more than seasoning",
+      "body": "Lemon juice and tomato sit in the same meal as the chickpeas, which is what helps you absorb the iron in them. Keep them in.",
+      "evidence_tier": "A",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+    },
+    {
+      "rule_id": "INH-001",
+      "headline": "Save the tea for later",
+      "body": "Tea and coffee alongside this meal bind some of the iron. An hour either side is enough.",
+      "evidence_tier": "A",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/"
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver.",
+  "recipe_id": "tomato-spaghetti-005",
+  "name": "Fresh Tomato Spaghetti Sauce",
+  "meal": "Lunch",
+  "servings": 6,
+  "time_min": 130,
+  "tags": [
+    "low_cholesterol",
+    "low_protein"
+  ],
+  "image_url": null,
+  "ingredients": [
+    {
+      "line_id": 1,
+      "name": "onions",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 2,
+      "name": "fresh tomatoes",
+      "quantity": 4.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 3,
+      "name": "garlic cloves",
+      "quantity": 4.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 4,
+      "name": "fresh basil",
+      "quantity": 0.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 5,
+      "name": "Olive oil",
+      "quantity": 0.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 6,
+      "name": "salt",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 7,
+      "name": "parsley",
+      "quantity": 4.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 8,
+      "name": "sugar",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 9,
+      "name": "parmesan cheese",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 10,
+      "name": "fresh oregano",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 11,
+      "name": "hot Italian sausage",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 12,
+      "name": "ground beef",
+      "quantity": 1.0,
+      "unit": "portion",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    }
+  ],
+  "nutrition_per_serving": [
+    {
+      "nutrient": "Energy",
+      "label": "Calories",
+      "value": 584.2,
+      "unit": "kcal",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 29,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Protein",
+      "label": "Protein",
+      "value": 31.8,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 66,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Carbohydrate",
+      "label": "Carbohydrates",
+      "value": 21.5,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Fat",
+      "label": "Fat",
+      "value": 41.7,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Fiber",
+      "label": "Fiber",
+      "value": 4.6,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Sodium",
+      "label": "Sodium",
+      "value": 1368.4,
+      "unit": "mg",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 59,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Iron",
+      "label": "Iron",
+      "value": 9.3,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 34,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Vitamin_C",
+      "label": "Vitamin C",
+      "value": 177.0,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 236,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Calcium",
+      "label": "Calcium",
+      "value": 642.5,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 64,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Zinc",
+      "label": "Zinc",
+      "value": 4.2,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Folate",
+      "label": "Folate",
+      "value": 160.2,
+      "unit": "mcg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": null,
+      "instruction": "To cook pasta sauce, heat olive oil over medium heat in a large iron skillet or heavy saucepan.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 2,
+      "title": null,
+      "instruction": "Add onion, basil, garlic oregano and salt.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 3,
+      "title": null,
+      "instruction": "Saute until onion is tender, approximately 5 minutes.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 4,
+      "title": null,
+      "instruction": "Add tomato, parsley and sugar; heat to a boil; reduce heat and simmer, uncovered for about 2 hours, stirring often or until sauce has thickened.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 5,
+      "title": null,
+      "instruction": "Remove parsley.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 6,
+      "title": null,
+      "instruction": "Brown meat add to sauce.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 7,
+      "title": null,
+      "instruction": "If needed add tomato sauce for consistency",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 8,
+      "title": null,
+      "instruction": "Serve over cooked spaghetti or other Italian pasta and top with Parmesan cheese.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    }
+  ],
+  "matched_rules": [],
+  "source": "fixture"
+}

@@ -1,0 +1,353 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver.",
+  "recipe_id": "souvlaki-002",
+  "name": "Chicken Souvlaki",
+  "meal": "Lunch",
+  "servings": 4,
+  "time_min": 60,
+  "tags": [
+    "weeknight"
+  ],
+  "image_url": null,
+  "ingredients": [
+    {
+      "line_id": 1,
+      "name": "Olive oil",
+      "quantity": 1.5,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 2,
+      "name": "Worcestershire sauce",
+      "quantity": 0.5,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 3,
+      "name": "garlic cloves",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 4,
+      "name": "dried oregano",
+      "quantity": 4.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 5,
+      "name": "onion",
+      "quantity": 0.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 6,
+      "name": "tomatoes",
+      "quantity": 1.5,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 7,
+      "name": "Tzatziki",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 8,
+      "name": "parsley",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    }
+  ],
+  "nutrition_per_serving": [
+    {
+      "nutrient": "Energy",
+      "label": "Calories",
+      "value": 811.8,
+      "unit": "kcal",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 41,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Protein",
+      "label": "Protein",
+      "value": 47.3,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 99,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Carbohydrate",
+      "label": "Carbohydrates",
+      "value": 75.9,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Fat",
+      "label": "Fat",
+      "value": 34.7,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Fiber",
+      "label": "Fiber",
+      "value": 4.5,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Sodium",
+      "label": "Sodium",
+      "value": 824.1,
+      "unit": "mg",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 36,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Iron",
+      "label": "Iron",
+      "value": 11.1,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 41,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Vitamin_C",
+      "label": "Vitamin C",
+      "value": 199.4,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 266,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Calcium",
+      "label": "Calcium",
+      "value": 679.9,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 68,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Zinc",
+      "label": "Zinc",
+      "value": 4.4,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Folate",
+      "label": "Folate",
+      "value": 150.6,
+      "unit": "mcg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": null,
+      "instruction": "To marinate meat: Cut tenderloin into bite-size chunks and put into a Tupperware with remaining marinade ingredients.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 2,
+      "title": null,
+      "instruction": "Swish everything around to distribute, put in fridge and forget for a day (this long marination is not absolutely necessary- but longer means more flavour. If you haven't the time, just do what you can).",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 3,
+      "title": null,
+      "instruction": "When ready to BBQ, skewer meat onto metal or wooden skewers (remember to soak the wooden skewers in water for at least 1/2 an hour first) and bbq until the meat is nicely brown all over, and you know you can't possibly wait any longer to eat.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 4,
+      "title": null,
+      "instruction": "To prepare the fixings: As you are barbecuing the meat, brush as many pita breads as there are souvlaki generously with olive oil and put on the bbq to crisp slightly or alternatively, into a hot frying pan, and cook about 30-45 seconds per side or until starting to brown and give off a yummy,'toasty' smell.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 5,
+      "title": null,
+      "instruction": "Here is the 'technique' part.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 6,
+      "title": null,
+      "instruction": "Have cut some squares of foil a bit larger than the pita breads.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 7,
+      "title": null,
+      "instruction": "Put a square in the palm of your hand and lay a pita in the centre sitting in your flat palm.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 8,
+      "title": null,
+      "instruction": "Take a skewer of meat and place in center of pita.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 9,
+      "title": null,
+      "instruction": "Squeeze palm shut around meat to get a grip with the pita and pull out skewer, leaving meat inside the bread.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 10,
+      "title": null,
+      "instruction": "Open up your palm slightly, making the pita gape open and throw in some onion, slices of tomato, a good dollop of tzatziki, some parsley, along with a healthy shake of salt.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 11,
+      "title": null,
+      "instruction": "Roll sandwich up by squeezing palm again (gently this time as the salad stuff is inside) and enclosing neatly with the foil, giving a twist on the bottom so no yummy juices drip out onto your clothes as you are eating this!",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 12,
+      "title": null,
+      "instruction": "Enjoy our contribution to fast-food!",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 13,
+      "title": null,
+      "instruction": "You will never settle for a Big Mac again!",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 14,
+      "title": null,
+      "instruction": "To freeze: Place meat and marinade in a freezer bag or rigid freezer container.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 15,
+      "title": null,
+      "instruction": "To serve: Thaw in fridge overnight and proceed with cooking directions.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    }
+  ],
+  "matched_rules": [],
+  "source": "fixture"
+}

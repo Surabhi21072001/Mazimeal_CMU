@@ -67,3 +67,8 @@ Thumbs.db
 /baseline_export.csv
 /1. Human Nutrition Requirements and Thresholds/
 /web/.screenshot-build/
+
+# Backend working files
+# The suggestion cache is generated and rebuilt on demand; the venv is 417 MB.
+api/.cache/
+api/.venv/

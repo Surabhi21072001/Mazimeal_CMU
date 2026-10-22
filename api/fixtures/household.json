@@ -1,0 +1,135 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver. Today's consumed totals are invented.",
+  "household_id": "demo-household",
+  "name": "Demo Household",
+  "date": "2026-10-19",
+  "members": [
+    {
+      "member_id": "maya",
+      "name": "Maya",
+      "age": 31,
+      "sex": "F",
+      "conditions": [
+        "iron_deficiency"
+      ],
+      "preferences": {
+        "allergies": [
+          "peanut"
+        ],
+        "dislikes": [
+          "mushroom"
+        ],
+        "dietary_patterns": [],
+        "cuisines": [
+          "Mediterranean",
+          "South Asian"
+        ]
+      },
+      "targets": [
+        {
+          "nutrient": "Iron",
+          "label": "Iron",
+          "unit": "mg",
+          "target": 27.0,
+          "baseline": 18.0,
+          "consumed": 3.1,
+          "remaining": 23.9,
+          "upper_limit": 45.0,
+          "adjusted_by": [
+            "IRON_COND_ANY_C002_001"
+          ],
+          "adjusted_reason": "iron deficiency"
+        },
+        {
+          "nutrient": "Energy",
+          "label": "Calories",
+          "unit": "kcal",
+          "target": 2000.0,
+          "baseline": 2000.0,
+          "consumed": 520.0,
+          "remaining": 1480.0,
+          "upper_limit": null,
+          "adjusted_by": []
+        },
+        {
+          "nutrient": "Macro_Protein",
+          "label": "Protein",
+          "unit": "g",
+          "target": 48.0,
+          "baseline": 48.0,
+          "consumed": 18.0,
+          "remaining": 30.0,
+          "upper_limit": null,
+          "adjusted_by": []
+        },
+        {
+          "nutrient": "Vitamin_C",
+          "label": "Vitamin C",
+          "unit": "mg",
+          "target": 75.0,
+          "baseline": 75.0,
+          "consumed": 22.0,
+          "remaining": 53.0,
+          "upper_limit": 2000.0,
+          "adjusted_by": []
+        }
+      ]
+    },
+    {
+      "member_id": "jeff",
+      "name": "Jeff",
+      "age": 28,
+      "sex": "M",
+      "conditions": [],
+      "preferences": {
+        "allergies": [
+          "peanut"
+        ],
+        "dislikes": [],
+        "dietary_patterns": [],
+        "cuisines": [
+          "American"
+        ]
+      },
+      "targets": [
+        {
+          "nutrient": "Iron",
+          "label": "Iron",
+          "unit": "mg",
+          "target": 8.0,
+          "baseline": 8.0,
+          "consumed": 2.4,
+          "remaining": 5.6,
+          "upper_limit": 45.0,
+          "adjusted_by": []
+        },
+        {
+          "nutrient": "Energy",
+          "label": "Calories",
+          "unit": "kcal",
+          "target": 2600.0,
+          "baseline": 2600.0,
+          "consumed": 780.0,
+          "remaining": 1820.0,
+          "upper_limit": null,
+          "adjusted_by": []
+        },
+        {
+          "nutrient": "Macro_Protein",
+          "label": "Protein",
+          "unit": "g",
+          "target": 116.0,
+          "baseline": null,
+          "consumed": 32.0,
+          "remaining": 84.0,
+          "upper_limit": null,
+          "adjusted_by": [
+            "PROT_ACT_ANY_VERYACTIVE_001",
+            "PROT_GOAL_ANY_MUSCLE_001"
+          ],
+          "adjusted_reason": "very active, building muscle"
+        }
+      ]
+    }
+  ]
+}

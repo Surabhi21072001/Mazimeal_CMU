@@ -1,0 +1,584 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver.",
+  "recipe_id": "falafel-001",
+  "name": "Falafel with Herbed Cucumber Yogurt",
+  "meal": "Lunch",
+  "servings": 4,
+  "time_min": 38,
+  "tags": [
+    "weeknight"
+  ],
+  "image_url": null,
+  "ingredients": [
+    {
+      "line_id": 1,
+      "name": "garlic",
+      "quantity": 2.0,
+      "unit": "cloves",
+      "grams": 6.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 2,
+      "name": "scallions",
+      "quantity": 4.0,
+      "unit": "stalks",
+      "grams": 30.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 3,
+      "name": "fresh cilantro",
+      "quantity": 0.5,
+      "unit": "tbsp",
+      "grams": 4.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 4,
+      "name": "of fresh mint",
+      "quantity": 0.25,
+      "unit": "tbsp",
+      "grams": 2.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 5,
+      "name": "chickpeas",
+      "quantity": 1.0,
+      "unit": "cup",
+      "grams": 246.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": "SYN-001",
+      "notes": null
+    },
+    {
+      "line_id": 6,
+      "name": "baking powder",
+      "quantity": 1.0,
+      "unit": "tsp",
+      "grams": 4.6,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 7,
+      "name": "ground cumin",
+      "quantity": 0.5,
+      "unit": "tsp",
+      "grams": 2.1,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 8,
+      "name": "sea salt",
+      "quantity": 1.0,
+      "unit": "tsp",
+      "grams": 6.0,
+      "grams_source": "placeholder",
+      "is_optional": true,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 9,
+      "name": "Tabasco sauce",
+      "quantity": 0.5,
+      "unit": "tsp",
+      "grams": 4.7,
+      "grams_source": "placeholder",
+      "is_optional": true,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 10,
+      "name": "Olive oil",
+      "quantity": 1.0,
+      "unit": "tbsp",
+      "grams": 27.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 11,
+      "name": "lettuce",
+      "quantity": 2.0,
+      "unit": "cups",
+      "grams": 36.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 12,
+      "name": "chopped tomato",
+      "quantity": 4.0,
+      "unit": "medium",
+      "grams": 90.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 13,
+      "name": "onion",
+      "quantity": 1.0,
+      "unit": "small",
+      "grams": 55.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 14,
+      "name": "plain low-fat yogurt",
+      "quantity": 1.0,
+      "unit": "cup",
+      "grams": 170.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 15,
+      "name": "fresh lemon juice",
+      "quantity": 1.0,
+      "unit": "tbsp",
+      "grams": 15.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": "SYN-001",
+      "notes": null
+    },
+    {
+      "line_id": 16,
+      "name": "kirby cucumber",
+      "quantity": 1.0,
+      "unit": "whole",
+      "grams": 52.0,
+      "grams_source": "placeholder",
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 17,
+      "name": "pepper",
+      "quantity": 1.0,
+      "unit": "tsp",
+      "grams": 2.3,
+      "grams_source": "placeholder",
+      "is_optional": true,
+      "required_by_rule": null,
+      "notes": null
+    }
+  ],
+  "nutrition_per_serving": [
+    {
+      "nutrient": "Energy",
+      "label": "Calories",
+      "value": 464.2,
+      "unit": "kcal",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 23,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Protein",
+      "label": "Protein",
+      "value": 16.8,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 35,
+      "top_sources": [
+        {
+          "line_id": 5,
+          "name": "chickpeas",
+          "value": 9.6,
+          "unit": "g",
+          "pct_of_recipe": 57,
+          "estimated": true
+        },
+        {
+          "line_id": 14,
+          "name": "plain low-fat yogurt",
+          "value": 4.2,
+          "unit": "g",
+          "pct_of_recipe": 25,
+          "estimated": true
+        }
+      ]
+    },
+    {
+      "nutrient": "Macro_Carbohydrate",
+      "label": "Carbohydrates",
+      "value": 76.3,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Fat",
+      "label": "Fat",
+      "value": 10.6,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Fiber",
+      "label": "Fiber",
+      "value": 7.8,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Sodium",
+      "label": "Sodium",
+      "value": 1177.3,
+      "unit": "mg",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 51,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Iron",
+      "label": "Iron",
+      "value": 6.0,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 22,
+      "top_sources": [
+        {
+          "line_id": 5,
+          "name": "chickpeas",
+          "value": 3.4,
+          "unit": "mg",
+          "pct_of_recipe": 57,
+          "estimated": true
+        },
+        {
+          "line_id": 2,
+          "name": "scallions",
+          "value": 0.9,
+          "unit": "mg",
+          "pct_of_recipe": 15,
+          "estimated": true
+        },
+        {
+          "line_id": 12,
+          "name": "chopped tomato",
+          "value": 0.6,
+          "unit": "mg",
+          "pct_of_recipe": 10,
+          "estimated": true
+        }
+      ]
+    },
+    {
+      "nutrient": "Vitamin_C",
+      "label": "Vitamin C",
+      "value": 120.2,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 160,
+      "top_sources": [
+        {
+          "line_id": 15,
+          "name": "fresh lemon juice",
+          "value": 52.0,
+          "unit": "mg",
+          "pct_of_recipe": 43,
+          "estimated": true
+        },
+        {
+          "line_id": 12,
+          "name": "chopped tomato",
+          "value": 38.0,
+          "unit": "mg",
+          "pct_of_recipe": 32,
+          "estimated": true
+        },
+        {
+          "line_id": 2,
+          "name": "scallions",
+          "value": 14.0,
+          "unit": "mg",
+          "pct_of_recipe": 12,
+          "estimated": true
+        }
+      ]
+    },
+    {
+      "nutrient": "Calcium",
+      "label": "Calcium",
+      "value": 541.3,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 54,
+      "top_sources": [
+        {
+          "line_id": 14,
+          "name": "plain low-fat yogurt",
+          "value": 310.0,
+          "unit": "mg",
+          "pct_of_recipe": 57,
+          "estimated": true
+        },
+        {
+          "line_id": 5,
+          "name": "chickpeas",
+          "value": 95.0,
+          "unit": "mg",
+          "pct_of_recipe": 18,
+          "estimated": true
+        }
+      ]
+    },
+    {
+      "nutrient": "Zinc",
+      "label": "Zinc",
+      "value": 3.1,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Folate",
+      "label": "Folate",
+      "value": 206.6,
+      "unit": "mcg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": "Make the cucumber yogurt",
+      "instruction": "To make Herbed Cucumber Yogurt: Add all yogurt ingredients to a mixing bowl; whisk to combine; cover and chill until ready to serve.",
+      "duration_min": 5,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "mix"
+    },
+    {
+      "step_number": 2,
+      "title": "Blend the herbs and garlic",
+      "instruction": "To make Falafel: Add the scallions, garlic, cilantro, and mint to the container of a food processor; pulse until mixture is finely chopped.",
+      "duration_min": 2,
+      "is_key_step": true,
+      "ingredient_line_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "technique": "blend"
+    },
+    {
+      "step_number": 3,
+      "title": "Add the chickpeas and spices",
+      "instruction": "Add the chickpeas, breadcrumbs, cumin, baking powder, salt, and Tabasco; continue to pulse until the batter has the consistency of cooked oatmeal.",
+      "duration_min": 3,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "blend"
+    },
+    {
+      "step_number": 4,
+      "title": "Shape four patties",
+      "instruction": "Lightly oil hands and form mixture into 4 burger shaped patties.",
+      "duration_min": 5,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "shape"
+    },
+    {
+      "step_number": 5,
+      "title": "Spray the patties",
+      "instruction": "Spray each patty lightly with cooking spray.",
+      "duration_min": 1,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "prep"
+    },
+    {
+      "step_number": 6,
+      "title": "Heat the olive oil",
+      "instruction": "Let the olive oil get hot (but not smoking) in a large skillet over medium heat.",
+      "duration_min": 3,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "heat"
+    },
+    {
+      "step_number": 7,
+      "title": "Fry until golden",
+      "instruction": "Fry patties for about 4 minutes on each side or until golden brown and crisp.",
+      "duration_min": 8,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "fry"
+    },
+    {
+      "step_number": 8,
+      "title": "Drain the patties",
+      "instruction": "Transfer cooked patties to a paper-towel lined plate.",
+      "duration_min": 1,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "rest"
+    },
+    {
+      "step_number": 9,
+      "title": "Fill the pita",
+      "instruction": "Put cooked patty into warmed pita pocket with shredded lettuce, chopped tomatoes, and sliced onions.",
+      "duration_min": 3,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "assemble"
+    },
+    {
+      "step_number": 10,
+      "title": "Serve with the yogurt",
+      "instruction": "Serve with Herbed Cucumber Yogurt.",
+      "duration_min": 1,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": "serve"
+    }
+  ],
+  "matched_rules": [
+    {
+      "rule_id": "SYN-001",
+      "target_nutrient": "iron absorption",
+      "target_code": "NUT_IRON",
+      "name": "Vitamin C with nonheme iron",
+      "status": "satisfied",
+      "automation_status": "recipe_safe",
+      "evidence_tier": "A",
+      "applies_to": {
+        "type": "ingredients",
+        "line_ids": [
+          5,
+          12,
+          15
+        ]
+      },
+      "engine_action": "Keep the lemon juice and tomato in the same meal as the chickpeas.",
+      "why": "Vitamin C reduces ferric iron to the form the gut absorbs, so the chickpeas give up more iron.",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+    },
+    {
+      "rule_id": "BIO-002",
+      "target_nutrient": "allicin formation",
+      "target_code": "CMP_ALLICIN",
+      "name": "Crush garlic and rest before heating",
+      "status": "not_satisfied",
+      "automation_status": "recipe_safe",
+      "evidence_tier": "B",
+      "applies_to": {
+        "type": "step",
+        "step_number": 2
+      },
+      "engine_action": "Crush the garlic, then let it rest about 10 minutes before it meets heat.",
+      "why": "Resting lets alliinase convert alliin to allicin; heating too early stops the reaction.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/"
+    },
+    {
+      "rule_id": "INH-002",
+      "target_nutrient": "iron and zinc absorption",
+      "target_code": "NUT_IRON_ZINC",
+      "name": "High-phytate matrix with iron and zinc",
+      "status": "not_satisfied",
+      "automation_status": "recipe_safe",
+      "evidence_tier": "A",
+      "applies_to": {
+        "type": "ingredients",
+        "line_ids": [
+          5
+        ]
+      },
+      "engine_action": "Soak dried chickpeas overnight, or rinse canned ones well, to cut phytate.",
+      "why": "Phytate binds iron and zinc and keeps them from being absorbed.",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+    },
+    {
+      "rule_id": "INH-001",
+      "target_nutrient": "nonheme iron absorption",
+      "target_code": "NUT_IRON",
+      "name": "Tea or coffee with a nonheme iron meal",
+      "status": "advisory",
+      "automation_status": "instruction_only",
+      "evidence_tier": "A",
+      "applies_to": {
+        "type": "meal"
+      },
+      "engine_action": "Keep tea and coffee away from this meal; have them an hour either side.",
+      "why": "Polyphenols bind nonheme iron and measurably reduce how much is absorbed.",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/"
+    },
+    {
+      "rule_id": "INH-003",
+      "target_nutrient": "iron absorption",
+      "target_code": "NUT_IRON",
+      "name": "Calcium next to iron",
+      "status": "needs_review",
+      "automation_status": "do_not_automate",
+      "evidence_tier": "B",
+      "applies_to": {
+        "type": "ingredients",
+        "line_ids": [
+          14
+        ]
+      },
+      "engine_action": "Flagged for a reviewer. The yogurt sauce stays: the rule forbids stripping calcium from a balanced meal.",
+      "why": "Calcium can reduce iron absorption in single meals, but the long-term evidence is mixed.",
+      "source_url": "https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/"
+    }
+  ],
+  "source": "fixture"
+}

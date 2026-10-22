@@ -1,0 +1,296 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver.",
+  "recipe_id": "tuna-salad-004",
+  "name": "Tuna Salad Sandwiches",
+  "meal": "Lunch",
+  "servings": 2,
+  "time_min": 10,
+  "tags": [
+    "weeknight"
+  ],
+  "image_url": null,
+  "ingredients": [
+    {
+      "line_id": 1,
+      "name": "solid white tuna",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 2,
+      "name": "green onion",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 3,
+      "name": "celery rib",
+      "quantity": 1.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 4,
+      "name": "fresh lemon juice",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 5,
+      "name": "low-fat mayonnaise",
+      "quantity": 0.333,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 6,
+      "name": "lemon pepper",
+      "quantity": 3.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 7,
+      "name": "seasoning salt",
+      "quantity": 0.5,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 8,
+      "name": "mustard powder",
+      "quantity": 0.25,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 9,
+      "name": "Tabasco sauce",
+      "quantity": 2.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 10,
+      "name": "lettuce leaf",
+      "quantity": 4.0,
+      "unit": "unit",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    },
+    {
+      "line_id": 11,
+      "name": "tomatoes",
+      "quantity": 1.0,
+      "unit": "portion",
+      "grams": null,
+      "grams_source": null,
+      "is_optional": false,
+      "required_by_rule": null,
+      "notes": null
+    }
+  ],
+  "nutrition_per_serving": [
+    {
+      "nutrient": "Energy",
+      "label": "Calories",
+      "value": 537.8,
+      "unit": "kcal",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 27,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Protein",
+      "label": "Protein",
+      "value": 56.7,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 118,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Carbohydrate",
+      "label": "Carbohydrates",
+      "value": 35.0,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Macro_Fat",
+      "label": "Fat",
+      "value": 17.8,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Fiber",
+      "label": "Fiber",
+      "value": 1.8,
+      "unit": "g",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Sodium",
+      "label": "Sodium",
+      "value": 1230.7,
+      "unit": "mg",
+      "source": "published",
+      "confidence": 1.0,
+      "pct_of_target": 54,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Iron",
+      "label": "Iron",
+      "value": 8.7,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 32,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Vitamin_C",
+      "label": "Vitamin C",
+      "value": 293.5,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 391,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Calcium",
+      "label": "Calcium",
+      "value": 297.8,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": 30,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Zinc",
+      "label": "Zinc",
+      "value": 3.2,
+      "unit": "mg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    },
+    {
+      "nutrient": "Folate",
+      "label": "Folate",
+      "value": 327.1,
+      "unit": "mcg",
+      "source": "derived",
+      "confidence": 0.6,
+      "pct_of_target": null,
+      "top_sources": []
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": null,
+      "instruction": "Drain the tuna then hand-squeeze out any excess moisture; place in a bowl then flake with a fork.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 2,
+      "title": null,
+      "instruction": "Add in all remaining ingredients up to the Tabasco sauce; mix until well combined, adjusting all seasonings to suit taste.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 3,
+      "title": null,
+      "instruction": "Cover with plastic wrap and chill for at least 2 hours (more is even better!).",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 4,
+      "title": null,
+      "instruction": "Divide onto bread slices with lettuce leaves and slices tomatoes.",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    },
+    {
+      "step_number": 5,
+      "title": null,
+      "instruction": "Delicious!",
+      "duration_min": null,
+      "is_key_step": false,
+      "ingredient_line_ids": [],
+      "technique": null
+    }
+  ],
+  "matched_rules": [],
+  "source": "fixture"
+}

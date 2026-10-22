@@ -1,0 +1,173 @@
+{
+  "_fixture_note": "Fixture data. Nutrition values, ingredient names and step text come from the development database; gram weights, units, step titles and durations are placeholders until the data and step workstreams deliver. Scores are illustrative: they assume the iron weighting the recommender does not do yet.",
+  "member_id": "maya",
+  "meal": "Lunch",
+  "target_nutrient": "Iron",
+  "date": "2026-10-19",
+  "generated_at": "2026-10-19T12:30:00Z",
+  "source": "fixture",
+  "results": [
+    {
+      "recipe_id": "souvlaki-002",
+      "name": "Chicken Souvlaki",
+      "meal": "Lunch",
+      "kcal_per_serving": 811.8,
+      "time_min": 60,
+      "tags": [
+        "weeknight"
+      ],
+      "score": 91.2,
+      "nutrient_contribution": {
+        "nutrient": "Iron",
+        "per_serving": 11.1,
+        "unit": "mg",
+        "pct_of_remaining_need": 46,
+        "source": "derived",
+        "confidence": 0.6
+      },
+      "matched_rule_ids": [
+        "SYN-002"
+      ],
+      "why": "Most iron of the lunches that fit her day, and it is already a Mediterranean dish she likes.",
+      "blocked_by": null
+    },
+    {
+      "recipe_id": "falafel-001",
+      "name": "Falafel with Herbed Cucumber Yogurt",
+      "meal": "Lunch",
+      "kcal_per_serving": 464.2,
+      "time_min": 38,
+      "tags": [
+        "weeknight"
+      ],
+      "score": 89.6,
+      "nutrient_contribution": {
+        "nutrient": "Iron",
+        "per_serving": 6.0,
+        "unit": "mg",
+        "pct_of_remaining_need": 25,
+        "source": "derived",
+        "confidence": 0.6
+      },
+      "matched_rule_ids": [
+        "SYN-001",
+        "BIO-002",
+        "INH-002",
+        "INH-001",
+        "INH-003"
+      ],
+      "why": "Pairs plant iron with vitamin C already, and one preparation change would raise what she absorbs.",
+      "blocked_by": null
+    },
+    {
+      "recipe_id": "sloppy-joes-003",
+      "name": "Sloppy Joes",
+      "meal": "Lunch",
+      "kcal_per_serving": 555.3,
+      "time_min": 35,
+      "tags": [
+        "weeknight"
+      ],
+      "score": 88.0,
+      "nutrient_contribution": {
+        "nutrient": "Iron",
+        "per_serving": 9.9,
+        "unit": "mg",
+        "pct_of_remaining_need": 41,
+        "source": "derived",
+        "confidence": 0.6
+      },
+      "matched_rule_ids": [
+        "SYN-001"
+      ],
+      "why": "Beef iron plus tomato; heavier on sodium than the rest.",
+      "blocked_by": null
+    },
+    {
+      "recipe_id": "tuna-salad-004",
+      "name": "Tuna Salad Sandwiches",
+      "meal": "Lunch",
+      "kcal_per_serving": 537.8,
+      "time_min": 10,
+      "tags": [
+        "weeknight"
+      ],
+      "score": 86.4,
+      "nutrient_contribution": {
+        "nutrient": "Iron",
+        "per_serving": 8.7,
+        "unit": "mg",
+        "pct_of_remaining_need": 36,
+        "source": "derived",
+        "confidence": 0.6
+      },
+      "matched_rule_ids": [
+        "INH-003"
+      ],
+      "why": "Ten minutes start to finish, with iron close to the others.",
+      "blocked_by": null
+    },
+    {
+      "recipe_id": "tomato-spaghetti-005",
+      "name": "Fresh Tomato Spaghetti Sauce",
+      "meal": "Lunch",
+      "kcal_per_serving": 584.2,
+      "time_min": 130,
+      "tags": [
+        "low_cholesterol",
+        "low_protein"
+      ],
+      "score": 79.5,
+      "nutrient_contribution": {
+        "nutrient": "Iron",
+        "per_serving": 9.3,
+        "unit": "mg",
+        "pct_of_remaining_need": 39,
+        "source": "derived",
+        "confidence": 0.6
+      },
+      "matched_rule_ids": [
+        "SYN-001",
+        "BIO-003"
+      ],
+      "why": "Good iron, but a two-hour sauce on a Tuesday lunch.",
+      "blocked_by": null
+    }
+  ],
+  "blocked": [
+    {
+      "recipe_id": "peanut-bacon-006",
+      "name": "Peanut Butter and Bacon Sandwich",
+      "meal": "Lunch",
+      "kcal_per_serving": 319.0,
+      "time_min": 10,
+      "tags": [],
+      "score": null,
+      "nutrient_contribution": null,
+      "matched_rule_ids": [],
+      "why": null,
+      "blocked_by": {
+        "reason": "household allergen",
+        "detail": "peanut butter"
+      }
+    },
+    {
+      "recipe_id": "baked-trout-007",
+      "name": "Baked Trout with Garlic & Mushrooms",
+      "meal": "Lunch",
+      "kcal_per_serving": 825.8,
+      "time_min": 32,
+      "tags": [
+        "high_protein"
+      ],
+      "score": null,
+      "nutrient_contribution": null,
+      "matched_rule_ids": [],
+      "why": null,
+      "blocked_by": {
+        "reason": "disliked ingredient",
+        "detail": "mushroom"
+      }
+    }
+  ]
+}
