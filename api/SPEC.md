@@ -33,6 +33,20 @@ interface knows where the data comes from.
 | Rules (2) | recipe ↔ rule links **with the position they hit** | `recipe_detail.matched_rules` | before step highlighting is real |
 | Recommender (3) | ranked recipes for one member, one meal | `recommend()` below | before the list page is real |
 
+### Where the rules come from
+
+Rules are fetched separately from the recipe, because they are detected rather
+than stored on it:
+
+```
+GET /api/recipes/{id}          the recipe
+GET /api/recipes/{id}/rules    the rules detected on it
+```
+
+The shape the rules workstream returns is in `docs/rules_api_contract.md`. This
+backend calls both and composes the single payload below, so the screens never
+see the split - and the split can change without touching them.
+
 ### The one thing that is easy to miss
 
 `matched_rules` needs **where** the rule hit, not just that it hit:
