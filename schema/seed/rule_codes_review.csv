@@ -1,0 +1,122 @@
+code,code_type,auto_display_name,needs_human_description
+ADD_VINEGAR,ADD,Vinegar,yes
+ADD_VISCOUS_FIBER,ADD,Viscous Fiber,yes
+AVOID_OXALATE_CALCIUM_CREDIT,AVOID,Oxalate Calcium Credit,yes
+BEH_POSTMEAL,BEH,Postmeal,yes
+BEH_WALK_POSTMEAL,BEH,Walk Postmeal,yes
+BEV_SSB,BEV,Ssb,yes
+BEV_TEA_COFFEE,BEV,Tea Coffee,yes
+CALC_NET_CARB,CALC,Net Carb,yes
+CARB_REFINED,CARB,Refined,yes
+CHECK_NET_CARB,CHECK,Net Carb,yes
+CHECK_RULE_CONFLICT,CHECK,Rule Conflict,yes
+CMP_ALLICIN,CMP,Allicin,yes
+CMP_CURCUMIN,CMP,Curcumin,yes
+CMP_FIBER_PHYTATE,CMP,Fiber Phytate,yes
+CMP_ISOTHIOCYANATE,CMP,Isothiocyanate,yes
+CMP_OXALATE,CMP,Oxalate,yes
+CMP_PHYTATE,CMP,Phytate,yes
+CMP_SULFORAPHANE,CMP,Sulforaphane,yes
+FLAG_MED_IRON,FLAG,Med Iron,yes
+FLAG_ZINC_COPPER,FLAG,Zinc Copper,yes
+ING_ALLIUM_GRAIN_LEGUME,ING,Allium Grain Legume,yes
+ING_CARROT,ING,Carrot,yes
+ING_COOKED_STARCH,ING,Cooked Starch,yes
+ING_CORN,ING,Corn,yes
+ING_CRUCIFER,ING,Crucifer,yes
+ING_EGG,ING,Egg,yes
+ING_GARLIC,ING,Garlic,yes
+ING_GRAIN_LEGUME,ING,Grain Legume,yes
+ING_LEAFY_GREEN,ING,Leafy Green,yes
+ING_LEGUME,ING,Legume,yes
+ING_LEGUME_GRAIN,ING,Legume Grain,yes
+ING_MUSHROOM,ING,Mushroom,yes
+ING_PASTA,ING,Pasta,yes
+ING_RAW_EGG_WHITE,ING,Raw Egg White,yes
+ING_RIPE_FRUIT,ING,Ripe Fruit,yes
+ING_SEED,ING,Seed,yes
+ING_TOMATO,ING,Tomato,yes
+ING_TURMERIC,ING,Turmeric,yes
+ING_VITC_FOLATE_VEG,ING,Vitc Folate Veg,yes
+ING_YOGURT,ING,Yogurt,yes
+MACRO_AVAIL_CARB,MACRO,Avail Carb,yes
+MACRO_CARB,MACRO,Carb,yes
+MACRO_FAT_LOW,MACRO,Fat Low,yes
+MEAL_MIXED,MEAL,Mixed,yes
+MED_ACID_SUPPRESS,MED,Acid Suppress,yes
+MITIGATE_AVIDIN,MITIGATE,Avidin,yes
+MITIGATE_LOW_FAT,MITIGATE,Low Fat,yes
+MITIGATE_MYROSINASE_HEAT,MITIGATE,Myrosinase Heat,yes
+MITIGATE_PHYTATE,MITIGATE,Phytate,yes
+MITIGATE_VITC_LOSS,MITIGATE,Vitc Loss,yes
+NUT_BETACAROTENE,NUT,Betacarotene,yes
+NUT_BIOTIN,NUT,Biotin,yes
+NUT_CALCIUM,NUT,Calcium,yes
+NUT_CAROTENOIDS,NUT,Carotenoids,yes
+NUT_COPPER,NUT,Copper,yes
+NUT_FAT_SOLUBLE,NUT,Fat Soluble,yes
+NUT_IRON,NUT,Iron,yes
+NUT_IRON_ZINC,NUT,Iron Zinc,yes
+NUT_LACTOSE_TOLERANCE,NUT,Lactose Tolerance,yes
+NUT_LYCOPENE,NUT,Lycopene,yes
+NUT_MINERALS,NUT,Minerals,yes
+NUT_NIACIN,NUT,Niacin,yes
+NUT_NONHEME_IRON,NUT,Nonheme Iron,yes
+NUT_PROTEIN,NUT,Protein,yes
+NUT_PROTEIN_QUALITY,NUT,Protein Quality,yes
+NUT_PROVITAMIN_A,NUT,Provitamin A,yes
+NUT_SEED_COMPOUNDS,NUT,Seed Compounds,yes
+NUT_VITA,NUT,Vita,yes
+NUT_VITC,NUT,Vitc,yes
+NUT_VITC_FOLATE,NUT,Vitc Folate,yes
+NUT_VITD,NUT,Vitd,yes
+NUT_VITD2,NUT,Vitd2,yes
+NUT_VITK,NUT,Vitk,yes
+NUT_ZINC,NUT,Zinc,yes
+OUT_GL,OUT,Gl,yes
+OUT_MULTI_OBJECTIVE,OUT,Multi Objective,yes
+OUT_PPG,OUT,Ppg,yes
+OUT_SAFETY,OUT,Safety,yes
+PAIR_AA_COMPLEMENT,PAIR,Aa Complement,yes
+PAIR_ACID_VITC_IRON,PAIR,Acid Vitc Iron,yes
+PAIR_ALLIUM_MINERAL,PAIR,Allium Mineral,yes
+PAIR_CAST_IRON,PAIR,Cast Iron,yes
+PAIR_CULTURE_LACTOSE,PAIR,Culture Lactose,yes
+PAIR_FAT_CARB,PAIR,Fat Carb,yes
+PAIR_FAT_CAROTENOID,PAIR,Fat Carotenoid,yes
+PAIR_FAT_VITA,PAIR,Fat Vita,yes
+PAIR_FAT_VITD,PAIR,Fat Vitd,yes
+PAIR_FAT_VITK,PAIR,Fat Vitk,yes
+PAIR_MYROSINASE,PAIR,Myrosinase,yes
+PAIR_PIPERINE_CURCUMIN,PAIR,Piperine Curcumin,yes
+PAIR_PROTEIN_CARB,PAIR,Protein Carb,yes
+PAIR_VITC_IRON,PAIR,Vitc Iron,yes
+PAIR_VITD_CALCIUM,PAIR,Vitd Calcium,yes
+PORTION_CARB,PORTION,Carb,yes
+PROC_AL_DENTE,PROC,Al Dente,yes
+PROC_CHOP_REST,PROC,Chop Rest,yes
+PROC_COOK,PROC,Cook,yes
+PROC_COOKWARE,PROC,Cookware,yes
+PROC_COOK_CHOP,PROC,Cook Chop,yes
+PROC_COOK_DISRUPT,PROC,Cook Disrupt,yes
+PROC_COOK_WITH_FAT,PROC,Cook With Fat,yes
+PROC_COOL_REHEAT,PROC,Cool Reheat,yes
+PROC_CRUSH_REST,PROC,Crush Rest,yes
+PROC_FERMENT,PROC,Ferment,yes
+PROC_GENTLE_COOK,PROC,Gentle Cook,yes
+PROC_GERMINATE,PROC,Germinate,yes
+PROC_GRIND,PROC,Grind,yes
+PROC_MOIST_HEAT,PROC,Moist Heat,yes
+PROC_NIXTAMAL,PROC,Nixtamal,yes
+PROC_RETAIN_STRUCTURE,PROC,Retain Structure,yes
+PROC_SOAK_COOK,PROC,Soak Cook,yes
+PROC_UV_EXPOSE,PROC,Uv Expose,yes
+RULE_CONFLICT,RULE,Conflict,yes
+SAFETY_COOLING,SAFETY,Cooling,yes
+SEP_CALCIUM_IRON_SUPP,SEP,Calcium Iron Supp,yes
+SEP_FIBER_MINERAL,SEP,Fiber Mineral,yes
+SEP_POLYPHENOL_IRON,SEP,Polyphenol Iron,yes
+SEQ_VEG_PROTEIN_FIRST,SEQ,Veg Protein First,yes
+SUB_LESS_RIPE,SUB,Less Ripe,yes
+SUB_LOW_GI,SUB,Low Gi,yes
+SUB_UNSWEET_BEV,SUB,Unsweet Bev,yes
