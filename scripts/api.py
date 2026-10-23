@@ -6,6 +6,7 @@ does not change any rule semantics; it reshapes the evaluation output into a
 richer, frontend-friendly JSON response.
 
     GET /api/recipes                      list recipes (paginated, filterable)
+    GET /api/recipes/{recipe_id}          one recipe's detail
     GET /api/recipes/{recipe_id}/evaluate evaluate rules for one recipe
 
 Pipeline (all existing):
@@ -107,6 +108,28 @@ class RecipeListResponse(BaseModel):
     recipes: list[RecipeSummary]
 
 
+class RecipeIngredientDetail(BaseModel):
+    ingredient_id: str
+    name: str
+    quantity: float | None = None
+    unit: str | None = None
+    rule_codes: list[str] = []
+
+
+class RecipeDetailResponse(BaseModel):
+    recipe_id: str
+    recipe_name: str
+    meal_category: str | None = None
+    servings: int | None = None
+    calories_per_serving: float | None = None
+    data_source: str | None = None
+    description: str | None = None
+    ingredients: list[RecipeIngredientDetail] = []
+    ingredient_codes: list[str] = []
+    nutrients: dict[str, float] = {}
+    instructions: str | None = None
+
+
 # --------------------------------------------------------------------------
 # Connection handling
 # --------------------------------------------------------------------------
@@ -181,6 +204,56 @@ def evaluate_recipe(recipe_id: str) -> RecipeEvaluationResponse:
             recipe_name=facts.recipe_name,
             evaluated_at=datetime.now(timezone.utc),
             rules=[_to_response(e) for e in evaluated],
+        )
+    finally:
+        conn.close()
+
+
+@app.get("/api/recipes/{recipe_id}", response_model=RecipeDetailResponse)
+def get_recipe(recipe_id: str) -> RecipeDetailResponse:
+    """Return one recipe's detail: core fields, ingredients (with rule codes),
+    nutrition (native ids), and instructions.
+
+    Built from build_recipe_facts so it reuses the existing loaders rather than
+    duplicating DB queries. 404 on unknown or malformed recipe_id.
+    """
+    conn = _connect()
+    try:
+        try:
+            facts = build_recipe_facts(conn, recipe_id)
+        except RecipeNotFound:
+            raise HTTPException(status_code=404,
+                                detail=f"recipe not found: {recipe_id}")
+        except Exception as exc:
+            if _is_invalid_id_error(exc):
+                if hasattr(conn, "rollback"):
+                    conn.rollback()
+                raise HTTPException(status_code=404,
+                                    detail=f"recipe not found: {recipe_id}")
+            raise
+
+        meta = facts.metadata
+        return RecipeDetailResponse(
+            recipe_id=facts.recipe_id,
+            recipe_name=facts.recipe_name,
+            meal_category=meta.get("meal_category"),
+            servings=meta.get("servings"),
+            calories_per_serving=meta.get("calories_per_serving"),
+            data_source=meta.get("data_source"),
+            description=meta.get("recipe_description"),
+            ingredients=[
+                RecipeIngredientDetail(
+                    ingredient_id=i.ingredient_id,
+                    name=i.ingredient_name,
+                    quantity=i.quantity,
+                    unit=i.unit,
+                    rule_codes=list(i.rule_codes),
+                )
+                for i in facts.ingredients
+            ],
+            ingredient_codes=sorted(facts.ingredient_codes),
+            nutrients=dict(facts.nutrients),
+            instructions=facts.instructions,
         )
     finally:
         conn.close()

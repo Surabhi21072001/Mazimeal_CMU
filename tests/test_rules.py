@@ -769,6 +769,32 @@ class TestApi(unittest.TestCase):
         r = client.get("/api/recipes/does-not-exist/evaluate")
         self.assertEqual(r.status_code, 404)
 
+    # ---- single-recipe detail endpoint ----
+    def test_get_recipe_detail_200_and_shape(self):
+        client = self._client_with_db()
+        r = client.get("/api/recipes/r-pasta")
+        self.assertEqual(r.status_code, 200)
+        body = r.json()
+        self.assertEqual(body["recipe_id"], "r-pasta")
+        self.assertEqual(body["recipe_name"], "Garlic Tomato Pasta")
+        self.assertEqual(body["meal_category"], "Dinner")
+        self.assertIn("ingredients", body)
+        self.assertIn("instructions", body)
+
+    def test_get_recipe_detail_ingredients_and_codes(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta").json()
+        names = {i["name"] for i in body["ingredients"]}
+        self.assertIn("garlic", names)
+        garlic = next(i for i in body["ingredients"] if i["name"] == "garlic")
+        self.assertIn("ING_GARLIC", garlic["rule_codes"])
+        self.assertIn("ING_GARLIC", body["ingredient_codes"])
+
+    def test_get_recipe_detail_unknown_404(self):
+        client = self._client_with_db()
+        r = client.get("/api/recipes/00000000-0000-0000-0000-000000000000")
+        self.assertEqual(r.status_code, 404)
+
 
 class TestRecipeListApi(unittest.TestCase):
     @classmethod
