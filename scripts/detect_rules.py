@@ -41,6 +41,20 @@ class DetectedRule:
     automation_status: str | None
     trigger_code: str
     reason: str
+    # Enrichment metadata loaded in the same candidate query (no N+1). All
+    # optional so existing constructors/tests that pass only the core fields
+    # keep working unchanged.
+    rule_category: str | None = None
+    rule_type: str | None = None
+    evidence_tier: str | None = None
+    target_code: str | None = None
+    target_nutrient_or_outcome: str | None = None
+    action: str | None = None
+    recipe_engine_instruction: str | None = None
+    mechanism: str | None = None
+    conditions_and_limits: str | None = None
+    source_title: str | None = None
+    source_url: str | None = None
 
     def as_dict(self) -> dict:
         return {
@@ -50,6 +64,16 @@ class DetectedRule:
             "trigger_code": self.trigger_code,
             "reason": self.reason,
         }
+
+
+# Columns pulled for each candidate rule, in SELECT order. Kept in one place so
+# the query and the row->DetectedRule mapping stay in sync.
+_RULE_METADATA_COLUMNS = (
+    "rule_id", "rule_name", "automation_status", "trigger_code",
+    "rule_category", "rule_type", "evidence_tier", "target_code",
+    "target_nutrient_or_outcome", "action", "recipe_engine_instruction",
+    "mechanism", "conditions_and_limits", "source_title", "source_url",
+)
 
 
 def _paramstyle(conn) -> str:
@@ -105,37 +129,58 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
     if not codes:
         return []
 
-    # Find active rules whose trigger_code is present in the recipe.
-    cur = conn.cursor()
     placeholders = ", ".join("?" for _ in codes)
-    cur.execute(
-        _q(conn, f"""
-        SELECT rule_id, rule_name, automation_status, trigger_code
-        FROM business_rules
-        WHERE is_active = TRUE
-          AND trigger_code IN ({placeholders})
-        ORDER BY rule_id
-        """),
-        tuple(codes.keys()),
-    )
+    params = tuple(codes.keys())
+
+    # Load the full metadata in the SAME query (no N+1). Fall back to the core
+    # four columns for minimal schemas (e.g. the SQLite test fixture) that lack
+    # the metadata columns.
+    full_cols = ", ".join(_RULE_METADATA_COLUMNS)
+    cur = conn.cursor()
+    try:
+        cur.execute(
+            _q(conn, f"""
+            SELECT {full_cols}
+            FROM business_rules
+            WHERE is_active = TRUE AND trigger_code IN ({placeholders})
+            ORDER BY rule_id
+            """),
+            params,
+        )
+        rows = cur.fetchall()
+        full = True
+    except Exception:
+        if hasattr(conn, "rollback"):
+            conn.rollback()
+        cur = conn.cursor()
+        cur.execute(
+            _q(conn, f"""
+            SELECT rule_id, rule_name, automation_status, trigger_code
+            FROM business_rules
+            WHERE is_active = TRUE AND trigger_code IN ({placeholders})
+            ORDER BY rule_id
+            """),
+            params,
+        )
+        rows = cur.fetchall()
+        full = False
 
     detected: list[DetectedRule] = []
-    for rule_id, rule_name, automation_status, trigger_code in cur.fetchall():
+    for row in rows:
+        if full:
+            meta = dict(zip(_RULE_METADATA_COLUMNS, row))
+        else:
+            rid, rname, auto, trig = row
+            meta = {"rule_id": rid, "rule_name": rname,
+                    "automation_status": auto, "trigger_code": trig}
+        trigger_code = meta["trigger_code"]
         ingredients = codes.get(trigger_code, [])
         ing_list = ", ".join(sorted(set(ingredients)))
         reason = (
             f"recipe contains ingredient tagged {trigger_code}"
             + (f" ({ing_list})" if ing_list else "")
         )
-        detected.append(
-            DetectedRule(
-                rule_id=rule_id,
-                rule_name=rule_name,
-                automation_status=automation_status,
-                trigger_code=trigger_code,
-                reason=reason,
-            )
-        )
+        detected.append(DetectedRule(reason=reason, **meta))
     return detected
 
 

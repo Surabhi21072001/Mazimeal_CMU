@@ -645,5 +645,311 @@ class TestEvaluationEndToEnd(unittest.TestCase):
         self.assertEqual(detected, evaluated)
 
 
+# --------------------------------------------------------------------------
+# API tests (FastAPI TestClient over a seeded SQLite fixture)
+# --------------------------------------------------------------------------
+class TestApi(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        try:
+            from fastapi.testclient import TestClient
+        except Exception as e:  # pragma: no cover
+            raise unittest.SkipTest(f"fastapi not available: {e}")
+        import api
+        cls.api = api
+        cls.TestClient = TestClient
+
+    def _client_with_db(self):
+        """A TestClient whose endpoint talks to a fresh seeded SQLite db.
+
+        The rich fixture adds the metadata columns the enriched query needs, so
+        the API exercises the full-metadata path."""
+        conn = build_api_fixture_db()
+        self.addCleanup(conn.close)
+
+        class _NoCloseConn:
+            """Proxy that forwards everything but makes close() a no-op, so the
+            endpoint's finally: conn.close() does not drop the in-memory db.
+
+            __module__ is 'sqlite3' so the engine's placeholder detection
+            (type(conn).__module__) still picks '?'."""
+            __module__ = "sqlite3"
+
+            def __init__(self, inner):
+                object.__setattr__(self, "_inner", inner)
+
+            def close(self):
+                pass
+
+            def __getattr__(self, name):
+                return getattr(object.__getattribute__(self, "_inner"), name)
+
+        proxy = _NoCloseConn(conn)
+        orig = self.api._connect
+        self.api._connect = lambda: proxy
+        self.addCleanup(lambda: setattr(self.api, "_connect", orig))
+        return self.TestClient(self.api.app)
+
+    def test_returns_200_and_shape(self):
+        client = self._client_with_db()
+        r = client.get("/api/recipes/r-pasta/evaluate")
+        self.assertEqual(r.status_code, 200)
+        body = r.json()
+        self.assertEqual(body["recipe_id"], "r-pasta")
+        self.assertEqual(body["recipe_name"], "Garlic Tomato Pasta")
+        self.assertIn("evaluated_at", body)
+        self.assertIsInstance(body["rules"], list)
+
+    def test_rule_metadata_present(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        bio002 = next(x for x in body["rules"] if x["rule_id"] == "BIO-002")
+        self.assertEqual(bio002["rule_category"], "bioavailability")
+        self.assertEqual(bio002["evidence_tier"], "B")
+        self.assertEqual(bio002["target_code"], "CMP_ALLICIN")
+        self.assertEqual(bio002["source_url"], "https://pubmed.ncbi.nlm.nih.gov/11160543/")
+
+    def test_applicability_unchanged(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        statuses = {x["rule_id"]: x["applicability_status"] for x in body["rules"]}
+        # Same results the engine produces directly for this fixture.
+        self.assertEqual(statuses["BIO-002"], "APPLICABLE")   # minced + fried, no rest
+        self.assertEqual(statuses["BIO-003"], "NOT_APPLICABLE")  # cooked in oil
+
+    def test_matched_ingredient_correct(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        bio002 = next(x for x in body["rules"] if x["rule_id"] == "BIO-002")
+        names = [i["name"] for i in bio002["matched_on"]["ingredients"]]
+        self.assertEqual(names, ["garlic"])
+        self.assertTrue(bio002["matched_on"]["ingredients"][0]["ingredient_id"])
+
+    def test_multiple_matching_ingredients(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-multi-garlic/evaluate").json()
+        bio002 = next(x for x in body["rules"] if x["rule_id"] == "BIO-002")
+        names = sorted(i["name"] for i in bio002["matched_on"]["ingredients"])
+        self.assertEqual(names, ["garlic", "roasted garlic"])
+
+    def test_matched_steps_with_number(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        bio002 = next(x for x in body["rules"] if x["rule_id"] == "BIO-002")
+        steps = bio002["matched_on"]["steps"]
+        self.assertTrue(steps)
+        self.assertTrue(all("text" in s for s in steps))
+        self.assertTrue(any(s["step_number"] is not None for s in steps))
+
+    def test_missing_instructions_empty_steps(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-noinstr/evaluate").json()
+        bio002 = next(x for x in body["rules"] if x["rule_id"] == "BIO-002")
+        self.assertEqual(bio002["matched_on"]["steps"], [])
+        self.assertEqual(bio002["applicability_status"], "NEEDS_CONTEXT")
+
+    def test_unimplemented_rule_needs_context_with_metadata(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        bio005 = next((x for x in body["rules"] if x["rule_id"] == "BIO-005"), None)
+        self.assertIsNotNone(bio005)
+        self.assertEqual(bio005["applicability_status"], "NEEDS_CONTEXT")
+        self.assertEqual(bio005["reason"], "condition evaluator not implemented")
+        self.assertEqual(bio005["rule_category"], "bioavailability")
+        # matched ingredient still populated
+        self.assertTrue(bio005["matched_on"]["ingredients"])
+
+    def test_no_candidates_returns_empty_rules(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-empty/evaluate").json()
+        self.assertEqual(body["rules"], [])
+
+    def test_unknown_recipe_404(self):
+        client = self._client_with_db()
+        r = client.get("/api/recipes/does-not-exist/evaluate")
+        self.assertEqual(r.status_code, 404)
+
+
+class TestRecipeListApi(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        try:
+            from fastapi.testclient import TestClient
+        except Exception as e:  # pragma: no cover
+            raise unittest.SkipTest(f"fastapi not available: {e}")
+        import api
+        cls.api = api
+        cls.TestClient = TestClient
+
+    def _client(self):
+        conn = build_recipe_list_fixture_db()
+        self.addCleanup(conn.close)
+
+        class _NoClose:
+            __module__ = "sqlite3"
+            def __init__(self, inner): object.__setattr__(self, "_i", inner)
+            def close(self): pass
+            def __getattr__(self, n): return getattr(object.__getattribute__(self, "_i"), n)
+
+        proxy = _NoClose(conn)
+        orig = self.api._connect
+        self.api._connect = lambda: proxy
+        self.addCleanup(lambda: setattr(self.api, "_connect", orig))
+        return self.TestClient(self.api.app)
+
+    def test_list_returns_all_with_total(self):
+        body = self._client().get("/api/recipes").json()
+        self.assertEqual(body["total"], 4)
+        self.assertEqual(len(body["recipes"]), 4)
+        # ordered by name
+        names = [r["recipe_name"] for r in body["recipes"]]
+        self.assertEqual(names, sorted(names))
+
+    def test_pagination(self):
+        body = self._client().get("/api/recipes?limit=2&offset=0").json()
+        self.assertEqual(body["limit"], 2)
+        self.assertEqual(len(body["recipes"]), 2)
+        self.assertEqual(body["total"], 4)  # total ignores paging
+
+    def test_filter_meal_category(self):
+        body = self._client().get("/api/recipes?meal_category=Dinner").json()
+        self.assertTrue(all(r["meal_category"] == "Dinner" for r in body["recipes"]))
+        self.assertEqual(body["total"], len(body["recipes"]))
+
+    def test_search_case_insensitive(self):
+        body = self._client().get("/api/recipes?search=GARLIC").json()
+        names = [r["recipe_name"] for r in body["recipes"]]
+        self.assertIn("Garlic Tomato Pasta", names)
+
+    def test_dietary_tags_rendered(self):
+        body = self._client().get("/api/recipes?search=pumpkin").json()
+        r = body["recipes"][0]
+        self.assertIn("low_cholesterol", r["dietary_tags"])
+
+    def test_invalid_limit_422(self):
+        r = self._client().get("/api/recipes?limit=0")
+        self.assertEqual(r.status_code, 422)
+
+
+def build_recipe_list_fixture_db():
+    conn = sqlite3.connect(":memory:", check_same_thread=False)
+    c = conn.cursor()
+    c.executescript(
+        """
+        CREATE TABLE recipes (
+            recipe_id TEXT PRIMARY KEY, recipe_name TEXT NOT NULL,
+            meal_category TEXT, dietary_tags TEXT, servings INTEGER,
+            calories_per_serving REAL, difficulty_level TEXT,
+            regional_origin TEXT, data_source TEXT, deleted_at TEXT);
+        """
+    )
+    # dietary_tags stored as a Python list via sqlite? sqlite has no arrays, so
+    # the endpoint's `list(tags) if tags else []` must handle a string too.
+    rows = [
+        ("r1", "Garlic Tomato Pasta", "Dinner", None, 4, 520.0, None, None, "Food.com", None),
+        ("r2", "Pumpkin Muffins", "Breakfast", ["low_cholesterol"], 18, 130.2, None, None, "Food.com", None),
+        ("r3", "Bean Soup", "Lunch", None, 4, 401.7, None, None, "Food.com", None),
+        ("r4", "Chicken Curry", "Dinner", None, 4, 600.0, None, None, "Food.com", None),
+        ("r5", "Deleted Recipe", "Dinner", None, 4, 100.0, None, None, "Food.com", "2026-01-01"),
+    ]
+    c.executemany("INSERT INTO recipes VALUES (?,?,?,?,?,?,?,?,?,?)",
+                  [(rid, n, m, (",".join(t) if isinstance(t, list) else t),
+                    s, cal, d, o, src, dele)
+                   for (rid, n, m, t, s, cal, d, o, src, dele) in rows])
+    conn.commit()
+    return conn
+
+
+def build_api_fixture_db():
+    """Rich fixture with full business_rules metadata columns + a few recipes
+    tailored to exercise the API response shape."""
+    conn = sqlite3.connect(":memory:", check_same_thread=False)
+    c = conn.cursor()
+    c.executescript(
+        """
+        CREATE TABLE recipes (recipe_id TEXT PRIMARY KEY, recipe_name TEXT NOT NULL,
+            meal_category TEXT, servings INTEGER, calories_per_serving REAL,
+            data_source TEXT, recipe_description TEXT);
+        CREATE TABLE ingredients (ingredient_id TEXT PRIMARY KEY, ingredient_name TEXT NOT NULL);
+        CREATE TABLE recipe_ingredients (recipe_id TEXT, ingredient_id TEXT, quantity REAL,
+            unit TEXT, PRIMARY KEY (recipe_id, ingredient_id));
+        CREATE TABLE ingredient_rule_tags (ingredient_id TEXT, rule_code TEXT,
+            PRIMARY KEY (ingredient_id, rule_code));
+        CREATE TABLE recipe_nutrition (recipe_id TEXT, nutrient_id TEXT, per_serving REAL,
+            unit TEXT, PRIMARY KEY (recipe_id, nutrient_id));
+        CREATE TABLE recipe_steps (recipe_id TEXT, step_number INTEGER, instruction TEXT,
+            PRIMARY KEY (recipe_id, step_number));
+        CREATE TABLE business_rules (
+            rule_id TEXT PRIMARY KEY, rule_name TEXT NOT NULL,
+            automation_status TEXT, trigger_code TEXT,
+            rule_category TEXT, rule_type TEXT, evidence_tier TEXT,
+            target_code TEXT, target_nutrient_or_outcome TEXT,
+            action TEXT, recipe_engine_instruction TEXT, mechanism TEXT,
+            conditions_and_limits TEXT, source_title TEXT, source_url TEXT,
+            is_active INTEGER NOT NULL DEFAULT 1);
+        """
+    )
+    c.executemany("INSERT INTO recipes VALUES (?,?,?,?,?,?,?)", [
+        ("r-pasta", "Garlic Tomato Pasta", "Dinner", 4, 520.0, "Food.com", None),
+        ("r-multi-garlic", "Double Garlic", "Dinner", 2, None, "Food.com", None),
+        ("r-noinstr", "No Instructions", "Lunch", 2, None, "Manual", None),
+        ("r-empty", "Plain Water", "Snack", 1, None, "Manual", None),
+    ])
+    c.executemany("INSERT INTO ingredients VALUES (?,?)", [
+        ("i-garlic", "garlic"), ("i-garlic2", "roasted garlic"),
+        ("i-tomato", "tomatoes"), ("i-chard", "swiss chard"), ("i-water", "water"),
+    ])
+    c.executemany("INSERT INTO recipe_ingredients VALUES (?,?,?,?)", [
+        ("r-pasta", "i-garlic", 3, "cloves"),
+        ("r-pasta", "i-tomato", 2, "whole"),
+        ("r-pasta", "i-chard", 1, "bunch"),
+        ("r-multi-garlic", "i-garlic", 2, "cloves"),
+        ("r-multi-garlic", "i-garlic2", 1, "head"),
+        ("r-noinstr", "i-garlic", 1, "clove"),
+        ("r-empty", "i-water", 1, "cup"),
+    ])
+    c.executemany("INSERT INTO ingredient_rule_tags VALUES (?,?)", [
+        ("i-garlic", "ING_GARLIC"), ("i-garlic2", "ING_GARLIC"),
+        ("i-tomato", "ING_TOMATO"), ("i-chard", "ING_LEAFY_GREEN"),
+    ])
+    c.executemany("INSERT INTO recipe_steps VALUES (?,?,?)", [
+        ("r-pasta", 1, "Mince the garlic."),
+        ("r-pasta", 2, "Fry the garlic and simmer the tomatoes in olive oil."),
+        ("r-multi-garlic", 1, "Mince garlic and fry."),
+    ])
+    # BIO-002/003 with full metadata; BIO-005 has no evaluator (NEEDS_CONTEXT).
+    c.executemany(
+        "INSERT INTO business_rules "
+        "(rule_id,rule_name,automation_status,trigger_code,rule_category,rule_type,"
+        "evidence_tier,target_code,target_nutrient_or_outcome,action,"
+        "recipe_engine_instruction,mechanism,conditions_and_limits,source_title,source_url,is_active) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)",
+        [
+            ("BIO-002", "Crush garlic and rest before heating", "recipe_safe",
+             "ING_GARLIC", "bioavailability", "processing", "B", "CMP_ALLICIN",
+             "allicin formation", "Crush or mince; rest ~10 min before heating",
+             "When garlic is cooked, crush/mince then rest.",
+             "Tissue disruption lets alliinase convert alliin to allicin.",
+             "Allicin is unstable; do not promise a clinical dose.",
+             "Heating garlic inhibits its anticancer properties",
+             "https://pubmed.ncbi.nlm.nih.gov/11160543/"),
+            ("BIO-003", "Cook tomatoes with oil", "recipe_safe", "ING_TOMATO",
+             "bioavailability", "processing+pairing", "A", "NUT_LYCOPENE",
+             "lycopene", "Cook tomato and include a culinary oil",
+             "For tomato sauces, cook with oil.", "Heat + fat aid lycopene.",
+             "Optimize for lycopene, not every nutrient.",
+             "Processed tomato products and lycopene",
+             "https://pubmed.ncbi.nlm.nih.gov/15927929/"),
+            ("BIO-005", "Cook spinach for carotenoid release", "recipe_safe",
+             "ING_LEAFY_GREEN", "bioavailability", "processing", "B", "NUT_CAROTENOIDS",
+             "carotenoids", "Use cooked or finely chopped greens",
+             "For carotenoids, use cooked greens.", "Cooking disrupts tissue.",
+             "Changes folate/vitamin C retention.", "Cooked greens carotenoids", None),
+        ],
+    )
+    conn.commit()
+    return conn
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
