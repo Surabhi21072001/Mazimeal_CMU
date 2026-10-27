@@ -26,7 +26,7 @@ from __future__ import annotations
 
 import argparse
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from enum import Enum
 
 from recipe_facts import RecipeFacts, RecipeNotFound, build_recipe_facts
@@ -56,6 +56,17 @@ class ProcessFact:
 
 
 @dataclass(frozen=True)
+class MatchedStep:
+    """An instruction step that contributed evidence. step_number is recovered
+    from the 'N. text' numbering RecipeFacts applies; None if not recoverable."""
+    text: str
+    step_number: int | None = None
+
+    def as_dict(self) -> dict:
+        return {"step_number": self.step_number, "text": self.text}
+
+
+@dataclass(frozen=True)
 class EvaluatedRule:
     rule_id: str
     rule_name: str
@@ -67,19 +78,52 @@ class EvaluatedRule:
     conditions_passed: tuple[str, ...]
     conditions_failed: tuple[str, ...]
     reason: str
+    # Enrichment (filled after the evaluator runs; defaults keep the evaluator
+    # helpers _make/_needs_context unchanged).
+    rule_category: str | None = None
+    rule_type: str | None = None
+    evidence_tier: str | None = None
+    target_code: str | None = None
+    target_nutrient_or_outcome: str | None = None
+    action: str | None = None
+    recipe_engine_instruction: str | None = None
+    mechanism: str | None = None
+    conditions_and_limits: str | None = None
+    source_title: str | None = None
+    source_url: str | None = None
+    matched_ingredients: tuple[tuple[str, str], ...] = ()  # (ingredient_id, name)
+    matched_steps: tuple[MatchedStep, ...] = ()
 
     def as_dict(self) -> dict:
         return {
             "rule_id": self.rule_id,
             "rule_name": self.rule_name,
-            "trigger_code": self.trigger_code,
+            "rule_category": self.rule_category,
+            "rule_type": self.rule_type,
             "automation_status": self.automation_status,
-            "candidate": self.candidate,
+            "evidence_tier": self.evidence_tier,
             "applicability_status": str(self.applicability_status),
+            "candidate": self.candidate,
+            "trigger_code": self.trigger_code,
+            "target_code": self.target_code,
+            "target_nutrient_or_outcome": self.target_nutrient_or_outcome,
+            "action": self.action,
+            "recipe_engine_instruction": self.recipe_engine_instruction,
+            "mechanism": self.mechanism,
+            "conditions_and_limits": self.conditions_and_limits,
             "conditions_checked": list(self.conditions_checked),
             "conditions_passed": list(self.conditions_passed),
             "conditions_failed": list(self.conditions_failed),
+            "matched_on": {
+                "ingredients": [
+                    {"ingredient_id": iid, "name": name}
+                    for iid, name in self.matched_ingredients
+                ],
+                "steps": [s.as_dict() for s in self.matched_steps],
+            },
             "reason": self.reason,
+            "source_title": self.source_title,
+            "source_url": self.source_url,
         }
 
 
@@ -365,9 +409,74 @@ RULE_EVALUATORS = {
 # --------------------------------------------------------------------------
 # Dispatcher + high-level API
 # --------------------------------------------------------------------------
-def evaluate_rule(rule: DetectedRule, facts: RecipeFacts,
-                  process_facts: dict[str, ProcessFact]) -> EvaluatedRule:
-    """Dispatch a candidate rule to its evaluator.
+_STEP_PREFIX = re.compile(r"^\s*(\d+)[.)]\s*(.*)$")
+
+
+def _matched_ingredients(rule: DetectedRule, facts: RecipeFacts) -> tuple[tuple[str, str], ...]:
+    """Ingredients whose rule_codes contain the rule's trigger_code. Exact match
+    only, no fuzzy logic. matched_on is evidence, independent of applicability."""
+    out = []
+    for ing in facts.ingredients:
+        if rule.trigger_code in ing.rule_codes:
+            out.append((ing.ingredient_id, ing.ingredient_name))
+    return tuple(out)
+
+
+def _matched_steps(result: EvaluatedRule, process_facts, facts) -> tuple[MatchedStep, ...]:
+    """Instruction evidence that supported this evaluation.
+
+    Collects distinct ProcessFact.evidence lines for the facts relevant to this
+    rule's trigger, recovering the real step number from the 'N. text'
+    numbering RecipeFacts applies. Empty when no instruction evidence exists."""
+    relevant_prefix = {
+        "ING_GARLIC": "garlic", "ING_TOMATO": "tomato", "ING_PASTA": "pasta",
+        "ING_CRUCIFER": "crucifer", "ING_EGG": "egg",
+    }.get(result.trigger_code)
+    seen: dict[str, MatchedStep] = {}
+    for name, pf in process_facts.items():
+        if not getattr(pf, "evidence", None):
+            continue
+        if relevant_prefix and not name.startswith(relevant_prefix):
+            continue
+        evidence = pf.evidence
+        if evidence in seen:
+            continue
+        m = _STEP_PREFIX.match(evidence)
+        if m:
+            seen[evidence] = MatchedStep(text=m.group(2).strip(),
+                                         step_number=int(m.group(1)))
+        else:
+            seen[evidence] = MatchedStep(text=evidence, step_number=None)
+    return tuple(seen.values())
+
+
+def _enrich(result: EvaluatedRule, rule: DetectedRule, facts: RecipeFacts,
+            process_facts: dict[str, ProcessFact]) -> EvaluatedRule:
+    """Attach rule metadata + matched_on to a raw evaluator result.
+
+    Does not touch applicability_status, conditions, or reason — purely additive
+    response enrichment."""
+    return replace(
+        result,
+        rule_category=rule.rule_category,
+        rule_type=rule.rule_type,
+        evidence_tier=rule.evidence_tier,
+        target_code=rule.target_code,
+        target_nutrient_or_outcome=rule.target_nutrient_or_outcome,
+        action=rule.action,
+        recipe_engine_instruction=rule.recipe_engine_instruction,
+        mechanism=rule.mechanism,
+        conditions_and_limits=rule.conditions_and_limits,
+        source_title=rule.source_title,
+        source_url=rule.source_url,
+        matched_ingredients=_matched_ingredients(rule, facts),
+        matched_steps=_matched_steps(result, process_facts, facts),
+    )
+
+
+def _evaluate_rule_raw(rule: DetectedRule, facts: RecipeFacts,
+                       process_facts: dict[str, ProcessFact]) -> EvaluatedRule:
+    """Dispatch to the rule's evaluator (unchanged applicability logic).
 
     Rules with no registered evaluator return NEEDS_CONTEXT with a clear reason
     rather than being silently marked applicable.
@@ -382,6 +491,14 @@ def evaluate_rule(rule: DetectedRule, facts: RecipeFacts,
             reason="condition evaluator not implemented",
         )
     return fn(rule, facts, process_facts)
+
+
+def evaluate_rule(rule: DetectedRule, facts: RecipeFacts,
+                  process_facts: dict[str, ProcessFact]) -> EvaluatedRule:
+    """Evaluate a candidate rule, then enrich the result with metadata +
+    matched_on. Applicability logic is unchanged (see _evaluate_rule_raw)."""
+    result = _evaluate_rule_raw(rule, facts, process_facts)
+    return _enrich(result, rule, facts, process_facts)
 
 
 def evaluate_recipe_rules(conn, recipe_id) -> list[EvaluatedRule]:
