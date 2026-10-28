@@ -195,7 +195,11 @@ class SupabaseRepo:
                           SUM(n.value_per_100g * ri.quantity_g / 100.0) / NULLIF(%s, 0),
                           MIN(n.unit)
                      FROM recipe_ingredients ri
-                     JOIN ingredient_nutrition n USING (ingredient_id)
+                     -- The view, not the table underneath it: once a second
+                     -- source sits beside USDA there are two rows per nutrient
+                     -- and summing the table would count the ingredient twice.
+                     -- The view picks one by data_sources.precedence.
+                     JOIN v_ingredient_nutrition n USING (ingredient_id)
                     WHERE ri.recipe_id = %s AND ri.quantity_g IS NOT NULL
                     GROUP BY n.nutrient_id""",
                 (servings, recipe_id),
