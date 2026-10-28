@@ -1,0 +1,52 @@
+{
+  "recipe_id": "falafel-001",
+  "status": "approved",
+  "model": "mlx-community/gemma-3-4b-it-4bit",
+  "summary": {
+    "text": "Considering the chickpeas are a key source of iron, it's beneficial to include the lemon juice and tomato alongside them in this meal, as vitamin C within those components assists in maximizing the absorption of that iron by converting it into a more readily available form for your body. Because you've crushed the garlic and allowed it to rest, ensure you incorporate it into the dish promptly after heating to fully realize the benefits of allicin formation, a process that would be inhibited by premature heating. Furthermore, remember that soaking the chickpeas thoroughly, either overnight with dried beans or rinsing canned ones well, helps to reduce phytate levels, which can bind to iron and zinc and limit their absorption. Finally, to optimize iron uptake, it's advisable to avoid consuming tea or coffee with this meal, maintaining an hour\u2019s separation between them.",
+    "rule_ids": [
+      "BIO-002",
+      "INH-002",
+      "INH-001",
+      "SYN-001"
+    ],
+    "source": "local"
+  },
+  "generated_at": 1793210440.9118972,
+  "reviewed_by": "kevin",
+  "reviewed_at": 1793210441.03235,
+  "suggestions": [
+    {
+      "rule_id": "BIO-002",
+      "headline": "Crush garlic and rest before heating",
+      "body": "Crush the garlic and let it sit for about 10 minutes before adding it to the heat; resting allows alliinase to change alliin into allicin.",
+      "evidence_tier": "B",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/",
+      "status": "not_satisfied"
+    },
+    {
+      "rule_id": "INH-002",
+      "headline": "High-phytate matrix with iron and zinc",
+      "body": "Soaking dried chickpeas overnight, or rinsing canned ones thoroughly, reduces phytate. Phytate can bind to iron and zinc, preventing your body from absorbing them.",
+      "evidence_tier": "A",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+      "status": "not_satisfied"
+    },
+    {
+      "rule_id": "INH-001",
+      "headline": "Tea or coffee with a nonheme iron meal",
+      "body": "Keep tea and coffee away from this meal; have them an hour either side. Polyphenols bind nonheme iron and measurably reduce how much is absorbed.",
+      "evidence_tier": "A",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/",
+      "status": "advisory"
+    },
+    {
+      "rule_id": "SYN-001",
+      "headline": "Vitamin C with nonheme iron",
+      "body": "Keep the lemon juice and tomato with the chickpeas; this helps your body absorb the iron from the chickpeas better.",
+      "evidence_tier": "A",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+      "status": "satisfied"
+    }
+  ]
+}

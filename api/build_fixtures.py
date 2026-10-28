@@ -309,6 +309,16 @@ recommendations = {
 (OUT / "recommendations_maya_lunch.json").write_text(json.dumps(recommendations, indent=2) + "\n")
 
 # ---------------------------------------------------------------- AI suggestions
+# A deployed build has no model and no backend, so it serves whatever a
+# reviewer last approved. Fall back to the hand-written stub only when nothing
+# has been reviewed yet.
+APPROVED = pathlib.Path(__file__).resolve().parent / "content" / "falafel-001.json"
+reviewed = None
+if APPROVED.exists():
+    entry = json.loads(APPROVED.read_text())
+    if entry.get("status") == "approved":
+        reviewed = entry
+
 suggestions = {
     "_fixture_note": "Stub text, written by hand. No model call. Replaced when the LLM endpoint is wired.",
     "recipe_id": "falafel-001", "member_id": "maya", "source": "stub",
@@ -327,6 +337,26 @@ suggestions = {
          "evidence_tier": "A", "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/"},
     ],
 }
+if reviewed:
+    suggestions = {
+        "_fixture_note": (
+            "Approved text, copied from api/content at build time. Written by "
+            f"{reviewed.get('model') or 'the rules themselves'} and approved by "
+            f"{reviewed.get('reviewed_by')}."
+        ),
+        "recipe_id": "falafel-001",
+        "member_id": "maya",
+        "source": "reviewed",
+        "model": reviewed.get("model"),
+        "reviewed_by": reviewed.get("reviewed_by"),
+        "summary": reviewed.get("summary"),
+        "disclaimer": (
+            "Written from the matched rules and approved by a reviewer. Nutrition "
+            "figures come from the database, not from a model."
+        ),
+        "suggestions": reviewed["suggestions"],
+    }
+
 (OUT / "suggestions_falafel-001.json").write_text(json.dumps(suggestions, indent=2) + "\n")
 
 # The frontend bundles the same fixtures so it runs with no backend at all.

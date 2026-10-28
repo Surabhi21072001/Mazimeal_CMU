@@ -1,30 +1,53 @@
 {
-  "_fixture_note": "Stub text, written by hand. No model call. Replaced when the LLM endpoint is wired.",
+  "_fixture_note": "Approved text, copied from api/content at build time. Written by mlx-community/gemma-3-4b-it-4bit and approved by kevin.",
   "recipe_id": "falafel-001",
   "member_id": "maya",
-  "source": "stub",
-  "disclaimer": "Generated from matched rules. Nutrition figures come from the database, not the model.",
+  "source": "reviewed",
+  "model": "mlx-community/gemma-3-4b-it-4bit",
+  "reviewed_by": "kevin",
+  "summary": {
+    "text": "Considering the chickpeas are a key source of iron, it's beneficial to include the lemon juice and tomato alongside them in this meal, as vitamin C within those components assists in maximizing the absorption of that iron by converting it into a more readily available form for your body. Because you've crushed the garlic and allowed it to rest, ensure you incorporate it into the dish promptly after heating to fully realize the benefits of allicin formation, a process that would be inhibited by premature heating. Furthermore, remember that soaking the chickpeas thoroughly, either overnight with dried beans or rinsing canned ones well, helps to reduce phytate levels, which can bind to iron and zinc and limit their absorption. Finally, to optimize iron uptake, it's advisable to avoid consuming tea or coffee with this meal, maintaining an hour\u2019s separation between them.",
+    "rule_ids": [
+      "BIO-002",
+      "INH-002",
+      "INH-001",
+      "SYN-001"
+    ],
+    "source": "local"
+  },
+  "disclaimer": "Written from the matched rules and approved by a reviewer. Nutrition figures come from the database, not from a model.",
   "suggestions": [
     {
       "rule_id": "BIO-002",
-      "headline": "Let the garlic rest before it hits the oil",
-      "body": "Crush the garlic first and leave it on the board for ten minutes while you shape the patties. Nothing else about the recipe changes.",
+      "headline": "Crush garlic and rest before heating",
+      "body": "Crush the garlic and let it sit for about 10 minutes before adding it to the heat; resting allows alliinase to change alliin into allicin.",
       "evidence_tier": "B",
-      "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/"
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/",
+      "status": "not_satisfied"
     },
     {
-      "rule_id": "SYN-001",
-      "headline": "The lemon is doing more than seasoning",
-      "body": "Lemon juice and tomato sit in the same meal as the chickpeas, which is what helps you absorb the iron in them. Keep them in.",
+      "rule_id": "INH-002",
+      "headline": "High-phytate matrix with iron and zinc",
+      "body": "Soaking dried chickpeas overnight, or rinsing canned ones thoroughly, reduces phytate. Phytate can bind to iron and zinc, preventing your body from absorbing them.",
       "evidence_tier": "A",
-      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/"
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+      "status": "not_satisfied"
     },
     {
       "rule_id": "INH-001",
-      "headline": "Save the tea for later",
-      "body": "Tea and coffee alongside this meal bind some of the iron. An hour either side is enough.",
+      "headline": "Tea or coffee with a nonheme iron meal",
+      "body": "Keep tea and coffee away from this meal; have them an hour either side. Polyphenols bind nonheme iron and measurably reduce how much is absorbed.",
       "evidence_tier": "A",
-      "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/"
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/6402915/",
+      "status": "advisory"
+    },
+    {
+      "rule_id": "SYN-001",
+      "headline": "Vitamin C with nonheme iron",
+      "body": "Keep the lemon juice and tomato with the chickpeas; this helps your body absorb the iron from the chickpeas better.",
+      "evidence_tier": "A",
+      "source_url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+      "status": "satisfied"
     }
   ]
 }
