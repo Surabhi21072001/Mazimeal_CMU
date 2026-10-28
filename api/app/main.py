@@ -13,7 +13,9 @@ Run it:
 Endpoints follow api/SPEC.md. Every payload carries `source` so the frontend
 can say whether it is looking at live data or a fixture.
 """
+import sys
 import time
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,6 +26,32 @@ from . import cache, config, content, providers
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
+
+
+def _mount_rules_engine() -> str | None:
+    """Serve the rules engine's own API beside ours, in the same process.
+
+    It is a separate FastAPI app owned by the rules workstream, and it keeps
+    its own paths under /rules so their Postman collection still works. One
+    process means one cold start on a free host, and no network hop when this
+    app asks the engine a question - it imports it directly.
+    """
+    scripts = Path(__file__).resolve().parent.parent.parent / "scripts"
+    if not (scripts / "api.py").exists():
+        return None
+    if str(scripts) not in sys.path:
+        sys.path.insert(0, str(scripts))
+    try:
+        import api as rules_api  # scripts/api.py
+
+        app.mount("/rules", rules_api.app)
+        return "/rules"
+    except Exception as exc:  # a broken import there must not take this app down
+        print(f"rules engine not mounted: {exc}")
+        return None
+
+
+RULES_MOUNT = _mount_rules_engine()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=config.CORS_ORIGINS,
@@ -61,6 +89,7 @@ def health():
         "status": "ok",
         "repo": repo.name,
         "provider": config.PROVIDER,
+        "rules_engine": RULES_MOUNT or "not mounted",
         "model": config.LLM_MODEL if config.PROVIDER == "local" else None,
     }
 

@@ -41,8 +41,11 @@ class FixtureRepo:
 
 
 def get_repo():
-    if config.REPO == "supabase":  # not built yet; needs our own project first
-        raise NotImplementedError(
-            "The Supabase repository is not written yet. Run with MAZI_REPO=fixture."
-        )
-    return FixtureRepo()
+    fixtures = FixtureRepo()
+    if config.REPO == "supabase":
+        from .supabase_repo import get_supabase_repo
+
+        # Recipes and rules come from the database; household and
+        # recommendations fall back to fixtures until they exist there too.
+        return get_supabase_repo(fixtures)
+    return fixtures

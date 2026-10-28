@@ -1,0 +1,43 @@
+# One web service runs both halves of the backend: this project's API and the
+# rules engine mounted under /rules. One service means one cold start on the
+# free plan, and the two halves call each other in-process instead of over the
+# network.
+#
+# Create it with Render's "New → Blueprint" pointed at this repository. Every
+# setting below is applied automatically; the two values marked sync:false are
+# typed once in the dashboard, because they carry the database password.
+services:
+  - type: web
+    name: mazimeal-api
+    runtime: python
+    plan: free
+    region: oregon # same coast as the Supabase project (us-west-2)
+    branch: front-backend
+    buildCommand: pip install -r api/requirements.txt
+    startCommand: uvicorn app.main:app --app-dir api --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+
+      # Where recipes and rules come from.
+      - key: MAZI_REPO
+        value: supabase
+
+      # The Supabase connection string, through the IPv4 pooler on port 6543.
+      # The direct db.*.supabase.co host is IPv6-only and unreachable from
+      # many networks, including the one this was developed on.
+      - key: SUPABASE_DB_URL
+        sync: false
+      # The rules engine reads the same database under its own variable name.
+      - key: MAZIMEAL_DSN
+        sync: false
+
+      # No model is hosted. Suggestions are pre-generated, reviewed, and
+      # served as data; this makes the API say so rather than pretend.
+      - key: MAZI_PROVIDER
+        value: template
+
+      # Add the Vercel URL once it exists, comma separated.
+      - key: MAZI_CORS_ORIGINS
+        value: http://localhost:5173,http://localhost:5181
