@@ -21,6 +21,7 @@ import os
 import sys
 from datetime import date
 from pathlib import Path
+from uuid import UUID
 
 from . import config
 
@@ -54,6 +55,35 @@ STATUS_FROM_APPLICABILITY = {
 }
 
 
+# Food.com's recipes arrived with uuid primary keys, but the screens, the
+# committed fixtures and the one reviewed suggestion were all written against
+# these slugs first. This is the only place the two id schemes meet: a slug in
+# the url reads the real row, so every link in the repo and in docs/deploy.md
+# shows live data instead of a 404.
+DEMO_ALIASES = {
+    "falafel-001": "907c9d1f-618e-49c9-a1fd-61be09d75559",        # Falafel
+    "souvlaki-002": "53548206-5aaf-46c3-b24c-e500cd68847e",       # Souvlaki
+    "sloppy-joes-003": "bfad8d75-c041-4502-8c58-015b81eb2078",    # Best Ever Sloppy Joes
+    "tuna-salad-004": "a38f0788-2bdf-4ae9-a82c-509ffb2ae43f",     # Kittencal's Tuna Salad Sandwiches
+    "tomato-spaghetti-005": "714e5793-d16f-4fb5-a4d0-41ba2c94ba27",  # Fresh Tomato Spaghetti Sauce
+}
+
+
+def _resolve(recipe_id: str) -> str | None:
+    """The uuid to query, or None when the id cannot name a row.
+
+    recipe_id is a uuid column, so an id that is not a uuid makes Postgres
+    raise rather than return nothing - which would reach the caller as a 500
+    for what is really a missing recipe. Checking the shape here keeps that a
+    clean 404.
+    """
+    candidate = DEMO_ALIASES.get(recipe_id, recipe_id)
+    try:
+        return str(UUID(candidate))
+    except (ValueError, AttributeError, TypeError):
+        return None
+
+
 def _connect():
     if not DSN:
         raise RuntimeError("SUPABASE_DB_URL is not set; run with MAZI_REPO=fixture instead.")
@@ -83,13 +113,19 @@ class SupabaseRepo:
 
     # ------------------------------------------------------------------ recipe
     def recipe(self, recipe_id):
+        db_id = _resolve(recipe_id)
+        if db_id is None:
+            return None
         with _connect() as conn:
-            row = self._recipe_row(conn, recipe_id)
+            row = self._recipe_row(conn, db_id)
             if not row:
                 return None
-            ingredients = self._ingredients(conn, recipe_id)
+            ingredients = self._ingredients(conn, db_id)
             payload = {
-                "recipe_id": str(row["recipe_id"]),
+                # The id the caller used, not the row's, so a slug stays a slug
+                # for the next request - the suggestions endpoint is keyed on it.
+                "recipe_id": recipe_id,
+                "db_recipe_id": str(row["recipe_id"]),
                 "name": row["recipe_name"],
                 "meal": row["meal_category"],
                 "servings": row["servings"] or 4,
@@ -97,9 +133,9 @@ class SupabaseRepo:
                 "tags": list(row["dietary_tags"] or []),
                 "image_url": None,
                 "ingredients": ingredients,
-                "nutrition_per_serving": self._nutrition(conn, recipe_id, row["servings"] or 4),
-                "steps": self._steps(conn, recipe_id),
-                "matched_rules": self._rules(conn, recipe_id, ingredients),
+                "nutrition_per_serving": self._nutrition(conn, db_id, row["servings"] or 4),
+                "steps": self._steps(conn, db_id),
+                "matched_rules": self._rules(conn, db_id, ingredients),
                 "source": "supabase",
             }
         return payload
