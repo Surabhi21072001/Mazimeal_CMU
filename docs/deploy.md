@@ -73,10 +73,15 @@ and `/#/cook/falafel-001`.
 
 ### After that
 
-Every push to `front-backend` gets its own preview URL, and whichever branch
-is set as Production gets the main one. Pick the Production branch
-deliberately in **Settings → Git**: `main` currently holds the rules engine
-without any of these screens.
+`main` is the deployed branch, for both Vercel and Render. It was not always:
+the screens were built on `front-backend` while `main` held the rules engine
+alone, which is why Vercel could not build from it. `front-backend` was
+fast-forwarded into `main`, so the two were identical at that point and there
+is one branch to reason about.
+
+Every push to another branch still gets its own preview URL. The CORS pattern
+on the backend covers those hosts, so a preview can call the API like
+production can.
 
 ---
 
