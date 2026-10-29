@@ -41,3 +41,17 @@ services:
       # Add the Vercel URL once it exists, comma separated.
       - key: MAZI_CORS_ORIGINS
         value: http://localhost:5173,http://localhost:5181
+
+      # Vercel gives every push its own preview host, named
+      # <project>-<hash>-<account>.vercel.app, so a fixed list cannot cover them
+      # and each new branch would be blocked by the browser with nothing in the
+      # server log to find. This pattern covers the production host and all
+      # previews of a Vercel project named "mazimeal" - change the name here if
+      # the project is called something else.
+      #
+      # It would also admit a different Vercel project whose name starts with
+      # "mazimeal". That is acceptable while every endpoint is public read: CORS
+      # decides which pages may read the API, not who may write to it. Writes
+      # will be gated on a verified token, which is the real check.
+      - key: MAZI_CORS_ORIGIN_REGEX
+        value: ^https://mazimeal[a-z0-9-]*\.vercel\.app$

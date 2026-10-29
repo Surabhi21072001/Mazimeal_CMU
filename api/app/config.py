@@ -24,7 +24,16 @@ LLM_MODEL = os.environ.get("MAZI_LLM_MODEL", "mlx-community/gemma-3-4b-it-4bit")
 LLM_TIMEOUT = float(os.environ.get("MAZI_LLM_TIMEOUT", "60"))
 
 # The frontend runs on Vite's dev server; add the deployed origin when there is one.
-CORS_ORIGINS = os.environ.get(
-    "MAZI_CORS_ORIGINS",
-    "http://localhost:5173,http://localhost:5181,http://127.0.0.1:5173,http://127.0.0.1:5181",
-).split(",")
+CORS_ORIGINS = [
+    o.strip()
+    for o in os.environ.get(
+        "MAZI_CORS_ORIGINS",
+        "http://localhost:5173,http://localhost:5181,http://127.0.0.1:5173,http://127.0.0.1:5181",
+    ).split(",")
+    if o.strip()
+]
+
+# Vercel gives every push its own preview host, so an exact list cannot cover
+# them and each new branch would otherwise be blocked by the browser with no
+# server-side error to find. A pattern covers them once.
+CORS_ORIGIN_REGEX = os.environ.get("MAZI_CORS_ORIGIN_REGEX") or None
