@@ -44,10 +44,14 @@ GitHub repository.
 1. Sign in to vercel.com with GitHub, on the account that can see
    `Surabhi21072001/Mazimeal_CMU`.
 2. **Add New → Project**, import that repository.
-3. Set **Root Directory** to `web`. This is the only setting that matters:
-   without it the build runs at the repository root and fails.
-   Framework (Vite), build command and output directory come from
-   `web/vercel.json`.
+3. **Root Directory** can be left alone. The repository root has its own
+   `vercel.json` that installs and builds inside `web/` and publishes
+   `web/dist`, so a default import works. Setting it to `web` also works, and
+   then `web/vercel.json` applies instead.
+
+   This is worth knowing because the front end is not at the repository root,
+   which usually means the importer has to be told where it is. Here they do
+   not.
 4. Leave Environment Variables empty. `VITE_API_BASE_URL` is what points the
    screens at a backend; with no value they use the bundled data, which is
    what we want for now.
