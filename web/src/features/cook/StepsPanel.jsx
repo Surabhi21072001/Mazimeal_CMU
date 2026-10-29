@@ -112,10 +112,14 @@ export default function StepsPanel({ recipe, activeTab, onTabChange }) {
   const rulesByStep = useMemo(() => {
     const map = new Map();
     (recipe.matched_rules || []).forEach((rule) => {
-      if (rule.applies_to?.type === "step") {
-        const list = map.get(rule.applies_to.step_number) || [];
-        map.set(rule.applies_to.step_number, [...list, rule]);
-      }
+      // step_numbers is what the engine reports; step_number is the single
+      // target the first fixtures were written with. A rule can mark a step
+      // and an ingredient line at once, so neither depends on `type`.
+      const numbers = rule.applies_to?.step_numbers
+        || (rule.applies_to?.step_number ? [rule.applies_to.step_number] : []);
+      numbers.forEach((n) => {
+        map.set(n, [...(map.get(n) || []), rule]);
+      });
     });
     return map;
   }, [recipe]);

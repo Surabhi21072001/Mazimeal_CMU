@@ -18,6 +18,7 @@ Two things are worth knowing about this file:
 from __future__ import annotations
 
 import os
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -84,6 +85,60 @@ def _resolve(recipe_id: str) -> str | None:
         return None
 
 
+# Words that say how an ingredient was prepared, not what it is. Matching a
+# step on these would put "Cook tomatoes with oil" against every chopped thing
+# in the recipe.
+_MODIFIERS = {
+    "chopped", "plain", "fresh", "dried", "ground", "frozen", "canned", "sliced",
+    "minced", "whole", "large", "small", "cooked", "raw", "unsweetened",
+    "shredded", "low-fat", "nonfat", "reduced-sodium", "condensed", "crushed",
+    "diced", "grated", "boneless", "skinless", "extra", "virgin", "olive",
+}
+
+
+def _steps_for_rule(steps, ingredient_names):
+    """The step numbers a rule should be shown against.
+
+    This reads the method text rather than the engine's own matched_steps, for
+    a reason worth writing down. The engine cites every step that contributed a
+    process fact, and some of its facts are deliberately loose - garlic_heated
+    falls back to "a heat verb appears anywhere" - so on one recipe it cites
+    the step that heats the oil rather than the step that adds the garlic. For
+    deciding a verdict that is sound. For deciding where a cook should read the
+    advice it is not: the useful place for "rest the garlic" is the step where
+    the garlic goes in.
+
+    So a rule marks the steps that name the ingredient it fired on, and marks
+    nothing when the method never names it - which happens, for instance when a
+    recipe says "remaining marinade ingredients". A wrong mark costs more than
+    a missing one.
+
+    SPEC.md calls this approximate, and it is. The exact version needs the
+    engine to say which step it means; see docs/rules_api_contract.md.
+    """
+    nouns = set()
+    for name in ingredient_names:
+        for word in re.split(r"[^a-z]+", name.lower()):
+            if len(word) > 3 and word not in _MODIFIERS:
+                nouns.add(word)
+                # "fresh tomatoes" has to find a step that says "tomato".
+                for suffix in ("es", "s"):
+                    if word.endswith(suffix) and len(word) - len(suffix) > 3:
+                        nouns.add(word[: -len(suffix)])
+    if not nouns:
+        return []
+    # The first step that names it, and only that one. Tomatoes often appear
+    # twice - "add tomato" and then "add tomato sauce for consistency" - and
+    # marking both would print the same rule card twice in one method. Advice
+    # belongs where the ingredient is first handled.
+    for step in steps:
+        if step["step_number"] is None:
+            continue
+        if any(noun in step["instruction"].lower() for noun in nouns):
+            return [step["step_number"]]
+    return []
+
+
 def _connect():
     if not DSN:
         raise RuntimeError("SUPABASE_DB_URL is not set; run with MAZI_REPO=fixture instead.")
@@ -121,6 +176,7 @@ class SupabaseRepo:
             if not row:
                 return None
             ingredients = self._ingredients(conn, db_id)
+            steps = self._steps(conn, db_id)
             payload = {
                 # The id the caller used, not the row's, so a slug stays a slug
                 # for the next request - the suggestions endpoint is keyed on it.
@@ -134,8 +190,8 @@ class SupabaseRepo:
                 "image_url": None,
                 "ingredients": ingredients,
                 "nutrition_per_serving": self._nutrition(conn, db_id, row["servings"] or 4),
-                "steps": self._steps(conn, db_id),
-                "matched_rules": self._rules(conn, db_id, ingredients),
+                "steps": steps,
+                "matched_rules": self._rules(conn, db_id, ingredients, steps),
                 "source": "supabase",
             }
         return payload
@@ -249,7 +305,7 @@ class SupabaseRepo:
             )
         ]
 
-    def _rules(self, conn, recipe_id, ingredients):
+    def _rules(self, conn, recipe_id, ingredients, steps):
         """The rules engine's output, reshaped into what the screens read."""
         from detect_rules import detect_rules_from_facts
         from evaluate_rules import evaluate_rule, extract_process_facts
@@ -287,6 +343,8 @@ class SupabaseRepo:
                 if candidate.trigger_code in fact.rule_codes
                 and fact.ingredient_name.lower() in by_name
             ]
+            matched_names = [name for _, name in evaluated.matched_ingredients]
+            step_numbers = _steps_for_rule(steps, matched_names)
             out.append(
                 {
                     "rule_id": candidate.rule_id,
@@ -296,11 +354,19 @@ class SupabaseRepo:
                     "evidence_tier": info.get("evidence_tier"),
                     "target_code": info.get("target_code"),
                     "target_nutrient": info.get("target_nutrient_or_outcome"),
-                    "applies_to": (
-                        {"type": "ingredients", "line_ids": line_ids}
-                        if line_ids
-                        else {"type": "meal"}
-                    ),
+                    # type names the primary target, for readers written
+                    # against the original contract; step_numbers is additive,
+                    # because a rule about resting garlic is about both the
+                    # garlic line and the step that heats it.
+                    "applies_to": {
+                        "type": (
+                            "ingredients" if line_ids
+                            else "step" if step_numbers
+                            else "meal"
+                        ),
+                        "line_ids": line_ids,
+                        "step_numbers": step_numbers,
+                    },
                     "engine_action": info.get("recipe_engine_instruction") or info.get("action"),
                     "why": info.get("mechanism") or evaluated.reason,
                     "source_url": info.get("source_url"),

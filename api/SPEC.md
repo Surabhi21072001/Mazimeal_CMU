@@ -369,9 +369,23 @@ rest of the system does not move.
 
 1. Does the recommender return recipes the filter rejected, or only winners?
    The list page wants a few rejects to show the filter working.
-2. Can the rules workstream give `applies_to` positions, or only rule ids?
-   If only ids, step highlighting falls back to keyword matching and will be
-   approximate.
+2. ~~Can the rules workstream give `applies_to` positions, or only rule ids?~~
+   **Answered: positions, for ingredients.** `EvaluatedRule.matched_ingredients`
+   gives `(ingredient_id, name)` per rule, and `matched_steps` gives the steps
+   that supplied evidence, with a step number recovered from the numbering
+   `RecipeFacts` applies.
+
+   Step *placement* still falls back to keyword matching, as this question
+   predicted, because evidence and placement are not the same thing. Some
+   process facts are deliberately loose — `garlic_heated` is true when a heat
+   verb appears anywhere in the method — so the cited step can be the one that
+   heats the oil rather than the one that adds the garlic. A verdict built that
+   way is sound; a highlight is not. The backend therefore marks the first step
+   that names the rule's own matched ingredient, and marks nothing when the
+   method never names it.
+
+   The exact version needs the engine to say which step the rule is *about*,
+   not only which steps it read. Raised in `docs/rules_api_contract.md`.
 3. Which household is canonical? The frontend has Maya at 34; the database has
    Maya at 31 with an iron-deficiency condition. The fixtures use the database
    version. The frontend's hardcoded profiles should be retired.
