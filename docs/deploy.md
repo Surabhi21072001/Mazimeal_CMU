@@ -52,9 +52,20 @@ GitHub repository.
    This is worth knowing because the front end is not at the repository root,
    which usually means the importer has to be told where it is. Here they do
    not.
-4. Leave Environment Variables empty. `VITE_API_BASE_URL` is what points the
-   screens at a backend; with no value they use the bundled data, which is
-   what we want for now.
+4. Leave Environment Variables empty. The screens default to the deployed
+   backend at `https://mazimeal-api.onrender.com`, so there is nothing to set.
+
+   `VITE_API_BASE_URL` overrides that default when it is needed — a local URL
+   while developing, or an empty string to force the bundled fixtures and run
+   with no backend at all. Unset and empty mean different things here, on
+   purpose.
+
+   The other five `VITE_` variables the repository reads
+   (`VITE_SUPABASE_*`, `VITE_EMAILJS_*`) belong to the original app's login and
+   signup email, and are deliberately left unset: this Supabase project holds
+   recipes and rules, not the recommender schema those features expect, so
+   pointing them at it would break more confusingly than leaving them off.
+   Those features disable themselves when the variables are missing.
 5. Deploy. The first build takes about a minute.
 
 The production URL serves the original app; the screens are at `/#/recommend`

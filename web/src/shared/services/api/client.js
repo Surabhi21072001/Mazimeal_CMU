@@ -1,8 +1,16 @@
 // One source of data for the new screens: our own backend.
 //
-// When VITE_API_BASE_URL is set we call it. When it is not set, or the call
-// fails, we fall back to the fixtures bundled with the build, so the app runs
-// with no backend at all - which is how it is deployed for the client demo.
+// The backend lives at a known address, so that address is the default rather
+// than something each deployment has to be told. A deployed build therefore
+// needs no configuration at all, which matters because whoever imports the
+// repository into Vercel is not always the person who knows the URL - and a
+// missing variable fails quietly, as a page that looks fine and silently shows
+// sample data.
+//
+// VITE_API_BASE_URL still overrides it: a local URL while developing (see
+// web/.env.local), or an empty string to force the bundled fixtures and run
+// with no backend at all.
+//
 // Every payload carries `source`, and the UI shows a badge when it is not live.
 import household from "../../fixtures/household.json";
 import recommendationsMayaLunch from "../../fixtures/recommendations_maya_lunch.json";
@@ -13,7 +21,12 @@ import tunaSalad from "../../fixtures/recipe_tuna-salad-004.json";
 import tomatoSpaghetti from "../../fixtures/recipe_tomato-spaghetti-005.json";
 import suggestionsFalafel from "../../fixtures/suggestions_falafel-001.json";
 
-const BASE = import.meta.env.VITE_API_BASE_URL || "";
+const DEPLOYED_API = "https://mazimeal-api.onrender.com";
+
+// An unset variable and one set to "" mean different things, so `||` will not
+// do: unset takes the default, "" is a deliberate request for offline mode.
+const CONFIGURED_API = import.meta.env.VITE_API_BASE_URL;
+const BASE = CONFIGURED_API === undefined ? DEPLOYED_API : CONFIGURED_API;
 
 export const RECIPE_FIXTURES = {
   "falafel-001": falafel,
