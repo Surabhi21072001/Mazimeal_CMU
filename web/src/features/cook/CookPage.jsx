@@ -8,6 +8,7 @@ import IngredientsPanel from "./IngredientsPanel";
 import NutrientHeadline from "./NutrientHeadline";
 import NutritionPanel from "./NutritionPanel";
 import StepsPanel from "./StepsPanel";
+import RecipePicker from "../recipes/RecipePicker";
 import { Card, Chip, RuleChip, SourceBadge, SourceLink } from "./bits";
 import { pickFocusNutrient } from "./focusNutrient";
 import { headlineKicker, pickHeadlineRule, statusOf } from "./ruleStatus";
@@ -15,7 +16,6 @@ import { headlineKicker, pickHeadlineRule, statusOf } from "./ruleStatus";
 const RESPONSIVE = `
 .cook-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 320px) minmax(0, 1fr) minmax(0, 330px); align-items: start; }
 .cook-hero { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: stretch; }
-.cook-tabs { display: flex; gap: 8px; overflow-x: auto; }
 .rule-row > summary::-webkit-details-marker { display: none; }
 .rule-row > summary:hover { opacity: 0.85; }
 .rule-row .chev { transition: transform 150ms ease; }
@@ -256,17 +256,6 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
     );
   }
 
-  // Fifty recipes will not fit in a tab strip, and the three hardcoded ones it
-  // held were not worth switching between. The useful neighbours are the
-  // recipes sharing this one's cuisine - the reason these fifty were chosen -
-  // so those are the tabs, and the rest are one click away at #/recipes.
-  const mine = seed.find((item) => item.recipe_id === recipe.recipe_id);
-  const openRecipes = (
-    mine?.cuisine ? seed.filter((item) => item.cuisine === mine.cuisine) : seed.slice(0, 4)
-  )
-    .filter((item) => item.recipe_id)
-    .slice(0, 6);
-
   return (
     <div style={{ minHeight: "100vh", background: C.bg, paddingBottom: 40 }}>
       <style>{RESPONSIVE}</style>
@@ -302,51 +291,12 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
           <span style={{ fontSize: 10.5, color: C.muted }}>← Cook mode</span>
         </button>
 
-        <div className="cook-tabs" style={{ flex: 1 }}>
-          {openRecipes.map((item) => {
-            const active = item.recipe_id === recipe.recipe_id;
-            return (
-              <button
-                key={item.recipe_id}
-                type="button"
-                onClick={() => onNavigate(`#/cook/${item.recipe_id}`)}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: 10,
-                  border: `1px solid ${active ? C.accent : C.border}`,
-                  background: active ? C.accentLight : C.white,
-                  color: active ? C.accentDark : C.subtext,
-                  fontSize: 12.5,
-                  fontWeight: active ? 700 : 600,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {item.name}
-              </button>
-            );
-          })}
-          {seed.length > openRecipes.length ? (
-            <button
-              type="button"
-              onClick={() => onNavigate("#/recipes")}
-              title="Every seed recipe"
-              style={{
-                padding: "8px 12px",
-                borderRadius: 10,
-                border: `1px dashed ${C.border}`,
-                background: "transparent",
-                color: C.muted,
-                fontSize: 12,
-                fontWeight: 600,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-              }}
-            >
-              All {seed.length} &rarr;
-            </button>
-          ) : null}
-        </div>
+        <RecipePicker
+          items={seed}
+          currentId={recipe.recipe_id}
+          onPick={(id) => onNavigate(`#/cook/${id}`)}
+          onBrowseAll={() => onNavigate("#/recipes")}
+        />
 
         {isAdmin() ? (
           <button

@@ -13,6 +13,7 @@ import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import { getSeedRecipes } from "../../shared/services/api/client";
 import { Card, Chip, SourceBadge } from "../cook/bits";
+import { matches } from "./search";
 
 function Stat({ value, label }) {
   return (
@@ -98,6 +99,7 @@ export default function RecipesPage({ onNavigate }) {
   const [cuisine, setCuisine] = useState(ALL);
   const [meal, setMeal] = useState(ALL);
   const [rulesOnly, setRulesOnly] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     let live = true;
@@ -132,7 +134,8 @@ export default function RecipesPage({ onNavigate }) {
     (item) =>
       (cuisine === ALL || (item.cuisine || "Uncategorised") === cuisine) &&
       (meal === ALL || item.meal === meal) &&
-      (!rulesOnly || item.rule_count > 0),
+      (!rulesOnly || item.rule_count > 0) &&
+      matches(item, query),
   );
 
   const grouped = useMemo(() => {
@@ -204,6 +207,23 @@ export default function RecipesPage({ onNavigate }) {
         </p>
 
         <div style={{ display: "grid", gap: 8, marginBottom: 20 }}>
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by name or cuisine…"
+            aria-label="Search recipes"
+            style={{
+              boxSizing: "border-box",
+              maxWidth: 360,
+              padding: "8px 12px",
+              borderRadius: 10,
+              border: `1px solid ${C.border}`,
+              background: C.white,
+              color: C.text,
+              fontSize: 12.5,
+              outline: "none",
+            }}
+          />
           <div className="recipes-filters">
             {[ALL, ...cuisines].map((value) => (
               <button
