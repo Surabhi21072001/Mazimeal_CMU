@@ -9,6 +9,7 @@ import NutrientHeadline from "./NutrientHeadline";
 import NutritionPanel from "./NutritionPanel";
 import StepsPanel from "./StepsPanel";
 import RecipePicker from "../recipes/RecipePicker";
+import WakingNotice from "../../shared/components/WakingNotice";
 import { Card, Chip, RuleChip, SourceBadge, SourceLink } from "./bits";
 import { pickFocusNutrient } from "./focusNutrient";
 import { headlineKicker, pickHeadlineRule, statusOf } from "./ruleStatus";
@@ -227,9 +228,7 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
   }, [recipe]);
 
   if (loading) {
-    return (
-      <div style={{ padding: 48, textAlign: "center", color: C.subtext, fontSize: 14 }}>Loading the recipe…</div>
-    );
+    return <WakingNotice what="the recipe" />;
   }
 
   if (!recipe) {

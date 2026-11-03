@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import { getHousehold, getRecommendations } from "../../shared/services/api/client";
+import WakingNotice from "../../shared/components/WakingNotice";
 import { Card, Chip, SourceBadge, SourceTag } from "../cook/bits";
 import { listNames, nutrientPhrase, round } from "../cook/focusNutrient";
 
@@ -337,7 +338,11 @@ export default function RecommendPage({ onNavigate }) {
           ))}
         </div>
 
-        {!results.length ? (
+        {/* An empty list and a request still in flight look the same in the data,
+            and saying "nothing to show" during a cold start is simply wrong. */}
+        {!payload ? <WakingNotice what="the recommendations" /> : null}
+
+        {payload && !results.length ? (
           <Card>
             <span style={{ fontSize: 13.5, color: C.subtext }}>
               Nothing to show for {member?.name} at {meal.toLowerCase()} yet.

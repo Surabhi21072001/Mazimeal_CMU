@@ -14,6 +14,7 @@ import { C } from "../../shared/theme/colors";
 import { getSeedRecipes } from "../../shared/services/api/client";
 import { Card, Chip, SourceBadge } from "../cook/bits";
 import { matches } from "./search";
+import WakingNotice from "../../shared/components/WakingNotice";
 
 function Stat({ value, label }) {
   return (
@@ -191,20 +192,20 @@ export default function RecipesPage({ onNavigate }) {
           <SourceBadge payload={payload} />
         </div>
 
-        <p style={{ margin: "0 0 16px", fontSize: 12, color: C.subtext, maxWidth: 620, lineHeight: 1.55 }}>
-          {payload ? (
-            <>
-              {payload.in_database} of {payload.total} in the database, {withRules} with at least one rule matched.{" "}
-              {payload.source === "fixture"
-                ? "This is the bundled sample set, not the spreadsheet - there is no backend to ask."
-                : "Cuisine is inferred from the dish name and is not verified provenance."}
-            </>
-          ) : error ? (
-            `Could not load the list: ${error}`
-          ) : (
-            "Loading…"
-          )}
-        </p>
+        {payload || error ? (
+          <p style={{ margin: "0 0 16px", fontSize: 12, color: C.subtext, maxWidth: 620, lineHeight: 1.55 }}>
+            {payload ? (
+              <>
+                {payload.in_database} of {payload.total} in the database, {withRules} with at least one rule matched.{" "}
+                {payload.source === "fixture"
+                  ? "This is the bundled sample set, not the spreadsheet - there is no backend to ask."
+                  : "Cuisine is inferred from the dish name and is not verified provenance."}
+              </>
+            ) : (
+              `Could not load the list: ${error}`
+            )}
+          </p>
+        ) : null}
 
         <div style={{ display: "grid", gap: 8, marginBottom: 20 }}>
           <input
@@ -271,6 +272,8 @@ export default function RecipesPage({ onNavigate }) {
             </label>
           </div>
         </div>
+
+        {!payload && !error ? <WakingNotice what="the recipe list" /> : null}
 
         {grouped.length === 0 && payload ? (
           <p style={{ fontSize: 12.5, color: C.muted }}>Nothing matches those filters.</p>
