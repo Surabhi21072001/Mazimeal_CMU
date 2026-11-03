@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
-import { getHousehold, getRecipe, getSuggestions, RECIPE_FIXTURES } from "../../shared/services/api/client";
+import { getHousehold, getRecipe, getSeedRecipes, getSuggestions } from "../../shared/services/api/client";
 import { isAdmin } from "../../shared/services/auth/session";
 import { applyReview } from "../review/reviewStore";
 import AiPanel from "./AiPanel";
@@ -143,6 +143,20 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
   const [activeTab, setActiveTab] = useState("Steps");
   const [favorite, setFavorite] = useState(false);
   const [regenerating, setRegenerating] = useState(false);
+  const [seed, setSeed] = useState([]);
+
+  useEffect(() => {
+    // The list of seed recipes, for the tab strip. Its own effect because it
+    // does not depend on which recipe is open, and a failure here must not
+    // stop the recipe from rendering.
+    let cancelled = false;
+    getSeedRecipes()
+      .then((data) => !cancelled && setSeed(data.results || []))
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     // The page is keyed on recipeId in App, so it remounts with fresh state
@@ -242,7 +256,16 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
     );
   }
 
-  const openRecipes = Object.values(RECIPE_FIXTURES).slice(0, 3);
+  // Fifty recipes will not fit in a tab strip, and the three hardcoded ones it
+  // held were not worth switching between. The useful neighbours are the
+  // recipes sharing this one's cuisine - the reason these fifty were chosen -
+  // so those are the tabs, and the rest are one click away at #/recipes.
+  const mine = seed.find((item) => item.recipe_id === recipe.recipe_id);
+  const openRecipes = (
+    mine?.cuisine ? seed.filter((item) => item.cuisine === mine.cuisine) : seed.slice(0, 4)
+  )
+    .filter((item) => item.recipe_id)
+    .slice(0, 6);
 
   return (
     <div style={{ minHeight: "100vh", background: C.bg, paddingBottom: 40 }}>
@@ -303,6 +326,26 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
               </button>
             );
           })}
+          {seed.length > openRecipes.length ? (
+            <button
+              type="button"
+              onClick={() => onNavigate("#/recipes")}
+              title="Every seed recipe"
+              style={{
+                padding: "8px 12px",
+                borderRadius: 10,
+                border: `1px dashed ${C.border}`,
+                background: "transparent",
+                color: C.muted,
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              All {seed.length} &rarr;
+            </button>
+          ) : null}
         </div>
 
         {isAdmin() ? (

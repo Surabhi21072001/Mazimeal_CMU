@@ -39,6 +39,43 @@ class FixtureRepo:
     def recipe(self, recipe_id: str) -> dict | None:
         return self._read(f"recipe_{recipe_id}.json")
 
+    def seed_recipes(self) -> dict:
+        """The bundled recipes, shaped like the real seed list.
+
+        Five, not the spreadsheet's fifty: a build with no backend can only
+        offer what was baked into it, and saying so is better than an empty
+        screen. `source` is what the UI reads to say which it is looking at.
+        """
+        results = []
+        for filename in sorted(config.FIXTURES_DIR.glob("recipe_*.json")):
+            data = self._read(filename.name)
+            if not data:
+                continue
+            results.append(
+                {
+                    "recipe_id": data["recipe_id"],
+                    "external_source_id": None,
+                    "cuisine": None,
+                    "csv_name": data["name"],
+                    "name": data["name"],
+                    "meal": data.get("meal"),
+                    "servings": data.get("servings"),
+                    "time_min": data.get("time_min"),
+                    "tags": data.get("tags", []),
+                    "ingredient_count": len(data.get("ingredients", [])),
+                    "step_count": len(data.get("steps", [])),
+                    "nutrient_count": len(data.get("nutrition_per_serving", [])),
+                    "rule_count": len(data.get("matched_rules", [])),
+                    "in_database": True,
+                }
+            )
+        return {
+            "results": results,
+            "total": len(results),
+            "in_database": len(results),
+            "source": "fixture",
+        }
+
 
 def get_repo():
     fixtures = FixtureRepo()

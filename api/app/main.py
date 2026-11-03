@@ -117,6 +117,17 @@ def recommendations(
     return {**data, "results": results, "source": repo.name}
 
 
+@app.get("/api/seed-recipes")
+def seed_recipes():
+    """The recipes the team works against, from the spreadsheet that names them.
+
+    Declared before /api/recipes/{recipe_id} so "seed-recipes" is not read as a
+    recipe id - FastAPI matches in definition order.
+    """
+    data = repo.seed_recipes()
+    return {**data, "repo": repo.name}
+
+
 @app.get("/api/recipes/{recipe_id}")
 def recipe(recipe_id: str):
     data = repo.recipe(recipe_id)

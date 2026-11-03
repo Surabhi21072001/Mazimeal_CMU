@@ -6,6 +6,7 @@ const SynergiaLightApp = lazy(() =>
 const CookPage = lazy(() => import("../features/cook/CookPage.jsx"));
 const RecommendPage = lazy(() => import("../features/recommend/RecommendPage.jsx"));
 const ReviewPage = lazy(() => import("../features/review/ReviewPage.jsx"));
+const RecipesPage = lazy(() => import("../features/recipes/RecipesPage.jsx"));
 
 function Loading() {
   return (
@@ -29,6 +30,7 @@ function Loading() {
 
 // Hash routing, so the new screens can ship without touching the existing app
 // or adding a router dependency:
+//   #/recipes            the seed recipes, as an index
 //   #/cook/<recipe_id>   the cook screen
 //   anything else        the app as it was
 function useHashRoute() {
@@ -56,6 +58,8 @@ export default function App() {
     <Suspense fallback={<Loading />}>
       {hash.startsWith("#/review") ? (
         <ReviewPage onNavigate={navigate} />
+      ) : hash.startsWith("#/recipes") ? (
+        <RecipesPage onNavigate={navigate} />
       ) : hash.startsWith("#/recommend") ? (
         <RecommendPage onNavigate={navigate} />
       ) : cookMatch ? (

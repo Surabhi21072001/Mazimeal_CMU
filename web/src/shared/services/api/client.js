@@ -80,6 +80,33 @@ export function getRecipe(recipeId) {
   return request(`/api/recipes/${recipeId}`, fallback);
 }
 
+// The recipes the team works against. Without a backend this falls back to the
+// five bundled ones, which is a different list rather than a shorter one - the
+// payload's `source` says which, and the screen says so too.
+const SEED_FALLBACK = {
+  results: Object.values(RECIPE_FIXTURES).map((recipe) => ({
+    recipe_id: recipe.recipe_id,
+    external_source_id: null,
+    cuisine: null,
+    name: recipe.name,
+    meal: recipe.meal,
+    servings: recipe.servings,
+    time_min: recipe.time_min,
+    tags: recipe.tags || [],
+    ingredient_count: (recipe.ingredients || []).length,
+    step_count: (recipe.steps || []).length,
+    nutrient_count: (recipe.nutrition_per_serving || []).length,
+    rule_count: (recipe.matched_rules || []).length,
+    in_database: true,
+  })),
+  total: Object.keys(RECIPE_FIXTURES).length,
+  in_database: Object.keys(RECIPE_FIXTURES).length,
+};
+
+export function getSeedRecipes() {
+  return request("/api/seed-recipes", SEED_FALLBACK);
+}
+
 export function getSuggestions(recipeId, memberId = "maya", ruleIds = [], { refresh = false } = {}) {
   // The backend serves reviewed text when a person has approved it, a cached
   // rewrite when one exists, and runs the model otherwise. `refresh` skips

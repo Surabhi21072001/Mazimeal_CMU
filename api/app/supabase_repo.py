@@ -24,7 +24,7 @@ from datetime import date
 from pathlib import Path
 from uuid import UUID
 
-from . import config
+from . import config, seed_list
 
 # The rules engine imports its siblings by bare name (`from recipe_facts
 # import ...`), which is why their own entry point runs with --app-dir scripts.
@@ -165,6 +165,87 @@ class SupabaseRepo:
     def recommendations(self, member_id, meal, target_nutrient):
         data = self.fallback.recommendations(member_id, meal, target_nutrient)
         return {**data, "source": "fixture"} if data else None
+
+    # ------------------------------------------------------------- seed list
+    def seed_recipes(self):
+        """The 50 spreadsheet recipes, with enough per row to choose between them.
+
+        Everything here is one query. The rule count in particular is counted
+        in SQL rather than by running the engine: a rule is a candidate when
+        its trigger_code is tagged on one of the recipe's ingredients, which is
+        a join, and evaluating all 50 takes 40 seconds - too slow to sit behind
+        a list. Verified equal to the engine's own count on all 50 rows, so the
+        number here is the number of rule cards the recipe screen will show;
+        only the verdicts need the engine.
+        """
+        rows = seed_list.seed_rows()
+        if not rows:
+            return {"results": [], "source": "supabase", "note": "seed list not found"}
+
+        by_external = {row["external_source_id"]: row for row in rows}
+        with _connect() as conn:
+            found = {
+                str(external_id): {
+                    "recipe_id": str(recipe_id),
+                    "name": name,
+                    "meal": meal,
+                    "servings": servings or 4,
+                    "time_min": (prep or 0) + (cook or 0),
+                    "tags": list(tags or []),
+                    "ingredient_count": ingredients,
+                    "step_count": steps,
+                    "nutrient_count": nutrients,
+                    "rule_count": rules,
+                }
+                for (
+                    external_id, recipe_id, name, meal, servings, prep, cook, tags,
+                    ingredients, steps, nutrients, rules,
+                ) in conn.execute(
+                    """
+                    SELECT r.external_source_id, r.recipe_id, r.recipe_name,
+                           r.meal_category, r.servings, r.prep_time_min,
+                           r.cook_time_min, r.dietary_tags,
+                           (SELECT count(*) FROM recipe_ingredients ri
+                             WHERE ri.recipe_id = r.recipe_id),
+                           (SELECT count(*) FROM recipe_steps st
+                             WHERE st.recipe_id = r.recipe_id),
+                           (SELECT count(*) FROM recipe_nutrition n
+                             WHERE n.recipe_id = r.recipe_id),
+                           (SELECT count(DISTINCT br.rule_id)
+                              FROM recipe_ingredients ri
+                              JOIN ingredient_rule_tags t USING (ingredient_id)
+                              JOIN business_rules br
+                                ON br.trigger_code = t.rule_code AND br.is_active
+                             WHERE ri.recipe_id = r.recipe_id)
+                      FROM recipes r
+                     WHERE r.external_source_id = ANY(%s)
+                       AND r.deleted_at IS NULL
+                    """,
+                    (list(by_external),),
+                )
+            }
+
+        # The spreadsheet's order, and a row for every line in it: one that the
+        # database does not have is reported as missing rather than dropped, so
+        # the screen can say "47 of 50" instead of quietly showing 47.
+        results = []
+        for row in rows:
+            record = found.get(row["external_source_id"])
+            results.append(
+                {
+                    "external_source_id": row["external_source_id"],
+                    "cuisine": row["cuisine"],
+                    "csv_name": row["csv_name"],
+                    **(record or {"recipe_id": None, "name": row["csv_name"]}),
+                    "in_database": record is not None,
+                }
+            )
+        return {
+            "results": results,
+            "total": len(results),
+            "in_database": sum(1 for r in results if r["in_database"]),
+            "source": "supabase",
+        }
 
     # ------------------------------------------------------------------ recipe
     def recipe(self, recipe_id):
