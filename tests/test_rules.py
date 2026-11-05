@@ -25,6 +25,7 @@ import import_rules  # noqa: E402
 import recipe_facts  # noqa: E402
 import evaluate_rules  # noqa: E402
 from evaluate_rules import ApplicabilityStatus  # noqa: E402
+import auth  # noqa: E402
 
 WORKBOOK = REPO / "IN WORK - MaziMeal Recipe Optimization Rules (1).xlsx"
 
@@ -828,6 +829,38 @@ class TestApi(unittest.TestCase):
         self.assertIsNone(body["user"])
         self.assertEqual(body["recipe_id"], "r-pasta")  # recipe still evaluated
 
+    # ---- login ----
+    def test_login_success_returns_user_id(self):
+        client = self._client_with_db()
+        r = client.post("/api/login", json={"username": "maya", "password": "maya123"})
+        self.assertEqual(r.status_code, 200)
+        body = r.json()
+        self.assertEqual(body["user_id"], "u-maya")
+        self.assertEqual(body["name"], "Maya")
+
+    def test_login_case_insensitive_username(self):
+        client = self._client_with_db()
+        r = client.post("/api/login", json={"username": "MAYA", "password": "maya123"})
+        self.assertEqual(r.status_code, 200)
+
+    def test_login_wrong_password_401(self):
+        client = self._client_with_db()
+        r = client.post("/api/login", json={"username": "maya", "password": "nope"})
+        self.assertEqual(r.status_code, 401)
+
+    def test_login_unknown_user_401(self):
+        client = self._client_with_db()
+        r = client.post("/api/login", json={"username": "ghost", "password": "x"})
+        self.assertEqual(r.status_code, 401)
+
+    def test_login_then_evaluate_with_returned_user_id(self):
+        client = self._client_with_db()
+        uid = client.post("/api/login",
+                          json={"username": "maya", "password": "maya123"}).json()["user_id"]
+        body = client.get(f"/api/recipes/r-pasta/evaluate?user_id={uid}").json()
+        self.assertIsNotNone(body["user"])
+        self.assertEqual(body["user"]["name"], "Maya")
+
 
 class TestRecipeListApi(unittest.TestCase):
     @classmethod
@@ -949,7 +982,8 @@ def build_api_fixture_db():
         CREATE TABLE user_profile (
             user_id TEXT PRIMARY KEY, name TEXT NOT NULL, age_years INTEGER,
             sex TEXT, height_cm REAL, weight_kg REAL, activity_level TEXT,
-            goal TEXT, diet_type TEXT, allergies TEXT, preferences TEXT);
+            goal TEXT, diet_type TEXT, allergies TEXT, preferences TEXT,
+            username TEXT, password_hash TEXT);
         CREATE TABLE user_nutrient_targets (
             user_id TEXT, nutrient_id TEXT, daily_target REAL, unit TEXT,
             minimum_target REAL, upper_limit REAL, target_source TEXT,
@@ -958,9 +992,11 @@ def build_api_fixture_db():
     )
     # Seeded user (allergies/preferences as comma-joined text; _as_tag_list
     # splits them, mirroring how Postgres TEXT[] arrives as a list).
-    c.execute("INSERT INTO user_profile VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+    import auth as _auth
+    c.execute("INSERT INTO user_profile VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
               ("u-maya", "Maya", 34, "female", 167.6, 64.0, "moderate",
-               "maintain_weight", "mediterranean", "peanut", "chicken,onion"))
+               "maintain_weight", "mediterranean", "peanut", "chicken,onion",
+               "maya", _auth.hash_password("maya123")))
     c.executemany("INSERT INTO user_nutrient_targets VALUES (?,?,?,?,?,?,?)", [
         ("u-maya", "Energy", 2000, "kcal", None, None, "Manual"),
         ("u-maya", "Iron", 18, "mg", None, 45, "Manual"),
@@ -1199,6 +1235,29 @@ class TestUserProfileSchema(unittest.TestCase):
             self.conn.execute(
                 "INSERT INTO user_profile (user_id,name,age_years,sex) "
                 "VALUES ('u2','X',30,'martian')")
+
+
+class TestAuthHashing(unittest.TestCase):
+    def test_hash_then_verify(self):
+        h = auth.hash_password("maya123")
+        self.assertTrue(h.startswith("pbkdf2_sha256$"))
+        self.assertTrue(auth.verify_password("maya123", h))
+
+    def test_wrong_password_fails(self):
+        h = auth.hash_password("maya123")
+        self.assertFalse(auth.verify_password("wrong", h))
+
+    def test_salt_makes_hashes_unique(self):
+        self.assertNotEqual(auth.hash_password("x"), auth.hash_password("x"))
+
+    def test_verify_handles_missing_or_malformed(self):
+        self.assertFalse(auth.verify_password("x", None))
+        self.assertFalse(auth.verify_password("x", ""))
+        self.assertFalse(auth.verify_password("x", "garbage"))
+
+    def test_plaintext_never_in_hash(self):
+        h = auth.hash_password("supersecret")
+        self.assertNotIn("supersecret", h)
 
 
 if __name__ == "__main__":

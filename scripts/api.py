@@ -5,6 +5,7 @@ Exposes the existing Business Rule Engine over HTTP for the React frontend. It
 does not change any rule semantics; it reshapes the evaluation output into a
 richer, frontend-friendly JSON response.
 
+    POST /api/login                       username/password -> user_id (no session)
     GET /api/recipes                      list recipes (paginated, filterable)
     GET /api/recipes/{recipe_id}          one recipe's detail
     GET /api/recipes/{recipe_id}/evaluate evaluate rules for one recipe
@@ -29,6 +30,7 @@ from pydantic import BaseModel
 from recipe_facts import RecipeNotFound, build_recipe_facts
 from detect_rules import detect_rules_from_facts, _q
 from evaluate_rules import extract_process_facts, evaluate_rule
+from auth import verify_password
 
 DSN = os.environ.get("MAZIMEAL_DSN", "dbname=mazimeal")
 
@@ -115,6 +117,17 @@ class RecipeEvaluationResponse(BaseModel):
     # rule output does NOT depend on the user yet — this is attached alongside.
     user: UserProfileResponse | None = None
     rules: list[RuleEvaluationResponse]
+
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+
+class LoginResponse(BaseModel):
+    user_id: str
+    name: str
+    username: str
 
 
 class RecipeSummary(BaseModel):
@@ -422,6 +435,31 @@ def list_recipes(
 
         return RecipeListResponse(
             total=total, limit=limit, offset=offset, recipes=recipes)
+    finally:
+        conn.close()
+
+
+@app.post("/api/login", response_model=LoginResponse)
+def login(body: LoginRequest) -> LoginResponse:
+    """Minimal username/password login (no sessions/tokens).
+
+    Verifies the password against the stored salted hash and returns the
+    user_id, which the client then passes to /api/recipes/{id}/evaluate?user_id.
+    Returns 401 on any failure (unknown username or wrong password) without
+    revealing which — standard practice.
+    """
+    conn = _connect()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            _q(conn, "SELECT user_id, name, password_hash "
+                     "FROM user_profile WHERE lower(username) = lower(?)"),
+            (body.username,),
+        )
+        row = cur.fetchone()
+        if row is None or not verify_password(body.password, row[2]):
+            raise HTTPException(status_code=401, detail="invalid username or password")
+        return LoginResponse(user_id=str(row[0]), name=row[1], username=body.username)
     finally:
         conn.close()
 
