@@ -12,9 +12,15 @@ shared secret and no round trip to Supabase per request; PyJWKClient caches
 the key set and refetches when a token arrives with an unknown `kid`, which is
 what happens when the project rotates its signing key.
 
-Two environment variables:
+Which project to verify against is not configured separately. It is derived
+from the database connection string the API is already using, because the two
+have to be the same project: a token issued by project A says nothing about a
+row in project B's tables. Deriving it makes that structural instead of a
+convention someone has to keep. SUPABASE_URL still overrides, for a setup
+where auth and data genuinely are split.
 
-    SUPABASE_URL          the project, e.g. https://abc.supabase.co
+One environment variable remains:
+
     MAZI_ADMIN_EMAILS     comma-separated, who may approve a rule change
 
 The allowlist lives in the environment rather than in a table on purpose: a
@@ -24,10 +30,42 @@ admin page can add themselves to.
 from __future__ import annotations
 
 import os
+from urllib.parse import unquote, urlsplit
 
 from fastapi import Header, HTTPException
 
-SUPABASE_URL = (os.environ.get("SUPABASE_URL") or "").rstrip("/")
+def _project_url() -> str:
+    """The project's API root, e.g. https://abc.supabase.co.
+
+    Taken from SUPABASE_URL when set. Otherwise read out of the Postgres
+    connection string, which names the project in one of two places depending
+    on how it connects:
+
+        the pooler   postgresql://postgres.<ref>:...@aws-1-...pooler.supabase.com
+        direct       postgresql://postgres:...@db.<ref>.supabase.co
+
+    Returns "" when neither is available, which keeps every unauthenticated
+    endpoint working and makes the authenticated ones answer 503.
+    """
+    explicit = (os.environ.get("SUPABASE_URL") or "").rstrip("/")
+    if explicit:
+        return explicit
+
+    dsn = os.environ.get("SUPABASE_DB_URL") or os.environ.get("MAZIMEAL_DSN") or ""
+    if not dsn:
+        return ""
+    # urlsplit, not string surgery: the password may contain @ or :.
+    parts = urlsplit(dsn)
+    user = unquote(parts.username or "")
+    if user.startswith("postgres.") and len(user) > len("postgres."):
+        return f"https://{user[len('postgres.'):]}.supabase.co"
+    host = parts.hostname or ""
+    if host.startswith("db.") and host.endswith(".supabase.co"):
+        return f"https://{host[len('db.'):]}"
+    return ""
+
+
+SUPABASE_URL = _project_url()
 
 # Supabase signs project tokens with "authenticated" as the audience.
 AUDIENCE = "authenticated"
@@ -47,7 +85,11 @@ def _client():
         if not SUPABASE_URL:
             raise HTTPException(
                 status_code=503,
-                detail={"error": "auth_not_configured", "hint": "SUPABASE_URL is not set"},
+                detail={
+                    "error": "auth_not_configured",
+                    "hint": "no Supabase project found: set SUPABASE_URL, or a "
+                            "SUPABASE_DB_URL this can read the project from",
+                },
             )
         from jwt import PyJWKClient
 

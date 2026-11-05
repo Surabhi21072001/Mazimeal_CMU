@@ -33,11 +33,15 @@ services:
       - key: MAZIMEAL_DSN
         sync: false
 
-      # The project's public API root. The API fetches the ES256 public keys
-      # from <SUPABASE_URL>/auth/v1/.well-known/jwks.json and verifies access
-      # tokens against them locally, so no shared secret is involved and this
-      # value is not sensitive - the browser bundle already carries it. Without
-      # it the admin and review writes answer 503; reads are unaffected.
+      # Optional. The API fetches the ES256 public keys from
+      # <SUPABASE_URL>/auth/v1/.well-known/jwks.json and verifies access tokens
+      # against them locally, so no shared secret is involved and this value is
+      # not sensitive - the browser bundle already carries it.
+      #
+      # It is set here only to be explicit: when it is absent the API reads the
+      # project out of SUPABASE_DB_URL, which has to be the same project
+      # anyway, since a token from one project says nothing about a row in
+      # another's tables. Override it only if auth and data really are split.
       - key: SUPABASE_URL
         value: https://vvoxzwktnalrodukachl.supabase.co
 
