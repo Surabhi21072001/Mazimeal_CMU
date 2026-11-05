@@ -165,6 +165,11 @@ export async function signIn({ email, password }) {
   return supabase.auth.signInWithPassword({ email, password });
 }
 
+export async function signOut() {
+  if (!hasSupabaseEnv || !supabase) return notConfigured();
+  return supabase.auth.signOut();
+}
+
 export async function getCurrentUserId() {
   if (!hasSupabaseEnv || !supabase) return null;
   const { data } = await supabase.auth.getUser();

@@ -17,12 +17,12 @@ import sys
 import time
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from . import ask as ask_module
-from . import cache, config, content, providers
+from . import auth, cache, config, content, nutrition_review, providers, rule_admin
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
@@ -82,6 +82,37 @@ class AskRequest(BaseModel):
 class SuggestionRequest(BaseModel):
     member_id: str = "maya"
     rule_ids: list[str] = []
+
+
+class RuleRequestBody(BaseModel):
+    """A proposed change to one rule.
+
+    There is no `submitted_by`: who is proposing comes from the verified
+    token, not from here. A client-supplied author on an audit record is not
+    an author.
+    """
+
+    kind: str = "update"
+    rule_id: str
+    proposed: dict = {}
+    note: str | None = None
+
+
+class DecisionBody(BaseModel):
+    approve: bool
+    note: str | None = None
+
+
+class NutritionVerdict(BaseModel):
+    """A person's judgement on whether a recipe's numbers can be right.
+
+    No ratio and no reviewer: both are taken from the database and the token
+    when the row is written, so a verdict always records what was actually on
+    screen and who actually decided.
+    """
+
+    verdict: str
+    reason: str | None = None
 
 
 @app.get("/api/health")
@@ -236,3 +267,116 @@ def review(recipe_id: str, request: ReviewRequest):
 def clear_cache():
     """For the model comparison: drop everything written by a previous run."""
     return {"cleared": cache.clear()}
+
+
+# --------------------------------------------------------------------- rule admin
+#
+# Reading the rules needs no account: they are published research with their
+# sources, and the screens already show them on every recipe. Proposing a
+# change needs a verified Supabase account. Approving one needs that account to
+# be on MAZI_ADMIN_EMAILS, which the server reads from its own environment.
+
+
+@app.get("/api/admin/me")
+def admin_me(caller: auth.Caller = Depends(auth.signed_in)):
+    """Who the server thinks is calling. The admin page asks before it renders."""
+    return caller.as_json()
+
+
+@app.get("/api/admin/rules/summary")
+def admin_rules_summary():
+    return rule_admin.summary()
+
+
+@app.get("/api/admin/rules")
+def admin_rules(
+    q: str | None = None,
+    category: str | None = None,
+    status: str | None = None,
+    reach: str | None = Query(default=None, pattern="^(reachable|unreachable)$"),
+    active: bool | None = None,
+    limit: int = 200,
+):
+    items = rule_admin.rules(
+        query=q, category=category, status=status, reach=reach, active=active, limit=limit
+    )
+    return {"count": len(items), "items": items, "categories": rule_admin.categories()}
+
+
+@app.get("/api/admin/rules/{rule_id}")
+def admin_rule(rule_id: str):
+    found = rule_admin.rule(rule_id)
+    if not found:
+        raise HTTPException(status_code=404, detail={"error": "no_such_rule", "rule_id": rule_id})
+    return found
+
+
+@app.get("/api/admin/rule-requests")
+def admin_rule_requests(
+    status: str = "pending",
+    limit: int = 100,
+    caller: auth.Caller = Depends(auth.admin),
+):
+    items = rule_admin.requests(status=status, limit=limit)
+    return {"status": status, "count": len(items), "items": items, "reviewer": caller.email}
+
+
+@app.post("/api/admin/rule-requests")
+def admin_submit_rule_request(
+    body: RuleRequestBody,
+    caller: auth.Caller = Depends(auth.signed_in),
+):
+    return rule_admin.submit(
+        kind=body.kind,
+        rule_id=body.rule_id,
+        proposed=body.proposed,
+        note=body.note,
+        by=caller.email or caller.user_id,
+    )
+
+
+# ---------------------------------------------------------- nutrition review
+#
+# Whether a recipe's nutrition is plausible, which is not the same question as
+# whether its suggestion text is good. Reading the queue is open - the numbers
+# and their disagreement are already on the cook screen - and recording a
+# verdict needs a verified account, because the point of the record is that it
+# says who decided.
+
+
+@app.get("/api/review/nutrition")
+def nutrition_queue():
+    return nutrition_review.queue()
+
+
+@app.get("/api/review/nutrition/{recipe_id}/history")
+def nutrition_history(recipe_id: str):
+    return {"recipe_id": recipe_id, "items": nutrition_review.history(recipe_id)}
+
+
+@app.post("/api/review/nutrition/{recipe_id}")
+def nutrition_verdict(
+    recipe_id: str,
+    body: NutritionVerdict,
+    caller: auth.Caller = Depends(auth.signed_in),
+):
+    return nutrition_review.record(
+        recipe_id=recipe_id,
+        verdict=body.verdict,
+        reason=body.reason,
+        reviewer=caller.email or caller.user_id,
+    )
+
+
+@app.post("/api/admin/rule-requests/{request_id}/decide")
+def admin_decide_rule_request(
+    request_id: str,
+    body: DecisionBody,
+    caller: auth.Caller = Depends(auth.admin),
+):
+    return rule_admin.decide(
+        request_id=request_id,
+        approve=body.approve,
+        by=caller.email,
+        note=body.note,
+    )

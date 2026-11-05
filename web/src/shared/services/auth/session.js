@@ -1,8 +1,14 @@
 // Who is looking at the screen.
 //
-// Login is not built yet, so this returns a fixed reviewer. When Supabase Auth
-// is wired in, only this file changes: read the session, look up the user's
-// role, and return it here.
+// This is the review screen's own local reviewer, and it is deliberately still
+// here. Real sign-in now exists - shared/services/auth/authStore.js, used by
+// #/admin and by the nutrition review - but it is asynchronous, and every
+// caller of getSession() below reads it synchronously during render. Swapping
+// it would mean reworking those screens, which is a separate change.
+//
+// What matters is that nothing with consequences depends on this file any
+// more: the API decides who may write, from the verified token, and both
+// tables behind those writes are closed to the browser's keys entirely.
 //
 // Nothing security-relevant hangs on this. The admin screens are hidden from
 // people who are not reviewers, but hiding a screen is a convenience, not a

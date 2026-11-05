@@ -4,3 +4,7 @@ httpx==0.28.1
 pydantic==2.10.4
 # The rules engine (scripts/) talks to Postgres directly; one process serves both.
 psycopg[binary]==3.2.3
+# Verifying the Supabase JWT on admin and review writes. The project signs
+# with ES256 and publishes its public keys, so this needs no shared secret -
+# but it does need the crypto extra for the elliptic-curve algorithms.
+PyJWT[crypto]==2.10.1

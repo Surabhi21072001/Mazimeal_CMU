@@ -31,8 +31,11 @@ whatever is `approved` in `api/content/`.
 - **The assistant's question box** is disabled. Answering a free question needs
   a model at request time, and we are not hosting one. The box says so.
 - **Regenerate** is hidden for the same reason.
-- **Reviewer decisions are per browser.** They move to a database when there
-  is one; until then two people reviewing see different things.
+- **Reviewer decisions on suggestion text are per browser.** They move to a
+  database when there is one; until then two people reviewing see different
+  things. Nutrition-plausibility verdicts are not like this - they go to
+  `recipe_nutrition_reviews` through the API, with the reviewer taken from the
+  verified token, so everyone sees the same ones.
 
 ---
 
@@ -60,12 +63,18 @@ GitHub repository.
    with no backend at all. Unset and empty mean different things here, on
    purpose.
 
-   The other five `VITE_` variables the repository reads
-   (`VITE_SUPABASE_*`, `VITE_EMAILJS_*`) belong to the original app's login and
-   signup email, and are deliberately left unset: this Supabase project holds
-   recipes and rules, not the recommender schema those features expect, so
-   pointing them at it would break more confusingly than leaving them off.
-   Those features disable themselves when the variables are missing.
+   `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are now worth setting.
+   They were left unset while this Supabase project held only recipes and
+   rules; `schema/migrations/001_household_identity.sql` added the
+   `households`, `household_members` and `member_conditions` tables that
+   sign-in writes, with row-level security so an account reaches only the
+   household it created. With the two variables set, sign-in works and the
+   admin and nutrition-review screens can record who decided what. Without
+   them both screens stay readable and refuse every write, which is the right
+   failure.
+
+   `VITE_EMAILJS_*` stay unset: they are the original app's signup email, and
+   that feature disables itself when they are missing.
 5. Deploy. The first build takes about a minute.
 
 The production URL serves the original app; the screens are at `/#/recommend`
@@ -99,3 +108,18 @@ it sleeps when idle and the first request after that waits about a minute.
 The database is Supabase. It is not needed for this deployment and is best
 left until the backend is ready to use it, since a free project pauses after
 about a week of no traffic.
+
+### Environment on the API host
+
+| Variable | What it does |
+|---|---|
+| `SUPABASE_DB_URL` | the Postgres connection string. Everything live reads it. |
+| `SUPABASE_URL` | the project, e.g. `https://abc.supabase.co`. The API fetches `/auth/v1/.well-known/jwks.json` from it to verify the caller's token. Without it, admin and review writes answer 503 and nothing else changes. |
+| `MAZI_ADMIN_EMAILS` | comma-separated, who may approve a rule change. Anyone signed in may propose one; only an address on this list may approve it. |
+
+`MAZI_ADMIN_EMAILS` lives in the environment rather than in a table on
+purpose. A table the admin screen can edit is a table that whoever reaches the
+admin screen can add themselves to.
+
+No JWT secret is needed. The project signs tokens with ES256 and publishes the
+matching public keys, so the API verifies them locally with nothing shared.

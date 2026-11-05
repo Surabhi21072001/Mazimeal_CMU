@@ -7,6 +7,8 @@ const CookPage = lazy(() => import("../features/cook/CookPage.jsx"));
 const RecommendPage = lazy(() => import("../features/recommend/RecommendPage.jsx"));
 const ReviewPage = lazy(() => import("../features/review/ReviewPage.jsx"));
 const RecipesPage = lazy(() => import("../features/recipes/RecipesPage.jsx"));
+const AdminPage = lazy(() => import("../features/admin/AdminPage.jsx"));
+const NutritionReview = lazy(() => import("../features/review/NutritionReview.jsx"));
 
 function Loading() {
   return (
@@ -32,6 +34,8 @@ function Loading() {
 // or adding a router dependency:
 //   #/recipes            the seed recipes, as an index
 //   #/cook/<recipe_id>   the cook screen
+//   #/review/nutrition   whether each recipe's numbers can be right
+//   #/admin              the rules table and the queue that changes it
 //   anything else        the app as it was
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -56,7 +60,11 @@ export default function App() {
 
   return (
     <Suspense fallback={<Loading />}>
-      {hash.startsWith("#/review") ? (
+      {hash.startsWith("#/review/nutrition") ? (
+        <NutritionReview onNavigate={navigate} />
+      ) : hash.startsWith("#/admin") ? (
+        <AdminPage onNavigate={navigate} />
+      ) : hash.startsWith("#/review") ? (
         <ReviewPage onNavigate={navigate} />
       ) : hash.startsWith("#/recipes") ? (
         <RecipesPage onNavigate={navigate} />

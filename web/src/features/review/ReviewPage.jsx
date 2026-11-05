@@ -494,7 +494,12 @@ export default function ReviewPage({ onNavigate }) {
           <span style={{ fontSize: 10.5, color: C.muted }}>← Review</span>
         </button>
         <span style={{ flex: 1 }} />
-        <Chip color={C.gold} bg={C.goldLight} title="Login is not built yet; everyone is a reviewer for now">
+        {/* The other half of reviewing: whether the numbers on the recipe can
+            be right at all. Its own screen because it has its own queue - all
+            fifty recipes, ordered by how far the two energy figures are apart
+            - rather than one recipe at a time. */}
+        <Button onClick={() => onNavigate("#/review/nutrition")}>Review nutrition</Button>
+        <Chip color={C.gold} bg={C.goldLight} title="This screen's reviewer identity is still local to the browser; sign-in lives on #/admin">
           {session.name} · reviewer
         </Chip>
       </header>
