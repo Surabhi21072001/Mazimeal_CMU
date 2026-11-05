@@ -1,0 +1,19 @@
+name: mazimeal-data-integration
+services:
+  db:
+    image: postgres:17@sha256:b8faeff7712663c2773a190181e1246e37e364b887611c04658c28b44e2408fe
+    ports:
+      - "127.0.0.1:5434:5432"
+    environment:
+      POSTGRES_DB: mazimeal_integration
+      POSTGRES_USER: mazimeal_integration
+      POSTGRES_PASSWORD: ${MAZIMEAL_DEV_PASSWORD:?Set MAZIMEAL_DEV_PASSWORD in your shell}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mazimeal_integration -d mazimeal_integration"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  postgres-data:

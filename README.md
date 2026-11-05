@@ -3,6 +3,9 @@
 Nutrition planning: recipes, ingredients, and the rules that match them to a
 household's needs.
 
+For the reproducible local PostgreSQL setup, data-quality review layer and
+50-recipe handoff reports, see [Data engineering](data_engineering/README.md).
+
 ## Layout
 
 ```

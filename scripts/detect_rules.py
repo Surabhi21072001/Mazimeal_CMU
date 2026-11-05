@@ -31,7 +31,7 @@ import argparse
 import sys
 from dataclasses import dataclass
 
-from recipe_facts import RecipeFacts, RecipeNotFound, build_recipe_facts, format_facts
+from recipe_facts import RecipeFacts, RecipeNotFound, build_recipe_facts, format_facts, _columns
 
 
 @dataclass(frozen=True)
@@ -132,47 +132,22 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
     placeholders = ", ".join("?" for _ in codes)
     params = tuple(codes.keys())
 
-    # Load the full metadata in the SAME query (no N+1). Fall back to the core
-    # four columns for minimal schemas (e.g. the SQLite test fixture) that lack
-    # the metadata columns.
-    full_cols = ", ".join(_RULE_METADATA_COLUMNS)
+    # Inspect optional columns without rolling back the caller's transaction.
+    available = _columns(conn, "business_rules")
+    selected = [column for column in _RULE_METADATA_COLUMNS if column in available]
+    required = {"rule_id", "rule_name", "automation_status", "trigger_code"}
+    if not required <= set(selected):
+        raise ValueError("business_rules is missing required candidate columns")
     cur = conn.cursor()
-    try:
-        cur.execute(
-            _q(conn, f"""
-            SELECT {full_cols}
-            FROM business_rules
-            WHERE is_active = TRUE AND trigger_code IN ({placeholders})
-            ORDER BY rule_id
-            """),
-            params,
-        )
-        rows = cur.fetchall()
-        full = True
-    except Exception:
-        if hasattr(conn, "rollback"):
-            conn.rollback()
-        cur = conn.cursor()
-        cur.execute(
-            _q(conn, f"""
-            SELECT rule_id, rule_name, automation_status, trigger_code
-            FROM business_rules
-            WHERE is_active = TRUE AND trigger_code IN ({placeholders})
-            ORDER BY rule_id
-            """),
-            params,
-        )
-        rows = cur.fetchall()
-        full = False
+    cur.execute(_q(conn, f"""
+        SELECT {", ".join(selected)} FROM business_rules
+        WHERE is_active = TRUE AND trigger_code IN ({placeholders}) ORDER BY rule_id
+        """), params)
+    rows = cur.fetchall()
 
     detected: list[DetectedRule] = []
     for row in rows:
-        if full:
-            meta = dict(zip(_RULE_METADATA_COLUMNS, row))
-        else:
-            rid, rname, auto, trig = row
-            meta = {"rule_id": rid, "rule_name": rname,
-                    "automation_status": auto, "trigger_code": trig}
+        meta = dict(zip(selected, row))
         trigger_code = meta["trigger_code"]
         ingredients = codes.get(trigger_code, [])
         ing_list = ", ".join(sorted(set(ingredients)))

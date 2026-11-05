@@ -118,40 +118,36 @@ class RecipeNotFound(LookupError):
 # --------------------------------------------------------------------------
 # Loaders (one concern each, so they are easy to test and reuse)
 # --------------------------------------------------------------------------
-def _load_recipe_row(conn, recipe_id):
-    """Return the recipe's core + metadata columns, or None if absent.
-
-    Selects a superset of columns and tolerates schemas that lack the optional
-    ones (the SQLite test fixture only has recipe_id/recipe_name)."""
-    cols_full = ("recipe_name, meal_category, servings, calories_per_serving, "
-                 "data_source, recipe_description")
+def _columns(conn, table):
+    """Inspect the known schema without failing a query or rolling back caller work."""
     cur = conn.cursor()
-    try:
-        cur.execute(
-            _q(conn, f"SELECT {cols_full} FROM recipes WHERE recipe_id = ?"),
-            (recipe_id,),
-        )
-        row = cur.fetchone()
-        if row is None:
-            return None
-        return {
-            "recipe_name": row[0],
-            "meal_category": row[1],
-            "servings": row[2],
-            "calories_per_serving": float(row[3]) if row[3] is not None else None,
-            "data_source": row[4],
-            "recipe_description": row[5],
-        }
-    except Exception:
-        # Minimal schema (tests): fall back to name only.
-        conn.rollback() if hasattr(conn, "rollback") else None
-        cur = conn.cursor()
-        cur.execute(_q(conn, "SELECT recipe_name FROM recipes WHERE recipe_id = ?"),
-                    (recipe_id,))
-        row = cur.fetchone()
-        if row is None:
-            return None
-        return {"recipe_name": row[0]}
+    if _paramstyle(conn) == "?":
+        if table not in {"recipes", "recipe_ingredients", "business_rules"}:
+            raise ValueError("Unsupported schema table")
+        cur.execute(f"PRAGMA table_info({table})")
+        return {row[1] for row in cur.fetchall()}
+    cur.execute(_q(conn, "SELECT column_name FROM information_schema.columns "
+                   "WHERE table_schema = 'public' AND table_name = ?"), (table,))
+    return {row[0] for row in cur.fetchall()}
+
+
+def _load_recipe_row(conn, recipe_id):
+    fields = ["recipe_name", "meal_category", "servings", "calories_per_serving",
+              "data_source", "recipe_description"]
+    available = _columns(conn, "recipes")
+    fields = [field for field in fields if field in available]
+    if "recipe_name" not in fields:
+        raise ValueError("recipes.recipe_name is required")
+    cur = conn.cursor()
+    active = " AND deleted_at IS NULL" if "deleted_at" in available else ""
+    cur.execute(_q(conn, "SELECT " + ", ".join(fields) + " FROM recipes WHERE recipe_id = ?" + active), (recipe_id,))
+    row = cur.fetchone()
+    if row is None:
+        return None
+    result = dict(zip(fields, row))
+    if result.get("calories_per_serving") is not None:
+        result["calories_per_serving"] = float(result["calories_per_serving"])
+    return result
 
 
 def _load_ingredients(conn, recipe_id) -> list[RecipeIngredientFact]:
@@ -169,23 +165,10 @@ def _load_ingredients(conn, recipe_id) -> list[RecipeIngredientFact]:
         WHERE ri.recipe_id = ?
         ORDER BY i.ingredient_name, t.rule_code
         """)
-    try:
-        cur.execute(full_sql, (recipe_id,))
-    except Exception:
-        if hasattr(conn, "rollback"):
-            conn.rollback()
-        cur = conn.cursor()
-        cur.execute(
-            _q(conn, """
-            SELECT ri.ingredient_id, i.ingredient_name, NULL, NULL, t.rule_code
-            FROM recipe_ingredients ri
-            JOIN ingredients i          ON i.ingredient_id = ri.ingredient_id
-            LEFT JOIN ingredient_rule_tags t ON t.ingredient_id = ri.ingredient_id
-            WHERE ri.recipe_id = ?
-            ORDER BY i.ingredient_name, t.rule_code
-            """),
-            (recipe_id,),
-        )
+    columns = _columns(conn, "recipe_ingredients")
+    if not {"quantity", "unit"} <= columns:
+        full_sql = full_sql.replace("ri.quantity", "NULL").replace("ri.unit", "NULL")
+    cur.execute(full_sql, (recipe_id,))
     # Preserve first-seen order; collect codes per ingredient.
     order: list[str] = []
     acc: dict[str, dict] = {}
@@ -264,10 +247,10 @@ def _load_instructions(conn, recipe_id) -> str | None:
         """),
         (recipe_id,),
     )
-    steps = [row[1] for row in cur.fetchall() if row[1]]
+    steps = [(row[0], row[1]) for row in cur.fetchall() if row[1]]
     if not steps:
         return None
-    return "\n".join(f"{n}. {text}" for n, text in enumerate(steps, start=1))
+    return "\n".join(f"{n}. {text}" for n, text in steps)
 
 
 # --------------------------------------------------------------------------
