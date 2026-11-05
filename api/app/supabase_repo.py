@@ -258,6 +258,7 @@ class SupabaseRepo:
                 return None
             ingredients = self._ingredients(conn, db_id)
             steps = self._steps(conn, db_id)
+            nutrition = self._nutrition(conn, db_id, row["servings"] or 4)
             payload = {
                 # The id the caller used, not the row's, so a slug stays a slug
                 # for the next request - the suggestions endpoint is keyed on it.
@@ -270,7 +271,8 @@ class SupabaseRepo:
                 "tags": list(row["dietary_tags"] or []),
                 "image_url": None,
                 "ingredients": ingredients,
-                "nutrition_per_serving": self._nutrition(conn, db_id, row["servings"] or 4),
+                "nutrition_per_serving": nutrition,
+                "provenance": self._provenance(ingredients, nutrition),
                 "steps": steps,
                 "matched_rules": self._rules(conn, db_id, ingredients, steps),
                 "source": "supabase",
@@ -292,9 +294,22 @@ class SupabaseRepo:
 
     @staticmethod
     def _ingredients(conn, recipe_id):
+        """One row per ingredient line, carrying how its gram weight was arrived at.
+
+        `quantity_g` is never a figure the source gave us. Food.com ships two
+        parallel lists - names and bare numbers, no units - matched by
+        position, so every gram weight is a guessed pairing times a guessed
+        measure. The columns that say which guess was made (`measure`,
+        `grams_source`, `quantity_aligned`) travel with the line rather than
+        being collapsed away, because a wrong nutrition number can only be
+        traced back through them.
+        """
         cur = conn.execute(
             """SELECT ri.line_id, i.ingredient_name, ri.quantity, ri.unit, ri.measure,
-                      ri.quantity_g, ri.grams_source, ri.is_optional, ri.preparation_note
+                      ri.quantity_g, ri.grams_source, ri.quantity_aligned,
+                      ri.sequence_order, ri.is_optional, ri.preparation_note,
+                      (SELECT count(*) FROM v_ingredient_nutrition v
+                        WHERE v.ingredient_id = ri.ingredient_id)
                FROM recipe_ingredients ri
                JOIN ingredients i USING (ingredient_id)
                WHERE ri.recipe_id = %s
@@ -309,11 +324,23 @@ class SupabaseRepo:
                 "unit": measure or unit,
                 "grams": float(grams) if grams is not None else None,
                 "grams_source": grams_source,
+                # `unit` holds a placeholder ("unit", "portion") on every row we
+                # have, so the measure beside it is the only real unit there is.
+                "measure": measure,
+                "raw_unit": unit,
+                # FALSE means the two source lists had different lengths for
+                # this recipe, so the number may belong to another ingredient.
+                "quantity_aligned": None if aligned is None else bool(aligned),
+                "sequence_order": sequence_order,
+                "nutrient_count": int(nutrients),
                 "is_optional": bool(is_optional),
                 "required_by_rule": None,
                 "notes": note,
             }
-            for line_id, name, quantity, unit, measure, grams, grams_source, is_optional, note in cur
+            for (
+                line_id, name, quantity, unit, measure, grams, grams_source,
+                aligned, sequence_order, is_optional, note, nutrients,
+            ) in cur
         ]
 
     def _nutrition(self, conn, recipe_id, servings):
@@ -353,6 +380,18 @@ class SupabaseRepo:
                 source, confidence = "derived", 0.6
             else:
                 continue
+            # Both candidates travel, not just the one that won. Where the
+            # dataset publishes a nutrient we can also compute it, and the two
+            # disagreeing is the only measurement we have of how wrong the
+            # gram chain is - so the comparison belongs in the payload rather
+            # than in a one-off query someone runs by hand.
+            pub_value = round(published[nutrient][0], 1) if nutrient in published else None
+            der_value = round(derived[nutrient][0], 1) if nutrient in derived else None
+            ratio = (
+                round(der_value / pub_value, 2)
+                if pub_value not in (None, 0) and der_value is not None
+                else None
+            )
             out.append(
                 {
                     "nutrient": nutrient,
@@ -361,11 +400,45 @@ class SupabaseRepo:
                     "unit": unit,
                     "source": source,
                     "confidence": confidence,
+                    "published_value": pub_value,
+                    "derived_value": der_value,
+                    "derived_over_published": ratio,
                     "pct_of_target": None,  # the screen works this out per member
                     "top_sources": [],
                 }
             )
         return out
+
+    @staticmethod
+    def _provenance(ingredients, nutrition):
+        """Where this recipe's numbers came from, counted rather than asserted.
+
+        Nothing here is new information: it is the per-line and per-nutrient
+        fields above, totalled, so a screen can say "15 of 17 weights are a
+        measure guess and the two sources disagree by 2.7x" without walking
+        the payload itself.
+        """
+        energy = next((n for n in nutrition if n["nutrient"] == "Energy"), None)
+        return {
+            "lines": len(ingredients),
+            "lines_misaligned": sum(1 for i in ingredients if i["quantity_aligned"] is False),
+            "grams_from_measure": sum(1 for i in ingredients if i["grams_source"] == "measure"),
+            "grams_assumed": sum(1 for i in ingredients if i["grams_source"] == "assumed"),
+            "grams_missing": sum(1 for i in ingredients if i["grams"] is None),
+            "lines_without_nutrition": sum(1 for i in ingredients if not i["nutrient_count"]),
+            "lines_partial_nutrition": sum(
+                1 for i in ingredients if 0 < i["nutrient_count"] < 28
+            ),
+            "sequence_order_set": sum(1 for i in ingredients if i["sequence_order"] is not None),
+            "published_count": sum(1 for n in nutrition if n["source"] == "published"),
+            "derived_count": sum(1 for n in nutrition if n["source"] == "derived"),
+            # The calibration check: Food.com publishes Energy and we can also
+            # compute it, so this one ratio stands in for the accuracy of every
+            # nutrient that only exists by computation.
+            "energy_published": energy and energy["published_value"],
+            "energy_derived": energy and energy["derived_value"],
+            "energy_ratio": energy and energy["derived_over_published"],
+        }
 
     @staticmethod
     def _steps(conn, recipe_id):

@@ -58,10 +58,20 @@ function Stepper({ servings, baseServings, onChange }) {
   );
 }
 
+// What a line's gram weight rests on, when it rests on something weaker than
+// a matched measure. Said per line because the fix is per line: someone has to
+// open the original recipe and read the amount.
+const GRAMS_NOTE = {
+  assumed: "default weight, no measure matched",
+  none: "no weight, excluded from the totals",
+};
+
 export default function IngredientsPanel({ recipe, servings, onServingsChange, highlightLineIds = [] }) {
   const base = recipe.servings || 1;
   const scale = servings / base;
-  const hasPlaceholderGrams = recipe.ingredients.some((i) => i.grams_source === "placeholder");
+  // Every weight in the database is a guess of one kind or another; the ones
+  // worth naming here are the lines where even the measure was not matched.
+  const weakGrams = recipe.ingredients.filter((i) => GRAMS_NOTE[i.grams_source]).length;
 
   return (
     <Card>
@@ -114,6 +124,15 @@ export default function IngredientsPanel({ recipe, servings, onServingsChange, h
                   <span style={{ color: C.muted }}> · {num(item.grams * scale)} g</span>
                 ) : null}
                 {item.is_optional ? <span style={{ color: C.muted }}> (optional)</span> : null}
+                {GRAMS_NOTE[item.grams_source] || (item.nutrient_count != null && item.nutrient_count < 28) ? (
+                  <span style={{ display: "block", color: C.gold, fontSize: 11.5 }}>
+                    {GRAMS_NOTE[item.grams_source]}
+                    {GRAMS_NOTE[item.grams_source] && item.nutrient_count < 28 ? " · " : ""}
+                    {item.nutrient_count != null && item.nutrient_count < 28
+                      ? `${item.nutrient_count} of 28 nutrients known`
+                      : ""}
+                  </span>
+                ) : null}
                 {item.notes ? (
                   <span style={{ display: "block", color: C.subtext, fontSize: 12.5 }}>{item.notes}</span>
                 ) : null}
@@ -131,12 +150,11 @@ export default function IngredientsPanel({ recipe, servings, onServingsChange, h
         })}
       </ul>
 
-      {hasPlaceholderGrams ? (
-        <p style={{ margin: "14px 0 0", fontSize: 11.5, color: C.muted, lineHeight: 1.6 }}>
-          Gram weights are placeholders. The data workstream replaces them with real conversions, and the
-          nutrition panel changes with them.
-        </p>
-      ) : null}
+      <p style={{ margin: "14px 0 0", fontSize: 11.5, color: C.muted, lineHeight: 1.6 }}>
+        The source gives a bare number and no unit, so each gram weight is that number times a measure our
+        import chose by rule{weakGrams ? `, and ${weakGrams} of these lines not even that` : ""}. The data
+        workstream replaces them with reviewed conversions, and the nutrition panel changes with them.
+      </p>
     </Card>
   );
 }

@@ -6,6 +6,7 @@ import { applyReview } from "../review/reviewStore";
 import AiPanel from "./AiPanel";
 import IngredientsPanel from "./IngredientsPanel";
 import NutrientHeadline from "./NutrientHeadline";
+import DataTrace from "./DataTrace";
 import NutritionPanel from "./NutritionPanel";
 import StepsPanel from "./StepsPanel";
 import RecipePicker from "../recipes/RecipePicker";
@@ -374,6 +375,7 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
               highlightLineIds={highlightLineIds}
             />
             <NutritionPanel recipe={recipe} memberName={member?.name} />
+            <DataTrace recipe={recipe} />
           </div>
 
           <StepsPanel
