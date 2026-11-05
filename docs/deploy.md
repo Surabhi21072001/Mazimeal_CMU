@@ -128,7 +128,7 @@ they carry the database password.
 | `SUPABASE_DB_URL` | dashboard | the Postgres connection string. Everything live reads it. |
 | `MAZIMEAL_DSN` | dashboard | the same string under the name the rules engine reads. |
 | `SUPABASE_URL` | `render.yaml`, optional | the project root. The API fetches `/auth/v1/.well-known/jwks.json` from it to verify the caller's token. Not sensitive — the browser bundle already carries it. Leave it out and the project is read from `SUPABASE_DB_URL` instead, which has to name the same project anyway. |
-| `MAZI_ADMIN_EMAILS` | `render.yaml` | comma-separated, who may approve a rule change. Anyone signed in may propose one; only an address on this list may approve it. |
+| `MAZI_ADMIN_EMAILS` | `render.yaml`, optional | comma-separated, a backstop reviewer list. Reviewers normally live in the `app_admins` table, which the admin screen edits; this one cannot be changed through the API, so it is the way back in if that table is emptied. |
 
 `MAZI_ADMIN_EMAILS` lives in the environment rather than in a table on
 purpose. A table the admin screen can edit is a table that whoever reaches the
@@ -140,6 +140,10 @@ matching public keys, so the API verifies them locally with nothing shared.
 A blueprint change does not reach a running service on its own. Render applies
 a new variable in `render.yaml` on the next **blueprint sync**, not on the code
 deploy a push triggers, so after a push that adds one, the dashboard shows the
-blueprint as changed and waits. Until it is applied, `MAZI_ADMIN_EMAILS` is
-absent and no address can approve a rule change — everything else, sign-in
-included, works, because the project is derived from `SUPABASE_DB_URL`.
+blueprint as changed and waits.
+
+Nothing in this table has to be applied for the deployment to work. The auth
+project is derived from `SUPABASE_DB_URL`, and reviewers come from the
+`app_admins` table, whose first row is written by
+`schema/migrations/004_app_admins.sql`. Both environment variables above are
+there to override or to recover, not to switch the feature on.

@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from . import ask as ask_module
-from . import auth, cache, config, content, nutrition_review, providers, rule_admin
+from . import admin_people, auth, cache, config, content, nutrition_review, providers, rule_admin
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
@@ -100,6 +100,18 @@ class RuleRequestBody(BaseModel):
 
 class DecisionBody(BaseModel):
     approve: bool
+    note: str | None = None
+
+
+class GrantBody(BaseModel):
+    """Add a reviewer.
+
+    No `granted_by`: who granted it comes from the verified token. A list of
+    who may approve changes is worth nothing if the browser fills in who
+    authorised each entry.
+    """
+
+    email: str
     note: str | None = None
 
 
@@ -332,6 +344,31 @@ def admin_submit_rule_request(
         proposed=body.proposed,
         note=body.note,
         by=caller.email or caller.user_id,
+    )
+
+
+# ------------------------------------------------------------ reviewer list
+#
+# Who may approve a rule change. Two sources: MAZI_ADMIN_EMAILS, which no
+# request can touch, and the app_admins table, which any reviewer may edit.
+# Reading the list needs to be a reviewer too - it is a list of named people,
+# and there is no reason for it to be public.
+
+
+@app.get("/api/admin/people")
+def admin_people_list(caller: auth.Caller = Depends(auth.admin)):
+    return {**admin_people.listing(auth.env_admin_emails()), "you": caller.email}
+
+
+@app.post("/api/admin/people")
+def admin_people_grant(body: GrantBody, caller: auth.Caller = Depends(auth.admin)):
+    return admin_people.grant(body.email, by=caller.email or caller.user_id, note=body.note)
+
+
+@app.delete("/api/admin/people/{email}")
+def admin_people_revoke(email: str, caller: auth.Caller = Depends(auth.admin)):
+    return admin_people.revoke(
+        email, by=caller.email or caller.user_id, env_emails=auth.env_admin_emails()
     )
 
 

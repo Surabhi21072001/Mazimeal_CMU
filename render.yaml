@@ -45,11 +45,11 @@ services:
       - key: SUPABASE_URL
         value: https://vvoxzwktnalrodukachl.supabase.co
 
-      # Who may approve a rule change. Comma separated. Everyone signed in can
-      # propose one; only these addresses can apply it. Deliberately an
-      # environment variable rather than a table: the admin screen can edit
-      # every table it reaches, so an allowlist living in one of them could be
-      # extended from inside the screen it guards.
+      # Optional, and a backstop rather than the main list. Reviewers normally
+      # live in the app_admins table, which the admin screen edits, so adding
+      # one does not need a deployment. This stays because nothing in the API
+      # can change it: if that table is ever emptied or wrong, an address here
+      # still gets in. Comma separated.
       - key: MAZI_ADMIN_EMAILS
         value: caliber1385@gmail.com
 

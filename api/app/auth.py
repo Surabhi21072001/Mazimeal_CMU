@@ -19,13 +19,21 @@ row in project B's tables. Deriving it makes that structural instead of a
 convention someone has to keep. SUPABASE_URL still overrides, for a setup
 where auth and data genuinely are split.
 
-One environment variable remains:
+Who may approve a rule change comes from two places, and the difference
+between them is deliberate:
 
-    MAZI_ADMIN_EMAILS     comma-separated, who may approve a rule change
+    MAZI_ADMIN_EMAILS     comma-separated, in the server's environment
+    app_admins            a table, editable from the admin screen
 
-The allowlist lives in the environment rather than in a table on purpose: a
-table that the admin page can edit is a table that an attacker who reaches the
-admin page can add themselves to.
+A table the admin screen can edit is a table that whoever reaches the admin
+screen can add themselves to - which is why the environment list exists and
+why nothing can change it through the API. It is the way back in when the
+table is wrong. The table's first row comes from a migration, so becoming a
+reviewer always starts outside the screen; what the screen allows is an
+existing reviewer adding another, which is the feature.
+
+The table is read per request rather than cached, so removing a reviewer takes
+effect on their next call rather than whenever a cache would have expired.
 """
 from __future__ import annotations
 
@@ -101,9 +109,26 @@ def _client():
     return _jwk_client
 
 
-def admin_emails() -> set[str]:
+def env_admin_emails() -> set[str]:
+    """Reviewers named in the server's environment.
+
+    No request can change this, which is what makes it the way back in when
+    the table below is wrong or empty.
+    """
     raw = os.environ.get("MAZI_ADMIN_EMAILS", "")
     return {part.strip().lower() for part in raw.split(",") if part.strip()}
+
+
+def admin_emails() -> set[str]:
+    """Every reviewer: the environment list, plus the app_admins table.
+
+    Imported inside the function because admin_people reaches the database and
+    this module is imported at startup; keeping the import here means a
+    deployment with no database still serves everything that needs no account.
+    """
+    from .admin_people import granted_emails
+
+    return env_admin_emails() | granted_emails()
 
 
 def _bearer(authorization: str | None) -> str:

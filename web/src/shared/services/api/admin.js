@@ -47,3 +47,17 @@ export function decideRuleRequest(requestId, approve, note) {
     body: { approve, note },
   });
 }
+
+// The reviewer list. Reading it needs to be a reviewer too: it is a list of
+// named people, and nothing about the admin screen needs it to be public.
+export function listPeople() {
+  return call("/api/admin/people");
+}
+
+export function grantAdmin(email, note) {
+  return call("/api/admin/people", { method: "POST", body: { email, note } });
+}
+
+export function revokeAdmin(email) {
+  return call(`/api/admin/people/${encodeURIComponent(email)}`, { method: "DELETE" });
+}
