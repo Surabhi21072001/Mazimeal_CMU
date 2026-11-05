@@ -33,6 +33,22 @@ services:
       - key: MAZIMEAL_DSN
         sync: false
 
+      # The project's public API root. The API fetches the ES256 public keys
+      # from <SUPABASE_URL>/auth/v1/.well-known/jwks.json and verifies access
+      # tokens against them locally, so no shared secret is involved and this
+      # value is not sensitive - the browser bundle already carries it. Without
+      # it the admin and review writes answer 503; reads are unaffected.
+      - key: SUPABASE_URL
+        value: https://vvoxzwktnalrodukachl.supabase.co
+
+      # Who may approve a rule change. Comma separated. Everyone signed in can
+      # propose one; only these addresses can apply it. Deliberately an
+      # environment variable rather than a table: the admin screen can edit
+      # every table it reaches, so an allowlist living in one of them could be
+      # extended from inside the screen it guards.
+      - key: MAZI_ADMIN_EMAILS
+        value: caliber1385@gmail.com
+
       # No model is hosted. Suggestions are pre-generated, reviewed, and
       # served as data; this makes the API say so rather than pretend.
       - key: MAZI_PROVIDER
