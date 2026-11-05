@@ -55,23 +55,24 @@ GitHub repository.
    This is worth knowing because the front end is not at the repository root,
    which usually means the importer has to be told where it is. Here they do
    not.
-4. Leave Environment Variables empty. The screens default to the deployed
-   backend at `https://mazimeal-api.onrender.com`, so there is nothing to set.
+4. Leave Environment Variables empty. Everything the build needs is in the
+   repository, in `web/.env.production`, which Vite reads for `vite build`.
+   Keeping it there rather than in the dashboard means the deployment can be
+   rebuilt from a checkout alone, and the reasoning sits next to the values.
 
-   `VITE_API_BASE_URL` overrides that default when it is needed — a local URL
-   while developing, or an empty string to force the bundled fixtures and run
+   That file sets `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`, which is
+   what makes sign-in work. Both are public: every `VITE_` value is compiled
+   into the bundle, so nothing secret can live there. The publishable key
+   (once called `anon`) has no privileges of its own, and the two tables
+   behind the admin and review writes have row-level security enabled with no
+   policy at all, so the key cannot read them even in principle.
+
+   It deliberately does not set `VITE_API_BASE_URL`. Unset means the deployed
+   backend at `https://mazimeal-api.onrender.com`; a local URL points a dev
+   build at a local API; an empty string forces the bundled fixtures and runs
    with no backend at all. Unset and empty mean different things here, on
-   purpose.
-
-   `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are now worth setting.
-   They were left unset while this Supabase project held only recipes and
-   rules; `schema/migrations/001_household_identity.sql` added the
-   `households`, `household_members` and `member_conditions` tables that
-   sign-in writes, with row-level security so an account reaches only the
-   household it created. With the two variables set, sign-in works and the
-   admin and nutrition-review screens can record who decided what. Without
-   them both screens stay readable and refuse every write, which is the right
-   failure.
+   purpose — which is why a local `web/.env.local` sets it and the committed
+   production file does not.
 
    `VITE_EMAILJS_*` stay unset: they are the original app's signup email, and
    that feature disables itself when they are missing.
@@ -111,11 +112,16 @@ about a week of no traffic.
 
 ### Environment on the API host
 
-| Variable | What it does |
-|---|---|
-| `SUPABASE_DB_URL` | the Postgres connection string. Everything live reads it. |
-| `SUPABASE_URL` | the project, e.g. `https://abc.supabase.co`. The API fetches `/auth/v1/.well-known/jwks.json` from it to verify the caller's token. Without it, admin and review writes answer 503 and nothing else changes. |
-| `MAZI_ADMIN_EMAILS` | comma-separated, who may approve a rule change. Anyone signed in may propose one; only an address on this list may approve it. |
+`render.yaml` is a blueprint, so Render applies every variable in it on each
+sync. Only the two marked `sync: false` are typed into the dashboard, because
+they carry the database password.
+
+| Variable | Set in | What it does |
+|---|---|---|
+| `SUPABASE_DB_URL` | dashboard | the Postgres connection string. Everything live reads it. |
+| `MAZIMEAL_DSN` | dashboard | the same string under the name the rules engine reads. |
+| `SUPABASE_URL` | `render.yaml` | the project root. The API fetches `/auth/v1/.well-known/jwks.json` from it to verify the caller's token. Not sensitive — the browser bundle already carries it. Without it, admin and review writes answer 503 and nothing else changes. |
+| `MAZI_ADMIN_EMAILS` | `render.yaml` | comma-separated, who may approve a rule change. Anyone signed in may propose one; only an address on this list may approve it. |
 
 `MAZI_ADMIN_EMAILS` lives in the environment rather than in a table on
 purpose. A table the admin screen can edit is a table that whoever reaches the
