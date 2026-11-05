@@ -8,6 +8,7 @@ richer, frontend-friendly JSON response.
     GET /api/recipes                      list recipes (paginated, filterable)
     GET /api/recipes/{recipe_id}          one recipe's detail
     GET /api/recipes/{recipe_id}/evaluate evaluate rules for one recipe
+        ?user_id=<uuid>  optionally attach the user's profile + targets
 
 Pipeline (all existing):
     recipe_id -> RecipeFacts -> candidate detection -> process facts
@@ -82,10 +83,37 @@ class RuleEvaluationResponse(BaseModel):
     source_url: str | None = None
 
 
+class UserNutrientTarget(BaseModel):
+    nutrient_id: str
+    daily_target: float
+    unit: str
+    minimum_target: float | None = None
+    upper_limit: float | None = None
+    target_source: str | None = None
+
+
+class UserProfileResponse(BaseModel):
+    user_id: str
+    name: str
+    age_years: int | None = None
+    sex: str | None = None
+    height_cm: float | None = None
+    weight_kg: float | None = None
+    activity_level: str | None = None
+    goal: str | None = None
+    diet_type: str | None = None
+    allergies: list[str] = []
+    preferences: list[str] = []
+    nutrient_targets: list[UserNutrientTarget] = []
+
+
 class RecipeEvaluationResponse(BaseModel):
     recipe_id: str
     recipe_name: str
     evaluated_at: datetime
+    # Present only when a user_id is supplied and found; otherwise null. The
+    # rule output does NOT depend on the user yet — this is attached alongside.
+    user: UserProfileResponse | None = None
     rules: list[RuleEvaluationResponse]
 
 
@@ -161,6 +189,65 @@ def _as_tag_list(tags) -> list[str]:
     return [t for t in str(tags).split(",") if t]
 
 
+def _load_user(conn, user_id) -> UserProfileResponse | None:
+    """Load a user_profile + its nutrient targets, or None if not found.
+
+    Read-only, does not affect rule evaluation. A malformed user_id (bad UUID
+    syntax) is treated as 'not found' rather than an error."""
+    cur = conn.cursor()
+    try:
+        cur.execute(
+            _q(conn, """
+            SELECT user_id, name, age_years, sex, height_cm, weight_kg,
+                   activity_level, goal, diet_type, allergies, preferences
+            FROM user_profile WHERE user_id = ?
+            """),
+            (user_id,),
+        )
+        row = cur.fetchone()
+    except Exception as exc:
+        if _is_invalid_id_error(exc):
+            if hasattr(conn, "rollback"):
+                conn.rollback()
+            return None
+        raise
+    if row is None:
+        return None
+
+    (uid, name, age, sex, height, weight, activity, goal,
+     diet_type, allergies, preferences) = row
+
+    cur = conn.cursor()
+    cur.execute(
+        _q(conn, """
+        SELECT nutrient_id, daily_target, unit, minimum_target, upper_limit, target_source
+        FROM user_nutrient_targets WHERE user_id = ?
+        ORDER BY nutrient_id
+        """),
+        (user_id,),
+    )
+    targets = [
+        UserNutrientTarget(
+            nutrient_id=nid,
+            daily_target=float(daily),
+            unit=unit,
+            minimum_target=float(mn) if mn is not None else None,
+            upper_limit=float(ul) if ul is not None else None,
+            target_source=src,
+        )
+        for (nid, daily, unit, mn, ul, src) in cur.fetchall()
+    ]
+
+    return UserProfileResponse(
+        user_id=str(uid), name=name, age_years=age, sex=sex,
+        height_cm=float(height) if height is not None else None,
+        weight_kg=float(weight) if weight is not None else None,
+        activity_level=activity, goal=goal, diet_type=diet_type,
+        allergies=_as_tag_list(allergies), preferences=_as_tag_list(preferences),
+        nutrient_targets=targets,
+    )
+
+
 def _is_invalid_id_error(exc: Exception) -> bool:
     """True when a DB error is caused by a malformed recipe_id value (e.g. a
     string that is not valid UUID syntax). Detected by SQLSTATE/class name to
@@ -177,7 +264,12 @@ def _is_invalid_id_error(exc: Exception) -> bool:
 # Endpoint
 # --------------------------------------------------------------------------
 @app.get("/api/recipes/{recipe_id}/evaluate", response_model=RecipeEvaluationResponse)
-def evaluate_recipe(recipe_id: str) -> RecipeEvaluationResponse:
+def evaluate_recipe(
+    recipe_id: str,
+    user_id: str | None = Query(
+        None, description="optional user_profile id; when given, the user's "
+                          "profile + nutrient targets are attached to the response"),
+) -> RecipeEvaluationResponse:
     conn = _connect()
     try:
         try:
@@ -199,10 +291,16 @@ def evaluate_recipe(recipe_id: str) -> RecipeEvaluationResponse:
         process_facts = extract_process_facts(facts)
         evaluated = [evaluate_rule(c, facts, process_facts) for c in candidates]
 
+        # Optional: attach the user's profile alongside the rule output. This
+        # does NOT influence rule evaluation yet — it is informational context
+        # for the frontend. Unknown/absent user_id simply yields user = null.
+        user = _load_user(conn, user_id) if user_id else None
+
         return RecipeEvaluationResponse(
             recipe_id=facts.recipe_id,
             recipe_name=facts.recipe_name,
             evaluated_at=datetime.now(timezone.utc),
+            user=user,
             rules=[_to_response(e) for e in evaluated],
         )
     finally:
