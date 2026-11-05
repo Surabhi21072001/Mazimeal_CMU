@@ -78,8 +78,15 @@ GitHub repository.
    that feature disables itself when they are missing.
 5. Deploy. The first build takes about a minute.
 
-The production URL serves the original app; the screens are at `/#/recommend`
-and `/#/cook/falafel-001`.
+The production URL is <https://mazimealcmu123.vercel.app>. It serves the
+original app; the screens are at `/#/recommend`, `/#/cook/falafel-001`,
+`/#/admin` and `/#/review/nutrition`.
+
+That host matches `MAZI_CORS_ORIGIN_REGEX` on the API, which is what lets the
+pages read it: `mazimeal` followed by `cmu123`, both inside `[a-z0-9-]*`. A
+Vercel project renamed to something not starting with `mazimeal` would be
+refused by the browser with nothing in the server log to find, so the regex
+and the project name have to be changed together.
 
 ### After that
 
