@@ -795,6 +795,39 @@ class TestApi(unittest.TestCase):
         r = client.get("/api/recipes/00000000-0000-0000-0000-000000000000")
         self.assertEqual(r.status_code, 404)
 
+    # ---- user profile attached to evaluate response ----
+    def test_evaluate_without_user_id_user_is_null(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate").json()
+        self.assertIsNone(body["user"])
+        # rules unaffected
+        self.assertTrue(any(r["rule_id"] == "BIO-002" for r in body["rules"]))
+
+    def test_evaluate_with_user_id_attaches_profile(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate?user_id=u-maya").json()
+        u = body["user"]
+        self.assertIsNotNone(u)
+        self.assertEqual(u["name"], "Maya")
+        self.assertEqual(u["diet_type"], "mediterranean")
+        self.assertEqual(u["allergies"], ["peanut"])
+        self.assertEqual(u["preferences"], ["chicken", "onion"])
+        tids = {t["nutrient_id"] for t in u["nutrient_targets"]}
+        self.assertEqual(tids, {"Energy", "Iron"})
+
+    def test_evaluate_with_user_does_not_change_rules(self):
+        client = self._client_with_db()
+        without = client.get("/api/recipes/r-pasta/evaluate").json()["rules"]
+        with_user = client.get("/api/recipes/r-pasta/evaluate?user_id=u-maya").json()["rules"]
+        key = lambda rs: [(r["rule_id"], r["applicability_status"]) for r in rs]
+        self.assertEqual(key(without), key(with_user))
+
+    def test_evaluate_unknown_user_id_user_is_null(self):
+        client = self._client_with_db()
+        body = client.get("/api/recipes/r-pasta/evaluate?user_id=nope").json()
+        self.assertIsNone(body["user"])
+        self.assertEqual(body["recipe_id"], "r-pasta")  # recipe still evaluated
+
 
 class TestRecipeListApi(unittest.TestCase):
     @classmethod
@@ -913,8 +946,25 @@ def build_api_fixture_db():
             action TEXT, recipe_engine_instruction TEXT, mechanism TEXT,
             conditions_and_limits TEXT, source_title TEXT, source_url TEXT,
             is_active INTEGER NOT NULL DEFAULT 1);
+        CREATE TABLE user_profile (
+            user_id TEXT PRIMARY KEY, name TEXT NOT NULL, age_years INTEGER,
+            sex TEXT, height_cm REAL, weight_kg REAL, activity_level TEXT,
+            goal TEXT, diet_type TEXT, allergies TEXT, preferences TEXT);
+        CREATE TABLE user_nutrient_targets (
+            user_id TEXT, nutrient_id TEXT, daily_target REAL, unit TEXT,
+            minimum_target REAL, upper_limit REAL, target_source TEXT,
+            PRIMARY KEY (user_id, nutrient_id));
         """
     )
+    # Seeded user (allergies/preferences as comma-joined text; _as_tag_list
+    # splits them, mirroring how Postgres TEXT[] arrives as a list).
+    c.execute("INSERT INTO user_profile VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+              ("u-maya", "Maya", 34, "female", 167.6, 64.0, "moderate",
+               "maintain_weight", "mediterranean", "peanut", "chicken,onion"))
+    c.executemany("INSERT INTO user_nutrient_targets VALUES (?,?,?,?,?,?,?)", [
+        ("u-maya", "Energy", 2000, "kcal", None, None, "Manual"),
+        ("u-maya", "Iron", 18, "mg", None, 45, "Manual"),
+    ])
     c.executemany("INSERT INTO recipes VALUES (?,?,?,?,?,?,?)", [
         ("r-pasta", "Garlic Tomato Pasta", "Dinner", 4, 520.0, "Food.com", None),
         ("r-multi-garlic", "Double Garlic", "Dinner", 2, None, "Food.com", None),
@@ -975,6 +1025,180 @@ def build_api_fixture_db():
     )
     conn.commit()
     return conn
+
+
+# --------------------------------------------------------------------------
+# User nutrition profile layer (user_profile + user_nutrient_targets)
+#
+# Validates schema behaviour (constraints, uniqueness, cascade, nullability).
+# Uses a SQLite fixture mirroring the constraints SQLite can enforce: CHECK on
+# age/height/weight, composite PK uniqueness, FK cascade, and nullable bounds.
+# Arrays (allergies/preferences) are stored as JSON text here since SQLite has
+# no array type; the real Postgres schema uses TEXT[].
+# --------------------------------------------------------------------------
+import json as _json  # noqa: E402
+
+
+def build_user_fixture_db() -> sqlite3.Connection:
+    conn = sqlite3.connect(":memory:")
+    conn.execute("PRAGMA foreign_keys = ON")  # SQLite needs this for cascade
+    conn.executescript(
+        """
+        CREATE TABLE user_profile (
+            user_id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            age_years INTEGER NOT NULL CHECK (age_years > 0 AND age_years < 130),
+            sex TEXT NOT NULL CHECK (sex IN ('female','male','other','prefer_not_to_say')),
+            height_cm REAL CHECK (height_cm IS NULL OR height_cm > 0),
+            weight_kg REAL CHECK (weight_kg IS NULL OR weight_kg > 0),
+            activity_level TEXT,
+            goal TEXT,
+            diet_type TEXT,
+            allergies TEXT,     -- JSON array text in this fixture
+            preferences TEXT,   -- JSON array text in this fixture
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+        CREATE TABLE user_nutrient_targets (
+            user_id TEXT NOT NULL REFERENCES user_profile(user_id) ON DELETE CASCADE,
+            nutrient_id TEXT NOT NULL,
+            daily_target REAL NOT NULL CHECK (daily_target >= 0),
+            unit TEXT NOT NULL,
+            minimum_target REAL CHECK (minimum_target IS NULL OR minimum_target >= 0),
+            upper_limit REAL CHECK (upper_limit IS NULL OR upper_limit >= 0),
+            target_source TEXT,
+            PRIMARY KEY (user_id, nutrient_id)
+        );
+        """
+    )
+    return conn
+
+
+class TestUserProfileSchema(unittest.TestCase):
+    def setUp(self):
+        self.conn = build_user_fixture_db()
+
+    def tearDown(self):
+        self.conn.close()
+
+    def _insert_user(self, uid="u1", age=34, height=167.6, weight=64.0,
+                     allergies=None, preferences=None):
+        self.conn.execute(
+            "INSERT INTO user_profile "
+            "(user_id,name,age_years,sex,height_cm,weight_kg,activity_level,goal,"
+            "diet_type,allergies,preferences) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+            (uid, "Maya", age, "female", height, weight, "moderate",
+             "maintain_weight", "mediterranean",
+             _json.dumps(allergies or []), _json.dumps(preferences or [])),
+        )
+        self.conn.commit()
+
+    def _insert_target(self, uid="u1", nid="Energy", daily=2000, unit="kcal",
+                       minimum=None, upper=None, source="Manual"):
+        self.conn.execute(
+            "INSERT INTO user_nutrient_targets "
+            "(user_id,nutrient_id,daily_target,unit,minimum_target,upper_limit,target_source) "
+            "VALUES (?,?,?,?,?,?,?)",
+            (uid, nid, daily, unit, minimum, upper, source),
+        )
+        self.conn.commit()
+
+    # 1
+    def test_user_profile_insert(self):
+        self._insert_user()
+        row = self.conn.execute(
+            "SELECT name, age_years, sex FROM user_profile WHERE user_id='u1'").fetchone()
+        self.assertEqual(row, ("Maya", 34, "female"))
+
+    # 2
+    def test_nutrient_target_insert(self):
+        self._insert_user()
+        self._insert_target(nid="Iron", daily=18, unit="mg", upper=45)
+        row = self.conn.execute(
+            "SELECT daily_target, unit, upper_limit FROM user_nutrient_targets "
+            "WHERE user_id='u1' AND nutrient_id='Iron'").fetchone()
+        self.assertEqual(row, (18.0, "mg", 45.0))
+
+    # 3
+    def test_multiple_targets_per_user(self):
+        self._insert_user()
+        for nid, d, u in [("Energy", 2000, "kcal"), ("Macro_Protein", 70, "g"),
+                          ("Calcium", 1000, "mg")]:
+            self._insert_target(nid=nid, daily=d, unit=u)
+        n = self.conn.execute(
+            "SELECT count(*) FROM user_nutrient_targets WHERE user_id='u1'").fetchone()[0]
+        self.assertEqual(n, 3)
+
+    # 4
+    def test_duplicate_user_nutrient_rejected(self):
+        self._insert_user()
+        self._insert_target(nid="Energy")
+        with self.assertRaises(sqlite3.IntegrityError):
+            self._insert_target(nid="Energy")
+
+    # 5
+    def test_delete_user_cascades_to_targets(self):
+        self._insert_user()
+        self._insert_target(nid="Energy")
+        self._insert_target(nid="Iron", daily=18, unit="mg")
+        self.conn.execute("DELETE FROM user_profile WHERE user_id='u1'")
+        self.conn.commit()
+        n = self.conn.execute(
+            "SELECT count(*) FROM user_nutrient_targets WHERE user_id='u1'").fetchone()[0]
+        self.assertEqual(n, 0)
+
+    # 6
+    def test_negative_age_rejected(self):
+        with self.assertRaises(sqlite3.IntegrityError):
+            self._insert_user(age=-5)
+
+    # 7
+    def test_negative_height_rejected(self):
+        with self.assertRaises(sqlite3.IntegrityError):
+            self._insert_user(height=-10)
+
+    # 8
+    def test_negative_weight_rejected(self):
+        with self.assertRaises(sqlite3.IntegrityError):
+            self._insert_user(weight=-1)
+
+    # 9
+    def test_allergies_stored(self):
+        self._insert_user(allergies=["peanut", "shellfish"])
+        raw = self.conn.execute(
+            "SELECT allergies FROM user_profile WHERE user_id='u1'").fetchone()[0]
+        self.assertEqual(_json.loads(raw), ["peanut", "shellfish"])
+
+    # 10
+    def test_preferences_stored(self):
+        self._insert_user(preferences=["chicken", "onion"])
+        raw = self.conn.execute(
+            "SELECT preferences FROM user_profile WHERE user_id='u1'").fetchone()[0]
+        self.assertEqual(_json.loads(raw), ["chicken", "onion"])
+
+    # 11
+    def test_nullable_upper_limit(self):
+        self._insert_user()
+        self._insert_target(nid="Macro_Protein", daily=70, unit="g", upper=None)
+        val = self.conn.execute(
+            "SELECT upper_limit FROM user_nutrient_targets "
+            "WHERE user_id='u1' AND nutrient_id='Macro_Protein'").fetchone()[0]
+        self.assertIsNone(val)
+
+    # 12
+    def test_nullable_minimum_target(self):
+        self._insert_user()
+        self._insert_target(nid="Vitamin_C", daily=75, unit="mg", minimum=None)
+        val = self.conn.execute(
+            "SELECT minimum_target FROM user_nutrient_targets "
+            "WHERE user_id='u1' AND nutrient_id='Vitamin_C'").fetchone()[0]
+        self.assertIsNone(val)
+
+    def test_invalid_sex_rejected(self):
+        with self.assertRaises(sqlite3.IntegrityError):
+            self.conn.execute(
+                "INSERT INTO user_profile (user_id,name,age_years,sex) "
+                "VALUES ('u2','X',30,'martian')")
 
 
 if __name__ == "__main__":
