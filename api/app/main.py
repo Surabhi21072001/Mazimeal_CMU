@@ -22,7 +22,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from . import ask as ask_module
-from . import admin_people, auth, cache, config, content, nutrition_review, providers, rule_admin
+from . import admin_people, auth, cache, config, content, nutrition_review
+from . import profile as profile_module
+from . import providers, rule_admin
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
@@ -345,6 +347,19 @@ def admin_submit_rule_request(
         note=body.note,
         by=caller.email or caller.user_id,
     )
+
+
+# ------------------------------------------------------------------- profile
+#
+# The signed-in person's own profile, keyed on the verified token rather than
+# on a uuid in the query string. The rules engine's ?user_id= still works and
+# still serves the seeded demo row; this is what the app uses, so an
+# identifier that never expires does not have to travel in a URL.
+
+
+@app.get("/api/profile/me")
+def profile_me(caller: auth.Caller = Depends(auth.signed_in)):
+    return {**profile_module.me(caller.user_id), "email": caller.email}
 
 
 # ------------------------------------------------------------ reviewer list
