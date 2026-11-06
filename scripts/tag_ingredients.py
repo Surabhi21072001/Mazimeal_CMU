@@ -170,6 +170,9 @@ LEGUMES = [
     "soybean", "soy bean", "edamame", "tofu", "tempeh", "split pea",
     "black-eyed pea", "blackeyed pea", "mung bean", "refried bean",
     "white bean", "red bean", "adzuki", "miso",
+    # Found by --candidates, not by writing the list from memory: USDA files
+    # both of these under Legumes and the keyword list had missed them.
+    "chili bean", "baked bean",
 ]
 NOT_LEGUMES = [
     "green bean", "string bean", "wax bean", "vanilla bean", "coffee bean",
@@ -303,6 +306,27 @@ REFUSED: dict[str, str] = {
 }
 
 
+# --------------------------------------------------------------------------
+# USDA's own food_category, used to propose names a keyword list has missed.
+#
+# It is not a replacement for the lists. The categories are botanical and the
+# rules are about food as it is prepared, so the two disagree in both
+# directions: USDA files soy sauce and peanut butter under Legumes, and
+# BIO-008 ("soak and cook legumes") applies to neither, while "Nut and Seed
+# Products" contains walnuts and pecans, which are nuts. But it is a good
+# candidate generator, and it found two legumes this list had missed.
+# --------------------------------------------------------------------------
+CATEGORY_HINT = {
+    "ING_LEGUME": "Legumes and Legume Products",
+    "ING_SEED": "Nut and Seed Products",
+    "ING_GRAIN": "Cereal Grains and Pasta",
+    "ING_ALLIUM": "Vegetables and Vegetable Products",
+    "CMP_OXALATE": "Vegetables and Vegetable Products",
+    "BEV_SSB": "Beverages",
+    "BEV_TEA_COFFEE": "Beverages",
+}
+
+
 def connect():
     dsn = os.environ.get("SUPABASE_DB_URL") or os.environ.get("MAZIMEAL_DSN")
     if not dsn:
@@ -403,6 +427,9 @@ def main(argv=None) -> int:
     )
     parser.add_argument("--apply", action="store_true", help="write the tags")
     parser.add_argument("--show", metavar="CODE", help="list one code's matches and exit")
+    parser.add_argument("--candidates", metavar="CODE",
+                        help="names in the code's USDA food_category that the keyword list "
+                             "does not match, and vice versa. A review list; writes nothing.")
     args = parser.parse_args(argv)
 
     plans = [(code, spec, "nutrient") for code, spec in BY_NUTRIENT.items()]
@@ -410,6 +437,31 @@ def main(argv=None) -> int:
 
     with connect() as conn:
         load_seed(conn)
+
+        if args.candidates:
+            code = args.candidates
+            if code not in BY_NAME:
+                raise SystemExit("%s is not tagged by name, so there is no list to compare." % code)
+            category = CATEGORY_HINT.get(code)
+            if not category:
+                raise SystemExit("No CATEGORY_HINT for %s. Add one to compare against." % code)
+            matched = {m[1] for m in name_matches(conn, BY_NAME[code])}
+            in_category = {
+                row[0] for row in conn.execute(
+                    "SELECT ingredient_name FROM ingredients WHERE food_category = %s",
+                    (category,),
+                ).fetchall()
+            }
+            print("%s against USDA category %r\n" % (code, category))
+            print("in the category, NOT matched by the keywords - review these:")
+            for name in sorted(in_category - matched) or ["   (none)"]:
+                print("   %s" % name)
+            print("\nmatched by the keywords, NOT in the category - usually fine, "
+                  "the category may be missing or coarser:")
+            for name in sorted(matched - in_category) or ["   (none)"]:
+                print("   %s" % name)
+            print("\nNothing written. A name worth keeping goes into the include list by hand.")
+            return 0
 
         if args.show:
             found = [p for p in plans if p[0] == args.show]
