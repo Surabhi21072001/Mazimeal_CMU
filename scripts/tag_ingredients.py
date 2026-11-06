@@ -38,10 +38,16 @@ is honest.
                citable, which is the worse trade.
 
 Refused, with the reason in REFUSED below: rules that must not be automated,
-rules about supplements, rules whose trigger is a property of the meal rather
-than of an ingredient, and rules that need two classes present together. A tag
-cannot say "this meal is carbohydrate-dominant", and pretending otherwise
-would make a rule fire on every recipe containing rice.
+rules about supplements, and rules whose trigger is a property of the meal
+rather than of an ingredient. A tag cannot say "this meal is
+carbohydrate-dominant", and pretending otherwise would make a rule fire on
+every recipe containing rice.
+
+Two codes in that list are composites rather than refusals.
+ING_LEGUME_GRAIN and ING_ALLIUM_GRAIN_LEGUME need two classes present
+together, which rule_code_components now expresses and detect_rules.py
+evaluates. They are never tagged directly; their components - ING_LEGUME,
+ING_GRAIN, ING_ALLIUM, ING_GRAIN_LEGUME - are tagged here as usual.
 
 A code is skipped entirely when every rule on it is do_not_automate. Where a
 code carries both kinds - NUT_CALCIUM has one of each - it is still tagged,
@@ -200,6 +206,21 @@ BY_NAME: dict[str, dict] = {
                "or legume batter\", GLY-008 \"grain or legume\" - all three read "
                "as either, so the union is what they mean.",
     },
+    "ING_ALLIUM": {
+        "include": ALLIUM, "exclude": NOT_ALLIUM,
+        "why": "A component of the composite ING_ALLIUM_GRAIN_LEGUME, not a "
+               "trigger of its own. Broader than the existing ING_GARLIC, "
+               "which is garlic only, because SYN-009 says garlic or onion. "
+               "Powders and salts are excluded for the same reason the "
+               "existing ING_GARLIC excludes them: the rule is about the "
+               "fresh matrix.",
+    },
+    "ING_GRAIN": {
+        "include": GRAINS, "exclude": NOT_GRAINS,
+        "why": "A component of the composite ING_LEGUME_GRAIN. Grains alone - "
+               "ING_GRAIN_LEGUME is the union with legumes and so cannot be "
+               'used to express "legume and grain".',
+    },
     "ING_SEED": {
         "include": SEEDS, "exclude": NOT_SEEDS,
         "why": "BIO-014 is about seeds. Sesame oil is excluded because pressing "
@@ -271,18 +292,14 @@ REFUSED: dict[str, str] = {
     "ING_RAW_EGG_WHITE": "BIO-015 is about raw egg white specifically, and "
                          '"egg white" in a recipe is usually about to be cooked.',
     "ING_ALLIUM_GRAIN_LEGUME":
-        "SYN-009 triggers on \"garlic/onion plus grain or legume\" - two classes "
-        "present together. ingredient_rule_tags holds one ingredient and one "
-        "code, so it cannot express a conjunction: a tag on the union fires "
-        "whenever either is there. Measured on the 50 recipes, that is 46 "
-        "recipes of which 17 actually have both, so it would be wrong 63% of "
-        "the times it fired.",
+        "A composite, since migration 009. Never tagged directly: it fires "
+        "when ING_ALLIUM and ING_GRAIN_LEGUME are both present, which is what "
+        'SYN-009\'s "garlic/onion plus grain or legume" means. Tagging it as a '
+        "union would fire on 46 of the 50 recipes while only 17 contain both.",
     "ING_LEGUME_GRAIN":
-        "SYN-007 completes limiting amino acids across \"legumes and grains\", "
-        "which is the same conjunction. 25 recipes have either and 5 have both, "
-        "so a union tag would be wrong 80% of the times it fired. Both this and "
-        "ING_ALLIUM_GRAIN_LEGUME need the engine to AND two tags, which is a "
-        "change to detect_rules.py rather than to the data.",
+        "A composite, since migration 009. Fires when ING_LEGUME and ING_GRAIN "
+        'are both present - SYN-007\'s "legumes and grains". As a union tag it '
+        "would fire on 25 recipes of which 5 contain both.",
 }
 
 

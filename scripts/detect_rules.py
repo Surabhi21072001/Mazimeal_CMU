@@ -7,6 +7,14 @@ business rules that apply, purely from stored data:
     recipe -> recipe_ingredients -> ingredient_rule_tags -> trigger codes
            -> business_rules whose trigger_code matches -> detected rules
 
+A trigger code may also be composite: rule_code_components lists the codes
+that must ALL be present for it to fire. That is for rules whose trigger is a
+pairing - SYN-007 needs a legume and a grain, SYN-009 an allium with a grain
+or legume - which a tag cannot express, since a tag says one thing about one
+ingredient. A composite is never tagged on an ingredient; its components are,
+in the ordinary way. A database without rule_code_components behaves exactly
+as it did before.
+
 No LLM, no recipe modification, no conflict resolution, no optimization. It only
 proves that the stored rules can be matched against existing recipe data.
 
@@ -99,6 +107,55 @@ def _codes_to_ingredients(facts: RecipeFacts) -> dict[str, list[str]]:
     return codes
 
 
+def _composite_codes(conn, present: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Composite codes satisfied by the codes already present, with the
+    ingredients that satisfied them.
+
+    A composite fires only when every one of its components is present. The
+    ingredient list is the union of the ingredients that matched each
+    component, so the reason a rule fired names the pairing rather than one
+    half of it.
+
+    Returns {} when rule_code_components does not exist, which keeps this
+    working against the SQLite fixture and any database where the migration
+    has not run.
+    """
+    if not present:
+        return {}
+
+    cur = conn.cursor()
+    try:
+        cur.execute(_q(conn, """
+            SELECT composite_code, component_code
+            FROM rule_code_components
+            ORDER BY composite_code, component_code
+        """))
+        rows = cur.fetchall()
+    except Exception:
+        if hasattr(conn, "rollback"):
+            conn.rollback()
+        return {}
+
+    components: dict[str, list[str]] = {}
+    for composite, component in rows:
+        components.setdefault(composite, []).append(component)
+
+    satisfied: dict[str, list[str]] = {}
+    for composite, needed in components.items():
+        if not all(code in present for code in needed):
+            continue
+        # Keep the components grouped, so the reason can say which ingredient
+        # played which part instead of listing them all in one heap.
+        names: list[str] = []
+        for code in needed:
+            for name in present[code]:
+                label = "%s (%s)" % (name, code)
+                if label not in names:
+                    names.append(label)
+        satisfied[composite] = names
+    return satisfied
+
+
 def recipe_trigger_codes(conn, recipe_id) -> dict[str, list[str]]:
     """Back-compat helper: {code: [ingredient_name, ...]} for a recipe.
 
@@ -128,6 +185,11 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
     codes = _codes_to_ingredients(facts)
     if not codes:
         return []
+
+    # Composite codes are not tagged; they are satisfied by their components.
+    # Added after the direct codes so a composite cannot mask one.
+    composites = _composite_codes(conn, codes)
+    codes = {**codes, **composites}
 
     placeholders = ", ".join("?" for _ in codes)
     params = tuple(codes.keys())
@@ -176,10 +238,18 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
         trigger_code = meta["trigger_code"]
         ingredients = codes.get(trigger_code, [])
         ing_list = ", ".join(sorted(set(ingredients)))
-        reason = (
-            f"recipe contains ingredient tagged {trigger_code}"
-            + (f" ({ing_list})" if ing_list else "")
-        )
+        if trigger_code in composites:
+            # Say that every part was present, because "contains an ingredient
+            # tagged X" would be false: nothing is tagged with a composite.
+            reason = (
+                f"recipe satisfies every component of {trigger_code}"
+                + (f": {ing_list}" if ing_list else "")
+            )
+        else:
+            reason = (
+                f"recipe contains ingredient tagged {trigger_code}"
+                + (f" ({ing_list})" if ing_list else "")
+            )
         detected.append(DetectedRule(reason=reason, **meta))
     return detected
 
