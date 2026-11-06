@@ -10,7 +10,16 @@ import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import { getRule, listRules, submitRuleRequest } from "../../shared/services/api/admin";
 import { Button, Card, Chip, Field, Notice, Select, TextInput } from "./bits";
-import { AUTOMATION_STATUSES, AUTOMATION_TONE, FIELDS, RULE_CATEGORIES, reachOf, when } from "./format";
+import CodePicker from "./CodePicker";
+import {
+  AUTOMATION_STATUSES,
+  AUTOMATION_TONE,
+  CODE_FIELDS,
+  FIELDS,
+  RULE_CATEGORIES,
+  reachOf,
+  when,
+} from "./format";
 
 function RuleRow({ rule, selected, onSelect }) {
   const reach = reachOf(rule);
@@ -155,10 +164,26 @@ function Editor({ ruleId, onSubmitted }) {
             const current = rule[field.key] ?? "";
             const value = field.key in draft ? draft[field.key] : current;
             const dirty = field.key in changed;
+            const label = `${field.label}${dirty ? " · changed" : ""}`;
+            // The same picker the new-rule form uses. A code typed here lands
+            // in business_rules with no foreign key to catch it, and this is
+            // the form most likely to be used on a rule that already fires.
+            if (CODE_FIELDS[field.key]) {
+              return (
+                <CodePicker
+                  key={field.key}
+                  field={field.key}
+                  label={label}
+                  hint={dirty ? `was: ${current || "(empty)"}` : CODE_FIELDS[field.key].hint}
+                  value={value}
+                  onChange={(next) => setDraft((d) => ({ ...d, [field.key]: next ?? "" }))}
+                />
+              );
+            }
             return (
               <Field
                 key={field.key}
-                label={`${field.label}${dirty ? " · changed" : ""}`}
+                label={label}
                 hint={dirty ? `was: ${current || "(empty)"}` : field.hint}
               >
                 {field.options ? (

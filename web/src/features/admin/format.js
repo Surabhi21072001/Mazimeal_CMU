@@ -46,6 +46,26 @@ export const FIELDS = [
   { key: "review_date", label: "Review date", hint: "YYYY-MM-DD" },
 ];
 
+// Which of those columns are codes, and what each one is for. They get a
+// picker rather than a text input, in both the new-rule form and the editor:
+// business_rules has no foreign key on any of the three, so a code that does
+// not exist is stored without complaint and the rule is simply dead.
+export const CODE_FIELDS = {
+  trigger_code: {
+    label: "Trigger code — when the rule applies",
+    hint: "A recipe matches when one of its ingredients carries this code. This is the one that "
+          + "decides whether the rule ever fires.",
+  },
+  target_code: {
+    label: "Target code — what it is about",
+    hint: "The nutrient or outcome the rule aims at. Recorded, not used for matching.",
+  },
+  action_code: {
+    label: "Action code — what to do",
+    hint: "The kind of change the rule asks for.",
+  },
+};
+
 export function when(value) {
   if (!value) return "—";
   const date = new Date(value);

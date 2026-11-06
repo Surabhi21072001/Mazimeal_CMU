@@ -20,26 +20,7 @@ import { C } from "../../shared/theme/colors";
 import { nextRuleId, submitRuleRequest } from "../../shared/services/api/admin";
 import { Button, Card, Chip, Field, Notice, Select, TextInput } from "./bits";
 import CodePicker from "./CodePicker";
-import { FIELDS, RULE_CATEGORIES } from "./format";
-
-// Which fields are codes, and what each one is for. They are pickers rather
-// than text inputs: business_rules has no foreign key on any of them, so a
-// typed code that does not exist is stored and the rule is simply dead.
-const CODE_FIELDS = {
-  trigger_code: {
-    label: "Trigger code — when the rule applies",
-    hint: "A recipe matches when one of its ingredients carries this code. This is the one that "
-          + "decides whether the rule ever fires.",
-  },
-  target_code: {
-    label: "Target code — what it is about",
-    hint: "The nutrient or outcome the rule aims at. Recorded, not used for matching.",
-  },
-  action_code: {
-    label: "Action code — what to do",
-    hint: "The kind of change the rule asks for.",
-  },
-};
+import { CODE_FIELDS, FIELDS, RULE_CATEGORIES } from "./format";
 
 // The ones worth asking for up front. The rest can be filled in by an edit
 // once the rule exists; a form with twenty inputs gets abandoned, and a rule

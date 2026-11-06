@@ -76,6 +76,12 @@ export default function CodePicker({ field, label, hint, value, onChange }) {
 
   const chosen = (codes || []).find((c) => c.code === value);
 
+  const pick = (code) => {
+    onChange(code);
+    setOpen(false);
+    setFilter("");
+  };
+
   const add = async (event) => {
     event.preventDefault();
     setError(null);
@@ -136,6 +142,10 @@ export default function CodePicker({ field, label, hint, value, onChange }) {
         ) : null}
 
         {open ? (
+          // A column that is allowed to be shorter than its contents. The list
+          // needs minHeight: 0 to shrink below its content height - without it
+          // the row keeps all 83 rows' height, the list has nothing to scroll,
+          // and the panel simply clips.
           <div
             style={{
               position: "absolute",
@@ -148,109 +158,130 @@ export default function CodePicker({ field, label, hint, value, onChange }) {
               border: `1px solid ${C.border}`,
               background: C.white,
               boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-              display: "grid",
-              gap: 0,
-              maxHeight: 320,
+              display: "flex",
+              flexDirection: "column",
+              maxHeight: 340,
               overflow: "hidden",
             }}
           >
-            <div style={{ padding: 8, borderBottom: `1px solid ${C.border}` }}>
-              <TextInput
-                value={filter}
-                onChange={setFilter}
-                placeholder={`Search ${(codes || []).length} codes…`}
-              />
-            </div>
-
             {error ? (
-              <div style={{ padding: 8 }}>
+              <div style={{ padding: 8, flex: "0 0 auto" }}>
                 <Notice kind="error">{error}</Notice>
               </div>
             ) : null}
 
-            <div style={{ overflowY: "auto" }}>
-              {shown.map((code) => {
-                const reach = reachOf(code);
-                return (
-                  <button
-                    key={code.code}
-                    type="button"
-                    onClick={() => {
-                      onChange(code.code);
-                      setOpen(false);
-                      setFilter("");
-                    }}
-                    style={{
-                      display: "flex",
-                      gap: 8,
-                      alignItems: "baseline",
-                      width: "100%",
-                      padding: "7px 10px",
-                      border: "none",
-                      borderBottom: `1px solid ${C.bg}`,
-                      background: code.code === value ? C.accentLight : "transparent",
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      textAlign: "left",
-                    }}
+            {adding ? (
+              // Shown instead of the list, not under it: a form this tall in a
+              // fixed-height panel would squeeze the list to a few pixels.
+              <form onSubmit={add} style={{ display: "grid", gap: 8, padding: 10, overflowY: "auto" }}>
+                <TextInput
+                  value={draft.code}
+                  onChange={(v) => setDraft((d) => ({ ...d, code: v }))}
+                  placeholder="ING_SEAWEED"
+                />
+                <TextInput
+                  value={draft.displayName}
+                  onChange={(v) => setDraft((d) => ({ ...d, displayName: v }))}
+                  placeholder="Seaweed"
+                />
+                <TextInput
+                  value={draft.description}
+                  onChange={(v) => setDraft((d) => ({ ...d, description: v }))}
+                  placeholder="Which foods it means — nori, kombu, wakame…"
+                />
+                <div style={{ display: "flex", gap: 8 }}>
+                  <Button
+                    type="submit"
+                    tone="primary"
+                    disabled={!draft.code.trim() || !draft.displayName.trim()}
                   >
-                    <span style={{ fontSize: 12.5, fontWeight: 600, color: C.text, minWidth: 180 }}>
-                      {code.code}
-                    </span>
-                    <span style={{ fontSize: 11.5, color: C.subtext, flex: 1, minWidth: 0 }}>
-                      {code.display_name}
-                    </span>
-                    <span style={{ fontSize: 11, color: reach.tone, whiteSpace: "nowrap" }}>
-                      {reach.label}
-                    </span>
-                  </button>
-                );
-              })}
-              {!shown.length ? (
-                <div style={{ padding: 10, fontSize: 12, color: C.muted }}>
-                  Nothing matches “{filter}”.
+                    Add code
+                  </Button>
+                  <Button onClick={() => setAdding(false)}>Back to the list</Button>
                 </div>
-              ) : null}
-            </div>
+                <span style={{ fontSize: 11, color: C.muted, lineHeight: 1.6 }}>
+                  A new code is safe to add without review: nothing carries it, so no rule naming
+                  it can fire. Which foods it means is a separate step, written down in
+                  scripts/tag_ingredients.py.
+                </span>
+              </form>
+            ) : (
+              <>
+                <div style={{ padding: 8, borderBottom: `1px solid ${C.border}`, flex: "0 0 auto" }}>
+                  <TextInput
+                    value={filter}
+                    onChange={setFilter}
+                    placeholder={`Search ${(codes || []).length} codes…`}
+                  />
+                </div>
 
-            <div style={{ borderTop: `1px solid ${C.border}`, padding: 8 }}>
-              {adding ? (
-                <form onSubmit={add} style={{ display: "grid", gap: 8 }}>
-                  <TextInput
-                    value={draft.code}
-                    onChange={(v) => setDraft((d) => ({ ...d, code: v }))}
-                    placeholder="ING_SEAWEED"
-                  />
-                  <TextInput
-                    value={draft.displayName}
-                    onChange={(v) => setDraft((d) => ({ ...d, displayName: v }))}
-                    placeholder="Seaweed"
-                  />
-                  <TextInput
-                    value={draft.description}
-                    onChange={(v) => setDraft((d) => ({ ...d, description: v }))}
-                    placeholder="Which foods it means — nori, kombu, wakame…"
-                  />
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <Button
-                      type="submit"
-                      tone="primary"
-                      disabled={!draft.code.trim() || !draft.displayName.trim()}
+                <div style={{ flex: "1 1 auto", minHeight: 0, overflowY: "auto" }}>
+                  {value ? (
+                    <button
+                      type="button"
+                      onClick={() => pick("")}
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        padding: "7px 10px",
+                        border: "none",
+                        borderBottom: `1px solid ${C.bg}`,
+                        background: "transparent",
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        fontSize: 12,
+                        color: C.muted,
+                        textAlign: "left",
+                      }}
                     >
-                      Add code
-                    </Button>
-                    <Button onClick={() => setAdding(false)}>Cancel</Button>
-                  </div>
-                  <span style={{ fontSize: 11, color: C.muted, lineHeight: 1.6 }}>
-                    A new code is safe to add without review: nothing carries it, so no rule naming
-                    it can fire. Which foods it means is a separate step, written down in
-                    scripts/tag_ingredients.py.
-                  </span>
-                </form>
-              ) : (
-                <Button onClick={() => setAdding(true)}>Add a code that is not here</Button>
-              )}
-            </div>
+                      Leave unset
+                    </button>
+                  ) : null}
+                  {shown.map((code) => {
+                    const reach = reachOf(code);
+                    return (
+                      <button
+                        key={code.code}
+                        type="button"
+                        onClick={() => pick(code.code)}
+                        style={{
+                          display: "flex",
+                          gap: 8,
+                          alignItems: "baseline",
+                          width: "100%",
+                          padding: "7px 10px",
+                          border: "none",
+                          borderBottom: `1px solid ${C.bg}`,
+                          background: code.code === value ? C.accentLight : "transparent",
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                          textAlign: "left",
+                        }}
+                      >
+                        <span style={{ fontSize: 12.5, fontWeight: 600, color: C.text, minWidth: 180 }}>
+                          {code.code}
+                        </span>
+                        <span style={{ fontSize: 11.5, color: C.subtext, flex: 1, minWidth: 0 }}>
+                          {code.display_name}
+                        </span>
+                        <span style={{ fontSize: 11, color: reach.tone, whiteSpace: "nowrap" }}>
+                          {reach.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  {!shown.length ? (
+                    <div style={{ padding: 10, fontSize: 12, color: C.muted }}>
+                      {codes ? `Nothing matches “${filter}”.` : "Loading the vocabulary…"}
+                    </div>
+                  ) : null}
+                </div>
+
+                <div style={{ borderTop: `1px solid ${C.border}`, padding: 8, flex: "0 0 auto" }}>
+                  <Button onClick={() => setAdding(true)}>Add a code that is not here</Button>
+                </div>
+              </>
+            )}
           </div>
         ) : null}
       </div>
