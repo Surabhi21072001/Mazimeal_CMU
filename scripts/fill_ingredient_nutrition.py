@@ -117,10 +117,31 @@ UNIT_ALIASES = {
 # Add one with --suggest, which prints the fully-profiled candidates for an
 # ingredient and does not write anything.
 # --------------------------------------------------------------------------
-SUBSTITUTES: dict[str, tuple[int, str]] = {
-    # Filled by --suggest, then reviewed. Empty until then on purpose: with no
-    # entry this script fills only exact gaps, which cannot be wrong.
+# Each entry is (fdcId, what that food is called, why it was chosen). The
+# middle field is not documentation - it is checked against the description
+# USDA returns, and a mismatch refuses the substitute. That is what catches a
+# mistyped id, or an id that USDA has since reassigned: the reviewer writes
+# down what they believe they picked, and the fetch has to agree.
+SUBSTITUTES: dict[str, tuple[int, str, str]] = {
+    "ground beef": (
+        171796,
+        "Beef, ground, 85% lean meat / 15% fat, raw",
+        "Same specification as the recorded food - ground, 85% lean / 15% fat, raw. "
+        "The recorded one is Australian imported grass-fed, which SR Legacy profiles "
+        "for 13 of our 28 nutrients while this one has all 28. Chosen over the 80/20 "
+        "and 90/10 entries because the lean/fat ratio matches exactly. The overlap "
+        "agrees: protein within 5%, cholesterol 3%, sodium 7%, energy 10%.",
+    ),
 }
+
+# A numeric check cannot establish that a substitute is the same food, and it
+# was worth finding that out by trying. Searching "ground beef" returns
+# "Turkey, ground, 85% lean, 15% fat, raw", and against our beef it differs by
+# 25% on energy and 5% on protein - inside any tolerance wide enough to allow
+# grass-fed against conventional beef, which differ by 10% and 17%. So the
+# identity check is the name, and the numbers only catch a gross error.
+FINGERPRINT = ("Energy", "Macro_Protein")
+FINGERPRINT_TOLERANCE = 0.60
 
 ALL_NUTRIENTS = set(NUTRIENTS)
 RULE_NUTRIENTS = ("Iron", "Vitamin_C", "Calcium", "Zinc", "Folate")
@@ -209,6 +230,46 @@ def reported(doc: dict) -> dict[str, tuple[float, str]]:
             continue
         out[name] = (float(amount), our_unit)
     return out
+
+
+def agrees(existing: dict[str, float], candidate: dict[str, tuple[float, str]]) -> tuple[bool, list[str]]:
+    """Whether a substitute food looks like the same food, and the comparison.
+
+    Only the fingerprint nutrients decide. The others are reported for the
+    reader but not judged, because a relative difference on a near-zero value
+    is meaningless - beef holding 6 mg of calcium against a stand-in's 15 mg
+    is a 150% disagreement about 9 mg, and says nothing about whether the two
+    are the same food.
+    """
+    lines, ok = [], True
+    for nutrient in sorted(set(existing) & set(candidate)):  # noqa: PLR1702
+        ours = float(existing[nutrient])
+        theirs = candidate[nutrient][0]
+        if ours == 0:
+            diff = 0.0 if theirs == 0 else float("inf")
+        else:
+            diff = abs(theirs - ours) / ours
+        decisive = nutrient in FINGERPRINT
+        if decisive and diff > FINGERPRINT_TOLERANCE:
+            ok = False
+        lines.append(
+            "      %-20s %9.2f vs %9.2f  %6s%s"
+            % (nutrient, ours, theirs,
+               "n/a" if diff == float("inf") else "%.0f%%" % (diff * 100),
+               "  <- decisive" if decisive else "")
+        )
+    return ok, lines
+
+
+def existing_values(conn, ingredient_id) -> dict[str, float]:
+    return {
+        nutrient_id: float(value)
+        for nutrient_id, value in conn.execute(
+            """SELECT nutrient_id, value_per_100g FROM v_ingredient_nutrition
+                WHERE ingredient_id = %s""",
+            (ingredient_id,),
+        ).fetchall()
+    }
 
 
 # ------------------------------------------------------------------ database
@@ -351,8 +412,9 @@ def suggest(name: str) -> None:
             % (count, hit["fdcId"], hit.get("dataType", ""), hit["description"][:62])
         )
     print(
-        "\nAdd the chosen one to SUBSTITUTES in this file:\n"
-        '    "%s": (<fdcId>, "why this food"),' % name
+        "\nAdd the chosen one to SUBSTITUTES in this file, copying its description\n"
+        "exactly - it is checked against what USDA returns:\n"
+        '    "%s": (<fdcId>, "<description>", "why this food"),' % name
     )
 
 
@@ -380,15 +442,31 @@ def fill(conn, items: list[dict], apply: bool) -> None:
             missing -= set(fillable)
 
         if missing and name in SUBSTITUTES:
-            sub_id, why = SUBSTITUTES[name]
+            sub_id, expected, why = SUBSTITUTES[name]
             doc = food(sub_id)
+            description = doc.get("description", "")
             available = reported(doc)
+            print("   substitute %s" % description[:66])
+
+            if expected.lower() not in description.lower():
+                print("   REFUSED: this id is %r, not %r. Either the id is wrong or USDA "
+                      "has reassigned it. Nothing written." % (description, expected))
+                continue
+
+            ok, comparison = agrees(existing_values(conn, item["ingredient_id"]), available)
+            for line in comparison:
+                print(line)
+            if not ok:
+                print("   REFUSED: energy or protein is off by more than %.0f%%, which is a "
+                      "gross mismatch even allowing for how the food was raised. "
+                      "Nothing written." % (FINGERPRINT_TOLERANCE * 100))
+                continue
+
             fillable = {k: v for k, v in available.items() if k in missing}
             note = "from USDA %s (%s), not this ingredient's own food: %s" % (
                 sub_id, doc.get("description", "")[:60], why,
             )
-            print("   substitute %s: %s" % (doc.get("description", "")[:46],
-                                            ", ".join(sorted(fillable)) or "nothing to add"))
+            print("   would add: %s" % (", ".join(sorted(fillable)) or "nothing"))
             if fillable and apply:
                 substitute_total += write_rows(
                     conn, item["ingredient_id"], fillable, "usda_fdc_substitute", note
