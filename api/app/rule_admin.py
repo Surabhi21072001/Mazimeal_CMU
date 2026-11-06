@@ -23,6 +23,7 @@ from datetime import datetime
 
 from fastapi import HTTPException
 
+from .rule_codes import validate_rule_codes
 from .supabase_repo import _connect
 
 # Columns a request may set. business_rules has 24; these are the ones that
@@ -283,6 +284,11 @@ def submit(kind: str, rule_id: str, proposed: dict, note: str | None, by: str) -
         raise HTTPException(status_code=400, detail={"error": "rule_id_required"})
 
     fields = _clean(proposed or {})
+    # business_rules has no foreign key on trigger_code, target_code or
+    # action_code, so a mistyped one is stored and the rule is simply dead.
+    # Refusing at submission is the only point where the person who made the
+    # typo is still looking at it.
+    validate_rule_codes(fields)
     if kind == "activate":
         fields["is_active"] = True
     elif kind == "deactivate":

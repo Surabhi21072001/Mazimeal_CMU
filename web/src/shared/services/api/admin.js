@@ -61,3 +61,27 @@ export function grantAdmin(email, note) {
 export function revokeAdmin(email) {
   return call(`/api/admin/people/${encodeURIComponent(email)}`, { method: "DELETE" });
 }
+
+// The code vocabulary. Open, because the rule form needs it before anyone
+// signs in, and each entry carries what it reaches - a code tagged on no
+// ingredient cannot make a rule fire, and the form has to be able to say so.
+export function listCodes({ field, q } = {}) {
+  const query = new URLSearchParams();
+  if (field) query.set("field", field);
+  if (q) query.set("q", q);
+  const suffix = query.toString() ? `?${query}` : "";
+  return call(`/api/admin/codes${suffix}`, { auth: false });
+}
+
+export function createCode({ code, codeType, displayName, description }) {
+  return call("/api/admin/codes", {
+    method: "POST",
+    body: { code, code_type: codeType, display_name: displayName, description },
+  });
+}
+
+// The next free rule_id for a category. The prefix follows the category, so
+// this is not a guess the person filling the form should have to make.
+export function nextRuleId(category) {
+  return call(`/api/admin/rules/next-id?category=${encodeURIComponent(category)}`, { auth: false });
+}

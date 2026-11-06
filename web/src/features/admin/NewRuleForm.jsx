@@ -15,16 +15,41 @@
 // trigger_code is not required, but a rule without one can never fire - no
 // ingredient can carry it - so the form says so rather than letting someone
 // write a rule that is dead on arrival and find out from a dashboard later.
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
-import { submitRuleRequest } from "../../shared/services/api/admin";
+import { nextRuleId, submitRuleRequest } from "../../shared/services/api/admin";
 import { Button, Card, Chip, Field, Notice, Select, TextInput } from "./bits";
+import CodePicker from "./CodePicker";
 import { FIELDS, RULE_CATEGORIES } from "./format";
+
+// Which fields are codes, and what each one is for. They are pickers rather
+// than text inputs: business_rules has no foreign key on any of them, so a
+// typed code that does not exist is stored and the rule is simply dead.
+const CODE_FIELDS = {
+  trigger_code: {
+    label: "Trigger code — when the rule applies",
+    hint: "A recipe matches when one of its ingredients carries this code. This is the one that "
+          + "decides whether the rule ever fires.",
+  },
+  target_code: {
+    label: "Target code — what it is about",
+    hint: "The nutrient or outcome the rule aims at. Recorded, not used for matching.",
+  },
+  action_code: {
+    label: "Action code — what to do",
+    hint: "The kind of change the rule asks for.",
+  },
+};
 
 // The ones worth asking for up front. The rest can be filled in by an edit
 // once the rule exists; a form with twenty inputs gets abandoned, and a rule
 // with a name, a category and a trigger is already reviewable.
 const CORE = ["rule_name", "rule_category", "trigger_code", "target_code", "action_code"];
+
+// The rule_id prefix follows the category - BIO is bioavailability, GLY
+// glycemic, INH inhibitor, SYN food_synergy - and all 54 existing rules obey
+// it. Nobody filling this form should have to know that, so the id is
+// suggested from the category and stays editable.
 
 const REFUSALS = {
   rule_exists: "A rule with that id already exists. Edit it from the Rules tab instead.",
@@ -43,11 +68,17 @@ function message(err) {
   if (detail?.error === "not_editable" && detail.editable) {
     return `${detail.field || "A field"} cannot be set. Allowed: ${detail.editable.join(", ")}.`;
   }
+  if (detail?.error === "unknown_code") {
+    const near = detail.nearest?.length ? ` Closest existing: ${detail.nearest.join(", ")}.` : "";
+    return `${detail.code} is not in the code vocabulary, so no ingredient can carry it and the rule could never fire.${near}`;
+  }
   return REFUSALS[detail?.error] || detail?.hint || err.message;
 }
 
 export default function NewRuleForm({ canPropose, onSubmitted }) {
   const [ruleId, setRuleId] = useState("");
+  const [idTouched, setIdTouched] = useState(false);
+  const [suggestion, setSuggestion] = useState(null);
   const [draft, setDraft] = useState({});
   const [note, setNote] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -61,6 +92,27 @@ export default function NewRuleForm({ canPropose, onSubmitted }) {
   );
 
   const set = (key, value) => setDraft((old) => ({ ...old, [key]: value }));
+
+  // Ask the server for the next free id whenever the category changes, and
+  // fill it in unless the person has typed their own.
+  const category = draft.rule_category;
+  useEffect(() => {
+    if (!category) {
+      setSuggestion(null);
+      return undefined;
+    }
+    let live = true;
+    nextRuleId(category)
+      .then((data) => {
+        if (!live) return;
+        setSuggestion(data);
+        if (!idTouched) setRuleId(data.rule_id);
+      })
+      .catch(() => live && setSuggestion(null));
+    return () => {
+      live = false;
+    };
+  }, [category, idTouched]);
 
   const proposed = useMemo(() => {
     const out = {};
@@ -87,6 +139,8 @@ export default function NewRuleForm({ canPropose, onSubmitted }) {
       });
       setDone(result);
       setRuleId("");
+      setIdTouched(false);
+      setSuggestion(null);
       setDraft({});
       setNote("");
       setShowAll(false);
@@ -137,31 +191,82 @@ export default function NewRuleForm({ canPropose, onSubmitted }) {
       {error ? <Notice kind="error">{error}</Notice> : null}
 
       <form onSubmit={submit} style={{ display: "grid", gap: 12 }}>
-        <Field
-          label="Rule id"
-          hint="The primary key, so it cannot be changed later without orphaning every tag that points at it. The existing ones look like BIO-008 or SYN-014."
-        >
-          <TextInput value={ruleId} onChange={setRuleId} placeholder="BIO-055" />
+        <Field label="Category" hint="This also decides the rule id's prefix.">
+          <Select
+            value={draft.rule_category ?? ""}
+            onChange={(value) => set("rule_category", value)}
+            options={RULE_CATEGORIES}
+            placeholder="Choose one"
+          />
         </Field>
 
-        {shown.map((field) => (
-          <Field key={field.key} label={field.label} hint={field.hint}>
-            {field.options ? (
-              <Select
+        <Field
+          label="Rule id"
+          hint={
+            suggestion
+              ? `Suggested: ${suggestion.prefix} is ${suggestion.category}, and ${suggestion.existing} already exist.`
+              : "Choose a category and this fills itself in."
+          }
+        >
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <TextInput
+              value={ruleId}
+              onChange={(value) => {
+                setIdTouched(true);
+                setRuleId(value);
+              }}
+              placeholder={suggestion?.rule_id || "pick a category first"}
+            />
+            {idTouched && suggestion && ruleId !== suggestion.rule_id ? (
+              <Button
+                onClick={() => {
+                  setIdTouched(false);
+                  setRuleId(suggestion.rule_id);
+                }}
+              >
+                Use {suggestion.rule_id}
+              </Button>
+            ) : null}
+          </div>
+        </Field>
+        {suggestion?.pending?.length ? (
+          <Notice>
+            Already waiting in the queue, so these ids are taken:{" "}
+            {suggestion.pending.join(", ")}.
+          </Notice>
+        ) : null}
+
+        {shown
+          .filter((field) => field.key !== "rule_category")
+          .map((field) =>
+            CODE_FIELDS[field.key] ? (
+              <CodePicker
+                key={field.key}
+                field={field.key}
+                label={CODE_FIELDS[field.key].label}
+                hint={CODE_FIELDS[field.key].hint}
                 value={draft[field.key] ?? ""}
                 onChange={(value) => set(field.key, value)}
-                options={field.key === "rule_category" ? RULE_CATEGORIES : field.options}
-                placeholder="Choose one"
               />
             ) : (
-              <TextInput
-                value={draft[field.key] ?? ""}
-                onChange={(value) => set(field.key, value)}
-                multiline={field.multiline}
-              />
-            )}
-          </Field>
-        ))}
+              <Field key={field.key} label={field.label} hint={field.hint}>
+                {field.options ? (
+                  <Select
+                    value={draft[field.key] ?? ""}
+                    onChange={(value) => set(field.key, value)}
+                    options={field.options}
+                    placeholder="Choose one"
+                  />
+                ) : (
+                  <TextInput
+                    value={draft[field.key] ?? ""}
+                    onChange={(value) => set(field.key, value)}
+                    multiline={field.multiline}
+                  />
+                )}
+              </Field>
+            ),
+          )}
 
         {!proposed.trigger_code ? (
           <Notice>

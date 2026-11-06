@@ -24,7 +24,7 @@ from pydantic import BaseModel
 from . import ask as ask_module
 from . import admin_people, auth, cache, config, content, nutrition_review
 from . import profile as profile_module
-from . import providers, rule_admin
+from . import providers, rule_admin, rule_codes
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
@@ -103,6 +103,20 @@ class RuleRequestBody(BaseModel):
 class DecisionBody(BaseModel):
     approve: bool
     note: str | None = None
+
+
+class CodeBody(BaseModel):
+    """A new word for the code vocabulary.
+
+    Not reviewed, and safe not to be: no ingredient carries a new code, so no
+    rule naming it can fire. Saying which foods it means is a separate,
+    written-down step.
+    """
+
+    code: str
+    code_type: str | None = None
+    display_name: str
+    description: str | None = None
 
 
 class GrantBody(BaseModel):
@@ -315,6 +329,37 @@ def admin_rules(
         query=q, category=category, status=status, reach=reach, active=active, limit=limit
     )
     return {"count": len(items), "items": items, "categories": rule_admin.categories()}
+
+
+@app.get("/api/admin/codes")
+def admin_codes(
+    field: str | None = Query(default=None, pattern="^(trigger_code|target_code|action_code)$"),
+    q: str | None = None,
+):
+    """The code vocabulary, with what each code reaches.
+
+    Open, like the rules themselves: the form needs it before anyone signs in,
+    and the codes are published research vocabulary rather than anything
+    private.
+    """
+    return rule_codes.codes(field=field, query=q)
+
+
+@app.post("/api/admin/codes")
+def admin_create_code(body: CodeBody, caller: auth.Caller = Depends(auth.signed_in)):
+    return rule_codes.create_code(
+        code=body.code,
+        code_type=body.code_type,
+        display_name=body.display_name,
+        description=body.description,
+        by=caller.email or caller.user_id,
+    )
+
+
+@app.get("/api/admin/rules/next-id")
+def admin_next_rule_id(category: str):
+    """The next free rule_id for a category. The prefix follows the category."""
+    return rule_codes.next_rule_id(category)
 
 
 @app.get("/api/admin/rules/{rule_id}")
