@@ -1080,6 +1080,10 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
   const [tab, setTab] = useState(initialTab);
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+  // Typed a second time on the signup tab only. A mistyped password on signup
+  // is not recoverable by trying again: the account exists, with a password
+  // nobody knows, and the address cannot be used for another one.
+  const [pw2, setPw2] = useState("");
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [captcha, setCaptcha] = useState(false);
@@ -1104,6 +1108,14 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
     }
     if (tab === "signup" && (!name.trim() || !username.trim())) {
       setSubmitError("Please complete all required fields.");
+      return;
+    }
+    if (tab === "signup" && pw.length < 8) {
+      setSubmitError("Please use a password of at least 8 characters.");
+      return;
+    }
+    if (tab === "signup" && pw !== pw2) {
+      setSubmitError("The two passwords do not match.");
       return;
     }
 
@@ -1334,8 +1346,20 @@ function LoginModule({ onLogin, initialTab = "login", onBack, onNavigateToSectio
                   )}
                   <div>
                     <label>Password</label>
-                    <input type="password" placeholder="••••••••" value={pw} onChange={(e) => setPw(e.target.value)} />
+                    <input type="password" placeholder={tab === "signup" ? "At least 8 characters" : "••••••••"} value={pw} onChange={(e) => setPw(e.target.value)} autoComplete={tab === "signup" ? "new-password" : "current-password"} />
                   </div>
+                  {tab === "signup" && (
+                    <div>
+                      <label>Confirm Password</label>
+                      <input type="password" placeholder="Type it again" value={pw2} onChange={(e) => setPw2(e.target.value)} autoComplete="new-password" />
+                      {/* Said while typing rather than on submit: finding out
+                          after the button that the two differ means typing
+                          both again. */}
+                      {pw2 && pw !== pw2 ? (
+                        <div style={{ fontSize: 12, color: C.coral, marginTop: 6 }}>These do not match yet.</div>
+                      ) : null}
+                    </div>
+                  )}
                   {tab === "signup" && (
                     <div className="captcha-mock">
                       <label htmlFor="login-captcha" className="captcha-main">
@@ -1397,6 +1421,7 @@ function CreateAccountModule({ onNext, onBack }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [pw, setPw] = useState("");
+  const [pw2, setPw2] = useState("");
   const [captcha, setCaptcha] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -1408,6 +1433,18 @@ function CreateAccountModule({ onNext, onBack }) {
 
     if (!name.trim() || !email.trim() || !username.trim() || !pw.trim()) {
       setSubmitError("Please complete all required account fields.");
+      return;
+    }
+
+    // Checked before the captcha, because this is the mistake that cannot be
+    // undone: the account is created with whatever was typed, the
+    // confirmation email goes out, and the address is then taken.
+    if (pw.length < 8) {
+      setSubmitError("Please use a password of at least 8 characters.");
+      return;
+    }
+    if (pw !== pw2) {
+      setSubmitError("The two passwords do not match.");
       return;
     }
 
@@ -1573,7 +1610,14 @@ function CreateAccountModule({ onNext, onBack }) {
                   <div><label>Full Name</label><input placeholder="e.g. Maya Patel" value={name} onChange={e => setName(e.target.value)} /></div>
                   <div><label>Email Address</label><input type="email" placeholder="you@family.com" value={email} onChange={e => setEmail(e.target.value)} /></div>
                   <div><label>Username</label><input placeholder="mazimeal.user" value={username} onChange={e => setUsername(e.target.value)} /></div>
-                  <div><label>Password</label><input type="password" placeholder="At least 8 characters" value={pw} onChange={e => setPw(e.target.value)} /></div>
+                  <div><label>Password</label><input type="password" placeholder="At least 8 characters" value={pw} onChange={e => setPw(e.target.value)} autoComplete="new-password" /></div>
+                  <div>
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Type it again" value={pw2} onChange={e => setPw2(e.target.value)} autoComplete="new-password" />
+                    {pw2 && pw !== pw2 ? (
+                      <div style={{ fontSize: 12, color: C.coral, marginTop: 6 }}>These do not match yet.</div>
+                    ) : null}
+                  </div>
                   <div className="captcha-mock">
                     <label htmlFor="captcha" className="captcha-main">
                       <input

@@ -115,8 +115,12 @@ export function SourceBadge({ payload, source, transport }) {
     );
   }
   return (
-    <Chip color={C.accent} bg={C.accentLight} title="Loaded from the backend's database">
-      Live
+    <Chip
+      color={C.accent}
+      bg={C.accentLight}
+      title="Loaded from the backend's database, not from bundled sample data"
+    >
+      Live database
     </Chip>
   );
 }

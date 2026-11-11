@@ -11,6 +11,7 @@
 // screen's job.
 import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
+import AccountMenu from "../../shared/components/AccountMenu";
 import { getSeedRecipes } from "../../shared/services/api/client";
 import { Card, Chip, SourceBadge } from "../cook/bits";
 import { matches } from "./search";
@@ -189,7 +190,10 @@ export default function RecipesPage({ onNavigate }) {
               Seed recipes
             </h1>
           </div>
-          <SourceBadge payload={payload} />
+          <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+            <SourceBadge payload={payload} />
+            <AccountMenu onNavigate={onNavigate} />
+          </div>
         </div>
 
         {payload || error ? (

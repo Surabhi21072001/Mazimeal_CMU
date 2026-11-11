@@ -300,6 +300,11 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
           onBrowseAll={() => onNavigate("#/recipes")}
         />
 
+        {/* Everything after this sits against the right edge, the same as
+            on every other screen. Without it the badge and the account
+            drifted inward with the picker's width. */}
+        <span style={{ flex: 1 }} />
+
         {isAdmin() ? (
           <button
             type="button"
