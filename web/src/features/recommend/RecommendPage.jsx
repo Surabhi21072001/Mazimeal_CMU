@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import { getHousehold, getRecommendations } from "../../shared/services/api/client";
 import WakingNotice from "../../shared/components/WakingNotice";
+import AccountMenu from "../../shared/components/AccountMenu";
+import ProfileStrip from "../../shared/components/ProfileStrip";
 import { Card, Chip, SourceBadge, SourceTag } from "../cook/bits";
 import { listNames, nutrientPhrase, round } from "../cook/focusNutrient";
 
@@ -264,9 +266,15 @@ export default function RecommendPage({ onNavigate }) {
           <span style={{ fontSize: 10.5, color: C.muted }}>One meal at a time</span>
         </div>
         <SourceBadge payload={payload} />
+        <AccountMenu onNavigate={onNavigate} />
       </header>
 
       <main style={{ maxWidth: 1180, margin: "0 auto", padding: "20px", display: "grid", gap: 18 }}>
+        {/* Whose numbers these are. The selectors below still choose a
+            member of the sample household, so saying "not signed in" here
+            is the difference between a demo and your own day. */}
+        <ProfileStrip />
+
         <div style={{ display: "grid", gap: 6 }}>
           <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 0.6, color: C.accent, textTransform: "uppercase" }}>
             {meal} · {member?.name}

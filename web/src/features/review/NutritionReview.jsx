@@ -21,6 +21,7 @@ import { C } from "../../shared/theme/colors";
 import { getSession } from "../../shared/services/auth/authStore";
 import { nutritionQueue, recordNutritionVerdict } from "../../shared/services/api/review";
 import { Card, Chip } from "../cook/bits";
+import AccountMenu from "../../shared/components/AccountMenu";
 
 const VERDICTS = [
   {
@@ -285,9 +286,10 @@ export default function NutritionReview({ onNavigate }) {
         <span style={{ flex: 1 }} />
         {!signedIn ? (
           <Chip color={C.gold} bg={C.goldLight} title="Recording a verdict needs a signed-in account">
-            read-only · sign in on #/admin
+            read-only until you sign in
           </Chip>
         ) : null}
+        <AccountMenu onNavigate={onNavigate} />
       </header>
 
       <main style={{ maxWidth: 980, margin: "0 auto", padding: 20, display: "grid", gap: 16 }}>

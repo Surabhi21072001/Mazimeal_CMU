@@ -30,13 +30,23 @@ function Loading() {
   );
 }
 
-// Hash routing, so the new screens can ship without touching the existing app
-// or adding a router dependency:
+// Hash routing, so the screens can ship without adding a router dependency:
+//   /                    the recommendations - our home page
 //   #/recipes            the seed recipes, as an index
 //   #/cook/<recipe_id>   the cook screen
 //   #/review/nutrition   whether each recipe's numbers can be right
 //   #/admin              the rules table and the queue that changes it
-//   anything else        the app as it was
+//   #/classic            the earlier template, which still owns signing up
+//
+// The root used to be that template, and it was confusing: the landing page
+// was the old site and ours were reachable only if you knew the hash. Our own
+// screens are the product now, so the root is the recommendations and the
+// template keeps its own address.
+//
+// It keeps the root in one case. The confirmation email lands on
+// /?confirmed=1 with no hash (see authStore.confirmRedirectUrl), and the
+// template is what resumes onboarding from there, so that query string routes
+// to it whatever the hash says.
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash);
   useEffect(() => {
@@ -57,6 +67,12 @@ export default function App() {
   // the page which one to headline; it picks the best one on its own otherwise.
   const cookMatch = hash.match(/^#\/cook(?:\/([\w-]+))?(?:\?(.*))?$/);
   const focusNutrient = cookMatch?.[2] ? new URLSearchParams(cookMatch[2]).get("n") : null;
+
+  // Read once per render rather than kept in state: the template deletes the
+  // parameter itself once it has resumed, and it does that with replaceState,
+  // which fires no event this component could listen for.
+  const confirming =
+    typeof window !== "undefined" && new URLSearchParams(window.location.search).has("confirmed");
 
   return (
     <Suspense fallback={<Loading />}>
@@ -79,8 +95,10 @@ export default function App() {
           focusNutrient={focusNutrient}
           onNavigate={navigate}
         />
-      ) : (
+      ) : hash.startsWith("#/classic") || confirming ? (
         <SynergiaLightApp />
+      ) : (
+        <RecommendPage onNavigate={navigate} />
       )}
     </Suspense>
   );

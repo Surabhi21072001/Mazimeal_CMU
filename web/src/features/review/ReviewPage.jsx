@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
+import AccountMenu from "../../shared/components/AccountMenu";
 import { getRecipe, getSuggestions, RECIPE_FIXTURES } from "../../shared/services/api/client";
 import { getSession, isAdmin } from "../../shared/services/auth/session";
 import { Card, Chip, SectionTitle } from "../cook/bits";
@@ -494,6 +495,7 @@ export default function ReviewPage({ onNavigate }) {
           <span style={{ fontSize: 10.5, color: C.muted }}>← Review</span>
         </button>
         <span style={{ flex: 1 }} />
+        <AccountMenu onNavigate={onNavigate} />
         {/* The other half of reviewing: whether the numbers on the recipe can
             be right at all. Its own screen because it has its own queue - all
             fifty recipes, ordered by how far the two energy figures are apart

@@ -14,6 +14,8 @@ import WakingNotice from "../../shared/components/WakingNotice";
 import { Card, Chip, RuleChip, SourceBadge, SourceLink } from "./bits";
 import { pickFocusNutrient } from "./focusNutrient";
 import { headlineKicker, pickHeadlineRule, statusOf } from "./ruleStatus";
+import AccountMenu from "../../shared/components/AccountMenu";
+import ProfileStrip from "../../shared/components/ProfileStrip";
 
 const RESPONSIVE = `
 .cook-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 320px) minmax(0, 1fr) minmax(0, 330px); align-items: start; }
@@ -318,6 +320,7 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
           </button>
         ) : null}
         <SourceBadge payload={recipe} />
+        <AccountMenu onNavigate={onNavigate} />
       </header>
 
       <main style={{ maxWidth: 1320, margin: "0 auto", padding: "18px 20px", display: "grid", gap: 18 }}>
@@ -354,6 +357,10 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
               ))}
             </div>
             <NutrientHeadline focus={focus} memberName={member?.name || "this member"} />
+            <ProfileStrip
+              compact
+              ingredientNames={(recipe.ingredients || []).map((line) => line.name)}
+            />
           </Card>
 
           <div style={{ display: "grid", gap: 18, alignContent: "start" }}>

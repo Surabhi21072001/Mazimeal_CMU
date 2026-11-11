@@ -274,3 +274,18 @@ export async function loadHouseholdForUser(userId) {
 
   return { household, profiles: memberRows.map((row) => memberRowToProfile(row, allergyByMember)) };
 }
+
+// Every change of signed-in state, not only signing in.
+//
+// onSignedIn above reports SIGNED_IN and nothing else, which is enough for a
+// screen that only has to react once. A header has to go the other way too:
+// clear itself on sign out, and survive a token refresh without flickering
+// back to "signed out". So this one passes the session through on every event,
+// null included. Returns an unsubscribe function; a no-op without Supabase.
+export function onAuthChange(callback) {
+  if (!hasSupabaseEnv || !supabase) return () => {};
+  const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+    callback(session || null);
+  });
+  return () => data.subscription.unsubscribe();
+}
