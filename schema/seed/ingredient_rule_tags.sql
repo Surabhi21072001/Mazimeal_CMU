@@ -194,12 +194,6 @@ WHERE lower(btrim(i.ingredient_name)) = lower(btrim('cauliflower'))
 ON CONFLICT (ingredient_id, rule_code) DO NOTHING;
 
 INSERT INTO ingredient_rule_tags (ingredient_id, rule_code)
-SELECT i.ingredient_id, 'ING_PASTA'
-FROM ingredients i
-WHERE lower(btrim(i.ingredient_name)) = lower(btrim('cellophane noodle'))
-ON CONFLICT (ingredient_id, rule_code) DO NOTHING;
-
-INSERT INTO ingredient_rule_tags (ingredient_id, rule_code)
 SELECT i.ingredient_id, 'ING_TOMATO'
 FROM ingredients i
 WHERE lower(btrim(i.ingredient_name)) = lower(btrim('cherry tomatoes'))

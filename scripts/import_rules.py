@@ -122,7 +122,10 @@ INGREDIENT_CODE_MAP = {
                       "exclude": ["eggplant", "reggiano", "substitute", "nog"]},
     "ING_PASTA":     {"include": ["pasta", "spaghetti", "macaroni", "penne",
                                   "fettuccine", "linguine", "orzo", "rotini", "noodle"],
-                      "exclude": ["squash"]},
+                      # "cellophane noodle" is mung-bean starch, not pasta (GLY-007 is about
+                      # al dente pasta). schema/seed/ingredient_rule_tags.sql was generated
+                      # before this and still tags it; regenerate from the workbook, or retract.
+                      "exclude": ["squash", "cellophane"]},
     "ING_YOGURT":    {"include": ["yogurt", "yoghurt"], "exclude": []},
     "ING_CRUCIFER":  {"include": ["broccoli", "cauliflower", "cabbage",
                                   "brussels sprout", "kale", "collard",
