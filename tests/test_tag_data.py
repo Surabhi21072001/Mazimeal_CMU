@@ -477,9 +477,15 @@ class Migration012Static(unittest.TestCase):
         self.assertIn("lower(btrim(i.ingredient_name)) = lower(btrim(t.ingredient_name))", self.text)
 
     def test_it_is_the_next_migration_after_every_branch(self):
+        # The guard is against two branches claiming one number, not against
+        # anyone ever adding a 013: this asserted numbers[-1] == 12 when it was
+        # written, which made every later migration fail a tag test. What has
+        # to hold is that 012 is this file and nothing else, and that the
+        # numbering has no gaps and no duplicates up to it.
         numbers = sorted(int(p.name.split("_", 1)[0]) for p in MIGRATIONS.glob("*.sql"))
-        self.assertEqual(numbers[-1], 12)
         self.assertEqual(self.NAME.split("_", 1)[0], "012")
+        self.assertEqual([n for n in numbers if n == 12], [12])
+        self.assertEqual(numbers[: numbers.index(12) + 1], list(range(1, 13)))
 
 
 class GrainLegumeMeaning(unittest.TestCase):

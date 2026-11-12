@@ -1,0 +1,12 @@
+# Test-only. Not installed on the API host: render.yaml installs
+# api/requirements.txt, and nothing here is imported by the served code.
+#
+#     api/.venv/bin/pip install -r requirements-dev.txt
+#     api/.venv/bin/python -m pytest tests/ -q
+#
+# pandas is here rather than in api/requirements.txt for the same reason: only
+# scripts/import_rules.py needs it, and that is a loader run by hand, not part
+# of the request path. Without it tests/test_rules.py and tests/test_tag_data.py
+# cannot even be collected, which is why the suite looked unrunnable.
+pytest==9.2.0
+pandas==3.1.1

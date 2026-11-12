@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import { getHousehold, getRecipe, getSeedRecipes, getSuggestions } from "../../shared/services/api/client";
 import { isAdmin } from "../../shared/services/auth/session";
+import { getCurrentReviewVersion } from "../../shared/services/api/contentReview";
 import { applyReview } from "../review/reviewStore";
 import AiPanel from "./AiPanel";
 import IngredientsPanel from "./IngredientsPanel";
@@ -142,6 +143,10 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
   const [recipe, setRecipe] = useState(null);
   const [household, setHousehold] = useState(null);
   const [suggestions, setSuggestions] = useState(null);
+  // The reviewer-corrected version of this recipe's text, or null. Held in
+  // state because both the recipe and the suggestions have to be read through
+  // it, and the two arrive from different requests.
+  const [reviewVersion, setReviewVersion] = useState(null);
   const [loading, setLoading] = useState(true);
   const [servings, setServings] = useState(4);
   const [activeTab, setActiveTab] = useState("Steps");
@@ -167,9 +172,21 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
     // when the recipe changes. This effect only fetches.
     let cancelled = false;
 
-    Promise.all([getRecipe(recipeId), getHousehold()]).then(([recipeData, householdData]) => {
+    // The reviewed version comes from the server now, so it is fetched with
+    // the recipe rather than read out of this browser's storage. A failure
+    // here must not blank the recipe: no review simply means the model's own
+    // output, which is what an unreviewed recipe shows anyway.
+    Promise.all([
+      getRecipe(recipeId),
+      getHousehold(),
+      getCurrentReviewVersion(recipeId).catch(() => null),
+    ]).then(([recipeData, householdData, reviewData]) => {
       if (cancelled) return;
-      const reviewed = recipeData ? applyReview(recipeData, null) : { recipe: recipeData };
+      const version = reviewData?.version || null;
+      const reviewed = recipeData
+        ? applyReview(recipeData, null, version)
+        : { recipe: recipeData };
+      setReviewVersion(version);
       setRecipe(reviewed.recipe);
       setHousehold(householdData);
       setServings(recipeData?.servings || 4);
@@ -188,12 +205,12 @@ export default function CookPage({ recipeId, focusNutrient, onNavigate }) {
     getSuggestions(recipe.recipe_id, "maya", ruleIds).then((data) => {
       if (cancelled) return;
       // A reviewer's wording wins over whatever the backend just produced.
-      setSuggestions(applyReview(recipe, data).payload);
+      setSuggestions(applyReview(recipe, data, reviewVersion).payload);
     });
     return () => {
       cancelled = true;
     };
-  }, [recipe]);
+  }, [recipe, reviewVersion]);
 
   // Testers press this when they want to see what the model writes now; it
   // never changes what anyone else sees, because only reviewed text does that.

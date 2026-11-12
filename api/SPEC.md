@@ -318,6 +318,73 @@ every returned suggestion cites the rule it came from.
 `"cache"`. If the model fails, the endpoint falls back to the rule's own
 `engine_action` text, so the panel is never empty.
 
+### `GET /api/recipes/{recipe_id}/review`
+
+The reviewer-corrected version of this recipe's text, or `{"version": null}`
+when nobody has reviewed it. Open, because the corrected text is what a cook
+is meant to read; a correction only its author can see is what this replaced.
+
+```json
+{
+  "recipe_id": "falafel-001",
+  "version": {
+    "version": 3,
+    "author": "human:someone@example.com",
+    "suggestions": [{ "rule_id": "BIO-002", "headline": "…", "body": "…" }],
+    "summary": null,
+    "rules_removed": ["INH-006"],
+    "status_overrides": {},
+    "position_overrides": {},
+    "headline_rule_id": null,
+    "not_optimizable": false,
+    "created_at": "2026-11-12T19:04:11+00:00",
+    "review": {
+      "outcome": "edited",
+      "tags": ["rule_not_applicable"],
+      "note": "no tea in this recipe",
+      "reviewer": "someone@example.com",
+      "reviewed_at": "2026-11-12T19:04:11+00:00"
+    }
+  }
+}
+```
+
+`rules_removed` means "this rule does not apply to **this** recipe". It never
+touches `business_rules`, which applies to 400 others. The cook screen filters
+the recipe's `matched_rules` by it and takes the version's `suggestions` over
+whatever the suggestions endpoint just produced.
+
+### `GET` / `POST /api/review/content/{recipe_id}`
+
+Reviewer-only, both ways: the record holds unpublished drafts and every
+earlier decision, and a write publishes text to every cook who opens the
+recipe. `Authorization: Bearer <Supabase access token>`; 401 without one, 403
+for a signed-in account that is not on the reviewer list.
+
+`GET` returns `{record, payload, fingerprint, reviewer}` and has one side
+effect: a recipe nobody has opened gets **version 1** written from the model's
+output, server-side. That is the baseline every later diff is read against, so
+the server produces it rather than accepting one from a browser.
+
+`POST` body is `{outcome, suggestions?, summary?, rules_removed?,
+status_overrides?, position_overrides?, headline_rule_id?, not_optimizable?,
+tags?, note?}`. `outcome` is one of `confirmed_unchanged`, `edited`,
+`rejected`, `reverted_to_original`. There is no `reviewer` field: it comes from
+the verified token, because who decided is the whole value of the record. A
+field left out is **inherited** from the current version rather than cleared,
+so two reviewers on one recipe cannot undo each other by omission.
+
+Every decision appends a version, including one that changed nothing —
+`confirmed_unchanged` is how "the model needed no help" becomes a countable
+fact rather than an absence of rows. Nothing is updated in place.
+
+### `GET /api/review/content-stats`
+
+Reviewer-only. `{reviewed, confirmed, edited, rejected, reverted, tagCounts,
+unchangedRate, recipes_seen, recipes_reviewed}`. A revert is counted but kept
+out of `unchangedRate`: it says something about an earlier edit, not about the
+model.
+
 ### `GET /api/health`
 
 `{ "status": "ok", "repo": "fixture", "recommender": "stub" }`

@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from . import ask as ask_module
-from . import admin_people, auth, cache, config, content, nutrition_review
+from . import admin_people, auth, cache, config, content, content_review, nutrition_review
 from . import profile as profile_module
 from . import providers, rule_admin, rule_codes
 from .repo import get_repo
@@ -131,6 +131,29 @@ class GrantBody(BaseModel):
     note: str | None = None
 
 
+class ContentVersionBody(BaseModel):
+    """One reviewer decision on a recipe's suggestion text.
+
+    Every field except `outcome` is optional, and a field left out is
+    inherited from the current version rather than cleared - two reviewers
+    working on the same recipe must not undo each other by omission.
+
+    No reviewer and no author: both come from the verified token. A record
+    whose point is who decided cannot take that from the browser.
+    """
+
+    outcome: str
+    suggestions: list[dict] | None = None
+    summary: dict | None = None
+    rules_removed: list[str] | None = None
+    status_overrides: dict | None = None
+    position_overrides: dict | None = None
+    headline_rule_id: str | None = None
+    not_optimizable: bool | None = None
+    tags: list[str] = []
+    note: str | None = None
+
+
 class NutritionVerdict(BaseModel):
     """A person's judgement on whether a recipe's numbers can be right.
 
@@ -195,24 +218,23 @@ def recipe(recipe_id: str):
     return {**data, "source": repo.name}
 
 
-@app.post("/api/recipes/{recipe_id}/suggestions")
-def suggestions(recipe_id: str, request: SuggestionRequest, refresh: bool = Query(False)):
-    """
-    The first visit to a recipe pays for the model; later visits are served
-    from the cache. Pass ?refresh=true to rewrite anyway, which is how the
-    model comparison is run.
-    """
-    data = repo.recipe(recipe_id)
-    if not data:
-        raise HTTPException(status_code=404, detail={"error": "recipe_not_found", "recipe_id": recipe_id})
+def _suggestions_payload(
+    recipe_id: str, data: dict, member_id: str, rule_ids: list[str] | None, refresh: bool
+) -> dict:
+    """The suggestion text for one recipe: reviewed, cached or newly written.
 
+    A function rather than only an endpoint because the review screen needs
+    exactly this, and it has to be the same text. Version 1 of a review record
+    is "what the model said", so it cannot come from a second, separately
+    generated payload - still less from the browser.
+    """
     # Reviewed text wins over anything a model would write now.
     if not refresh:
         reviewed = content.approved(recipe_id)
         if reviewed:
             return {
                 "recipe_id": recipe_id,
-                "member_id": request.member_id,
+                "member_id": member_id,
                 "suggestions": reviewed["suggestions"],
                 "summary": reviewed.get("summary"),
                 "source": "reviewed",
@@ -222,7 +244,7 @@ def suggestions(recipe_id: str, request: SuggestionRequest, refresh: bool = Quer
             }
 
     key = cache.key_for(
-        recipe_id, request.rule_ids or None,
+        recipe_id, rule_ids,
         config.PROVIDER, config.LLM_MODEL,
         providers.SYSTEM + providers.SUMMARY_SYSTEM,  # either prompt changing means new text
     )
@@ -233,10 +255,10 @@ def suggestions(recipe_id: str, request: SuggestionRequest, refresh: bool = Quer
             return {**hit["payload"], "source": "cache", "cached_at": hit["created_at"]}
 
     started = time.perf_counter()
-    items, source, model, summary = providers.suggestions_for(data, request.rule_ids or None)
+    items, source, model, summary = providers.suggestions_for(data, rule_ids)
     payload = {
         "recipe_id": recipe_id,
-        "member_id": request.member_id,
+        "member_id": member_id,
         "suggestions": items,
         "summary": summary,
         "source": source,
@@ -247,6 +269,29 @@ def suggestions(recipe_id: str, request: SuggestionRequest, refresh: bool = Quer
     if source != "template" or config.PROVIDER == "template":
         cache.put(key, payload)
     return payload
+
+
+@app.post("/api/recipes/{recipe_id}/suggestions")
+def suggestions(recipe_id: str, request: SuggestionRequest, refresh: bool = Query(False)):
+    """
+    The first visit to a recipe pays for the model; later visits are served
+    from the cache. Pass ?refresh=true to rewrite anyway, which is how the
+    model comparison is run.
+    """
+    data = repo.recipe(recipe_id)
+    if not data:
+        raise HTTPException(status_code=404, detail={"error": "recipe_not_found", "recipe_id": recipe_id})
+    return _suggestions_payload(
+        recipe_id, data, request.member_id, request.rule_ids or None, refresh
+    )
+
+
+# The reviewed version of one recipe, for the cook screen. Open, because the
+# corrected text is what a cook is meant to read - a correction that only its
+# author can see is the thing this replaced. Writing it is closed.
+@app.get("/api/recipes/{recipe_id}/review")
+def recipe_review(recipe_id: str):
+    return {"recipe_id": recipe_id, "version": content_review.current(recipe_id)}
 
 
 @app.post("/api/recipes/{recipe_id}/ask")
@@ -430,6 +475,49 @@ def admin_people_revoke(email: str, caller: auth.Caller = Depends(auth.admin)):
     return admin_people.revoke(
         email, by=caller.email or caller.user_id, env_emails=auth.env_admin_emails()
     )
+
+
+# ------------------------------------------------------------ content review
+#
+# The suggestion text, as versions. Reviewer-only on both sides: reading the
+# record means reading an unpublished draft and every earlier decision, and
+# writing one publishes text to every cook who opens the recipe.
+#
+# The GET writes version 1 when a recipe has never been opened, from the same
+# payload the suggestions endpoint serves. That is the baseline every later
+# diff is read against, which is why the server produces it rather than
+# accepting one.
+
+
+@app.get("/api/review/content/{recipe_id}")
+def content_review_record(recipe_id: str, caller: auth.Caller = Depends(auth.admin)):
+    data = repo.recipe(recipe_id)
+    if not data:
+        raise HTTPException(status_code=404, detail={"error": "recipe_not_found", "recipe_id": recipe_id})
+    payload = _suggestions_payload(recipe_id, data, "maya", None, False)
+    return {
+        "record": content_review.seed(data, payload),
+        "payload": payload,
+        "fingerprint": content_review.fingerprint(data, payload),
+        "reviewer": caller.email,
+    }
+
+
+@app.post("/api/review/content/{recipe_id}")
+def content_review_add(
+    recipe_id: str,
+    body: ContentVersionBody,
+    caller: auth.Caller = Depends(auth.admin),
+):
+    record = content_review.add_version(
+        recipe_id, body.model_dump(), reviewer=caller.email or caller.user_id
+    )
+    return {"record": record, "reviewer": caller.email}
+
+
+@app.get("/api/review/content-stats")
+def content_review_stats(caller: auth.Caller = Depends(auth.admin)):
+    return content_review.stats()
 
 
 # ---------------------------------------------------------- nutrition review

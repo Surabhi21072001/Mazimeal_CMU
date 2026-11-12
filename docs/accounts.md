@@ -50,6 +50,24 @@ the one to use; `MAZI_ADMIN_EMAILS` can stay unset.
 The first row in the table came from `schema/migrations/004_app_admins.sql`,
 which is how the screen had somewhere to start.
 
+## What a reviewer's sign-in now reaches
+
+Three screens write as the signed-in account, and all three read the identity
+out of the verified token rather than from anything the browser sends:
+
+| Screen | Writes to | Needs |
+|---|---|---|
+| `#/admin` | `business_rules`, `rule_change_requests`, `app_admins` | reviewer |
+| `#/review/nutrition` | `recipe_nutrition_reviews` | any account |
+| `#/review` | `recipe_content_versions` | reviewer |
+
+`#/review` is the one that changed. Its corrections used to live in the
+reviewer's own browser (`localStorage`, key `mazimeal:review`), which meant a
+second reviewer saw the model's text again and the cook screen showed an edit
+only to the person who made it. They are rows now, so the screen needs you
+signed in and on the reviewer list - it says which of the two is missing - and
+anything stored under that old key is ignored and can be deleted.
+
 ## Test accounts
 
 | Account | Profile | Reviewer | For |

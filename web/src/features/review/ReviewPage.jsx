@@ -1,22 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
 import { C } from "../../shared/theme/colors";
 import AccountMenu from "../../shared/components/AccountMenu";
-import { getRecipe, getSuggestions, RECIPE_FIXTURES } from "../../shared/services/api/client";
-import { getSession, isAdmin } from "../../shared/services/auth/session";
+import { getRecipe, RECIPE_FIXTURES } from "../../shared/services/api/client";
+import {
+  getReviewRecord,
+  getReviewStats,
+  saveReviewVersion,
+} from "../../shared/services/api/contentReview";
+import { useAccount } from "../../shared/services/auth/useAccount";
 import { Card, Chip, SectionTitle } from "../cook/bits";
 import { evidenceTitle } from "../cook/ruleStatus";
-import {
-  addVersion,
-  clearAll,
-  currentVersion,
-  revertToOriginal,
-  EDIT_TAGS,
-  fingerprint,
-  getRecord,
-  OUTCOME,
-  seed,
-  stats,
-} from "./reviewStore";
+import { EDIT_TAGS, OUTCOME } from "./reviewStore";
+
+// The newest version in a record: what the screen is editing against.
+function currentOf(record) {
+  if (!record?.versions?.length) return null;
+  return record.versions.find((v) => v.version === record.current_version) || null;
+}
 
 // A rule's status has two different origins, and only one of them is a
 // judgement about this recipe:
@@ -73,6 +73,9 @@ function Button({ children, onClick, tone = "quiet", disabled }) {
 }
 
 function StatsBar({ figures }) {
+  if (!figures) {
+    return <span style={{ fontSize: 12, color: C.muted }}>Counting…</span>;
+  }
   if (!figures.reviewed) {
     return (
       <span style={{ fontSize: 12, color: C.muted }}>
@@ -352,8 +355,10 @@ function History({ record }) {
 }
 
 export default function ReviewPage({ onNavigate }) {
-  const session = getSession();
-  const admin = isAdmin();
+  // Who is reviewing comes from the signed-in account, because that is the
+  // name the server writes on the version. The old local "Kevin" session is
+  // gone from this screen: a reviewer identity the browser chooses is not one.
+  const account = useAccount();
 
   const [recipeId, setRecipeId] = useState("falafel-001");
   const [recipe, setRecipe] = useState(null);
@@ -362,39 +367,59 @@ export default function ReviewPage({ onNavigate }) {
   const [record, setRecord] = useState(null);
   const [tags, setTags] = useState([]);
   const [note, setNote] = useState("");
-  const [figures, setFigures] = useState(() => stats());
+  const [figures, setFigures] = useState(null);
   const [saved, setSaved] = useState("");
+  const [error, setError] = useState(null);
+  const [busy, setBusy] = useState(false);
+
+  // Fills the draft from a record the server returned. Used by the initial
+  // load and after every save, so the screen always edits against what is
+  // actually stored rather than against what it hoped it had written.
+  const adopt = (nextRecord, suggestionPayload) => {
+    const version = currentOf(nextRecord);
+    setRecord(nextRecord);
+    setDraft({
+      summary: version?.summary
+        ? { ...version.summary }
+        : suggestionPayload?.summary || null,
+      position_overrides: { ...(version?.position_overrides || {}) },
+      suggestions: (version?.suggestions || []).map((item) => ({ ...item })),
+      rules_removed: [...(version?.rules_removed || [])],
+      status_overrides: { ...(version?.status_overrides || {}) },
+      not_optimizable: Boolean(version?.not_optimizable),
+    });
+    setTags([]);
+    setNote("");
+  };
 
   useEffect(() => {
-    if (!admin) return undefined;
+    if (!account.ready || !account.signedIn) return undefined;
     let cancelled = false;
 
-    Promise.all([getRecipe(recipeId), getSuggestions(recipeId, "maya", [])]).then(
-      ([recipeData, suggestionData]) => {
+    setError(null);
+    // The record read is what writes version 1 on the server for a recipe
+    // nobody has opened, and it carries the model's payload back with it, so
+    // the screen does not generate the text a second time.
+    Promise.all([getRecipe(recipeId), getReviewRecord(recipeId)])
+      .then(([recipeData, data]) => {
         if (cancelled || !recipeData) return;
-        const stored = seed(recipeData, suggestionData);
-        const version = currentVersion(recipeId) || stored.versions[0];
         setRecipe(recipeData);
-        setPayload(suggestionData);
-        setRecord(stored);
-        setDraft({
-          summary: version.summary ? { ...version.summary } : suggestionData?.summary || null,
-          position_overrides: { ...(version.position_overrides || {}) },
-          suggestions: version.suggestions.map((s) => ({ ...s })),
-          rules_removed: [...(version.rules_removed || [])],
-          status_overrides: { ...(version.status_overrides || {}) },
-          not_optimizable: Boolean(version.not_optimizable),
-        });
-        setTags([]);
-        setNote("");
+        setPayload(data.payload);
+        adopt(data.record, data.payload);
         setSaved("");
-      }
-    );
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err);
+      });
+
+    getReviewStats()
+      .then((data) => !cancelled && setFigures(data))
+      .catch(() => {});
 
     return () => {
       cancelled = true;
     };
-  }, [recipeId, admin]);
+  }, [recipeId, account.ready, account.signedIn]);
 
   const original = useMemo(() => record?.versions?.[0]?.suggestions || [], [record]);
 
@@ -404,7 +429,7 @@ export default function ReviewPage({ onNavigate }) {
   // classify every edit reviews fewer recipes.
   const inferredTags = useMemo(() => {
     if (!draft || !record) return [];
-    const base = currentVersion(recipeId) || record.versions[0];
+    const base = currentOf(record) || record.versions[0];
     const found = [];
     if (JSON.stringify(draft.rules_removed) !== JSON.stringify(base.rules_removed || []))
       found.push("rule_not_applicable");
@@ -413,11 +438,11 @@ export default function ReviewPage({ onNavigate }) {
     if (JSON.stringify(draft.position_overrides) !== JSON.stringify(base.position_overrides || {}))
       found.push("wrong_position");
     return found;
-  }, [draft, record, recipeId]);
+  }, [draft, record]);
 
   const changed = useMemo(() => {
     if (!draft || !record) return false;
-    const base = currentVersion(recipeId) || record.versions[0];
+    const base = currentOf(record) || record.versions[0];
     return (
       JSON.stringify(draft.summary) !== JSON.stringify(base.summary ?? null) ||
       JSON.stringify(draft.suggestions) !== JSON.stringify(base.suggestions) ||
@@ -426,42 +451,99 @@ export default function ReviewPage({ onNavigate }) {
       JSON.stringify(draft.position_overrides) !== JSON.stringify(base.position_overrides || {}) ||
       draft.not_optimizable !== Boolean(base.not_optimizable)
     );
-  }, [draft, record, recipeId]);
+  }, [draft, record]);
 
-  const commit = (outcome) => {
-    const updated = addVersion(recipeId, {
-      summary: draft.summary,
-      suggestions: draft.suggestions,
-      rulesRemoved: draft.rules_removed,
-      statusOverrides: draft.status_overrides,
-      positionOverrides: draft.position_overrides,
-      notOptimizable: draft.not_optimizable,
-      outcome,
-      tags: [...new Set([...inferredTags, ...tags])],
-      note,
-      session,
-      fingerprintValue: fingerprint(recipe, payload),
-    });
-    setRecord(updated ? { ...updated } : getRecord(recipeId));
-    setFigures(stats());
-    setTags([]);
-    setNote("");
-    setSaved(
-      outcome === OUTCOME.CONFIRMED
-        ? "Marked as correct with no changes."
-        : outcome === OUTCOME.REJECTED
-          ? "Sent back. Nothing is published for this recipe."
-          : "Saved as a new version."
-    );
+  // One decision, written to the database. No reviewer is sent: the server
+  // reads it from the token, so the row always says who actually decided.
+  const save = async (outcome, content) => {
+    if (busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const data = await saveReviewVersion(recipeId, {
+        outcome,
+        tags: [...new Set([...inferredTags, ...tags])],
+        note,
+        ...content,
+      });
+      adopt(data.record, payload);
+      setSaved(
+        outcome === OUTCOME.CONFIRMED
+          ? "Marked as correct with no changes. Saved for everyone."
+          : outcome === OUTCOME.REJECTED
+            ? "Sent back. Nothing is published for this recipe."
+            : outcome === OUTCOME.REVERTED
+              ? "Back to the model's version. The edits stay in the history."
+              : "Saved as a new version. Every reviewer and every cook sees it."
+      );
+      getReviewStats().then(setFigures).catch(() => {});
+    } catch (err) {
+      setError(err);
+    } finally {
+      setBusy(false);
+    }
   };
 
-  if (!admin) {
+  const commit = (outcome) =>
+    save(outcome, {
+      summary: draft.summary,
+      suggestions: draft.suggestions,
+      rules_removed: draft.rules_removed,
+      status_overrides: draft.status_overrides,
+      position_overrides: draft.position_overrides,
+      not_optimizable: draft.not_optimizable,
+    });
+
+  // Undoing an edit is itself a decision, so it writes a version like any
+  // other rather than deleting what came before. The history is the point: it
+  // is how anyone later can see that an edit was tried and withdrawn.
+  const revert = () => {
+    const first = record?.versions?.[0];
+    if (!first) return;
+    save(OUTCOME.REVERTED, {
+      summary: first.summary ? { ...first.summary } : null,
+      suggestions: (first.suggestions || []).map((item) => ({ ...item })),
+      rules_removed: [...(first.rules_removed || [])],
+      status_overrides: { ...(first.status_overrides || {}) },
+      position_overrides: { ...(first.position_overrides || {}) },
+      not_optimizable: Boolean(first.not_optimizable),
+      note: `Back to version 1, written by ${first.author}`,
+    });
+  };
+
+  // What the screen may do is the server's answer, not this browser's. Signing
+  // in is a different refusal from not being a reviewer, and saying which is
+  // what stops someone retrying with a fresh login.
+  const blocked = !account.ready
+    ? "loading"
+    : !account.signedIn
+      ? "signed_out"
+      : error?.status === 403
+        ? "not_reviewer"
+        : null;
+
+  if (blocked) {
     return (
-      <div style={{ minHeight: "100vh", background: C.bg, display: "grid", placeItems: "center" }}>
-        <Card style={{ maxWidth: 420, textAlign: "center" }}>
-          <p style={{ margin: 0, fontSize: 14, color: C.text }}>
-            This screen is for reviewers. Ask an admin for access.
-          </p>
+      <div style={{ minHeight: "100vh", background: C.bg, display: "grid", placeItems: "center", padding: 20 }}>
+        <Card style={{ maxWidth: 460, display: "grid", gap: 12, textAlign: "center" }}>
+          {blocked === "loading" ? (
+            <p style={{ margin: 0, fontSize: 14, color: C.subtext }}>Checking your account…</p>
+          ) : blocked === "signed_out" ? (
+            <>
+              <p style={{ margin: 0, fontSize: 14, color: C.text, lineHeight: 1.7 }}>
+                Reviews are saved to the database under the name of whoever made them, so this
+                screen needs you signed in.
+              </p>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <AccountMenu onNavigate={onNavigate} />
+              </div>
+            </>
+          ) : (
+            <p style={{ margin: 0, fontSize: 14, color: C.text, lineHeight: 1.7 }}>
+              {account.email} is signed in but is not a reviewer. Ask someone on the reviewer list
+              to add you on the admin screen.
+            </p>
+          )}
         </Card>
       </div>
     );
@@ -501,32 +583,36 @@ export default function ReviewPage({ onNavigate }) {
             fifty recipes, ordered by how far the two energy figures are apart
             - rather than one recipe at a time. */}
         <Button onClick={() => onNavigate("#/review/nutrition")}>Review nutrition</Button>
-        <Chip color={C.gold} bg={C.goldLight} title="This screen's reviewer identity is still local to the browser; sign-in lives on #/admin">
-          {session.name} · reviewer
+        <Chip
+          color={C.accent}
+          bg={C.accentLight}
+          title="Every version you save is written to the database under this address"
+        >
+          {account.email} · reviewer
         </Chip>
       </header>
 
       <main className="rev-wrap">
+        {/* There is no "delete all" here any more. It used to clear this
+            browser's own copy, which was harmless; the same button against a
+            shared table would throw away other reviewers' decisions. Undoing
+            one recipe is "Back to the model's version", which writes a version
+            instead of deleting one. */}
         <Card style={{ display: "grid", gap: 10 }}>
           <SectionTitle
             right={
-              <Button
-                tone="danger"
-                onClick={() => {
-                  if (!window.confirm("Delete every review decision in this browser, for every recipe? This is for clearing test data; to undo one recipe use \"Back to the model's version\" instead.")) return;
-                  clearAll();
-                  setFigures(stats());
-                  window.location.reload();
-                }}
-              >
-                Delete all test data
-              </Button>
+              figures?.recipes_reviewed ? (
+                <span style={{ fontSize: 11.5, color: C.muted }}>
+                  {figures.recipes_reviewed} of {figures.recipes_seen} recipes opened have been
+                  reviewed
+                </span>
+              ) : null
             }
           >
             How often the model is left alone
           </SectionTitle>
           <StatsBar figures={figures} />
-          {Object.keys(figures.tagCounts).length ? (
+          {Object.keys(figures?.tagCounts || {}).length ? (
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {Object.entries(figures.tagCounts).map(([tag, count]) => (
                 <Chip key={tag} color={C.subtext} border={C.border}>
@@ -536,6 +622,14 @@ export default function ReviewPage({ onNavigate }) {
             </div>
           ) : null}
         </Card>
+
+        {error && error.status !== 403 ? (
+          <Card style={{ background: C.coralLight, border: "none" }}>
+            <span style={{ fontSize: 12.5, color: C.text }}>
+              The backend refused that: {error.message}. Nothing was saved.
+            </span>
+          </Card>
+        ) : null}
 
         <div className="rev-head">
           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, color: C.muted, textTransform: "uppercase" }}>
@@ -777,35 +871,18 @@ export default function ReviewPage({ onNavigate }) {
             ) : null}
 
             <div className="rev-actions">
-              <Button tone="primary" onClick={() => commit(OUTCOME.CONFIRMED)} disabled={changed}>
+              <Button tone="primary" onClick={() => commit(OUTCOME.CONFIRMED)} disabled={changed || busy}>
                 ✓ All good, nothing to change
               </Button>
-              <Button onClick={() => commit(OUTCOME.EDITED)} disabled={!changed}>
+              <Button onClick={() => commit(OUTCOME.EDITED)} disabled={!changed || busy}>
                 Save edits
               </Button>
-              <Button tone="danger" onClick={() => commit(OUTCOME.REJECTED)}>
+              <Button tone="danger" onClick={() => commit(OUTCOME.REJECTED)} disabled={busy}>
                 Send back
               </Button>
               <Button
-                onClick={() => {
-                  const updated = revertToOriginal(recipeId, session);
-                  if (!updated) return;
-                  const version = currentVersion(recipeId);
-                  setRecord({ ...updated });
-                  setDraft({
-                    summary: version.summary ? { ...version.summary } : null,
-                    suggestions: version.suggestions.map((item) => ({ ...item })),
-                    rules_removed: [...(version.rules_removed || [])],
-                    status_overrides: { ...(version.status_overrides || {}) },
-                    position_overrides: { ...(version.position_overrides || {}) },
-                    not_optimizable: Boolean(version.not_optimizable),
-                  });
-                  setTags([]);
-                  setNote("");
-                  setFigures(stats());
-                  setSaved("Back to the model's version. The edits stay in the history.");
-                }}
-                disabled={!record || record.versions.length < 2}
+                onClick={revert}
+                disabled={busy || !record || record.versions.length < 2}
                 title="Undo every edit on this recipe by writing a new version that matches the model's original. Nothing is deleted."
               >
                 Back to the model&rsquo;s version
@@ -814,9 +891,9 @@ export default function ReviewPage({ onNavigate }) {
             </div>
 
             <span style={{ fontSize: 11, color: C.muted, lineHeight: 1.6 }}>
-              Stored in this browser, so Chrome and the editor&rsquo;s preview each have their own.
-              Saved to this browser for now. The shape is what moves to the database later, so the
-              decisions you make here are not throwaway.
+              Saved to the database, under {account.email}. The next reviewer picks up this
+              version, and the cook screen shows it to everyone. Nothing is overwritten: each
+              decision adds a version, and the earlier ones stay below.
             </span>
           </Card>
         ) : null}
