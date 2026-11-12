@@ -16,7 +16,7 @@ site never needs a model.
 |---|---|---|
 | Recommendations | `/#/recommend` | `web/src/shared/fixtures/` |
 | Recipe | `/#/cook/falafel-001` | same |
-| Reviewer | `/#/review` | same; decisions are saved in the visitor's own browser |
+| Reviewer | `/#/review` | needs a signed-in reviewer; decisions are rows in `recipe_content_versions` |
 | The original app | `/` | unchanged |
 
 Every screen shows **Offline sample** in the top right, because nothing is
@@ -24,18 +24,18 @@ calling a backend. That badge is honest and should stay.
 
 The recipe screen carries the text Gemma 3 4B wrote and a reviewer approved —
 it is baked into the fixtures at build time by `api/build_fixtures.py`, from
-whatever is `approved` in `api/content/`.
+the current reviewed version in `recipe_content_versions`.
 
 ## What does not go live, and why
 
 - **The assistant's question box** is disabled. Answering a free question needs
   a model at request time, and we are not hosting one. The box says so.
 - **Regenerate** is hidden for the same reason.
-- **Reviewer decisions on suggestion text are per browser.** They move to a
-  database when there is one; until then two people reviewing see different
-  things. Nutrition-plausibility verdicts are not like this - they go to
-  `recipe_nutrition_reviews` through the API, with the reviewer taken from the
-  verified token, so everyone sees the same ones.
+- **Reviewing suggestion text needs a signed-in reviewer.** Decisions go to
+  `recipe_content_versions` through the API, with the reviewer taken from the
+  verified token, so two people reviewing see the same thing and a cook sees
+  the correction. Nutrition-plausibility verdicts work the same way, in
+  `recipe_nutrition_reviews`. Neither is in the browser any more.
 
 ---
 

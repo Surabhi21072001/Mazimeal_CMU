@@ -123,10 +123,15 @@ class Fingerprint(unittest.TestCase):
         recipe = {"recipe_id": "r1", "matched_rules": []}
         self.assertNotEqual(self.cr.fingerprint(recipe, {"model": "m1"}), self.cr.fingerprint(recipe, {"model": "m2"}))
 
-    def test_source_stands_in_when_no_model_is_named(self):
+    def test_an_unnamed_model_reads_as_the_template_not_as_where_it_was_found(self):
+        # "cache" is where the text was found, not what wrote it. Recording it
+        # would make a cache hit look like a different input from the template
+        # run that filled the cache, and so raise a stale-edit warning about
+        # text nobody changed.
         recipe = {"recipe_id": "r1", "matched_rules": []}
-        self.assertTrue(self.cr.fingerprint(recipe, {"source": "template"}).endswith("|template"))
-        self.assertTrue(self.cr.fingerprint(recipe, {}).endswith("|unknown"))
+        self.assertEqual(self.cr.fingerprint(recipe, {"source": "cache"}), "r1||template")
+        self.assertEqual(self.cr.fingerprint(recipe, {}), "r1||template")
+        self.assertEqual(self.cr.fingerprint(recipe, {"model": "m", "source": "cache"}), "r1||m")
 
     def test_a_rule_with_no_id_is_ignored_rather_than_recorded_as_none(self):
         recipe = {"recipe_id": "r1", "matched_rules": [{"rule_id": "A"}, {"name": "no id"}]}

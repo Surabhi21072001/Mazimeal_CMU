@@ -310,14 +310,26 @@ recommendations = {
 
 # ---------------------------------------------------------------- AI suggestions
 # A deployed build has no model and no backend, so it serves whatever a
-# reviewer last approved. Fall back to the hand-written stub only when nothing
-# has been reviewed yet.
-APPROVED = pathlib.Path(__file__).resolve().parent / "content" / "falafel-001.json"
+# reviewer last approved. That used to be a file in api/content; it is a row in
+# recipe_content_versions now, so this asks the same code the API asks. Needs a
+# DSN; without one - or with nothing reviewed yet - it falls back to the
+# hand-written stub, which is what an offline build showed before anyone
+# reviewed anything.
 reviewed = None
-if APPROVED.exists():
-    entry = json.loads(APPROVED.read_text())
-    if entry.get("status") == "approved":
-        reviewed = entry
+try:
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from app import content_review  # noqa: E402
+
+    current = content_review.current("falafel-001")
+    if current:
+        reviewed = {
+            "suggestions": current["suggestions"],
+            "summary": current["summary"],
+            "reviewed_by": current["review"]["reviewer"],
+            "model": (current.get("inputs_fingerprint") or "").split("|")[-1] or None,
+        }
+except Exception as exc:  # no DSN, no driver, no table: the stub is the answer
+    print(f"no reviewed text ({type(exc).__name__}); using the stub")
 
 suggestions = {
     "_fixture_note": "Stub text, written by hand. No model call. Replaced when the LLM endpoint is wired.",
@@ -340,7 +352,7 @@ suggestions = {
 if reviewed:
     suggestions = {
         "_fixture_note": (
-            "Approved text, copied from api/content at build time. Written by "
+            "Approved text, read from recipe_content_versions at build time. Written by "
             f"{reviewed.get('model') or 'the rules themselves'} and approved by "
             f"{reviewed.get('reviewed_by')}."
         ),

@@ -378,6 +378,12 @@ Every decision appends a version, including one that changed nothing —
 `confirmed_unchanged` is how "the model needed no help" becomes a countable
 fact rather than an absence of rows. Nothing is updated in place.
 
+There is no `/api/content/*` any more. Reviewed text was a file per recipe
+under `api/content/`, approved by a `reviewer` field in the request body, and
+served ahead of the cache. It is `recipe_content_versions` now: the file store
+could not say who approved the words, could not keep a history, and did not
+survive a deploy on a host with no disk.
+
 ### `GET /api/review/content-stats`
 
 Reviewer-only. `{reviewed, confirmed, edited, rejected, reverted, tagCounts,

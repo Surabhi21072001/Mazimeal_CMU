@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from . import ask as ask_module
-from . import admin_people, auth, cache, config, content, content_review, nutrition_review
+from . import admin_people, auth, cache, config, content_review, nutrition_review
 from . import profile as profile_module
 from . import providers, rule_admin, rule_codes
 from .repo import get_repo
@@ -69,11 +69,6 @@ DISCLAIMER = (
     "Written from the matched rules. Nutrition figures come from the database, "
     "not from a model."
 )
-
-
-class ReviewRequest(BaseModel):
-    status: str
-    reviewer: str
 
 
 class AskRequest(BaseModel):
@@ -228,18 +223,24 @@ def _suggestions_payload(
     is "what the model said", so it cannot come from a second, separately
     generated payload - still less from the browser.
     """
-    # Reviewed text wins over anything a model would write now.
+    # Reviewed text wins over anything a model would write now. It comes from
+    # recipe_content_versions, which is also what GET .../review serves, so the
+    # words a cook reads and the words a reviewer approved cannot drift apart.
     if not refresh:
-        reviewed = content.approved(recipe_id)
+        reviewed = content_review.current(recipe_id)
         if reviewed:
             return {
                 "recipe_id": recipe_id,
                 "member_id": member_id,
                 "suggestions": reviewed["suggestions"],
-                "summary": reviewed.get("summary"),
+                "summary": reviewed["summary"],
                 "source": "reviewed",
-                "model": reviewed.get("model"),
-                "reviewed_by": reviewed.get("reviewed_by"),
+                # Which model wrote the text a reviewer then worked on. The
+                # version records its inputs as recipe|rules|model, and that
+                # last field is the only place the name survives an edit.
+                "model": (reviewed.get("inputs_fingerprint") or "").split("|")[-1] or None,
+                "reviewed_by": reviewed["review"]["reviewer"],
+                "review_version": reviewed["version"],
                 "disclaimer": DISCLAIMER,
             }
 
@@ -317,23 +318,6 @@ def ask(recipe_id: str, request: AskRequest):
 
     result = ask_module.answer(recipe, member, question)
     return {"recipe_id": recipe_id, "question": question, **result, "disclaimer": DISCLAIMER}
-
-
-@app.get("/api/content/review-queue")
-def review_queue(status: str = Query(content.PENDING)):
-    """What a reviewer still has to read. Written by api/pregenerate.py."""
-    items = content.queue(status)
-    return {"status": status, "count": len(items), "items": items}
-
-
-@app.post("/api/content/{recipe_id}/review")
-def review(recipe_id: str, request: ReviewRequest):
-    if request.status not in (content.APPROVED, content.REJECTED, content.PENDING):
-        raise HTTPException(status_code=400, detail={"error": "bad_status", "status": request.status})
-    entry = content.review(recipe_id, request.status, request.reviewer)
-    if not entry:
-        raise HTTPException(status_code=404, detail={"error": "no_content_for_recipe", "recipe_id": recipe_id})
-    return entry
 
 
 @app.post("/api/cache/clear")

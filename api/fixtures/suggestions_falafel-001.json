@@ -1,5 +1,5 @@
 {
-  "_fixture_note": "Approved text, copied from api/content at build time. Written by mlx-community/gemma-3-4b-it-4bit and approved by kevin.",
+  "_fixture_note": "Approved text from the retired api/content file store, kept because these are the words a reviewer actually approved. A regenerate reads recipe_content_versions instead. Written by mlx-community/gemma-3-4b-it-4bit and approved by kevin; the file format never recorded whether kevin changed the wording, which is why it was not backfilled as a review version.",
   "recipe_id": "falafel-001",
   "member_id": "maya",
   "source": "reviewed",

@@ -55,7 +55,6 @@ decision anyone has signed off.
 |---|---|---|
 | `api/fixtures/*.json` | One household, five recipes, one set of recommendations | The database, and the recommender the team is building |
 | `web/src/shared/fixtures/` | A copy of the above, bundled so the front end runs with no backend | Same; regenerate with `python3 api/build_fixtures.py` |
-| `api/content/*.json` | AI text that a reviewer approved | Real reviewed content, stored in the database |
 | `schema/seed/*.sql` | 400 Food.com recipes, USDA nutrition, gram weights | Inherited from the original team; this is their real seed data |
 
 Inside the fixtures, what is real and what is invented is marked in a

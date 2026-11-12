@@ -91,7 +91,10 @@ def fingerprint(recipe: dict, payload: dict) -> str:
     rule_ids = sorted(
         str(rule.get("rule_id")) for rule in (recipe.get("matched_rules") or []) if rule.get("rule_id")
     )
-    model = payload.get("model") or payload.get("source") or "unknown"
+    # Same fallback as the author above, and for the same reason: `source`
+    # would make a cache hit and a fresh template run look like different
+    # inputs for identical text, which is a stale-edit warning about nothing.
+    model = payload.get("model") or "template"
     return f"{recipe.get('recipe_id')}|{','.join(rule_ids)}|{model}"
 
 

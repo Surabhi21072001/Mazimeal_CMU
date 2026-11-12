@@ -105,29 +105,39 @@ member - how much iron they still need, which recipe ranks first - is computed
 and never written by a model. That is what makes pre-generating possible.
 
 ```bash
-# run the model once over the sample recipes, offline
-MAZI_PROVIDER=local MAZI_LLM_URL=http://127.0.0.1:8081/v1 \
+# run the model once over the sample recipes, offline. What it writes becomes
+# version 1 of each recipe's review record - the baseline, never served to a cook
+set -a; . ./.env; set +a
+MAZI_REPO=supabase MAZIMEAL_DSN="$SUPABASE_DB_URL" \
+  MAZI_PROVIDER=local MAZI_LLM_URL=http://127.0.0.1:8081/v1 \
   MAZI_LLM_MODEL=mlx-community/gemma-3-4b-it-4bit \
   api/.venv/bin/python api/pregenerate.py
-
-# see what is waiting, then approve one
-curl localhost:8002/api/content/review-queue
-curl -X POST localhost:8002/api/content/falafel-001/review \
-  -H 'Content-Type: application/json' -d '{"status":"approved","reviewer":"kevin"}'
 ```
+
+Then review them on `#/review`, signed in and on the reviewer list. Each
+decision appends a version; see `GET /api/review/content/{recipe_id}` in
+SPEC.md.
 
 What the suggestions endpoint serves, in order:
 
-1. **reviewed** text, when a person approved it. It wins over everything.
+1. **reviewed** text, when a reviewer's current decision is to publish it. It
+   wins over everything.
 2. **cache**, when the same recipe and rules were rewritten before.
 3. the **model**, otherwise - and the result goes into the cache.
 
 `?refresh=true` skips 1 and 2 and rewrites. That is the Regenerate button on
 the cook screen: a tester can see what the model writes now, and it changes
-nothing for anyone else, because only approved text is served to them.
+nothing for anyone else, because only a reviewed version is served to them.
 
-`api/content/<recipe_id>.json` is one file per recipe, so a reviewer can read a
-diff and the store can go into version control.
+Two cases deliberately fall through to 2 and 3: a recipe that only has the
+model's own baseline (nobody has decided anything about it, so it must not read
+as "reviewed"), and one whose newest decision is **rejected** (the screen says
+nothing is published for it, so nothing is).
+
+This used to be a file per recipe under `api/content/`, read ahead of the
+cache. It is `recipe_content_versions` now - the same store the review screen
+writes - because the file store could neither say who approved the text nor
+survive a deploy on a host with no disk.
 
 ## What is not here yet
 
