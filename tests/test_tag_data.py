@@ -478,7 +478,10 @@ class Migration012Static(unittest.TestCase):
 
     def test_it_is_the_next_migration_after_every_branch(self):
         numbers = sorted(int(p.name.split("_", 1)[0]) for p in MIGRATIONS.glob("*.sql"))
-        self.assertEqual(numbers[-1], 12)
+        # 012 follows 011 with no gap or duplicate. Later migrations (013 adds recipe_equipment)
+        # may follow it; they must keep the numbering contiguous and unique.
+        self.assertEqual(numbers[:12], list(range(1, 13)))
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)))
         self.assertEqual(self.NAME.split("_", 1)[0], "012")
 
 

@@ -63,6 +63,10 @@ class DetectedRule:
     conditions_and_limits: str | None = None
     source_title: str | None = None
     source_url: str | None = None
+    # Which facts called this rule, and where they came from. 'ingredient' for the original
+    # tag mechanism, otherwise the DerivedFact sources (recipe_nutrition, recipe_process, ...).
+    trigger_source: str | None = None
+    matched_facts: tuple = ()          # tuple[DerivedFact, ...]
 
     def as_dict(self) -> dict:
         return {
@@ -174,22 +178,56 @@ def recipe_trigger_codes(conn, recipe_id) -> dict[str, list[str]]:
 # BIO-003  recipe_safe   Cook tomatoes with oil   reason: ...tagged ING_TOMATO (tomatoes)
 # SYN-011  conditional   Fermented dairy cultures reason: ...tagged ING_YOGURT (plain yogurt)
 # ...
-def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
+def _summarise_fact(fact) -> str:
+    """One short phrase naming a derived fact, for a candidate's reason."""
+    bits = [fact.code]
+    if isinstance(fact.value, dict):
+        step = fact.value.get("instruction_step")
+        role = fact.value.get("role")
+        if step is not None:
+            bits.append("step %s" % step)
+        if role:
+            bits.append(str(role))
+    elif fact.value is not None:
+        bits.append("= %s%s" % (fact.value, (" " + fact.unit) if fact.unit else ""))
+    if fact.evidence:
+        bits.append("(%s)" % fact.evidence)
+    return " ".join(bits)
+
+
+def detect_rules_from_facts(conn, facts: RecipeFacts, context=None,
+                            include_derived: bool = True) -> list[DetectedRule]:
     """Return the active business rules triggered by a RecipeFacts.
 
-    A rule is triggered when its trigger_code is one of the codes tagged on an
-    ingredient in the recipe. Only is_active rules are returned. Preferred entry
-    point once a RecipeFacts has been built.
+    A rule is triggered when its trigger_code is established by an ingredient tag, by a
+    composite of tagged ingredients, or (new) by a DERIVED fact: recipe nutrition, a
+    cooking process, the intended meal or the equipment (see scripts/derived_facts.py).
+    Only is_active rules are returned. Preferred entry point once a RecipeFacts exists.
+
+    `context` (an EvaluationContext) is optional and only used to derive meal and user
+    facts. `include_derived=False` gives the original ingredient-only behaviour exactly.
+    Engine-level rules (INH-012) are never triggered here; they run after evaluation.
     """
-    # No tagged ingredients -> no applicable rules.
-    codes = _codes_to_ingredients(facts)
-    if not codes:
+    ingredient_codes = _codes_to_ingredients(facts)
+
+    # Derived facts, grouped by the trigger code they establish.
+    derived_by_code: dict[str, list] = {}
+    if include_derived:
+        from derived_facts import collect_candidate_facts
+        for fact in collect_candidate_facts(facts, context):
+            derived_by_code.setdefault(fact.code, []).append(fact)
+
+    # No tagged ingredients and no derived facts -> no applicable rules.
+    if not ingredient_codes and not derived_by_code:
         return []
 
     # Composite codes are not tagged; they are satisfied by their components.
     # Added after the direct codes so a composite cannot mask one.
-    composites = _composite_codes(conn, codes)
-    codes = {**codes, **composites}
+    composites = _composite_codes(conn, ingredient_codes)
+    codes = {**ingredient_codes, **composites}
+    # A derived code is present with no ingredient names; it must not overwrite one.
+    for code in derived_by_code:
+        codes.setdefault(code, [])
 
     placeholders = ", ".join("?" for _ in codes)
     params = tuple(codes.keys())
@@ -236,7 +274,9 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
             meta = {"rule_id": rid, "rule_name": rname,
                     "automation_status": auto, "trigger_code": trig}
         trigger_code = meta["trigger_code"]
-        ingredients = codes.get(trigger_code, [])
+        from_ingredients = ingredient_codes.get(trigger_code, [])
+        derived = derived_by_code.get(trigger_code, [])
+        ingredients = codes.get(trigger_code, []) if (from_ingredients or trigger_code in composites) else []
         ing_list = ", ".join(sorted(set(ingredients)))
         if trigger_code in composites:
             # Say that every part was present, because "contains an ingredient
@@ -245,26 +285,50 @@ def detect_rules_from_facts(conn, facts: RecipeFacts) -> list[DetectedRule]:
                 f"recipe satisfies every component of {trigger_code}"
                 + (f": {ing_list}" if ing_list else "")
             )
-        else:
+        elif from_ingredients:
             reason = (
                 f"recipe contains ingredient tagged {trigger_code}"
                 + (f" ({ing_list})" if ing_list else "")
             )
-        detected.append(DetectedRule(reason=reason, **meta))
+        else:
+            reason = ""
+        if derived:
+            shown = "; ".join(_summarise_fact(f) for f in derived[:3])
+            more = " (+%d more)" % (len(derived) - 3) if len(derived) > 3 else ""
+            derived_reason = "recipe-derived fact %s: %s%s" % (trigger_code, shown, more)
+            reason = (reason + "; " + derived_reason) if reason else derived_reason
+
+        # Evidence: which facts called the rule, and where each came from. Ingredient
+        # evidence is one fact per tagged ingredient, in the same shape as derived facts.
+        from derived_facts import DerivedFact
+        matched = [DerivedFact(code=trigger_code, source="ingredient", value=name,
+                               evidence="ingredient tagged %s" % trigger_code, confidence="high")
+                   for name in sorted(set(from_ingredients))]
+        if trigger_code in composites:
+            matched = [DerivedFact(code=trigger_code, source="ingredient", value=name,
+                                   evidence="component of composite %s" % trigger_code, confidence="high")
+                       for name in sorted(set(ingredients))]
+        matched += derived
+        sources = []
+        for f in matched:
+            if f.source not in sources:
+                sources.append(f.source)
+        detected.append(DetectedRule(reason=reason, trigger_source="+".join(sources) or None,
+                                     matched_facts=tuple(matched), **meta))
     return detected
 
 
-def detect_rules(conn, recipe_id) -> list[DetectedRule]:
-    """Return the active business rules triggered by this recipe's ingredients.
+def detect_rules(conn, recipe_id, context=None) -> list[DetectedRule]:
+    """Return the active business rules triggered by this recipe.
 
     Unchanged public API: accepts a recipe_id, builds a RecipeFacts internally,
-    and delegates to detect_rules_from_facts. Semantics identical to before.
+    and delegates to detect_rules_from_facts. `context` is optional.
     """
     try:
         facts = build_recipe_facts(conn, recipe_id)
     except RecipeNotFound:
         return []
-    return detect_rules_from_facts(conn, facts)
+    return detect_rules_from_facts(conn, facts, context)
 
 
 def recipe_name(conn, recipe_id) -> str | None:

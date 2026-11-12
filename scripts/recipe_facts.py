@@ -79,6 +79,19 @@ class RecipeIngredientFact:
 
 
 @dataclass(frozen=True)
+class EquipmentFact:
+    """One row of recipe_equipment: equipment stated by structured data or a reviewer.
+
+    Extraction from the recipe text is NOT stored here; see scripts/equipment_facts.py."""
+    equipment_code: str
+    source: str            # structured | instruction_extraction | admin_review
+    confidence: str        # high | medium | low
+    review_status: str     # auto | pending_review | confirmed | rejected
+    evidence_step: int | None = None
+    evidence_text: str | None = None
+
+
+@dataclass(frozen=True)
 class RecipeFacts:
     """Normalized, immutable snapshot of a recipe for rule evaluation.
 
@@ -98,6 +111,7 @@ class RecipeFacts:
     nutrients: dict[str, float] = field(default_factory=dict)
     instructions: str | None = None
     metadata: dict = field(default_factory=dict)
+    equipment: tuple[EquipmentFact, ...] = ()     # persisted equipment only; empty when none is stored
 
     def as_dict(self) -> dict:
         return {
@@ -247,6 +261,47 @@ def _load_nutrients(conn, recipe_id):
     return nutrients, units
 
 
+def _load_nutrition_review(conn, recipe_id) -> dict | None:
+    """The newest human plausibility verdict on this recipe's nutrition, or None.
+
+    This is the data-readiness layer (migration 003): 'plausible', 'implausible' or
+    'needs_data'. None means nobody has reviewed it, which is different from a verdict."""
+    if not _table_exists(conn, "recipe_nutrition_reviews"):
+        return None
+    cur = conn.cursor()
+    cur.execute(
+        _q(conn, """
+        SELECT verdict, reviewed_at
+        FROM recipe_nutrition_reviews
+        WHERE recipe_id = ?
+        ORDER BY reviewed_at DESC
+        LIMIT 1
+        """),
+        (recipe_id,),
+    )
+    row = cur.fetchone()
+    if row is None:
+        return None
+    return {"verdict": row[0], "reviewed_at": row[1].isoformat() if hasattr(row[1], "isoformat") else row[1]}
+
+
+def _load_equipment(conn, recipe_id) -> tuple[EquipmentFact, ...]:
+    """Equipment stored for this recipe (migration 013), or () when the table is absent."""
+    if not _table_exists(conn, "recipe_equipment"):
+        return ()
+    cur = conn.cursor()
+    cur.execute(
+        _q(conn, """
+        SELECT equipment_code, source, confidence, review_status, evidence_step, evidence_text
+        FROM recipe_equipment
+        WHERE recipe_id = ?
+        ORDER BY equipment_code, source
+        """),
+        (recipe_id,),
+    )
+    return tuple(EquipmentFact(*row) for row in cur.fetchall())
+
+
 def _load_instructions(conn, recipe_id) -> str | None:
     """Join ordered recipe_steps into one instructions string, or None.
 
@@ -300,6 +355,13 @@ def build_recipe_facts(conn, recipe_id) -> RecipeFacts:
     if nutrient_units:
         metadata["nutrient_units"] = nutrient_units
     metadata["nutrient_id_scheme"] = "native_recipe_nutrition"  # not NUT_* codes
+    if nutrients:
+        # recipe_nutrition is defined as nutrition per serving as published (schema/05).
+        # Stated here so evaluators normalise explicitly instead of assuming.
+        metadata["nutrition_basis"] = "per_serving"
+        review = _load_nutrition_review(conn, recipe_id)
+        if review:
+            metadata["nutrition_review"] = review
 
     return RecipeFacts(
         recipe_id=str(recipe_id),
@@ -309,6 +371,7 @@ def build_recipe_facts(conn, recipe_id) -> RecipeFacts:
         nutrients=nutrients,
         instructions=instructions,
         metadata=metadata,
+        equipment=_load_equipment(conn, recipe_id),
     )
 
 
