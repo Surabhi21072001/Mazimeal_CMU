@@ -1,0 +1,288 @@
+[
+  {
+    "rule_id": "BIO-002",
+    "rule_name": "Crush garlic and rest before heating",
+    "category": "bioavailability",
+    "action": {
+      "description": "Crush or mince; rest about 10 minutes before heating",
+      "code": "PROC_CRUSH_REST",
+      "engine_instruction": "When garlic is cooked, place crushing/mincing before a short rest, then add later or cook gently."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Controlled food-processing studies show crushing before heating preserves more thiosulfinate-forming potential than heating intact garlic.",
+      "sources": [
+        {
+          "title": "Heating garlic inhibits its anticancer properties",
+          "type": "peer-reviewed animal/food-processing study",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/11160543/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-003",
+    "rule_name": "Cook tomatoes with oil",
+    "category": "bioavailability",
+    "action": {
+      "description": "Cook/chop tomato and include a modest amount of culinary oil",
+      "code": "PROC_COOK_WITH_FAT",
+      "engine_instruction": "For tomato sauces or soups, cook tomatoes and retain/add an unsaturated culinary oil."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Human feeding studies show processed tomato with oil increases circulating carotenoid response.",
+      "sources": [
+        {
+          "title": "Processed tomato products and dietary lipids increase lycopene bioavailability",
+          "type": "peer-reviewed human trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15927929/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-004",
+    "rule_name": "Cook and mechanically disrupt carrots",
+    "category": "bioavailability",
+    "action": {
+      "description": "Cook until tender; chop, mash, or puree",
+      "code": "PROC_COOK_DISRUPT",
+      "engine_instruction": "For carotenoid optimization, prefer cooked chopped/pureed carrots over intact raw pieces."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Human and in-vitro digestion studies support greater carotenoid bioaccessibility from processed plant matrices.",
+      "sources": [
+        {
+          "title": "Effect of food matrix and processing on carotenoid bioavailability",
+          "type": "peer-reviewed review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15585783/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-005",
+    "rule_name": "Cook spinach for carotenoid release",
+    "category": "bioavailability",
+    "action": {
+      "description": "Cook or finely chop; serve with fat",
+      "code": "PROC_COOK_CHOP",
+      "engine_instruction": "For carotenoid-focused recipes, use cooked or finely chopped greens and apply the fat-pairing rule."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Food-matrix research supports greater carotenoid release after processing, with preparation-specific variation.",
+      "sources": [
+        {
+          "title": "Bioavailability of carotenoids from vegetables",
+          "type": "peer-reviewed review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15640480/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-006",
+    "rule_name": "Add active myrosinase to cooked crucifers",
+    "category": "bioavailability",
+    "action": {
+      "description": "Add mustard powder or a small amount of raw crucifer after cooking",
+      "code": "PAIR_MYROSINASE",
+      "engine_instruction": "If crucifers are cooked thoroughly, suggest mustard powder as a finishing ingredient when compatible."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Human feeding work shows mustard seed powder increases sulforaphane bioavailability from cooked broccoli.",
+      "sources": [
+        {
+          "title": "Mustard seed powder increases bioavailability of sulforaphane in cooked broccoli",
+          "type": "peer-reviewed human trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29806738/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-007",
+    "rule_name": "Chop crucifers before cooking",
+    "category": "bioavailability",
+    "action": {
+      "description": "Chop and allow a short rest before applying high heat",
+      "code": "PROC_CHOP_REST",
+      "engine_instruction": "Schedule chopping before other prep; use brief steaming when feasible."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Mechanistic and food-processing studies support pre-chopping and gentler cooking to preserve myrosinase activity.",
+      "sources": [
+        {
+          "title": "Effects of processing on glucosinolates and myrosinase",
+          "type": "peer-reviewed review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28290216/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-008",
+    "rule_name": "Soak and cook legumes",
+    "category": "bioavailability",
+    "action": {
+      "description": "Soak when appropriate, discard soak water, and cook fully",
+      "code": "PROC_SOAK_COOK",
+      "engine_instruction": "For dry legumes, include soaking where culturally and culinarily appropriate; always cook fully."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Reviews show household processing can reduce phytate, though mineral bioavailability gains vary.",
+      "sources": [
+        {
+          "title": "Effects of food processing on antinutrients in legumes",
+          "type": "peer-reviewed review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24425999/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-010",
+    "rule_name": "Ferment grain or legume matrix",
+    "category": "bioavailability",
+    "action": {
+      "description": "Use sourdough or controlled fermentation",
+      "code": "PROC_FERMENT",
+      "engine_instruction": "When compatible, suggest sourdough/fermented batter rather than unfermented equivalents."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Human and food-processing literature supports phytate reduction through fermentation.",
+      "sources": [
+        {
+          "title": "Influence of fermentation on mineral bioavailability",
+          "type": "peer-reviewed review",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19774556/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-011",
+    "rule_name": "Cook eggs rather than consume raw",
+    "category": "bioavailability",
+    "action": {
+      "description": "Cook egg until safely set",
+      "code": "PROC_COOK",
+      "engine_instruction": "Never optimize protein absorption by recommending raw egg; retain food-safety cooking guidance."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Stable-isotope human study found substantially greater digestibility of cooked versus raw egg protein.",
+      "sources": [
+        {
+          "title": "Digestibility of cooked and raw egg protein in humans",
+          "type": "peer-reviewed human trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9772141/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-012",
+    "rule_name": "Pressure-cook or boil legumes fully",
+    "category": "bioavailability",
+    "action": {
+      "description": "Apply adequate moist heat",
+      "code": "PROC_MOIST_HEAT",
+      "engine_instruction": "Reject undercooked dry beans; prefer full boiling/pressure cooking."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Food science evidence shows adequate heat reduces protease inhibitors and improves digestibility; safety evidence is strong.",
+      "sources": [
+        {
+          "title": "Lectins in dry legumes and safe preparation",
+          "type": "government guidance",
+          "url": "https://www.fda.gov/food/chemical-contaminants-pesticides/natural-toxins-food",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-013",
+    "rule_name": "Use nixtamalized corn",
+    "category": "bioavailability",
+    "action": {
+      "description": "Prefer nixtamalized masa for relevant dishes",
+      "code": "PROC_NIXTAMAL",
+      "engine_instruction": "For tortillas/tamales, map nixtamalized masa as the preferred corn form when niacin is the target."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Historical, biochemical, and nutrition evidence establishes nixtamalization as improving niacin availability.",
+      "sources": [
+        {
+          "title": "Niacin: Fact Sheet for Health Professionals",
+          "type": "government evidence summary",
+          "url": "https://ods.od.nih.gov/factsheets/Niacin-HealthProfessional/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-014",
+    "rule_name": "Grind seeds before use",
+    "category": "bioavailability",
+    "action": {
+      "description": "Use ground rather than whole seeds when nutrient access is the goal",
+      "code": "PROC_GRIND",
+      "engine_instruction": "Substitute ground seed for whole seed when texture permits; preserve portion size."
+    },
+    "evidence": {
+      "tier": "B",
+      "summary": "Human trials show greater uptake of flax components from ground versus whole seed.",
+      "sources": [
+        {
+          "title": "Bioavailability of alpha-linolenic acid in subjects after ingestion of three different forms of flaxseed",
+          "type": "peer-reviewed human trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18689552/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BIO-015",
+    "rule_name": "Avoid prolonged boiling of water-soluble vitamins",
+    "category": "bioavailability",
+    "action": {
+      "description": "Use steaming, microwaving, or brief cooking with minimal water",
+      "code": "PROC_GENTLE_COOK",
+      "engine_instruction": "When vitamin C or folate is the target, prefer brief low-water methods or retain cooking liquid in the dish."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "USDA nutrient-retention research and reviews support method-dependent losses of water-soluble vitamins.",
+      "sources": [
+        {
+          "title": "USDA Table of Nutrient Retention Factors",
+          "type": "government data",
+          "url": "https://www.ars.usda.gov/ARSUserFiles/80400525/Data/retn/retn06.pdf",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  }
+]

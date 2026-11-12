@@ -1,0 +1,156 @@
+[
+  {
+    "rule_id": "SYN-001",
+    "rule_name": "Vitamin C with nonheme iron",
+    "category": "synergy",
+    "action": {
+      "description": "Add a vitamin C-rich food in the same meal",
+      "code": "PAIR_VITC_IRON",
+      "engine_instruction": "Pair beans, lentils, tofu, fortified grains, or greens with citrus, peppers, berries, tomato, or broccoli."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Human absorption research and NIH guidance identify vitamin C as an enhancer of nonheme iron absorption.",
+      "sources": [
+        {
+          "title": "Iron: Fact Sheet for Health Professionals",
+          "type": "government evidence summary",
+          "url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-002",
+    "rule_name": "Dietary fat with carotenoids",
+    "category": "synergy",
+    "action": {
+      "description": "Include a modest amount of fat in the meal",
+      "code": "PAIR_FAT_CAROTENOID",
+      "engine_instruction": "Add olive oil, avocado, nuts, seeds, tahini, or another compatible fat to salads/vegetables."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Randomized meal studies show substantially higher carotenoid absorption when vegetables are consumed with fat.",
+      "sources": [
+        {
+          "title": "Carotenoid absorption from salad and the effect of salad dressing fat",
+          "type": "peer-reviewed human trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15277161/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-004",
+    "rule_name": "Vitamin D with dietary fat",
+    "category": "synergy",
+    "action": {
+      "description": "Consume with a meal containing fat",
+      "code": "PAIR_FAT_VITD",
+      "engine_instruction": "For vitamin D-fortified or naturally rich meals, retain a compatible fat source."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Randomized human studies show higher vitamin D absorption with fat-containing meals.",
+      "sources": [
+        {
+          "title": "Dietary fat increases vitamin D-3 absorption",
+          "type": "peer-reviewed randomized trial",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25441954/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-006",
+    "rule_name": "Preformed vitamin A/carotenoids with fat",
+    "category": "synergy",
+    "action": {
+      "description": "Include fat in the same meal",
+      "code": "PAIR_FAT_VITA",
+      "engine_instruction": "Pair squash, sweet potato, carrots, or greens with a modest fat source."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "NIH and human feeding studies support fat-dependent absorption of carotenoids and vitamin A.",
+      "sources": [
+        {
+          "title": "Vitamin A and Carotenoids: Fact Sheet for Health Professionals",
+          "type": "government evidence summary",
+          "url": "https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-007",
+    "rule_name": "Complete limiting amino acids across the day",
+    "category": "synergy",
+    "action": {
+      "description": "Combine or rotate complementary plant proteins",
+      "code": "PAIR_AA_COMPLEMENT",
+      "engine_instruction": "Recommend culturally appropriate combinations such as beans with rice or hummus with whole-grain bread."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Protein-quality guidance supports complementary patterns while rejecting the need for rigid same-meal combining.",
+      "sources": [
+        {
+          "title": "Dietary protein quality evaluation in human nutrition",
+          "type": "FAO expert report",
+          "url": "https://www.fao.org/4/i3124e/i3124e.pdf",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-008",
+    "rule_name": "Lemon or acid with nonheme iron",
+    "category": "synergy",
+    "action": {
+      "description": "Use a vitamin C-containing acidic ingredient",
+      "code": "PAIR_ACID_VITC_IRON",
+      "engine_instruction": "Use lemon/lime, tomato, or vitamin C-rich peppers; do not code generic vinegar as equivalent to vitamin C."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "Human iron-absorption evidence supports ascorbic acid; this rule prevents an overly broad acid heuristic.",
+      "sources": [
+        {
+          "title": "Iron: Fact Sheet for Health Professionals",
+          "type": "government evidence summary",
+          "url": "https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "SYN-010",
+    "rule_name": "Lactose and vitamin D support calcium use",
+    "category": "synergy",
+    "action": {
+      "description": "Prefer calcium foods with adequate vitamin D status; retain lactose if tolerated",
+      "code": "PAIR_VITD_CALCIUM",
+      "engine_instruction": "For calcium optimization, pair with vitamin D-fortified choices when compatible."
+    },
+    "evidence": {
+      "tier": "A",
+      "summary": "NIH evidence summary describes vitamin D-dependent calcium absorption.",
+      "sources": [
+        {
+          "title": "Calcium: Fact Sheet for Health Professionals",
+          "type": "government evidence summary",
+          "url": "https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/",
+          "review_date": "2026-09-17"
+        }
+      ]
+    }
+  }
+]
