@@ -1,5 +1,5 @@
 -- ============================================================================
---  013 · Reviewed suggestion text, as versions
+--  014 · Reviewed suggestion text, as versions
 --
 --  The review screen's edits used to live in the reviewer's own browser
 --  (localStorage, key "mazimeal:review"). That made every correction private
@@ -42,7 +42,7 @@
 --
 --  Additive only. Safe to re-run.
 --
---      psql "$SUPABASE_DB_URL" -f schema/migrations/013_recipe_content_versions.sql
+--      psql "$SUPABASE_DB_URL" -f schema/migrations/014_recipe_content_versions.sql
 -- ============================================================================
 
 BEGIN;

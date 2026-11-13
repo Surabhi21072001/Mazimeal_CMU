@@ -24,7 +24,7 @@ from pydantic import BaseModel
 from . import ask as ask_module
 from . import admin_people, auth, cache, config, content_review, nutrition_review
 from . import profile as profile_module
-from . import providers, rule_admin, rule_codes
+from . import providers, recipe_evaluation, rule_admin, rule_codes
 from .repo import get_repo
 
 app = FastAPI(title="MaziMeal API", version="0.1.0")
@@ -434,6 +434,23 @@ def admin_submit_rule_request(
 @app.get("/api/profile/me")
 def profile_me(caller: auth.Caller = Depends(auth.signed_in)):
     return {**profile_module.me(caller.user_id), "email": caller.email}
+
+
+# ------------------------------------------------- evaluate for a member
+#
+# The rules engine's own /rules/api/recipes/{id}/evaluate evaluates a recipe
+# on its own. This one can also take the member and the meal into account, so
+# it needs to know who is asking: the caller is the verified token, and a
+# member_id is loaded only for a household that account owns.
+
+
+@app.post("/api/recipes/{recipe_id}/evaluate")
+def evaluate_for_member(
+    recipe_id: str,
+    body: recipe_evaluation.EvaluateBody,
+    caller: auth.Caller = Depends(auth.signed_in),
+):
+    return recipe_evaluation.evaluate(recipe_id, body, caller.user_id)
 
 
 # ------------------------------------------------------------ reviewer list

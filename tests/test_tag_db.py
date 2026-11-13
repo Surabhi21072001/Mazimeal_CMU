@@ -78,6 +78,10 @@ TIER1_MIGRATION = "012_apply_tier1_ingredient_tags.sql"
 NEWLY_REACHABLE = {"BIO-008", "BIO-009", "BIO-010", "BIO-012", "BIO-014", "BIO-015", "GLY-008", "INH-006",
                    "SYN-001", "SYN-002", "SYN-004", "SYN-005", "SYN-006", "SYN-007", "SYN-008", "SYN-009"}
 REAL_EVALUATORS = {"BIO-002", "BIO-003", "BIO-007", "BIO-011", "GLY-007"}
+# Evaluators for rules triggered by DERIVED facts (nutrition, process, meal, equipment, engine),
+# not by ingredient tags. Grows one phase at a time; see tests/test_derived_db.py.
+FACT_DRIVEN_EVALUATORS = {"GLY-015", "GLY-002", "GLY-003", "GLY-004", "GLY-009", "INH-011",
+                          "GLY-005", "GLY-010", "GLY-011", "SYN-012"}
 # Reachable but unimplemented: they are triggered, and return NEEDS_CONTEXT ("condition evaluator not implemented").
 NEEDS_CONTEXT_RULES = {"BIO-001", "BIO-004", "BIO-005", "BIO-006", "BIO-008", "BIO-009", "BIO-010", "BIO-012",
                        "BIO-013", "BIO-014", "BIO-015", "GLY-008", "INH-006", "INH-007", "SYN-001", "SYN-002",
@@ -370,9 +374,15 @@ class Reachability(DatabaseCase):
 
     @classmethod
     def evaluate_all(cls):
+        """Ingredient-triggered candidates only. This class is about what the TAGS make
+        reachable; rules triggered by derived facts have their own tests
+        (tests/test_derived_db.py) and must not change these counts."""
         out = {}
         for rid in cls.recipe_ids:
-            for r in cls.evaluate.evaluate_recipe_rules(cls.conn, rid):
+            facts = cls.facts.build_recipe_facts(cls.conn, rid)
+            process_facts = cls.evaluate.extract_process_facts(facts)
+            for cand in cls.detect.detect_rules_from_facts(cls.conn, facts, include_derived=False):
+                r = cls.evaluate.evaluate_rule(cand, facts, process_facts)
                 out[(rid, r.rule_id)] = (str(r.applicability_status), r.reason)
         return out
 
@@ -406,7 +416,8 @@ class Reachability(DatabaseCase):
     def fired_rules(cls):
         out = {}
         for rid in cls.recipe_ids:
-            for cand in cls.detect.detect_rules_from_facts(cls.conn, cls.facts.build_recipe_facts(cls.conn, rid)):
+            facts = cls.facts.build_recipe_facts(cls.conn, rid)
+            for cand in cls.detect.detect_rules_from_facts(cls.conn, facts, include_derived=False):
                 out.setdefault(cand.rule_id, set()).add(rid)
         return out
 
@@ -450,7 +461,12 @@ class Reachability(DatabaseCase):
 
     # ---- what each called rule returns ------------------------------------------------------
     def test_exactly_the_five_existing_evaluators_exist(self):
-        self.assertEqual(set(self.evaluate.RULE_EVALUATORS), REAL_EVALUATORS)
+        """The five original evaluators are all still registered; every other registered
+        evaluator is one of the explicitly listed fact-driven ones (never a tag rule)."""
+        registered = set(self.evaluate.RULE_EVALUATORS)
+        self.assertTrue(REAL_EVALUATORS <= registered)
+        self.assertEqual(registered - REAL_EVALUATORS, FACT_DRIVEN_EVALUATORS)
+        self.assertFalse((registered - REAL_EVALUATORS) & set(NEEDS_CONTEXT_RULES))
 
     def test_five_called_rules_have_real_evaluators_and_twenty_four_are_needs_context(self):
         called = set(self.fired_after)
@@ -824,8 +840,9 @@ class CandidatesWithoutEvaluators(DatabaseCase):
         results = {r.rule_id: r for r in self.ev.evaluate_recipe_rules(self.conn, rid)}
         self.assertNotIn("not implemented", results["BIO-002"].reason)
 
-    def test_exactly_five_evaluators_exist(self):
-        self.assertEqual(sorted(self.ev.RULE_EVALUATORS), ["BIO-002", "BIO-003", "BIO-007", "BIO-011", "GLY-007"])
+    def test_the_five_original_evaluators_still_exist(self):
+        original = ["BIO-002", "BIO-003", "BIO-007", "BIO-011", "GLY-007"]
+        self.assertEqual(sorted(set(self.ev.RULE_EVALUATORS) - FACT_DRIVEN_EVALUATORS), original)
 
 
 if __name__ == "__main__":

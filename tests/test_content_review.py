@@ -18,7 +18,7 @@ and migration 013 - so a throwaway database is three commands:
     DSN=postgresql://postgres@127.0.0.1/mazi_rcv_test
     psql "$DSN" -f schema/00_data_sources.sql -f schema/01_recipes.sql
     psql "$DSN" -f schema/migrations/001_household_identity.sql   # for gen_ulid()
-    psql "$DSN" -f schema/migrations/013_recipe_content_versions.sql
+    psql "$DSN" -f schema/migrations/014_recipe_content_versions.sql
 
     MAZIMEAL_TEST_DSN=$DSN python3 -m pytest tests/test_content_review.py -v
 
@@ -43,7 +43,7 @@ sys.path.insert(0, str(REPO / "api"))
 import dbguard  # noqa: E402
 
 DSN = os.environ.get("MAZIMEAL_TEST_DSN")
-MIGRATION = REPO / "schema" / "migrations" / "013_recipe_content_versions.sql"
+MIGRATION = REPO / "schema" / "migrations" / "014_recipe_content_versions.sql"
 
 try:
     import psycopg

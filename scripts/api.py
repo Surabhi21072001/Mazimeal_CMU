@@ -28,8 +28,8 @@ from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 
 from recipe_facts import RecipeNotFound, build_recipe_facts
-from detect_rules import detect_rules_from_facts, _q
-from evaluate_rules import extract_process_facts, evaluate_rule
+from detect_rules import _q
+from evaluate_rules import evaluate_all_rules
 from auth import verify_password
 
 DSN = os.environ.get("MAZIMEAL_DSN", "dbname=mazimeal")
@@ -53,6 +53,9 @@ class MatchedStep(BaseModel):
 class MatchedOn(BaseModel):
     ingredients: list[MatchedIngredient] = []
     steps: list[MatchedStep] = []
+    # Every fact that called the rule, with its source (ingredient, recipe_nutrition,
+    # recipe_process, meal_context, equipment, engine_result). Additive.
+    facts: list[dict] = []
 
 
 class RuleEvaluationResponse(BaseModel):
@@ -80,6 +83,11 @@ class RuleEvaluationResponse(BaseModel):
     matched_on: MatchedOn
 
     reason: str
+
+    # Additive, all optional: older clients ignore them.
+    trigger_source: str | None = None         # what called the rule: 'ingredient', 'recipe_nutrition', ...
+    missing_context: list[dict] = []          # exactly what a NEEDS_CONTEXT result lacks: {field, reason}
+    evidence: dict | None = None              # values, units, thresholds and conditions the verdict used
 
     source_title: str | None = None
     source_url: str | None = None
@@ -300,13 +308,16 @@ def evaluate_recipe(
                                     detail=f"recipe not found: {recipe_id}")
             raise
 
-        candidates = detect_rules_from_facts(conn, facts)
-        process_facts = extract_process_facts(facts)
-        evaluated = [evaluate_rule(c, facts, process_facts) for c in candidates]
+        # The recipe on its own: no member and no meal. Rules that need either say so with
+        # NEEDS_CONTEXT instead of guessing. (Evaluating FOR a member is POST
+        # /api/recipes/{id}/evaluate on the authenticated app, api/app/main.py.)
+        evaluated = evaluate_all_rules(conn, facts)
 
         # Optional: attach the user's profile alongside the rule output. This
-        # does NOT influence rule evaluation yet — it is informational context
-        # for the frontend. Unknown/absent user_id simply yields user = null.
+        # does NOT influence rule evaluation — it is informational context
+        # for the frontend. ?user_id= is not a verified identity, so it must never
+        # be used to load health data into an evaluation. Unknown/absent user_id
+        # simply yields user = null.
         user = _load_user(conn, user_id) if user_id else None
 
         return RecipeEvaluationResponse(

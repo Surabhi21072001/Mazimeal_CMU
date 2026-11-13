@@ -483,9 +483,12 @@ class Migration012Static(unittest.TestCase):
         # to hold is that 012 is this file and nothing else, and that the
         # numbering has no gaps and no duplicates up to it.
         numbers = sorted(int(p.name.split("_", 1)[0]) for p in MIGRATIONS.glob("*.sql"))
+        # Two branches claiming one number is the thing to catch; a later
+        # migration existing is not. The whole sequence must be contiguous and
+        # unique, which is what caught 013 being used twice when the rules and
+        # the backend branches merged.
         self.assertEqual(self.NAME.split("_", 1)[0], "012")
-        self.assertEqual([n for n in numbers if n == 12], [12])
-        self.assertEqual(numbers[: numbers.index(12) + 1], list(range(1, 13)))
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)))
 
 
 class GrainLegumeMeaning(unittest.TestCase):
