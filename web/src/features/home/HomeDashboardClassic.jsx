@@ -6,7 +6,6 @@ import RecipeDetail from "../recipe/RecipeDetail";
 import { gapSentences, loadHome } from "./homeData";
 
 export default function HomeDashboardClassic({
-  user,
   setStep,
   plannerDay,
   profile,
@@ -63,8 +62,6 @@ export default function HomeDashboardClassic({
   }, {});
   const defaultHydrationLog = { water: 2 };
   const mealLog = mealLogByDay[dayLogKey] || defaultMealLog;
-  const totalMeals = items.length;
-  const totalCalories = plannerDay ? plannerDay.totalCalories : items.reduce((sum, item) => sum + item.calories, 0);
   const loggedItems = items.filter((item) => mealLog[item.id]);
   const loggedCalories = loggedItems.reduce((sum, item) => sum + (item.calories || 0), 0);
   const calorieGoal = calculateDailyCalorieTarget(profile);
@@ -84,7 +81,6 @@ export default function HomeDashboardClassic({
       ? `${hydrationRemaining} more glass${hydrationRemaining === 1 ? "" : "es"} to reach today's goal.`
       : `${hydrationRemaining} glasses left. A few more sips will lift your energy today.`;
   const highlightedMeal = items.find((item) => item.meal.toLowerCase().includes("dinner")) || items[0];
-  const savedSideMeal = items.find((item) => item.sideSuggestion) || null;
   const topNutrients = Object.entries(
     items.reduce((acc, item) => {
       const calories = item.calories || 1;
@@ -237,13 +233,6 @@ export default function HomeDashboardClassic({
     }));
     setActiveClassicModal(null);
   };
-
-  const quickActions = [
-    ["hydration", "💧", "Hydration"],
-    ["meal", "🍽️", "Log Meal"],
-    ["sleep", "🌙", "Sleep Log"],
-    ["streak", "🔥", "Streaks"],
-  ];
 
   return (
     <div style={{ padding: "26px 20px 94px", maxWidth: 1180, margin: "0 auto", display: "grid", gap: 22 }}>

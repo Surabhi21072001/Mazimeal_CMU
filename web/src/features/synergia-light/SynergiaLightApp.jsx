@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { C } from "../../shared/theme/colors";
-import { calculateDailyCalorieTarget, describeCalorieGoal, formatNutrientLabel } from "../../shared/nutrition/calorieTarget";
 import HomeDashboardClassic from "../home/HomeDashboardClassic";
 import { hasSupabaseEnv, supabase } from "../../shared/services/supabase/client";
 import {
@@ -648,7 +647,6 @@ function LandingModule({ onTrial, onLogin }) {
     const handleScroll = () => {
       if (!heroRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
-      const viewport = window.innerHeight || 1;
       const scrollY = window.scrollY || window.pageYOffset || 0;
       const heroTop = scrollY + rect.top;
       const start = heroTop;
@@ -2196,7 +2194,7 @@ function HomeDashboard({ user, setStep, plannerDay }) {
 }
 
 function RecipesClassicPage({ user, setStep, plannerDay, plannerState, setPlannerState, selectedDayIndex }) {
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
   const [selectedPrep, setSelectedPrep] = useState("Prep Time");
   const [selectedMealType, setSelectedMealType] = useState("Meal Type");
   const [selectedDietary, setSelectedDietary] = useState("Dietary Needs");
@@ -3155,7 +3153,9 @@ function RecipesClassicPage({ user, setStep, plannerDay, plannerState, setPlanne
     setFrequentlyUsedRecipes(updated);
     try {
       localStorage.setItem(`mazimeal:frequently-used-recipes:${user || "guest"}`, JSON.stringify(updated));
-    } catch {}
+    } catch {
+      // A browser that refuses to store this is not a reason to lose the click.
+    }
   };
 
   const toggleFavorite = (recipeId) => {
@@ -3166,7 +3166,9 @@ function RecipesClassicPage({ user, setStep, plannerDay, plannerState, setPlanne
     setFavoriteRecipes(updated);
     try {
       localStorage.setItem(`mazimeal:favorite-recipes:${user || "guest"}`, JSON.stringify(updated));
-    } catch {}
+    } catch {
+      // Same here: the favourite is already in state; storage is a bonus.
+    }
   };
 
   const recipeSectionTabMeta = {
@@ -4362,18 +4364,8 @@ function TrackerTab({ plannerDay, plannerState, setPlannerState, profile }) {
         };
       })
     : [];
-  const todayCalories = trackerMeals.reduce((sum, meal) => sum + meal.calories, 0);
-  const todayProtein = trackerMeals.reduce((sum, meal) => sum + meal.protein, 0);
   const todayFiber = trackerMeals.reduce((sum, meal) => sum + (Number(meal.nutrients?.Fiber) || 0), 0);
-  const calorieGoal = calculateDailyCalorieTarget(profile);
-  const weeklyCalories = (plannerState?.days || []).reduce((sum, day) => sum + (day.totalCalories || 0), 0);
-  const weeklyAvgCalories = plannerState?.days?.length ? Math.round(weeklyCalories / plannerState.days.length) : todayCalories;
-  const monthlyConsistency = Math.min(100, Math.round((trackerMeals.filter((meal) => meal.calories > 0).length / Math.max(trackerMeals.length, 1)) * 100));
-  const topTrackerMeals = [...trackerMeals].sort((a, b) => b.calories - a.calories).slice(0, 4);
   const trackerDays = (plannerState?.days || []).slice(0, 7);
-  const dateRangeLabel = trackerDays.length
-    ? `${trackerDays[0].monthLabel} ${trackerDays[0].dayNumber} - ${trackerDays[Math.min(trackerDays.length - 1, 6)].monthLabel} ${trackerDays[Math.min(trackerDays.length - 1, 6)].dayNumber}`
-    : "Apr 1 - Apr 21";
   const hydrationTrend = trackerDays.map((day, index) => {
     const baseValue = 54 + index * 5;
     return Math.min(94, baseValue + (index % 2 === 0 ? 4 : -2));
@@ -4743,7 +4735,7 @@ function TrackerTab({ plannerDay, plannerState, setPlannerState, profile }) {
   );
 }
 
-function ProfileTab({ user, profiles, profile, profileCount, setProfiles, setStep }) {
+function ProfileTab({ profiles, profile, profileCount, setProfiles, setStep }) {
   const primary = profile || { name: "Not set", goal: "Not set" };
   const [editingIndex, setEditingIndex] = useState(null);
   const [editDraft, setEditDraft] = useState(defaultProfileDraft());
@@ -5974,7 +5966,6 @@ function WeeklyPlanTab({ profiles }) {
 }
 
 function WeeklyPlannerShowcase({
-  profiles,
   mealTemplates,
   plannerDays,
   setPlannerDays,
@@ -6033,11 +6024,6 @@ function WeeklyPlannerShowcase({
   const calendarMonthStart = new Date(pickerCursorDate.getFullYear(), pickerCursorDate.getMonth(), 1);
   const calendarGridStart = new Date(calendarMonthStart);
   calendarGridStart.setDate(calendarMonthStart.getDate() - calendarMonthStart.getDay());
-  const calendarDays = Array.from({ length: 35 }, (_, index) => {
-    const date = new Date(calendarGridStart);
-    date.setDate(calendarGridStart.getDate() + index);
-    return date;
-  });
   const weekOptions = Array.from({ length: 5 }, (_, weekIndex) => {
     const weekStart = new Date(calendarGridStart);
     weekStart.setDate(calendarGridStart.getDate() + weekIndex * 7);
@@ -6665,7 +6651,7 @@ function Nav({ user, step, setStep }) {
     <div style={{ background: C.white, borderBottom: `1.5px solid ${C.border}`, padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 58, position: "sticky", top: 0, zIndex: 100, boxShadow: "0 1px 8px rgba(0,80,40,0.06)" }}>
       <Logo size={24} />
       <div style={{ display: "flex", gap: 2, background: C.bg, padding: 4, borderRadius: 10, border: `1.5px solid ${C.border}` }}>
-        {steps.map(([id, icon, label], i) => (
+        {steps.map(([id, , label], i) => (
           <button key={id} onClick={() => step !== "engine" && setStep(id)} className={`nav-link ${step === id ? "active" : ""}`}>
             <span style={{ width: 18, height: 18, background: step === id ? C.accent : C.dim, borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: step === id ? C.white : C.subtext, fontWeight: 700, flexShrink: 0 }}>{i + 1}</span>
             {label}
