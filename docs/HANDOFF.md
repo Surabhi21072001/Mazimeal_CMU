@@ -20,17 +20,41 @@ Render deploys branch `main`. The API connects through Supabase's IPv4 pooler
 on port 6543 — the direct `db.*.supabase.co` host is IPv6-only and unreachable
 from many networks, which is a half-day to rediscover.
 
-### The repository exists twice, and this has to be settled first
+### The repository exists twice, and one of them is the real one
 
 ```
-origin  git@github.com:mazimeal/platform.git
-cmu     git@github.com:Surabhi21072001/Mazimeal_CMU.git
+Surabhi21072001/Mazimeal_CMU   canonical. Vercel and Render build from this.
+mazimeal/platform              the original starting point. Not maintained.
 ```
 
-Vercel and Render build from the **cmu** copy. `origin` has branches the cmu
-copy does not and vice versa. Before the repository is transferred to a new
-owner, decide which one is canonical and point both hosts at it; transferring
-the wrong one moves the history without moving the deployments.
+`Mazimeal_CMU` is the one to transfer. `mazimeal/platform` is where the project
+started and is where to look if a piece of history seems to be missing, but
+nothing deploys from it.
+
+Three pieces of work never made the crossing, and they are worth a decision
+rather than a shrug — this was checked commit by commit, not assumed:
+
+| On `mazimeal/platform` | What it is |
+|---|---|
+| `dev` → PR #11, merged 2026-11-11 | ~4,000 lines of the recommendation and data work: `recommender/db/{93_functions,96_member_logs,98_home,98_member,98_fills}.sql`, migrations 007–011, `schema/seed/recipe_content.sql` (1,513 lines), `schema/seed/recipe_fills.sql`, two generator scripts, and the "live home page" frontend changes |
+| `recipes-results-v2`, unmerged | 1,452 lines: recommender v2, `98_targets.sql`, migrations 012–014, a rules→SQL loader, and a new Results screen. Its `features/recipes/RecipesPage.jsx` is a different file with the same path as the one on `Mazimeal_CMU`, so this one genuinely collides |
+| `user_module_sign_out`, unmerged | "Add real sign out", two files |
+
+**PR #11 is the one that matters.** It is not that `Mazimeal_CMU` has no
+recommender functions — it has `fn_home`, `fn_recipe_nutrition` and
+`fn_log_meal`, they were simply never installed into the live project. It is
+that PR #11 holds a *newer* `98_home.sql` and `93_functions.sql`, plus five
+files and five migrations that `Mazimeal_CMU` does not have at all:
+`fn_member_day`, `fn_member_streak`, `fn_log_hydration`, `fn_log_sleep`,
+`fn_toggle_favorite`, `fn_compute_member_targets`, `fn_fill_recipe_derived`
+and the allergen map. Installing from `Mazimeal_CMU` gives you a working but
+older schema. It would merge cleanly apart from two files: `.gitignore`, and
+`HomeDashboardClassic.jsx` where both sides changed (114 lines added there
+against 11 removed here).
+
+Whether to port it belongs to the recommendation workstream, not to whoever
+reads this first. But nobody should install `recommender/db/` from
+`Mazimeal_CMU` without knowing that a newer version of those files exists.
 
 ---
 
@@ -114,7 +138,11 @@ Consequences in production today:
 
 Fixing it means running `recommender/db/install.sql` against the project, which
 is the recommendation work's own call to make — their README documents the
-order and the pgvector prerequisite.
+order and the pgvector prerequisite. Read the repository note above first:
+newer versions of several of these files, and five they do not include at all,
+are sitting on `mazimeal/platform`'s `dev` branch and have never been merged
+here. Installing the copy in this repository works; it is just not the latest
+the team wrote.
 
 ### 2. Email confirmation is turned OFF
 
@@ -225,8 +253,9 @@ apply in order to a fresh database.
 
 ## A first week, in order
 
-1. **Settle the two repositories.** Decide which is canonical, point Vercel and
-   Render at it, then transfer.
+1. **Transfer `Mazimeal_CMU`** — the canonical copy, and the one both hosts
+   build from. Decide separately what happens to the three stranded branches
+   on `mazimeal/platform` above; PR #11 is the one worth porting.
 2. **Take over the three accounts** — Vercel, Render, Supabase — and rotate the
    database password, which means updating the two `sync: false` variables in
    Render.
