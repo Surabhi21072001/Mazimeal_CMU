@@ -1,12 +1,15 @@
 -- ============================================================================
 --  Row Level Security
 --
---  This file exists because of what is currently in the repository. The
---  shipped supabase-schema.sql grants the `anon` role SELECT, INSERT and
---  UPDATE on every row of weekly_plans with `USING (true)`. Any visitor to the
---  deployed site can read or overwrite any other user's meal plan. Once this
---  schema holds member_conditions — allergies, diagnoses, medications — the
---  same mistake is a HIPAA breach rather than an annoyance.
+--  This file exists because of what the repository used to ship. web/
+--  supabase-schema.sql granted the `anon` role SELECT, INSERT and UPDATE on
+--  every row of weekly_plans with `USING (true)`: any visitor to the deployed
+--  site could read or overwrite any other user's meal plan. That file has
+--  since been deleted, and 96_compat_weekly_plans.sql drops the policies it
+--  created in any database where it was already run. The reasoning stays here
+--  because the next schema to be added by hand will be tempted the same way:
+--  once this schema holds member_conditions — allergies, diagnoses,
+--  medications — the mistake is a HIPAA breach rather than an annoyance.
 --
 --  The model below is household-scoped: a user reaches exactly the rows
 --  belonging to households they created, and nothing else. Reference data

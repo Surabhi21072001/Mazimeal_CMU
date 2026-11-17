@@ -31,7 +31,7 @@ Everything is an environment variable, so no file needs editing.
 
 | Variable | Default | What it does |
 |---|---|---|
-| `MAZI_REPO` | `fixture` | `fixture` reads `fixtures/*.json`. `supabase` is not written yet; it needs our own project first |
+| `MAZI_REPO` | `fixture` | `fixture` reads `fixtures/*.json`. `supabase` reads the live database and is what production runs; it needs `SUPABASE_DB_URL` (or `MAZIMEAL_DSN`) |
 | `MAZI_PROVIDER` | `template` | who writes the suggestion text: `template`, `local`, or `api` later |
 | `MAZI_LLM_URL` | `http://127.0.0.1:11434/v1` | any OpenAI-compatible endpoint (Ollama `:11434/v1`, mlx-lm `:8080/v1`) |
 | `MAZI_LLM_MODEL` | `mlx-community/gemma-3-4b-it-4bit` | the model to call |

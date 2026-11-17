@@ -331,7 +331,9 @@ def clear_cache():
 # Reading the rules needs no account: they are published research with their
 # sources, and the screens already show them on every recipe. Proposing a
 # change needs a verified Supabase account. Approving one needs that account to
-# be on MAZI_ADMIN_EMAILS, which the server reads from its own environment.
+# be a reviewer, which means MAZI_ADMIN_EMAILS - the server's own environment,
+# which no request can touch - or the app_admins table, which the admin screen
+# edits. See auth.admin_emails().
 
 
 @app.get("/api/admin/me")

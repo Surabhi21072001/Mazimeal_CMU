@@ -1,122 +1,185 @@
-# Mazimeal
+# MaziMeal
 
-Nutrition planning: recipes, ingredients, and the rules that match them to a
-household's needs.
+Nutrition planning. A household says who it is feeding; the database holds 400
+recipes, their ingredients, their nutrition, and 54 rules drawn from nutrition
+research. The product's job is to match the rules to the recipe in front of a
+cook — "crush the garlic and let it rest before it meets heat" — and to show
+only the ones a human reviewer has approved.
+
+Everything in the database today is test data. See
+[docs/HANDOFF.md](docs/HANDOFF.md) for what is deployed, who owns what, and
+what is still open.
 
 ## Layout
 
 ```
-web/        React + Vite client
-docs/       Schema workbook, branching guide, access log
-schema/     PostgreSQL DDL, numbered in load order
+web/           React + Vite client. Hash-routed, no router dependency.
+api/           FastAPI backend. Serves the screens and mounts the rules engine.
+scripts/       The rules engine and the data pipeline. Imported by api/, not
+               called over HTTP.
+schema/        PostgreSQL DDL (numbered in load order) + migrations/ + seed/
+recommender/   The recommendation database: its own schema, functions and
+               scoring. The frontend calls its functions through Supabase RPC.
+tests/         pytest. 519 pass without a database; the rest skip.
+docs/          How the data was built, how to deploy, who can sign in
 ```
 
-`docs/Synergia_Unified_DB_Schema.xlsx` is the source of truth for the database.
-Where a DDL file differs from it, there's a comment in the file saying why.
+Four workstreams wrote this repository and the split still shows:
+`web/` and `api/` are the front-and-back-end work, `scripts/` and `schema/` are
+shared with the rules and data work, and `recommender/` belongs to the
+recommendation work. [docs/HANDOFF.md](docs/HANDOFF.md) has the ownership map.
 
-## Setup
+## Run it
 
-You'll need Node 20+ and `psql` 14+.
-
-### Clone
+Node `^20.19 || >=22.12` (stated in `web/package.json`) and Python 3.12.
 
 ```bash
-git clone https://github.com/mazimeal/platform.git
-cd platform
-git checkout dev
-npm install --prefix web
+# the screens, on bundled sample data, no backend needed
+npm ci --prefix web
+npm run dev --prefix web                      # http://localhost:5173
+
+# the backend
+python3.12 -m venv api/.venv
+api/.venv/bin/pip install -r api/requirements.txt
+api/.venv/bin/uvicorn app.main:app --app-dir api --reload --port 8002
 ```
 
-Clone somewhere outside OneDrive or Dropbox. Sync clients and git both try to
-manage the folder and you end up with duplicate files inside `.git/`.
+Point the screens at the backend with `web/.env.local`:
 
-### Credentials
+```
+VITE_API_BASE_URL=http://127.0.0.1:8002
+```
 
-Credentials live in SharePoint, not in this repo.
+The badge in the top right of each screen says which of the three you are
+looking at: **Offline sample**, **Backend · sample data**, or **Live**.
 
-You'll need the Supabase URL and anon key for the frontend, and the host, port,
-database, username and password for the shared PostgreSQL instance.
+Against the real database, add a DSN — see [docs/DATA.md](docs/DATA.md) for
+where the connection string comes from:
 
 ```bash
-cp .env.example .env
+set -a; . ./.env; set +a
+MAZI_REPO=supabase MAZIMEAL_DSN="$SUPABASE_DB_URL" \
+  api/.venv/bin/uvicorn app.main:app --app-dir api --port 8002
 ```
 
-Fill it in, then check it's ignored before you commit anything:
+### Tests
 
 ```bash
-git check-ignore -v .env      # should print a .gitignore line
+api/.venv/bin/pip install -r requirements-dev.txt
+api/.venv/bin/python -m pytest tests -q
 ```
 
-If that prints nothing, fix `.gitignore` first.
+519 pass, 171 skip. The skips are the tests that need Postgres; they run only
+when `MAZIMEAL_TEST_DSN` points at a **local** database, and `tests/dbguard.py`
+refuses anything else so a test run cannot truncate the shared one.
 
-### Run the client
+### Screens
 
-```bash
-npm run dev --prefix web
-```
+| URL | What it is |
+|---|---|
+| `/` | The recommendations — one meal for one member, ranked by the nutrient they still need |
+| `#/recipes` | The seed recipes, as an index |
+| `#/cook/<recipe_id>` | The recipe: ingredients, nutrition, steps, and the rules that apply |
+| `#/review` | Reviewer screen: approve, edit or reject the generated text per recipe |
+| `#/review/nutrition` | Whether each recipe's numbers can be right |
+| `#/admin` | The rules table, the code vocabulary, and the queue that changes them |
+| `#/classic` | The original team's app shell, which still owns signing up |
 
-### Load the schema
+## Load the schema from scratch
 
 ```bash
 createdb mazimeal
 for f in schema/[0-9][0-9]_*.sql; do
   psql -d mazimeal -v ON_ERROR_STOP=1 -f "$f"
 done
+for f in schema/migrations/*.sql; do
+  psql -d mazimeal -v ON_ERROR_STOP=1 -f "$f"
+done
 psql -d mazimeal -f schema/99_validate.sql
 ```
 
 Keep `ON_ERROR_STOP=1`. Without it psql carries on after a failure and you get
-half a schema with no obvious error.
+half a schema with no obvious error. The file numbers are the load order:
+`03_recipe_ingredients.sql` has foreign keys into `recipes` and `ingredients`,
+so those have to exist first. Seed data is in `schema/seed/`, documented in
+[schema/seed/README.md](schema/seed/README.md).
 
-The file numbers are the load order. `03_recipe_ingredients.sql` has foreign
-keys into `recipes` and `ingredients`, so those have to exist first.
-
-### Connect to the shared database
-
-```bash
-psql "postgresql://$PGUSER:$PGPASSWORD@$PGHOST:$PGPORT/$PGDATABASE" \
-     -c "SELECT current_database(), current_user;"
-```
-
-If it fails, post the error in the group chat. A firewall or SSL-mode problem on
-one machine is usually the same on all three.
+`recommender/db/` is a separate schema with its own installer
+(`recommender/db/install.sql`) and its own README.
 
 ## Credentials
 
-Nothing with a password goes in the repo: not in a SQL file, not in a comment,
-not temporarily. Shared credentials live in SharePoint, your working copy lives
-in `.env`, and CI rejects any commit that adds one.
+Nothing with a password goes in the repository: not in a SQL file, not in a
+comment, not temporarily. Your working copy lives in `.env` (gitignored), and
+CI fails any commit that adds one.
 
-If something does get committed, say so in the group chat so we can rotate it.
+```bash
+cp .env.example .env
+git check-ignore -v .env      # must print a .gitignore line
+```
 
-Two notes:
+Two things that are *not* secret, and are committed on purpose:
+`web/.env.production` holds the Supabase URL and the publishable key, because
+`VITE_*` variables are compiled into the browser bundle. That key carries no
+privileges of its own — row-level security is what protects the data, and the
+reviewer tables have RLS enabled with no policy at all, so the browser key
+cannot reach them even in principle.
 
-The Supabase `VITE_` variables are compiled into the browser bundle, so the anon
-key is public by design. Row level security is what actually protects the data,
-which makes those policies worth reviewing before real user data goes in.
+## Example data
 
-We're using one shared database login for now, which is fine for test recipes.
-Once there's real data in there, everyone should have their own role so the
-audit trail means something.
+Committed on purpose, so the screens work the moment someone clones this.
 
-## Branching
+| Path | What it is |
+|---|---|
+| `api/fixtures/*.json` | One household, five recipes, one set of recommendations |
+| `web/src/shared/fixtures/` | A copy, bundled so the frontend runs with no backend. Regenerate both with `python3 api/build_fixtures.py` |
+| `schema/seed/*.sql` | 400 Food.com recipes, USDA nutrition, gram weights — the inherited seed data |
 
-`main` is what we demo, `dev` is where day to day work goes. Pull before you
-push. Use a branch and PR for schema files so CI checks them first. Details in
-`docs/BRANCHING.md`.
+Every fixture carries a `_fixture_note` field saying which of its values are
+real and which are invented. In short: per-serving nutrition, ingredient names,
+step text and the rules themselves are real; gram weights, step durations,
+today's consumed totals and the recommendation scores are invented.
 
-## About the imported code
+## How the generated text works
 
-`web/` is the `sample-main` folder. The `.env` file isn't included. Credentials
-stay in SharePoint. If you were using the Supabase key from that file, it's
-worth rotating.
+Suggestions are not written while someone waits. They are generated offline,
+reviewed, and then served as data:
 
-`package.json` pins `vite: ^8.0.0-beta.13` through `overrides`, so the web build
-in CI is advisory until that moves to a stable release.
+```bash
+# writes version 1 of each recipe's review record - the baseline a reviewer
+# reads a diff against, and never served to a cook on its own
+api/.venv/bin/python api/pregenerate.py
+```
+
+Two guards decide whether a model's words are used at all: it may not introduce
+a number the source rule did not contain, and a summary may not quietly drop a
+rule it claims to cover. When either fires, the rule's own wording is used
+instead and the response says so. No model runs in a deployed build —
+production reports `"provider": "template"`.
+
+A reviewer's decision is a row in `recipe_content_versions`, including
+"confirmed, nothing changed", because an absence of rows cannot be told apart
+from an absence of reviewers.
+
+## Where to read next
+
+| Document | What it answers |
+|---|---|
+| [docs/HANDOFF.md](docs/HANDOFF.md) | What is deployed where, who owns what, what is still open |
+| [docs/API.md](docs/API.md) | Every endpoint, its input and output, and which ones touch recipes |
+| [api/SPEC.md](api/SPEC.md) | The payload contract between the workstreams |
+| [docs/DATA.md](docs/DATA.md) | Getting at the database, changing data safely, and what is wrong with it |
+| [docs/deploy.md](docs/deploy.md) | Deploying the frontend and the API |
+| [docs/accounts.md](docs/accounts.md) | Signing in, and how someone becomes a reviewer |
+| [docs/BRANCHING.md](docs/BRANCHING.md) | Branches, PRs, and who owns which file |
+| [api/README.md](api/README.md) | Running the backend, switches, and what the models did |
+| [recommender/README.md](recommender/README.md) | How the recommendation scoring works |
 
 ## Conventions
 
-- Never push to `main`. Pull before pushing to `dev`.
+- `main` is what gets demoed and deployed. `dev` is day-to-day work. Pull
+  before you push, and use a PR for schema files so CI checks them first.
 - One owner per schema file. Ask before editing someone else's.
+- Migrations are numbered and contiguous; `tests/test_tag_data.py` fails if two
+  branches claim the same number, which has already happened once.
 - Run `schema/99_validate.sql` after each insert batch, not just at the end.
-- Check CI. It can't block anything on our plan, so it only helps if someone looks.
