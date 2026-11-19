@@ -23,6 +23,11 @@ What it does and does not do
   * It runs once. Its own result is never an input (engine rules are filtered out of the
     primary results it reads), so it cannot call itself.
 
+A pair is only real when both rules are about a SHARED normalised ingredient (shared_ingredients). The rule's
+own example is one food, tomato, seen two ways; a tomato recipe that also has a lemon has no such conflict. Do not
+loosen this to make the rule fire: with tomato carrying no NUT_VITC tag the pair has no candidates, which is
+correct until a reviewed mapping says the same tomato qualifies for both rules.
+
 Which pairs conflict is data, in CONFLICT_PAIRS, not code. The list holds only what the rule's
 own text names. Adding a pair is a reviewed configuration change; nothing is inferred.
 """
@@ -89,14 +94,42 @@ def _load_rule(conn, rule_id):
     return meta
 
 
-def conflicts_present(primary_results, pairs=None):
-    """Configured pairs whose members were BOTH called as ordinary candidates, in a stable order.
+def shared_ingredients(a, b) -> list[dict]:
+    """Ingredients both primary results are about, by ingredient id or by normalised name.
 
-    A member that was never a candidate cannot conflict; it is simply absent."""
+    'tomatoes', 'fresh tomatoes' and 'tomato' are one ingredient; 'tomato paste' is not. A result with no
+    matched-ingredient evidence shares nothing: a conflict is never assumed from the recipe merely
+    containing both rules' foods."""
+    import ingredient_steps as IS
+    ids_b = {iid for iid, _ in b.matched_ingredients}
+    by_key_b: dict[str, list[str]] = {}
+    for _, name in b.matched_ingredients:
+        by_key_b.setdefault(IS.canonical_key(name), []).append(name)
+    out, seen = [], set()
+    for iid, name in a.matched_ingredients:
+        key = IS.canonical_key(name)
+        if key in seen or not (iid in ids_b or key in by_key_b):
+            continue
+        seen.add(key)
+        out.append({"key": key, "ingredient_id": iid, "names": sorted({name, *by_key_b.get(key, [])})})
+    return out
+
+
+def conflicts_present(primary_results, pairs=None):
+    """(pair, result_a, result_b, shared_ingredients) for each configured pair that is real here.
+
+    Real means both members were ordinary candidates AND they are about at least one shared normalised
+    ingredient. Two rules that merely co-occur in a recipe (tomato for BIO-003, lemon for INH-006) do not
+    conflict. In a stable order."""
     pairs = CONFLICT_PAIRS if pairs is None else pairs
     index = {r.rule_id: r for r in primary_results if r.rule_id not in ENGINE_RULE_IDS}
-    return [(p, index[p.members[0]], index[p.members[1]])
-            for p in sorted(pairs, key=lambda p: p.members) if p.members[0] in index and p.members[1] in index]
+    out = []
+    for p in sorted(pairs, key=lambda p: p.members):
+        if p.members[0] in index and p.members[1] in index:
+            shared = shared_ingredients(index[p.members[0]], index[p.members[1]])
+            if shared:
+                out.append((p, index[p.members[0]], index[p.members[1]], shared))
+    return out
 
 
 def pair_state(a, b) -> str:
@@ -124,14 +157,15 @@ def evaluate_engine_rules(conn, facts, context, primary_results, pairs=None):
         return []
 
     triggers = []
-    for pair, a, b in found:
+    for pair, a, b, shared in found:
         triggers.append(DerivedFact(
             code=ENGINE_TRIGGER_CODE, source="engine_result",
-            value={"rules": list(pair.members), "state": pair_state(a, b),
+            value={"rules": list(pair.members), "state": pair_state(a, b), "shared_ingredients": shared,
                    "statuses": {a.rule_id: str(a.applicability_status), b.rule_id: str(b.applicability_status)},
                    "shared_process": pair.shared_process},
-            evidence="%s (%s) and %s (%s) both act on %s" % (
-                a.rule_id, a.applicability_status, b.rule_id, b.applicability_status, pair.shared_process),
+            evidence="%s (%s) and %s (%s) both act on %s (%s)" % (
+                a.rule_id, a.applicability_status, b.rule_id, b.applicability_status, pair.shared_process,
+                ", ".join(i["key"] for i in shared)),
             confidence="high"))
     rule = ev.DetectedRule(
         reason="engine-level check over primary results: " + "; ".join(t.evidence for t in triggers),
@@ -143,24 +177,24 @@ def evaluate_engine_rules(conn, facts, context, primary_results, pairs=None):
     evidence = {
         "triggered_by": [{"rule_id": r.rule_id, "applicability_status": str(r.applicability_status),
                           "trigger_code": r.trigger_code}
-                         for _, a, b in found for r in (a, b)],
-        "pairs": [{**p.as_dict(), "state": pair_state(a, b)} for p, a, b in found],
+                         for _, a, b, _s in found for r in (a, b)],
+        "pairs": [{**p.as_dict(), "state": pair_state(a, b), "shared_ingredients": sh} for p, a, b, sh in found],
         # The rule asks for a check, not a choice: no primary result is suppressed or re-ranked.
         "suppressed_rules": [],
         "priority_changes": [],
         "annotations": [{"rule_ids": list(p.members), "note": "check the tradeoff: " + p.effect}
-                        for p, a, b in found if pair_state(a, b) != "none"],
+                        for p, a, b, _sh in found if pair_state(a, b) != "none"],
     }
 
     if "conflict" in states:
         live = [t for t in triggers if t.value["state"] == "conflict"]
         result = ev._make(rule, S.APPLICABLE, checked, checked, (),
             "Competing goals: %s. Check the tradeoff before maximizing either." % live[0].value["shared_process"]
-            + " " + [p.effect for p, a, b in found if pair_state(a, b) == "conflict"][0],
+            + " " + [p.effect for p, a, b, _sh in found if pair_state(a, b) == "conflict"][0],
             evidence=evidence)
     elif "undetermined" in states:
         missing = []
-        for p, a, b in found:
+        for p, a, b, _sh in found:
             for r in (a, b):
                 if str(r.applicability_status) == "NEEDS_CONTEXT":
                     missing.append({"field": "primary_results.%s" % r.rule_id,

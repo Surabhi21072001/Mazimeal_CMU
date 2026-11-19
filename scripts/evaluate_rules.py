@@ -779,6 +779,14 @@ def evaluate_inh_011(c, facts, pf, ctx=None) -> EvaluatedRule:
     if stop:
         return stop
     ev_ = {"fat": NF.evidence_of(fat)}
+    crit = fat["criterion"]
+    if crit.definition_status != "reviewed":
+        # Visible on every INH-011 result: what 'fat-free' means has not been reviewed by a nutrition reviewer.
+        ev_["definitions_under_review"] = [{
+            "term": "fat-free", "threshold": crit.threshold, "unit": crit.unit, "operator": crit.operator,
+            "definition_status": crit.definition_status,
+            "note": "read literally as exactly 0 g per serving; a labelling threshold such as under 0.5 g is NOT "
+                    "applied until a nutrition review approves it (change NUTRITION_RULE_CONFIG['MACRO_FAT_LOW'])"}]
     if fat["state"] != "met":
         return _make(c, ApplicabilityStatus.NOT_APPLICABLE, checked, (), ("meal is fat-free",),
                      "The recipe has %g g fat per serving, so it is not fat-free." % fat["reading"].value, evidence=ev_)
@@ -1035,6 +1043,11 @@ RULE_EVALUATORS = {
     "SYN-012": evaluate_syn_012,
 }
 
+# Inhibitor rules (INH-003, 005, 006, 007, 008, 009, 010) live in their own module. It imports this one
+# only inside functions, so there is no import cycle.
+import inhibitor_rules  # noqa: E402
+RULE_EVALUATORS.update(inhibitor_rules.EVALUATORS)
+
 
 # --------------------------------------------------------------------------
 # Dispatcher + high-level API
@@ -1043,6 +1056,9 @@ _STEP_PREFIX = re.compile(r"^\s*(\d+)[.)]\s*(.*)$")
 
 # Trigger codes established by derived process facts that carry their own instruction steps.
 _DERIVED_STEP_CODES = frozenset({"PROC_COOL_REHEAT", "PROC_COOKWARE"})
+
+# Rules that tie each ingredient to its own steps and report exactly those (not every process fact).
+_OWN_STEPS_RULES = frozenset({"INH-005", "INH-006", "INH-007"})
 
 
 def _matched_ingredients(rule: DetectedRule, facts: RecipeFacts) -> tuple[tuple[str, str], ...]:
@@ -1121,7 +1137,8 @@ def _enrich(result: EvaluatedRule, rule: DetectedRule, facts: RecipeFacts,
         source_title=rule.source_title,
         source_url=rule.source_url,
         matched_ingredients=_matched_ingredients(rule, facts),
-        matched_steps=_matched_steps(result, process_facts, facts),
+        matched_steps=(result.matched_steps if result.rule_id in _OWN_STEPS_RULES
+                       else _matched_steps(result, process_facts, facts)),
     )
 
 

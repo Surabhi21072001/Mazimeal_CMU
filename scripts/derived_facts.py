@@ -247,7 +247,8 @@ def _extra_builders():
     builders = []
     for mod, fn in (("nutrition_facts", "nutrition_candidate_facts"),
                     ("meal_facts", "meal_candidate_facts"),
-                    ("equipment_facts", "equipment_candidate_facts")):
+                    ("equipment_facts", "equipment_candidate_facts"),
+                    ("inhibitor_rules", "inhibitor_candidate_facts")):
         try:
             module = __import__(mod)
         except ModuleNotFoundError as exc:

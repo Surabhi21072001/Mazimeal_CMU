@@ -25,10 +25,14 @@ from derived_fixtures import build_db, facts_for  # noqa: E402
 A, N, X = S.APPLICABLE, S.NOT_APPLICABLE, S.NEEDS_CONTEXT
 
 
-def primary(rule_id, status, trigger="ING_TOMATO", reason="r"):
+TOMATO = (("i-tomato", "tomatoes"),)
+
+
+def primary(rule_id, status, trigger="ING_TOMATO", reason="r", ingredients=TOMATO):
+    """A primary result. By default it is about tomatoes, so two of them share an ingredient."""
     return ev.EvaluatedRule(rule_id=rule_id, rule_name=rule_id, trigger_code=trigger, automation_status="recipe_safe",
                             candidate=True, applicability_status=status, conditions_checked=(), conditions_passed=(),
-                            conditions_failed=(), reason=reason)
+                            conditions_failed=(), reason=reason, matched_ingredients=tuple(ingredients))
 
 
 def engine(results, pairs=None, conn=None):
@@ -246,6 +250,120 @@ class TestThroughTheFullFlow(unittest.TestCase):
         self.assertEqual(d["trigger_source"], "engine_result")
         self.assertEqual(d["matched_on"]["facts"][0]["source"], "engine_result")
         self.assertEqual(d["evidence"]["suppressed_rules"], [])
+
+
+LEMON = (("i-lemon", "lemon wedge"),)
+
+
+class TestAllNineVerdictCombinations(unittest.TestCase):
+    """INH-012 for every combination of BIO-003's and INH-006's verdicts, when they share an ingredient."""
+
+    WANT = {
+        (A, A): A,       # both recommendations live: a real conflict
+        (A, N): N,       # INH-006 is not being asked for, so nothing competes
+        (A, X): X,       # INH-006 undecided
+        (N, A): N,
+        (N, N): N,
+        (N, X): N,       # BIO-003 not being asked for: nothing can compete whatever INH-006 is
+        (X, A): X,
+        (X, N): N,
+        (X, X): X,
+    }
+
+    def test_every_combination(self):
+        self.assertEqual(len(self.WANT), 9)
+        for (a, b), want in self.WANT.items():
+            [r] = engine([primary("BIO-003", a), primary("INH-006", b)])
+            self.assertEqual(r.applicability_status, want, (a.value, b.value))
+            self.assertEqual({t["rule_id"] for t in r.evidence["triggered_by"]}, {"BIO-003", "INH-006"})
+            self.assertEqual(r.evidence["suppressed_rules"], [])
+            self.assertEqual(r.evidence["priority_changes"], [])
+            if want == X:
+                undecided = {m["field"] for m in r.missing_context}
+                self.assertEqual(undecided, {"primary_results.%s" % rid for rid, s in (("BIO-003", a), ("INH-006", b))
+                                             if s == X})
+
+    def test_every_combination_names_the_shared_ingredient(self):
+        for (a, b) in self.WANT:
+            [r] = engine([primary("BIO-003", a), primary("INH-006", b)])
+            self.assertEqual([i["key"] for i in r.evidence["pairs"][0]["shared_ingredients"]], ["tomato"])
+
+
+class TestSharedIngredientRequirement(unittest.TestCase):
+    def test_same_ingredient_row_is_shared(self):
+        [r] = engine([primary("BIO-003", A), primary("INH-006", A)])
+        self.assertEqual(r.evidence["pairs"][0]["shared_ingredients"][0]["ingredient_id"], "i-tomato")
+
+    def test_the_same_normalised_ingredient_on_different_rows_is_shared(self):
+        a = primary("BIO-003", A, ingredients=(("i-1", "tomatoes"),))
+        b = primary("INH-006", A, ingredients=(("i-2", "Fresh Tomatoes"),))
+        [r] = engine([a, b])
+        self.assertEqual(r.applicability_status, A)
+        self.assertEqual(r.evidence["pairs"][0]["shared_ingredients"][0]["key"], "tomato")
+
+    def test_aliases_of_one_ingredient_are_shared(self):
+        for left, right in (("tomato", "tomatoes"), ("chopped tomatoes", "tomato"), ("frozen broccoli", "broccoli florets")):
+            a = primary("BIO-003", A, ingredients=(("i-1", left),))
+            b = primary("INH-006", A, ingredients=(("i-2", right),))
+            self.assertEqual(len(engine([a, b])), 1, (left, right))
+
+    def test_a_derived_form_is_not_the_same_ingredient(self):
+        a = primary("BIO-003", A, ingredients=(("i-1", "tomato paste"),))
+        b = primary("INH-006", A, ingredients=(("i-2", "tomatoes"),))
+        self.assertEqual(engine([a, b]), [])
+
+    def test_tomato_and_a_separate_vitamin_c_ingredient_is_not_a_conflict(self):
+        """The bug this fixes: 20 seed recipes had tomato (BIO-003) and lemon/pepper (INH-006)."""
+        a = primary("BIO-003", A)                               # tomatoes
+        b = primary("INH-006", A, ingredients=LEMON)            # lemon
+        self.assertEqual(engine([a, b]), [])
+        self.assertEqual(engine([primary("BIO-003", X), primary("INH-006", X, ingredients=LEMON)]), [])
+
+    def test_missing_matched_ingredient_evidence_is_not_a_conflict(self):
+        bare = lambda rid: primary(rid, A, ingredients=())
+        self.assertEqual(engine([bare("BIO-003"), bare("INH-006")]), [])
+        self.assertEqual(engine([primary("BIO-003", A), bare("INH-006")]), [])
+        self.assertEqual(engine([bare("BIO-003"), primary("INH-006", A)]), [])
+
+    def test_with_several_ingredients_only_the_shared_one_is_reported(self):
+        a = primary("BIO-003", A, ingredients=(("i-1", "tomatoes"), ("i-9", "cherry tomatoes")))
+        b = primary("INH-006", A, ingredients=(("i-2", "lemon"), ("i-3", "fresh tomatoes"), ("i-4", "green pepper")))
+        [r] = engine([a, b])
+        shared = r.evidence["pairs"][0]["shared_ingredients"]
+        self.assertEqual([i["key"] for i in shared], ["tomato"])
+        self.assertEqual(shared[0]["names"], ["fresh tomatoes", "tomatoes"])
+
+    def test_the_requirement_is_not_loosened_by_a_matching_trigger_code_alone(self):
+        a = primary("BIO-003", A, trigger="ING_TOMATO")
+        b = primary("INH-006", A, trigger="ING_TOMATO", ingredients=LEMON)
+        self.assertEqual(engine([a, b]), [])
+
+
+class TestInh012Pipeline(unittest.TestCase):
+    """Through detection and evaluation, with and without a tomato that is ALSO a vitamin C food."""
+
+    def conn(self, tomato_codes, other=()):
+        ings = [("tomatoes", tomato_codes)] + list(other)
+        return build_db(recipes={"r": {"name": "R", "ingredients": ings, "steps": ["Cook the tomatoes in olive oil."]}},
+                        extra_rules=[("BIO-003", "ING_TOMATO"), ("INH-006", "NUT_VITC")])
+
+    def ids(self, conn):
+        return {r.rule_id for r in ev.evaluate_recipe_rules(conn, "r")}
+
+    def test_tomato_plus_a_separate_vitamin_c_food_does_not_call_it(self):
+        conn = self.conn(("ING_TOMATO",), other=[("lemon", ("NUT_VITC",))])
+        got = self.ids(conn)
+        self.assertTrue({"BIO-003", "INH-006"} <= got)
+        self.assertNotIn("INH-012", got)
+
+    def test_it_is_called_only_when_the_same_tomato_qualifies_for_both(self):
+        # A hypothetical reviewed mapping. This task adds none; the test shows the rule WOULD fire.
+        conn = self.conn(("ING_TOMATO", "NUT_VITC"), other=[("lemon", ("NUT_VITC",))])
+        self.assertIn("INH-012", self.ids(conn))
+
+    def test_ordinary_tags_alone_never_create_a_shared_ingredient(self):
+        conn = self.conn(("ING_TOMATO",))
+        self.assertNotIn("INH-012", self.ids(conn))
 
 
 if __name__ == "__main__":

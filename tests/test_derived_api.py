@@ -217,6 +217,49 @@ class TestAuthenticatedEvaluate(ApiCase):
         self.assertEqual([self.conn.execute("SELECT count(*) FROM %s" % t).fetchone()[0] for t in tables], before)
 
 
+class TestInhibitorContextOverHttp(ApiCase):
+    """Medication and supplement context for the do_not_automate rules, over the real endpoints."""
+
+    def setUp(self):
+        super().setUp()
+        self.conn.execute("INSERT INTO member_conditions (member_id, condition_type, value_text) VALUES "
+                          "(%s, 'medication', 'Omeprazole Secret'), (%s, 'supplement', 'Zinc Secret')",
+                          (self.member, self.member))
+
+    def test_another_account_cannot_load_a_members_medication_context(self):
+        self.as_caller(self.stranger)
+        r = self.post({"member_id": self.member})
+        self.assertEqual(r.status_code, 404)
+        self.assertNotIn("omeprazole", r.text.lower())
+
+    def test_the_owner_gets_only_whether_medications_were_provided(self):
+        r = self.post({"member_id": self.member})
+        self.assertEqual(r.status_code, 200)
+        ctx = r.json()["context"]
+        self.assertEqual((ctx["medications_provided"], ctx["supplements_provided"]), (True, True))
+        for secret in ("omeprazole", "zinc secret", "secret"):
+            self.assertNotIn(secret, r.text.lower())
+
+    def test_the_public_endpoint_never_loads_the_member_even_when_asked(self):
+        plain = self.client.get("/rules/api/recipes/%s/evaluate" % self.recipe)
+        asked = self.client.get("/rules/api/recipes/%s/evaluate?user_id=%s" % (self.recipe, self.member))
+        self.assertEqual(plain.json()["rules"], asked.json()["rules"])
+        self.assertNotIn("omeprazole", asked.text.lower())
+        self.assertNotIn("secret", asked.text.lower())
+
+    def test_the_manual_advisory_rules_are_not_called_for_any_seed_recipe_in_either_endpoint(self):
+        for resp in (self.client.get("/rules/api/recipes/%s/evaluate" % self.recipe), self.post({"member_id": self.member})):
+            ids = {r["rule_id"] for r in resp.json()["rules"]}
+            self.assertEqual(ids & {"INH-001", "INH-002", "INH-003", "INH-004", "INH-008", "INH-009", "INH-010"}, set())
+
+    def test_the_public_response_carries_the_inhibitor_fields(self):
+        rules = {r["rule_id"]: r for r in self.client.get("/rules/api/recipes/%s/evaluate" % self.recipe).json()["rules"]}
+        for rule in ("INH-005", "INH-006", "INH-007"):
+            if rule in rules:
+                for key in ("trigger_source", "missing_context", "evidence", "matched_on", "reason"):
+                    self.assertIn(key, rules[rule])
+
+
 class TestUnauthenticated(unittest.TestCase):
     @unittest.skipUnless(DSN and HAVE, "needs fastapi, httpx, psycopg and MAZIMEAL_TEST_DSN")
     def test_no_token_means_no_evaluation(self):

@@ -87,6 +87,11 @@ NEEDS_CONTEXT_RULES = {"BIO-001", "BIO-004", "BIO-005", "BIO-006", "BIO-008", "B
                        "BIO-013", "BIO-014", "BIO-015", "GLY-008", "INH-006", "INH-007", "SYN-001", "SYN-002",
                        "SYN-003", "SYN-004", "SYN-005", "SYN-006", "SYN-007", "SYN-008", "SYN-009", "SYN-011"}
 
+# Inhibitor evaluators (scripts/inhibitor_rules.py). INH-006 and INH-007 are triggered by ingredient TAGS and now
+# have real evaluators; INH-003/008/009/010 are do_not_automate guards; INH-005 is triggered by a derived fact.
+INHIBITOR_EVALUATORS = {"INH-003", "INH-005", "INH-006", "INH-007", "INH-008", "INH-009", "INH-010"}
+TAG_RULES_NOW_EVALUATED = {"INH-006", "INH-007"}
+UNIMPLEMENTED_RULES = NEEDS_CONTEXT_RULES - TAG_RULES_NOW_EVALUATED     # still say "evaluator not implemented"
 REACHABLE_BEFORE = {"BIO-001", "BIO-002", "BIO-003", "BIO-004", "BIO-005", "BIO-006", "BIO-007", "BIO-011",
                     "BIO-013", "GLY-007", "INH-007", "SYN-003", "SYN-011"}
 
@@ -465,18 +470,19 @@ class Reachability(DatabaseCase):
         evaluator is one of the explicitly listed fact-driven ones (never a tag rule)."""
         registered = set(self.evaluate.RULE_EVALUATORS)
         self.assertTrue(REAL_EVALUATORS <= registered)
-        self.assertEqual(registered - REAL_EVALUATORS, FACT_DRIVEN_EVALUATORS)
-        self.assertFalse((registered - REAL_EVALUATORS) & set(NEEDS_CONTEXT_RULES))
+        self.assertEqual(registered - REAL_EVALUATORS, FACT_DRIVEN_EVALUATORS | INHIBITOR_EVALUATORS)
+        self.assertFalse((registered - REAL_EVALUATORS) & set(UNIMPLEMENTED_RULES))
 
     def test_five_called_rules_have_real_evaluators_and_twenty_four_are_needs_context(self):
         called = set(self.fired_after)
         self.assertEqual(called & REAL_EVALUATORS, REAL_EVALUATORS)
         self.assertEqual(called - REAL_EVALUATORS, NEEDS_CONTEXT_RULES)
-        self.assertEqual((len(REAL_EVALUATORS), len(NEEDS_CONTEXT_RULES)), (5, 24))
+        self.assertEqual(NEEDS_CONTEXT_RULES & set(self.evaluate.RULE_EVALUATORS), TAG_RULES_NOW_EVALUATED)
+        self.assertEqual((len(REAL_EVALUATORS), len(UNIMPLEMENTED_RULES)), (5, 22))
 
     def test_an_unimplemented_rule_is_triggered_but_never_decided(self):
         for (rid, rule), (status, reason) in self.eval_after.items():
-            if rule in NEEDS_CONTEXT_RULES:
+            if rule in UNIMPLEMENTED_RULES:
                 self.assertEqual(status, "NEEDS_CONTEXT", (rid, rule))
                 self.assertIn("evaluator not implemented", reason, (rid, rule))
 
@@ -486,7 +492,7 @@ class Reachability(DatabaseCase):
             results_by_rule.setdefault(rule, set()).add(rid)
         for rule in NEEDS_CONTEXT_RULES:
             self.assertEqual(results_by_rule[rule], self.fired_after[rule], rule)   # one result per candidate recipe
-        total = sum(len(self.fired_after[r]) for r in NEEDS_CONTEXT_RULES)
+        total = sum(len(self.fired_after[r]) for r in UNIMPLEMENTED_RULES)
         counted = sum(1 for (rid, rule), (st, why) in self.eval_after.items()
                       if st == "NEEDS_CONTEXT" and "evaluator not implemented" in why)
         self.assertEqual(counted, total)
@@ -842,7 +848,7 @@ class CandidatesWithoutEvaluators(DatabaseCase):
 
     def test_the_five_original_evaluators_still_exist(self):
         original = ["BIO-002", "BIO-003", "BIO-007", "BIO-011", "GLY-007"]
-        self.assertEqual(sorted(set(self.ev.RULE_EVALUATORS) - FACT_DRIVEN_EVALUATORS), original)
+        self.assertEqual(sorted(set(self.ev.RULE_EVALUATORS) - FACT_DRIVEN_EVALUATORS - INHIBITOR_EVALUATORS), original)
 
 
 if __name__ == "__main__":

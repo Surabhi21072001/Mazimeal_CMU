@@ -59,11 +59,13 @@ def build_db(rules=RULES, recipes=None, extra_rules=()) -> sqlite3.Connection:
     return conn
 
 
-def facts_for(ingredients=(), steps=None, nutrition=None, servings=None, codes=(), equipment=(), metadata=None):
+def facts_for(ingredients=(), steps=None, nutrition=None, servings=None, codes=(), equipment=(), metadata=None,
+              tags=None):
     """A RecipeFacts built directly (no database). `ingredients` are names; `codes` the union
     of ingredient codes. `nutrition` is {nutrient_id: (value, unit)}."""
+    tags = tags or {}                       # {ingredient name: (rule codes,)}: the tags an ingredient carries
     ings = tuple(recipe_facts.RecipeIngredientFact(
-        ingredient_id="i-%d" % i, ingredient_name=n, quantity=None, unit=None, rule_codes=())
+        ingredient_id="i-%d" % i, ingredient_name=n, quantity=None, unit=None, rule_codes=tuple(tags.get(n, ())))
         for i, n in enumerate(ingredients))
     nutrients = {k: float(v[0]) for k, v in (nutrition or {}).items()}
     meta = {"nutrient_units": {k: v[1] for k, v in (nutrition or {}).items()},
@@ -77,4 +79,4 @@ def facts_for(ingredients=(), steps=None, nutrition=None, servings=None, codes=(
         kwargs["equipment"] = tuple(equipment)
     return recipe_facts.RecipeFacts(
         recipe_id="r-x", recipe_name="Test Recipe", ingredients=ings,
-        ingredient_codes=frozenset(codes), nutrients=nutrients, instructions=text, metadata=meta, **kwargs)
+        ingredient_codes=frozenset(codes) | frozenset(c for cs in tags.values() for c in cs), nutrients=nutrients, instructions=text, metadata=meta, **kwargs)

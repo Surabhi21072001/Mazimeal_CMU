@@ -386,7 +386,8 @@ class TestMigration013(DerivedDbCase):
 
     def test_numbering_follows_the_existing_migrations_with_no_gap_or_duplicate(self):
         numbers = sorted(int(p.name[:3]) for p in MIGRATIONS.glob("[0-9][0-9][0-9]_*.sql"))
-        self.assertEqual(numbers, list(range(1, 14)))
+        self.assertEqual(numbers, list(range(1, len(numbers) + 1)))     # contiguous: no gap, no duplicate
+        self.assertIn(13, numbers)
 
     def test_it_is_idempotent(self):
         before = self.one("SELECT count(*) FROM rule_codes")
@@ -484,11 +485,15 @@ class TestInh012OnSeed(DerivedDbCase):
             cls.rows.append((str(rid), facts, primary, cls.ER.evaluate_engine_rules(cls.conn, facts, None, primary)))
         cls.conn.rollback()
 
-    def test_it_is_called_exactly_when_both_members_of_the_pair_are_candidates(self):
+    def test_it_is_called_only_when_both_members_are_candidates_and_share_an_ingredient(self):
         for rid, facts, primary, engine in self.rows:
-            ids = {r.rule_id for r in primary}
-            self.assertEqual(bool(engine), {"BIO-003", "INH-006"} <= ids, rid)
-        self.assertGreater(sum(1 for *_, e in self.rows if e), 0)
+            by = {r.rule_id: r for r in primary}
+            both = {"BIO-003", "INH-006"} <= set(by)
+            shared = bool(both and self.ER.shared_ingredients(by["BIO-003"], by["INH-006"]))
+            self.assertEqual(bool(engine), shared, rid)
+        # Tomato carries no NUT_VITC tag, so on the seed no recipe has a shared ingredient: zero candidates
+        # (it was 20 when co-occurrence alone was enough, which was wrong).
+        self.assertEqual(sum(1 for *_, e in self.rows if e), 0)
 
     def test_the_verdict_follows_the_two_primary_results(self):
         for rid, facts, primary, engine in self.rows:

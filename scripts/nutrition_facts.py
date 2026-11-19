@@ -65,14 +65,20 @@ class NutritionCriterion:
     review_status: str      # 'wording' | 'reviewed' | 'unreviewed'
     source: str             # rule id and the words this comes from
     reason: str = ""
+    # Whether a person has reviewed what the threshold MEANS (separate from review_status, which says
+    # whether a number may be applied). 'unreviewed' is shown in the evidence of every result that uses it.
+    definition_status: str = "reviewed"
 
     def usable(self) -> bool:
         return self.threshold is not None and self.review_status in ("wording", "reviewed")
 
     def as_dict(self) -> dict:
-        return {"key": self.key, "field": self.field, "operator": self.operator,
-                "threshold": self.threshold, "unit": self.unit, "basis": self.basis,
-                "review_status": self.review_status, "source": self.source, "reason": self.reason}
+        out = {"key": self.key, "field": self.field, "operator": self.operator,
+               "threshold": self.threshold, "unit": self.unit, "basis": self.basis,
+               "review_status": self.review_status, "source": self.source, "reason": self.reason}
+        if self.definition_status != "reviewed":      # shown only where a definition is under review
+            out["definition_status"] = self.definition_status
+        return out
 
 
 # ---- candidate detection: which trigger code does the recipe's nutrition establish? -------
@@ -87,7 +93,8 @@ NUTRITION_RULE_CONFIG: dict[str, NutritionCriterion] = {
         basis="per_serving", review_status="wording",
         source="INH-011 trigger_food_or_pattern: 'fat-free meal containing carotenoids or vitamins A/D/E/K'",
         reason="fat-free is read literally as 0 g; a labelling definition such as '< 0.5 g' is not in the "
-               "rule and is not applied"),
+               "rule and is not applied",
+        definition_status="unreviewed"),
 }
 
 # ---- final applicability: is the recommendation warranted? ---------------------------------
