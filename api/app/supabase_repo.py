@@ -113,8 +113,9 @@ def _steps_for_rule(steps, ingredient_names):
     recipe says "remaining marinade ingredients". A wrong mark costs more than
     a missing one.
 
-    SPEC.md calls this approximate, and it is. The exact version needs the
-    engine to say which step it means; see docs/rules_api_contract.md.
+    This is approximate and docs/API.md says so where the shape is documented.
+    The exact version needs the engine to say which step it means: its
+    matched_on carries no recipe_ingredients.line_id today.
     """
     nouns = set()
     for name in ingredient_names:

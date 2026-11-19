@@ -74,9 +74,11 @@ Three details that each cost an hour if you get them wrong:
 - If your password contains `@`, percent-encode it as `%40`, or everything
   after it is parsed as the hostname.
 
-Port 5432 is the session pooler and is what the backend uses. Port 6543 is the
-transaction pooler; it does not support prepared statements, which breaks
-psycopg, so stay on 5432 unless you know you need otherwise.
+Port 5432 is the session pooler and is what every connection string here
+uses, including the backend's. Port 6543, the transaction pooler, also works
+with psycopg — that was checked on 2026-11-19, against the claim that it
+breaks prepared statements. Stay on 5432 anyway: a session connection is what
+the backend's pool expects.
 
 ---
 
@@ -379,7 +381,8 @@ rather than as advice. That is working correctly, not a missing suggestion.
 
 - `matched_on.ingredients[].line_id` in the evaluate response, so a rule can
   highlight the exact ingredient line on screen rather than the whole meal.
-  See [docs/rules_api_contract.md](rules_api_contract.md).
+  The engine returns `matched_on` already, but with no line id in it, so the
+  backend guesses the line by matching ingredient names against step text.
 - Whether `NEEDS_CONTEXT` is meant to reach a cook. Right now it renders as
   advisory text.
 - Nutrient units: `recipe_nutrition.unit` is trusted as-is. Nobody has

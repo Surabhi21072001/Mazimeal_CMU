@@ -95,19 +95,9 @@ accident, post in the group chat right away so we can rotate it.
 
 ## Confirming your access
 
-Run this once when you get the invite:
-
-```bash
-git clone https://github.com/mazimeal/platform.git
-cd platform
-git checkout dev
-echo "| <yourname> | $(date +%Y-%m-%d) |" >> docs/ACCESS_CHECK.md
-git add docs/ACCESS_CHECK.md
-git commit -m "Confirm repo access for <yourname>"
-git push origin dev
-```
-
-If the push works, you have write access.
+`Surabhi21072001/Mazimeal_CMU` is the repository that deploys; see
+[HANDOFF.md](HANDOFF.md). Clone it, branch off `dev`, and push the branch — if
+the push works, you have write access.
 
 Clone somewhere outside OneDrive or Dropbox. Sync clients and git both try to
 manage the folder and you end up with duplicate files inside `.git/`.

@@ -14,6 +14,11 @@ Now there is a recommendation section under the hero, and Smart Insights reads
 from real nutrient gaps. Everything in the new section comes from one database
 call, `fn_home`, which runs the recommender for the household.
 
+**`fn_home` is not installed on the live Supabase project**, so what the
+deployed page actually shows is `homeSnapshot.json` with a "Sample data" badge.
+The code path below is the one that runs the moment someone installs
+`recommender/db/`; see [HANDOFF.md](../../../../docs/HANDOFF.md).
+
 | Before | After |
 |---|---|
 | ![before](screenshots/before.png) | ![after](screenshots/after.png) |
@@ -95,4 +100,6 @@ psql -d mazimeal_full -At -c "select fn_home('01930000-0000-7000-8000-0000000000
 ## Going live
 
 The schema and seed need to be on Supabase, and `fn_home` needs to be callable
-by the anon key. Not done yet; needs the database password.
+by the publishable key. Still not done — and note that a newer `98_home.sql`
+exists on `mazimeal/platform` than the copy here, so read HANDOFF.md before
+installing this one.

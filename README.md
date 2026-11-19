@@ -163,17 +163,37 @@ from an absence of reviewers.
 
 ## Where to read next
 
+**Read first:** [docs/HANDOFF.md](docs/HANDOFF.md) — what is deployed where,
+who wrote what, what is broken, and what to do in the first week.
+
+Then whichever of these matches the job:
+
 | Document | What it answers |
 |---|---|
-| [docs/HANDOFF.md](docs/HANDOFF.md) | What is deployed where, who owns what, what is still open |
-| [docs/API.md](docs/API.md) | Every endpoint, its input and output, and which ones touch recipes |
-| [api/SPEC.md](api/SPEC.md) | The payload contract between the workstreams |
-| [docs/DATA.md](docs/DATA.md) | Getting at the database, changing data safely, and what is wrong with it |
-| [docs/deploy.md](docs/deploy.md) | Deploying the frontend and the API |
+| [docs/API.md](docs/API.md) | **Every endpoint**, its input, its output, what an account is needed for, and the payload shapes. The only endpoint document |
+| [docs/DATA.md](docs/DATA.md) | Reaching the database, changing data safely, and where the highest-value data work is |
+| [api/README.md](api/README.md) | Running the backend, its environment switches, and how the suggestion text is written and reviewed |
+| [docs/deploy.md](docs/deploy.md) | Deploying the screens and the API, and the two settings that cost half a day each |
 | [docs/accounts.md](docs/accounts.md) | Signing in, and how someone becomes a reviewer |
 | [docs/BRANCHING.md](docs/BRANCHING.md) | Branches, PRs, and who owns which file |
-| [api/README.md](api/README.md) | Running the backend, switches, and what the models did |
-| [recommender/README.md](recommender/README.md) | How the recommendation scoring works |
+| [docs/RECIPE_DATA.md](docs/RECIPE_DATA.md) | Element by element: what the recipe screens show, where it comes from, and what is still missing |
+
+Each screen's own notes sit next to its code:
+[web/src/features/home/](web/src/features/home/README.md) and
+[web/src/features/recipe/](web/src/features/recipe/README.md), both with
+screenshots.
+
+### Other workstreams' documents
+
+Kept because they describe live code, but they are reference for their own
+area, not for the API or the screens:
+
+| Document | Whose |
+|---|---|
+| [docs/phase2_business_rules.md](docs/phase2_business_rules.md), [phase2_recipe_facts.md](docs/phase2_recipe_facts.md), [phase2_user_nutrition.md](docs/phase2_user_nutrition.md) | The rules work: the rule tables, the code vocabulary, and the `RecipeFacts` snapshot the engine evaluates |
+| [recommender/README.md](recommender/README.md), [recommender/db/README.md](recommender/db/README.md) | The recommendation work: scoring, and its own database schema |
+| [schema/seed/README.md](schema/seed/README.md) | Where the 400 recipes and the USDA nutrition came from |
+| [docs/Testing_Plan.md](docs/Testing_Plan.md) | A QA plan, proposed and **never executed**. Owners and test cases are in it; several of its open questions have since been answered elsewhere |
 
 ## Conventions
 

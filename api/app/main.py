@@ -8,10 +8,10 @@ other team already wrote.
 
 Run it:
 
-    api/.venv/bin/uvicorn app.main:app --reload --port 8000 --app-dir api
+    api/.venv/bin/uvicorn app.main:app --reload --port 8002 --app-dir api
 
-Endpoints follow api/SPEC.md. Every payload carries `source` so the frontend
-can say whether it is looking at live data or a fixture.
+Every endpoint is documented in docs/API.md. Every payload carries `source` so
+the frontend can say whether it is looking at live data or a fixture.
 """
 import sys
 import time

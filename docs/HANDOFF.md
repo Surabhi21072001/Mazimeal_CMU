@@ -4,7 +4,7 @@ What is running, who wrote what, and what is still open. Everything in here was
 checked against the live systems rather than remembered; where a thing is
 broken it says so, and where something is a judgement call it says who made it.
 
-Last verified: 2026-11-17.
+Last verified: 2026-11-19.
 
 ---
 
@@ -16,9 +16,10 @@ Last verified: 2026-11-17.
 | API | Render | `https://mazimeal-api.onrender.com` | Free plan: it sleeps, so the first request after idle takes ~30 s. `render.yaml` is a blueprint — every setting is in the repo except the two that carry the database password |
 | Database | Supabase | project `vvoxzwktnalrodukachl`, region us-west-2 | Postgres. Also the auth provider |
 
-Render deploys branch `main`. The API connects through Supabase's IPv4 pooler
-on port 6543 — the direct `db.*.supabase.co` host is IPv6-only and unreachable
-from many networks, which is a half-day to rediscover.
+Render deploys branch `main`. The API connects through Supabase's pooler host
+(`aws-1-us-west-2.pooler.supabase.com:5432`) — the direct `db.*.supabase.co`
+host is IPv6-only and unreachable from many networks, which is a half-day to
+rediscover.
 
 ### The repository exists twice, and one of them is the real one
 

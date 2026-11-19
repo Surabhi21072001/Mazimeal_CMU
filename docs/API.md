@@ -9,8 +9,8 @@ Production: `https://mazimeal-api.onrender.com` (Render, free plan, so the
 first request after idle takes ~30 s to wake).
 Health: `GET /api/health` → `{"status":"ok","repo":"supabase","provider":"template","rules_engine":"/rules","model":null}`
 
-For the payload *contract* — what a field means, and which workstream owes it —
-read [api/SPEC.md](../api/SPEC.md). This file is the inventory.
+This is the only endpoint document. **Payload shapes** follow the endpoint
+tables, with a real response for each.
 
 ---
 
@@ -125,6 +125,151 @@ Approving one needs to be a reviewer.
 | `POST /api/admin/people` | reviewer | `{email, note?}` | Grants review access. No `granted_by`: it comes from the token |
 | `DELETE /api/admin/people/{email}` | reviewer | — | Revokes it. An address in `MAZI_ADMIN_EMAILS` cannot be revoked by a request |
 
+---
+
+## Payload shapes
+
+Four shapes carry almost everything. Every example below is a real response,
+trimmed; `api/fixtures/*.json` holds complete ones you can read offline.
+
+### A matched rule
+
+The important field is `applies_to`. A rule list alone is not enough: without
+it the cook screen cannot highlight the ingredient inside a step, cannot put
+the "Key Step" badge on the right row, and cannot show a synergy card against
+the pair that caused it.
+
+```json
+{
+  "rule_id": "BIO-002",
+  "name": "Crush garlic and rest before heating",
+  "status": "not_satisfied",
+  "automation_status": "recipe_safe",
+  "evidence_tier": "B",
+  "target_code": "CMP_ALLICIN",
+  "target_nutrient": "allicin formation",
+  "applies_to": {
+    "type": "ingredients",
+    "line_ids": ["1921a006-3773-4a15-811e-61ef1e077d69"],
+    "step_numbers": [2]
+  },
+  "engine_action": "When garlic is cooked, place crushing/mincing before a short rest, then add later or cook gently.",
+  "why": "Tissue disruption lets alliinase convert alliin to allicin; heat can inactivate alliinase",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/"
+}
+```
+
+`status` is what the recipe already does about the rule — `not_satisfied` is a
+change worth making, `satisfied` is something already working in the cook's
+favour, and the suggestion text orders them that way. `line_ids` are
+`recipe_ingredients.line_id` uuids, not positions.
+
+`step_numbers` is **approximate**: a rule marks the steps whose text names the
+ingredient it fired on, and marks nothing when the method never names it
+("remaining marinade ingredients"). A wrong mark costs more than a missing one.
+The exact version needs the engine to say which step it means.
+
+### A nutrition number
+
+Every one of them carries where it came from, because that is this project's
+answer to the client's worry about invented numbers:
+
+```json
+{
+  "nutrient": "Energy",
+  "label": "Calories",
+  "value": 464.2,
+  "unit": "kcal",
+  "source": "published",
+  "confidence": 1.0,
+  "published_value": 464.2,
+  "derived_value": 183.4,
+  "derived_over_published": 0.4,
+  "pct_of_target": null,
+  "top_sources": []
+}
+```
+
+`published` is the value the dataset states for the recipe; `derived` is
+computed from ingredient grams times USDA values per 100 g. Both are kept
+because disagreement between them is the signal: the 0.4 above says the
+ingredients account for well under half the stated calories, which is a
+gram-weight problem rather than a calorie one. Energy is the only nutrient with
+both values for every recipe, which is why the nutrition review queue is built
+on that one ratio.
+
+### A recommendation
+
+```json
+{
+  "recipe_id": "souvlaki-002",
+  "name": "Chicken Souvlaki",
+  "meal": "Lunch",
+  "kcal_per_serving": 811.8,
+  "time_min": 60,
+  "tags": ["weeknight"],
+  "score": 91.2,
+  "nutrient_contribution": {
+    "nutrient": "Iron", "per_serving": 11.1, "unit": "mg",
+    "pct_of_remaining_need": 46, "source": "derived", "confidence": 0.6
+  },
+  "matched_rule_ids": ["SYN-002"],
+  "why": "Most iron of the lunches that fit her day, and it is already a Mediterranean dish she likes.",
+  "blocked_by": null
+}
+```
+
+`GET /api/recommendations` returns these under `results`, plus a `blocked`
+list of the ones the filter removed, each with
+`blocked_by: {"reason": "household allergen", "detail": "peanut butter"}`.
+The screens show a few on purpose: a recommender that visibly refuses food is
+more convincing than one that only shows winners.
+
+**`score` and `why` are not yet produced by a recommender.** The response
+carries a `_fixture_note` saying so: the scores assume an iron weighting the
+engine does not do. Treat this shape as the contract and the numbers as
+illustrative.
+
+### A household member
+
+```json
+{
+  "member_id": "maya", "name": "Maya", "age": 31, "sex": "F",
+  "conditions": ["iron_deficiency"],
+  "preferences": {"allergies": ["peanut"], "dislikes": ["mushroom"],
+                  "dietary_patterns": [], "cuisines": ["Mediterranean"]},
+  "targets": [
+    {"nutrient": "Iron", "unit": "mg", "target": 27.0, "baseline": 18.0,
+     "consumed": 3.1, "remaining": 23.9, "upper_limit": 45.0,
+     "adjusted_by": ["IRON_COND_ANY_C002_001"]}
+  ]
+}
+```
+
+`baseline` is the DRI for the member's age and sex; `target` is that baseline
+after the condition rules in `adjusted_by` have been applied, which is why both
+are kept. `remaining` is what the recommender ranks on.
+
+### The suggestion response
+
+```json
+{
+  "recipe_id": "falafel-001",
+  "suggestions": [
+    {"rule_id": "BIO-002", "headline": "Crush garlic and rest before heating",
+     "body": "When garlic is cooked, place crushing/mincing before a short rest …",
+     "evidence_tier": "B", "source_url": "https://pubmed.ncbi.nlm.nih.gov/11160543/",
+     "status": "not_satisfied"}
+  ],
+  "summary": {"text": "Worth doing: … Already working in your favour: …"},
+  "source": "template", "model": null, "generated_in_ms": 2,
+  "disclaimer": "…"
+}
+```
+
+Every suggestion names the rule it came from and that rule's source, so a cook
+can follow any sentence back to the research. `source` is `reviewed`, `cache`,
+`local` or `template`.
 ---
 
 ## `/rules/*` — the rules engine's own API

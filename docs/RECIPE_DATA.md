@@ -30,8 +30,8 @@ design pass Naveen asked for.
 
 | On screen | Where it lives | Status | Plan |
 |---|---|---|---|
-| Recommendations, member gaps, hidden recipes | `fn_home` | Have, live | |
-| Calorie ring, nutrient bars | `nutrient_daily_log` | Have; `fn_log_meal` writes it | Wire the ring and bars to `fn_member_gap` |
+| Recommendations, member gaps, hidden recipes | `fn_home` | Written, **not installed** on the live project, so the page serves `homeSnapshot.json` | Install `recommender/db/` — see [HANDOFF.md](HANDOFF.md) |
+| Calorie ring, nutrient bars | `nutrient_daily_log` | `fn_log_meal` writes it, and it is not installed either, so logging a meal fails silently | Install, then wire the ring and bars to `fn_member_gap` |
 | Today's Menu | planner sample | Missing | Top pick per slot from `fn_home`, or the planner's saved day |
 | Hydration, sleep | browser only | Missing | New tables `hydration_log`, `sleep_log` (member, date, value) |
 | Streaks, achievements | hardcoded | Missing | Computed from the logs; `member_achievements` to remember unlocks |
